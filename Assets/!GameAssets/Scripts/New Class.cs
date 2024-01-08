@@ -1,14 +1,15 @@
-//-----------------------------------------------------------------------
-// Author   : ""
+//----------------------------------------------------------------------
+// Author   : "InsertYourNameHere"
+// Created  : "YYYY/MM/DD"
 //----------------------------------------------------------------------
 
 using UnityEngine;
 
 
-namespace ProjectB
+namespace UnderworldCafe
 {
     /// <summary>
-    /// Class summary
+    /// Class is responsible for giving example of script that was made by CustomScript ScriptTemplates
     /// </summary>
     public class NewClass : MonoBehaviour
     {
