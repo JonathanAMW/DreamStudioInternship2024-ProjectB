@@ -14,6 +14,7 @@ namespace UnderworldCafe
     public class StageSelectManager : MonoBehaviour
     {
         public StageObject[] stageObjects; //all stages in game
+        public LevelObject[] levelObjects; //all levels in game
         [HideInInspector]public bool isLevelPanelActive = false;
         public GameObject levelSelectPanel;
         public static int currentStageId = 0;

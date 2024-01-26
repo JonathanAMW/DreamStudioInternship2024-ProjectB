@@ -16,7 +16,7 @@ namespace UnderworldCafe
 
     {
         
-        [SerializeField] int stageId; //all levels in the stage, min.1
+        [SerializeField] int stageId; 
         public int StageId { get { return stageId; } }
 
         [SerializeField] int totalLevels=1; //all levels in the stage, min.1
@@ -47,7 +47,6 @@ namespace UnderworldCafe
         public void ShowLevelPanel()
         {
             StageSelectManager.currentStageId = StageId;
-            Debug.Log(StageSelectManager.currentStageId);
             _levelSelectPanel.UpdateStageSelected(StageSelectManager.currentStageId);
             _stageSelectManager.isLevelPanelActive = true;
             _stageSelectManager.levelSelectPanel.SetActive(true);

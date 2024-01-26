@@ -424,6 +424,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71386331}
   m_CullTransparentMesh: 1
+--- !u!1 &83721728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 83721729}
+  - component: {fileID: 83721730}
+  m_Layer: 0
+  m_Name: StageSelectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &83721729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83721728}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 312131263}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &83721730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83721728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c2c7972bc10d7e43928652e4643ca1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageObjects:
+  - {fileID: 1655808487}
+  - {fileID: 383769473}
+  - {fileID: 1907256253}
+  - {fileID: 275683394}
+  - {fileID: 920392106}
+  - {fileID: 1210176930}
+  levelObjects:
+  - {fileID: 685733572}
+  - {fileID: 1446236103}
+  - {fileID: 646059398}
+  - {fileID: 551348099}
+  - {fileID: 542818637}
+  - {fileID: 1594563858}
+  - {fileID: 147297821}
+  - {fileID: 2092442142}
+  - {fileID: 626462548}
+  - {fileID: 1509289937}
+  - {fileID: 909518138}
+  - {fileID: 881193882}
+  - {fileID: 284257947}
+  - {fileID: 1874504591}
+  - {fileID: 987925353}
+  - {fileID: 1789479533}
+  isLevelPanelActive: 0
+  levelSelectPanel: {fileID: 1893288427}
 --- !u!1 &87220284
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +715,7 @@ GameObject:
   - component: {fileID: 123218192}
   - component: {fileID: 123218191}
   - component: {fileID: 123218190}
+  - component: {fileID: 123218193}
   m_Layer: 0
   m_Name: cnvLevelSelect
   m_TagString: Untagged
@@ -735,6 +806,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!114 &123218193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123218188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ebd1f585ae5244296c4156da5948d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &127507671
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +905,7 @@ GameObject:
   - component: {fileID: 147297820}
   - component: {fileID: 147297819}
   - component: {fileID: 147297818}
+  - component: {fileID: 147297821}
   m_Layer: 5
   m_Name: btnLevel (6)
   m_TagString: Untagged
@@ -935,6 +1019,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147297816}
   m_CullTransparentMesh: 1
+--- !u!114 &147297821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147297816}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 6
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textLevel: {fileID: 0}
+  statusImg: {fileID: 0}
 --- !u!1 &147517879
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,7 +1345,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 182294501}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1655808487}
+        m_TargetAssemblyTypeName: UnderworldCafe.StageObject, Assembly-CSharp
+        m_MethodName: ShowLevelPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &182294501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1590,6 +1705,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 275683393}
+  - component: {fileID: 275683394}
   m_Layer: 5
   m_Name: objStage (3)
   m_TagString: Untagged
@@ -1618,6 +1734,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &275683394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275683392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264be1bc013067e40881a7a85d03b65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageId: 3
+  totalLevels: 1
+  unlockedLevels: 0
+  _stageImg: {fileID: 0}
 --- !u!1 &284257942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,6 +1762,7 @@ GameObject:
   - component: {fileID: 284257946}
   - component: {fileID: 284257945}
   - component: {fileID: 284257944}
+  - component: {fileID: 284257947}
   m_Layer: 5
   m_Name: btnLevel (12)
   m_TagString: Untagged
@@ -1743,6 +1876,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284257942}
   m_CullTransparentMesh: 1
+--- !u!114 &284257947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284257942}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 12
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textLevel: {fileID: 0}
+  statusImg: {fileID: 0}
 --- !u!1 &294626082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,6 +1970,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294626082}
   m_CullTransparentMesh: 1
+--- !u!1 &312131262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 312131263}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &312131263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312131262}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 83721729}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &313978845
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,7 +2435,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 346986981}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 383769473}
+        m_TargetAssemblyTypeName: UnderworldCafe.StageObject, Assembly-CSharp
+        m_MethodName: ShowLevelPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &346986981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2446,7 +2642,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 367418850}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1907256253}
+        m_TargetAssemblyTypeName: UnderworldCafe.StageObject, Assembly-CSharp
+        m_MethodName: ShowLevelPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &367418850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2569,6 +2777,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 383769472}
+  - component: {fileID: 383769473}
   m_Layer: 5
   m_Name: objStage (1)
   m_TagString: Untagged
@@ -2597,6 +2806,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &383769473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383769471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264be1bc013067e40881a7a85d03b65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageId: 1
+  totalLevels: 2
+  unlockedLevels: 0
+  _stageImg: {fileID: 0}
 --- !u!1 &403426382
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,7 +2931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 37, y: -85.241}
+  m_AnchoredPosition: {x: 37, y: -85.24097}
   m_SizeDelta: {x: 111.55, y: 92.123}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &405161890
@@ -2903,7 +3128,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 419762751}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1210176930}
+        m_TargetAssemblyTypeName: UnderworldCafe.StageObject, Assembly-CSharp
+        m_MethodName: ShowLevelPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &419762751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3314,6 +3551,7 @@ GameObject:
   - component: {fileID: 542818636}
   - component: {fileID: 542818635}
   - component: {fileID: 542818634}
+  - component: {fileID: 542818637}
   m_Layer: 5
   m_Name: btnLevel (4)
   m_TagString: Untagged
@@ -3427,6 +3665,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542818632}
   m_CullTransparentMesh: 1
+--- !u!114 &542818637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542818632}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 4
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textLevel: {fileID: 0}
+  statusImg: {fileID: 0}
 --- !u!1 &551348094
 GameObject:
   m_ObjectHideFlags: 0
@@ -3439,6 +3696,7 @@ GameObject:
   - component: {fileID: 551348098}
   - component: {fileID: 551348097}
   - component: {fileID: 551348096}
+  - component: {fileID: 551348099}
   m_Layer: 5
   m_Name: btnLevel (3)
   m_TagString: Untagged
@@ -3552,6 +3810,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551348094}
   m_CullTransparentMesh: 1
+--- !u!114 &551348099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551348094}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 3
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textLevel: {fileID: 0}
+  statusImg: {fileID: 0}
 --- !u!1 &572400848
 GameObject:
   m_ObjectHideFlags: 0
@@ -4073,6 +4350,7 @@ GameObject:
   - component: {fileID: 626462547}
   - component: {fileID: 626462546}
   - component: {fileID: 626462545}
+  - component: {fileID: 626462548}
   m_Layer: 5
   m_Name: btnLevel (8)
   m_TagString: Untagged
@@ -4186,6 +4464,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626462543}
   m_CullTransparentMesh: 1
+--- !u!114 &626462548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626462543}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 8
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textLevel: {fileID: 0}
+  statusImg: {fileID: 0}
 --- !u!1 &646059393
 GameObject:
   m_ObjectHideFlags: 0
@@ -4198,6 +4495,7 @@ GameObject:
   - component: {fileID: 646059397}
   - component: {fileID: 646059396}
   - component: {fileID: 646059395}
+  - component: {fileID: 646059398}
   m_Layer: 5
   m_Name: btnLevel (2)
   m_TagString: Untagged
@@ -4311,6 +4609,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646059393}
   m_CullTransparentMesh: 1
+--- !u!114 &646059398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646059393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 2
+  levelStars:
+  - {fileID: 405595293}
+  - {fileID: 1109832936}
+  - {fileID: 1480865403}
+  textLevel: {fileID: 1603016697}
+  statusImg: {fileID: 1449788175}
 --- !u!1 &655856271
 GameObject:
   m_ObjectHideFlags: 0
@@ -4457,6 +4774,7 @@ GameObject:
   - component: {fileID: 685733571}
   - component: {fileID: 685733570}
   - component: {fileID: 685733569}
+  - component: {fileID: 685733572}
   m_Layer: 5
   m_Name: btnLevel (0)
   m_TagString: Untagged
@@ -4570,6 +4888,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685733567}
   m_CullTransparentMesh: 1
+--- !u!114 &685733572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685733567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 0
+  levelStars:
+  - {fileID: 372291761}
+  - {fileID: 229167233}
+  - {fileID: 1632827846}
+  textLevel: {fileID: 1588930678}
+  statusImg: {fileID: 1704231002}
 --- !u!1 &701315178
 GameObject:
   m_ObjectHideFlags: 0
@@ -5442,6 +5779,7 @@ GameObject:
   - component: {fileID: 881193881}
   - component: {fileID: 881193880}
   - component: {fileID: 881193879}
+  - component: {fileID: 881193882}
   m_Layer: 5
   m_Name: btnLevel (11)
   m_TagString: Untagged
@@ -5555,6 +5893,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881193877}
   m_CullTransparentMesh: 1
+--- !u!114 &881193882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881193877}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 11
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textLevel: {fileID: 0}
+  statusImg: {fileID: 0}
 --- !u!1 &884992260
 GameObject:
   m_ObjectHideFlags: 0
@@ -5717,6 +6074,7 @@ GameObject:
   - component: {fileID: 909518137}
   - component: {fileID: 909518136}
   - component: {fileID: 909518135}
+  - component: {fileID: 909518138}
   m_Layer: 5
   m_Name: btnLevel (10)
   m_TagString: Untagged
@@ -5830,6 +6188,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909518133}
   m_CullTransparentMesh: 1
+--- !u!114 &909518138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909518133}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 10
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textLevel: {fileID: 0}
+  statusImg: {fileID: 0}
 --- !u!1 &920392104
 GameObject:
   m_ObjectHideFlags: 0
@@ -5839,6 +6216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 920392105}
+  - component: {fileID: 920392106}
   m_Layer: 5
   m_Name: objStage (4)
   m_TagString: Untagged
@@ -5867,6 +6245,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &920392106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920392104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264be1bc013067e40881a7a85d03b65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageId: 4
+  totalLevels: 1
+  unlockedLevels: 0
+  _stageImg: {fileID: 0}
 --- !u!1 &921253416
 GameObject:
   m_ObjectHideFlags: 0
@@ -6297,6 +6691,7 @@ GameObject:
   - component: {fileID: 987925352}
   - component: {fileID: 987925351}
   - component: {fileID: 987925350}
+  - component: {fileID: 987925353}
   m_Layer: 5
   m_Name: btnLevel (14)
   m_TagString: Untagged
@@ -6410,6 +6805,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 987925348}
   m_CullTransparentMesh: 1
+--- !u!114 &987925353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987925348}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 14
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textLevel: {fileID: 0}
+  statusImg: {fileID: 0}
 --- !u!1 &993013047
 GameObject:
   m_ObjectHideFlags: 0
@@ -7515,7 +7929,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1189711975}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 275683394}
+        m_TargetAssemblyTypeName: UnderworldCafe.StageObject, Assembly-CSharp
+        m_MethodName: ShowLevelPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1189711975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7563,6 +7989,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1210176929}
+  - component: {fileID: 1210176930}
   m_Layer: 5
   m_Name: objStage (5)
   m_TagString: Untagged
@@ -7591,6 +8018,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1210176930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210176928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264be1bc013067e40881a7a85d03b65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageId: 5
+  totalLevels: 1
+  unlockedLevels: 0
+  _stageImg: {fileID: 0}
 --- !u!1 &1252898024
 GameObject:
   m_ObjectHideFlags: 0
@@ -8187,6 +8630,7 @@ GameObject:
   - component: {fileID: 1446236102}
   - component: {fileID: 1446236101}
   - component: {fileID: 1446236100}
+  - component: {fileID: 1446236103}
   m_Layer: 5
   m_Name: btnLevel (1)
   m_TagString: Untagged
@@ -8300,6 +8744,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446236098}
   m_CullTransparentMesh: 1
+--- !u!114 &1446236103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446236098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 1
+  levelStars:
+  - {fileID: 294626084}
+  - {fileID: 780352172}
+  - {fileID: 1374946357}
+  textLevel: {fileID: 655856273}
+  statusImg: {fileID: 1081689999}
 --- !u!1 &1449788173
 GameObject:
   m_ObjectHideFlags: 0
@@ -8706,6 +9169,7 @@ GameObject:
   - component: {fileID: 1509289936}
   - component: {fileID: 1509289935}
   - component: {fileID: 1509289934}
+  - component: {fileID: 1509289937}
   m_Layer: 5
   m_Name: btnLevel (9)
   m_TagString: Untagged
@@ -8819,6 +9283,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1509289932}
   m_CullTransparentMesh: 1
+--- !u!114 &1509289937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509289932}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 9
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textLevel: {fileID: 0}
+  statusImg: {fileID: 0}
 --- !u!1 &1528917210
 GameObject:
   m_ObjectHideFlags: 0
@@ -9050,7 +9533,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1563746103}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 83721730}
+        m_TargetAssemblyTypeName: UnderworldCafe.StageSelectManager, Assembly-CSharp
+        m_MethodName: GoBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1563746103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9444,6 +9939,7 @@ GameObject:
   - component: {fileID: 1594563857}
   - component: {fileID: 1594563856}
   - component: {fileID: 1594563855}
+  - component: {fileID: 1594563858}
   m_Layer: 5
   m_Name: btnLevel (5)
   m_TagString: Untagged
@@ -9557,6 +10053,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594563853}
   m_CullTransparentMesh: 1
+--- !u!114 &1594563858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594563853}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 5
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textLevel: {fileID: 0}
+  statusImg: {fileID: 0}
 --- !u!1 &1603016695
 GameObject:
   m_ObjectHideFlags: 0
@@ -9925,6 +10440,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1655808486}
+  - component: {fileID: 1655808487}
   m_Layer: 5
   m_Name: objStage (0)
   m_TagString: Untagged
@@ -9953,6 +10469,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1655808487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655808485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264be1bc013067e40881a7a85d03b65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageId: 0
+  totalLevels: 1
+  unlockedLevels: 0
+  _stageImg: {fileID: 0}
 --- !u!1 &1661265038
 GameObject:
   m_ObjectHideFlags: 0
@@ -10062,7 +10594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125.23, y: -43}
+  m_AnchoredPosition: {x: 125.23001, y: -43}
   m_SizeDelta: {x: 469.54, y: 400.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1673490677
@@ -10699,6 +11231,7 @@ GameObject:
   - component: {fileID: 1789479532}
   - component: {fileID: 1789479531}
   - component: {fileID: 1789479530}
+  - component: {fileID: 1789479533}
   m_Layer: 5
   m_Name: btnLevel (15)
   m_TagString: Untagged
@@ -10812,6 +11345,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789479528}
   m_CullTransparentMesh: 1
+--- !u!114 &1789479533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789479528}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 15
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textLevel: {fileID: 0}
+  statusImg: {fileID: 0}
 --- !u!1 &1792828114
 GameObject:
   m_ObjectHideFlags: 0
@@ -11050,6 +11602,7 @@ GameObject:
   - component: {fileID: 1874504590}
   - component: {fileID: 1874504589}
   - component: {fileID: 1874504588}
+  - component: {fileID: 1874504591}
   m_Layer: 5
   m_Name: btnLevel (13)
   m_TagString: Untagged
@@ -11163,6 +11716,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874504586}
   m_CullTransparentMesh: 1
+--- !u!114 &1874504591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874504586}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 13
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textLevel: {fileID: 0}
+  statusImg: {fileID: 0}
 --- !u!1 &1880508127
 GameObject:
   m_ObjectHideFlags: 0
@@ -11244,7 +11816,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1880508130}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 920392106}
+        m_TargetAssemblyTypeName: UnderworldCafe.StageObject, Assembly-CSharp
+        m_MethodName: ShowLevelPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1880508130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11335,7 +11919,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -109.72}
+  m_AnchoredPosition: {x: 0, y: -109.71997}
   m_SizeDelta: {x: 0, y: -219.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1893288429
@@ -11385,6 +11969,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1907256252}
+  - component: {fileID: 1907256253}
   m_Layer: 5
   m_Name: objStage (2)
   m_TagString: Untagged
@@ -11413,6 +11998,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1907256253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907256251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264be1bc013067e40881a7a85d03b65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageId: 2
+  totalLevels: 3
+  unlockedLevels: 0
+  _stageImg: {fileID: 0}
 --- !u!1 &1914326514
 GameObject:
   m_ObjectHideFlags: 0
@@ -12009,6 +12610,7 @@ GameObject:
   - component: {fileID: 2092442141}
   - component: {fileID: 2092442140}
   - component: {fileID: 2092442139}
+  - component: {fileID: 2092442142}
   m_Layer: 5
   m_Name: btnLevel (7)
   m_TagString: Untagged
@@ -12122,6 +12724,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092442137}
   m_CullTransparentMesh: 1
+--- !u!114 &2092442142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092442137}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelId: 7
+  levelStars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textLevel: {fileID: 0}
+  statusImg: {fileID: 0}
 --- !u!1 &2111666950
 GameObject:
   m_ObjectHideFlags: 0
@@ -12413,3 +13034,4 @@ SceneRoots:
   - {fileID: 1493070806}
   - {fileID: 1069406478}
   - {fileID: 326134271}
+  - {fileID: 312131263}
