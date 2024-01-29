@@ -818,6 +818,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ebd1f585ae5244296c4156da5948d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  earnedStarImg: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  nullStarImg: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &127507671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,6 +1752,7 @@ MonoBehaviour:
   totalLevels: 1
   unlockedLevels: 0
   _stageImg: {fileID: 0}
+  totalStarsEarned: 0
 --- !u!1 &284257942
 GameObject:
   m_ObjectHideFlags: 0
@@ -2822,6 +2825,7 @@ MonoBehaviour:
   totalLevels: 2
   unlockedLevels: 0
   _stageImg: {fileID: 0}
+  totalStarsEarned: 0
 --- !u!1 &403426382
 GameObject:
   m_ObjectHideFlags: 0
@@ -4627,7 +4631,7 @@ MonoBehaviour:
   - {fileID: 1109832936}
   - {fileID: 1480865403}
   textLevel: {fileID: 1603016697}
-  statusImg: {fileID: 1449788175}
+  statusImg: {fileID: 0}
 --- !u!1 &655856271
 GameObject:
   m_ObjectHideFlags: 0
@@ -4831,7 +4835,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 0.91886795, b: 0.951546, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4906,7 +4910,7 @@ MonoBehaviour:
   - {fileID: 229167233}
   - {fileID: 1632827846}
   textLevel: {fileID: 1588930678}
-  statusImg: {fileID: 1704231002}
+  statusImg: {fileID: 0}
 --- !u!1 &701315178
 GameObject:
   m_ObjectHideFlags: 0
@@ -6261,6 +6265,7 @@ MonoBehaviour:
   totalLevels: 1
   unlockedLevels: 0
   _stageImg: {fileID: 0}
+  totalStarsEarned: 0
 --- !u!1 &921253416
 GameObject:
   m_ObjectHideFlags: 0
@@ -8034,6 +8039,7 @@ MonoBehaviour:
   totalLevels: 1
   unlockedLevels: 0
   _stageImg: {fileID: 0}
+  totalStarsEarned: 0
 --- !u!1 &1252898024
 GameObject:
   m_ObjectHideFlags: 0
@@ -8762,7 +8768,7 @@ MonoBehaviour:
   - {fileID: 780352172}
   - {fileID: 1374946357}
   textLevel: {fileID: 655856273}
-  statusImg: {fileID: 1081689999}
+  statusImg: {fileID: 0}
 --- !u!1 &1449788173
 GameObject:
   m_ObjectHideFlags: 0
@@ -10485,6 +10491,7 @@ MonoBehaviour:
   totalLevels: 1
   unlockedLevels: 0
   _stageImg: {fileID: 0}
+  totalStarsEarned: 0
 --- !u!1 &1661265038
 GameObject:
   m_ObjectHideFlags: 0
@@ -12012,8 +12019,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageId: 2
   totalLevels: 3
-  unlockedLevels: 0
+  unlockedLevels: 1
   _stageImg: {fileID: 0}
+  totalStarsEarned: 0
 --- !u!1 &1914326514
 GameObject:
   m_ObjectHideFlags: 0

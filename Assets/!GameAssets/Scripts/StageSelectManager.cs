@@ -19,6 +19,7 @@ namespace UnderworldCafe
         public GameObject levelSelectPanel;
         public static int currentStageId = 0;
 
+
         public void GoBack()
         {
             if(isLevelPanelActive) //closes select level panel
@@ -34,6 +35,17 @@ namespace UnderworldCafe
         void ToMainMenu()
         {
             SceneManager.LoadScene(0); //load main menu scene
+        }
+
+        public void UpdateStar(LevelSelectPanel.StageLevel stageLevel, int stars)// updates the stars earned in the stage level, stars min. 1 to be considered completed
+        {
+            stageLevel.starsEarned= stars;
+
+            stageLevel.isCompleted = false;
+            if (stageLevel.starsEarned>0)
+            {
+                stageLevel.isCompleted = true;
+            }
         }
     }
 }

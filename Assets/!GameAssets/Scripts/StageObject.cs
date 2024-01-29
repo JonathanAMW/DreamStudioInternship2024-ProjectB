@@ -27,6 +27,8 @@ namespace UnderworldCafe
         [SerializeField] Image _stageImg;
         public Image StageImage { get { return _stageImg; }}
 
+        public int totalStarsEarned=0;
+
 
         StageSelectManager _stageSelectManager;
         LevelSelectPanel _levelSelectPanel;

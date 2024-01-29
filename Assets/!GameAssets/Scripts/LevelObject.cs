@@ -18,7 +18,7 @@ namespace UnderworldCafe
         [SerializeField] int levelId;
         public int LevelId { get { return levelId; } }
 
-        [SerializeField] Image[] levelStars= new Image[3];
+        [SerializeField] public Image[] levelStars= new Image[3];
         [SerializeField] TextMeshProUGUI textLevel;
         [SerializeField] GameObject statusImg;
 
