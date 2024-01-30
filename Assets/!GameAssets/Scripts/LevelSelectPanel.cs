@@ -46,7 +46,7 @@ namespace UnderworldCafe
             int levelLength = _stageSelectManager.levelObjects.Length;
 
             stageLevels = new StageLevel[stageLength, levelLength];
-            for (int i = 0; i < stageLength; i++)
+            for (int i = 0; i < stageLength; i++)//assign stagelevels
             {
                 for(int j = 0; j < _stageSelectManager.stageObjects[i].TotalLevels; j++)
                 {
@@ -56,6 +56,8 @@ namespace UnderworldCafe
                     stageLevels[i, j].levelId = _stageSelectManager.levelObjects[j].LevelId;
                 }
             }
+
+            CalculateTotalStars();
         }
 
         // Update is called once per frame
@@ -82,7 +84,16 @@ namespace UnderworldCafe
 
         public void UpdateUnlockedLevel()
         {
-            for(int i= 0; i < _stageSelectManager.levelObjects.Length; i++)
+            _stageSelectManager.stageObjects[_currentStageId].unlockedLevels=0;
+            for (int j = 0; j < _stageSelectManager.stageObjects[_currentStageId].TotalLevels; j++)
+            {
+                if (stageLevels[_currentStageId,j].isCompleted)
+                {
+                    _stageSelectManager.stageObjects[_currentStageId].unlockedLevels++;
+                }
+            }
+
+            for(int i= 0; i < _stageSelectManager.levelObjects.Length; i++)//show all unlocked levels
             {
                 _stageSelectManager.levelObjects[i].GetComponent<Button>().interactable=false;
                 if(i <= _stageSelectManager.stageObjects[_currentStageId].unlockedLevels)
@@ -94,9 +105,28 @@ namespace UnderworldCafe
 
         public void SelectLevel(int levelId) //upon pressing level
         {
-            currentStageLevel = stageLevels[_currentStageId,levelId];
 
+
+                currentStageLevel = stageLevels[_currentStageId, levelId];
+                
+                int starEarned = currentStageLevel.starsEarned;
+                starEarned++;
+                _stageSelectManager.UpdateStar(currentStageLevel, starEarned);
+                UpdateStarSprite();
+            UpdateUnlockedLevel();
+            CalculateTotalStars();
             //SceneManager.LoadScene(2); //loads gameplay
+        }
+
+        void CalculateTotalStars()
+        {
+            int totalStars = 0;
+            for(int i=0 ; i<_stageSelectManager.stageObjects.Length; i++)
+            {
+                totalStars += _stageSelectManager.stageObjects[i].CalculateTotalStarsInStage(stageLevels);
+            }
+            _stageSelectManager.totalStarsEarned = totalStars;
+            _stageSelectManager.UpdateUnlockStage(stageLevels);
         }
 
         public void UpdateStarSprite() //updates the sprite on the level objects based on the current stage

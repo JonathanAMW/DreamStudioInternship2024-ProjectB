@@ -22,10 +22,21 @@ namespace UnderworldCafe
         [SerializeField] TextMeshProUGUI textLevel;
         [SerializeField] GameObject statusImg;
 
-
+        LevelSelectPanel _levelSelectPanel;
+        private void Awake()
+        {
+            _levelSelectPanel=FindObjectOfType<LevelSelectPanel>();
+        }
         private void Start()
         {
             textLevel.text = "Level " + (levelId+1);
+        }
+
+        public void OnClick()
+        {
+            int levelId=GetComponent<LevelObject>().levelId;
+            Debug.Log(levelId);
+            _levelSelectPanel.SelectLevel(levelId);
         }
     }
 }

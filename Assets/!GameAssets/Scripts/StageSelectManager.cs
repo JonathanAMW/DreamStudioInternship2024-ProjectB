@@ -5,6 +5,7 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace UnderworldCafe
 {
@@ -18,6 +19,8 @@ namespace UnderworldCafe
         [HideInInspector]public bool isLevelPanelActive = false;
         public GameObject levelSelectPanel;
         public static int currentStageId = 0;
+
+        public int totalStarsEarned=0;
 
 
         public void GoBack()
@@ -46,6 +49,21 @@ namespace UnderworldCafe
             {
                 stageLevel.isCompleted = true;
             }
+
+            
+        }
+
+        public void UpdateUnlockStage(LevelSelectPanel.StageLevel[,] stageLevels)
+        {
+            for(int i = 0; i < stageObjects.Length-1; i++)
+            {
+                stageObjects[i + 1].GetComponentInChildren<Button>().interactable = false;
+                if (totalStarsEarned >= stageObjects[i+1].starsRequired)
+                {
+                    stageObjects[i + 1].GetComponentInChildren<Button>().interactable = true;
+                }
+            }
+            
         }
     }
 }

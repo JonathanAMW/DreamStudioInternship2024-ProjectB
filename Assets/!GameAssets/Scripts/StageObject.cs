@@ -28,6 +28,8 @@ namespace UnderworldCafe
         public Image StageImage { get { return _stageImg; }}
 
         public int totalStarsEarned=0;
+        public int starsEarnedInStage=0;
+        public int starsRequired = 0;
 
 
         StageSelectManager _stageSelectManager;
@@ -54,6 +56,16 @@ namespace UnderworldCafe
             _stageSelectManager.levelSelectPanel.SetActive(true);
         }
 
+        public int CalculateTotalStarsInStage(LevelSelectPanel.StageLevel[,] stageLevels)
+        {
+            int totalStars=0;
+            for(int i = 0; i < TotalLevels;i++)
+            {
+                totalStars += stageLevels[stageId, i].starsEarned;
+            }
+            return totalStars;
+        }
+      
        
     }
 }
