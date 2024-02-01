@@ -821,6 +821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   earnedStarImg: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   nullStarImg: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  earnedStarsInStageText: {fileID: 341896217}
 --- !u!1 &127507671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1765,7 +1766,6 @@ MonoBehaviour:
   totalLevels: 1
   unlockedLevels: 0
   _stageImg: {fileID: 0}
-  totalStarsEarned: 0
   starsEarnedInStage: 0
   starsRequired: 8
 --- !u!1 &284257942
@@ -2852,7 +2852,6 @@ MonoBehaviour:
   totalLevels: 2
   unlockedLevels: 0
   _stageImg: {fileID: 0}
-  totalStarsEarned: 0
   starsEarnedInStage: 0
   starsRequired: 1
 --- !u!1 &403426382
@@ -6378,7 +6377,6 @@ MonoBehaviour:
   totalLevels: 1
   unlockedLevels: 0
   _stageImg: {fileID: 0}
-  totalStarsEarned: 0
   starsEarnedInStage: 0
   starsRequired: 15
 --- !u!1 &921253416
@@ -8166,7 +8164,6 @@ MonoBehaviour:
   totalLevels: 1
   unlockedLevels: 0
   _stageImg: {fileID: 0}
-  totalStarsEarned: 0
   starsEarnedInStage: 0
   starsRequired: 20
 --- !u!1 &1252898024
@@ -10656,7 +10653,6 @@ MonoBehaviour:
   totalLevels: 1
   unlockedLevels: 0
   _stageImg: {fileID: 0}
-  totalStarsEarned: 0
   starsEarnedInStage: 0
   starsRequired: 0
 --- !u!1 &1661265038
@@ -12212,7 +12208,6 @@ MonoBehaviour:
   totalLevels: 3
   unlockedLevels: 1
   _stageImg: {fileID: 0}
-  totalStarsEarned: 0
   starsEarnedInStage: 0
   starsRequired: 4
 --- !u!1 &1914326514

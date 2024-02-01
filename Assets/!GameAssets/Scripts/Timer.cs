@@ -1,0 +1,38 @@
+//----------------------------------------------------------------------
+// Author   : "Vanessa"
+// Created  : "2024/02/01
+//----------------------------------------------------------------------
+
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace UnderworldCafe
+{
+    /// <summary>
+    /// Class for animating timer for Customer's Order
+    /// </summary>
+    public class Timer : MonoBehaviour
+    {
+        [SerializeField] Slider timerSlider;
+        [SerializeField] float timerDuration = 10f;
+
+        float timePassed;
+        private void Start()
+        {
+            timePassed = 0;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            timePassed += Time.deltaTime;
+           
+            if(timePassed >= timerDuration) //timer reached end
+            {
+                timePassed = timerDuration;
+            }
+            float timeNormalized = Mathf.Clamp01(timePassed / timerDuration);
+            timerSlider.value = timeNormalized;
+        }
+    }
+}
