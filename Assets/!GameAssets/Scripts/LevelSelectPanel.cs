@@ -3,6 +3,7 @@
 // Created  : "2024/01/25"
 //----------------------------------------------------------------------
 
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,6 +24,7 @@ namespace UnderworldCafe
         [SerializeField] Sprite earnedStarImg;
         [SerializeField] Sprite nullStarImg;
 
+        [SerializeField] TextMeshProUGUI earnedStarsInStageText;
         public class StageLevel
         {
             public int stageId;
@@ -78,6 +80,7 @@ namespace UnderworldCafe
                 }
                
             }
+            earnedStarsInStageText.text = string.Format("{0}/{1}", _stageSelectManager.stageObjects[selectedStageId].starsEarnedInStage, _stageSelectManager.stageObjects[selectedStageId].TotalLevels*3); //change text of stars earned in that stage
             UpdateUnlockedLevel();
             UpdateStarSprite();
         }
@@ -127,6 +130,7 @@ namespace UnderworldCafe
             }
             _stageSelectManager.totalStarsEarned = totalStars;
             _stageSelectManager.UpdateUnlockStage(stageLevels);
+            earnedStarsInStageText.text = string.Format("{0}/{1}", _stageSelectManager.stageObjects[_currentStageId].starsEarnedInStage.ToString(), _stageSelectManager.stageObjects[_currentStageId].TotalLevels * 3); //change text of stars earned in that stage
         }
 
         public void UpdateStarSprite() //updates the sprite on the level objects based on the current stage

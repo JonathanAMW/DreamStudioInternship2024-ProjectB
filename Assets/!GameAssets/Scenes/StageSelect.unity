@@ -494,6 +494,7 @@ MonoBehaviour:
   - {fileID: 1789479533}
   isLevelPanelActive: 0
   levelSelectPanel: {fileID: 1893288427}
+  totalStarsEarned: 0
 --- !u!1 &87220284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1765,6 +1766,8 @@ MonoBehaviour:
   unlockedLevels: 0
   _stageImg: {fileID: 0}
   totalStarsEarned: 0
+  starsEarnedInStage: 0
+  starsRequired: 8
 --- !u!1 &284257942
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,6 +2853,8 @@ MonoBehaviour:
   unlockedLevels: 0
   _stageImg: {fileID: 0}
   totalStarsEarned: 0
+  starsEarnedInStage: 0
+  starsRequired: 1
 --- !u!1 &403426382
 GameObject:
   m_ObjectHideFlags: 0
@@ -6374,6 +6379,8 @@ MonoBehaviour:
   unlockedLevels: 0
   _stageImg: {fileID: 0}
   totalStarsEarned: 0
+  starsEarnedInStage: 0
+  starsRequired: 15
 --- !u!1 &921253416
 GameObject:
   m_ObjectHideFlags: 0
@@ -8160,6 +8167,8 @@ MonoBehaviour:
   unlockedLevels: 0
   _stageImg: {fileID: 0}
   totalStarsEarned: 0
+  starsEarnedInStage: 0
+  starsRequired: 20
 --- !u!1 &1252898024
 GameObject:
   m_ObjectHideFlags: 0
@@ -10648,6 +10657,8 @@ MonoBehaviour:
   unlockedLevels: 0
   _stageImg: {fileID: 0}
   totalStarsEarned: 0
+  starsEarnedInStage: 0
+  starsRequired: 0
 --- !u!1 &1661265038
 GameObject:
   m_ObjectHideFlags: 0
@@ -12202,6 +12213,8 @@ MonoBehaviour:
   unlockedLevels: 1
   _stageImg: {fileID: 0}
   totalStarsEarned: 0
+  starsEarnedInStage: 0
+  starsRequired: 4
 --- !u!1 &1914326514
 GameObject:
   m_ObjectHideFlags: 0
