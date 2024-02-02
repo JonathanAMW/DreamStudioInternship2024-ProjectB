@@ -6,24 +6,66 @@
             "id": "ce7194dd-14c7-4c13-a1bd-5a6d91244801",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "PointerPosition",
+                    "type": "Value",
+                    "id": "49b08ef9-8471-41f8-82c2-83cec8238051",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Press",
                     "type": "Button",
-                    "id": "3a62febc-7884-44d3-bef5-fe33ba9463b6",
+                    "id": "aa5b5dec-911d-409f-8d93-293b6c82910a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "3c2cbb0a-a5c4-411b-8103-2e8a80b932b2",
-                    "path": "",
+                    "id": "8b7f10d1-65af-467e-b277-054035852edf",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "PointerPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "755b850c-6d0d-4ada-b1a8-82add1a0b289",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PointerPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "037725f8-d8e8-42bf-bdbd-dde5e31939ad",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b431998-5bd3-4352-a607-36cfc5a46ad9",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
