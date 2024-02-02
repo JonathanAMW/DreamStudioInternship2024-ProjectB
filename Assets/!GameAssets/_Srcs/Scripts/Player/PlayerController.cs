@@ -48,9 +48,9 @@ namespace UnderworldCafe.Player
         }
 
         // Callback method called when a path is found
-        public void OnPathFound(List<Node> newPath, bool pathSuccessful) 
+        public void OnPathFound(List<Node> newPath, bool pathCreationIsSuccessful) 
         {
-            if (pathSuccessful) 
+            if (pathCreationIsSuccessful) 
             {
                 // Convert list of Nodes to Vector3Int and reversing it
                 var processedPath = new List<Vector3>();
@@ -70,8 +70,7 @@ namespace UnderworldCafe.Player
                 _targetIndex = 0;
 
                 StopCoroutine("FollowPath"); 
-                StartCoroutine("FollowPath"); 
-                
+                StartCoroutine("FollowPath");
             }
         }
 
@@ -81,13 +80,15 @@ namespace UnderworldCafe.Player
             Vector3 currentWaypoint = _pathPos[0]; // Get the first waypoint from the path
             while (true) 
             {
-                if (_gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position) == currentWaypoint) 
+                // if (_gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position) == currentWaypoint) 
+                if (transform.position == currentWaypoint) 
                 { 
+                    Debug.Log("Finished at: "+currentWaypoint);
                     _targetIndex++;
 
                     if (_targetIndex >= _pathPos.Count) 
                     { 
-                        transform.position = _gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position);
+                        // transform.position = _gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position);
                         _isMoving = false;
                         FinishedFollowingPath(true);
                         yield break;
@@ -106,37 +107,35 @@ namespace UnderworldCafe.Player
 
 
         #region PlayerCommand Methods
-        // Need to create a somewhat cmmand pattern like queue for removeable element inside queue
-        // and then to have the index of element inside the queue to be reflected in element properties
         struct PlayerMovementRequest
         {
             public Vector2 TargetPos;
             public Action<bool> OnMoveDoneCallback;
             public Action<bool> OnMoveRequestAcceptedCallback;
-            public Action<int> OnUpdateMoveIndexInQueueCallback;
+            public Action<int> OnUpdateMoveIndexCallback;
             public IInteractable InteractableRef;
 
-            public PlayerMovementRequest(Vector2 TargetPos, Action<bool> OnMoveDoneCallback, Action<bool> OnMoveRequestAcceptedCallback, Action<int> OnUpdateMoveIndexInQueueCallback, IInteractable InteractableRef)
+            public PlayerMovementRequest(Vector2 TargetPos, Action<bool> OnMoveDoneCallback, Action<bool> OnMoveRequestAcceptedCallback, Action<int> OnUpdateMoveIndexCallback, IInteractable InteractableRef)
             {
                 this.TargetPos = TargetPos;
                 this.OnMoveDoneCallback = OnMoveDoneCallback;
                 this.OnMoveRequestAcceptedCallback = OnMoveRequestAcceptedCallback;
-                this.OnUpdateMoveIndexInQueueCallback = OnUpdateMoveIndexInQueueCallback;
+                this.OnUpdateMoveIndexCallback = OnUpdateMoveIndexCallback;
                 this.InteractableRef = InteractableRef;
             }
         }
 
         private List<PlayerMovementRequest> _playerMovementRequestList;
-        [SerializeField] private int _maxQueue = 6;
+        [SerializeField] private int _maxListSize = 6;
         private PlayerMovementRequest _currentPlayerMovementRequest;
 
-        public void CreatePlayerMovementRequest(Vector2 targetPos, Action<bool> onMoveDoneCallback, Action<bool> onMoveRequestAcceptedCallback, Action<int> onUpdateMoveIndexInQueueCallback, IInteractable InteractableRef)
+        public void CreatePlayerMovementRequest(Vector2 targetPos, Action<bool> onMoveDoneCallback, Action<bool> onMoveRequestAcceptedCallback, Action<int> onUpdateMoveIndexCallback, IInteractable InteractableRef)
         {
-            if(_playerMovementRequestList.Count < _maxQueue)
+            if(_playerMovementRequestList.Count < _maxListSize)
             {
-                _playerMovementRequestList.Add(new PlayerMovementRequest(targetPos, onMoveDoneCallback, onMoveRequestAcceptedCallback, onUpdateMoveIndexInQueueCallback, InteractableRef));
+                _playerMovementRequestList.Add(new PlayerMovementRequest(targetPos, onMoveDoneCallback, onMoveRequestAcceptedCallback, onUpdateMoveIndexCallback, InteractableRef));
                 onMoveRequestAcceptedCallback.Invoke(true);
-                onUpdateMoveIndexInQueueCallback(_playerMovementRequestList.Count);
+                onUpdateMoveIndexCallback(_playerMovementRequestList.Count);
                 TryProcessNext(); // Attempt to process the next path request
             }
         }
@@ -172,12 +171,12 @@ namespace UnderworldCafe.Player
             TryProcessNext(); 
         }
 
-        //Update queue index in every object inside playerMovementQueue
+        
         private void UpdateObjectIndexInList()
         {
             for(int i = 0; i < _playerMovementRequestList.Count; i++)
             {
-                _playerMovementRequestList[i].OnUpdateMoveIndexInQueueCallback.Invoke(i+1);
+                _playerMovementRequestList[i].OnUpdateMoveIndexCallback.Invoke(i+1);
             }
         }
 
