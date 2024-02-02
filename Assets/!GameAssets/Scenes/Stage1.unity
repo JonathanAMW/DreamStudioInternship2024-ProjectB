@@ -3333,6 +3333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 950734702}
   - component: {fileID: 950734703}
+  - component: {fileID: 950734704}
   m_Layer: 5
   m_Name: sldScoreBar
   m_TagString: Untagged
@@ -3415,6 +3416,24 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &950734704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950734701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e6111cd0bf42a94d8263ddbaf25e1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreSlider: {fileID: 950734703}
+  levelTimeDuration: 10
+  scoreStarImages:
+  - {fileID: 48227848}
+  - {fileID: 1854563557}
+  - {fileID: 896719592}
 --- !u!1 &970004241
 GameObject:
   m_ObjectHideFlags: 0
