@@ -3,6 +3,7 @@
 // Created  : "2024/02/02"
 //----------------------------------------------------------------------
 
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,35 +25,40 @@ namespace UnderworldCafe
         [SerializeField] const float star1Percent=0.2f;
 
         float timePassed;
+        [InspectorRange(0f,20f)]public float smoothness;
         private void Start()
         {
             timePassed = levelTimeDuration;
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
-            timePassed -= Time.deltaTime;
+            if(!(UIManager.isPaused || UIManager.isRecipeOpen))
+            {
+                timePassed -= Time.deltaTime;
 
-            if (timePassed <= 0) //timer reached end
-            {
-                timePassed = 0;
-            }
-            float timeNormalized = Mathf.Clamp01(timePassed / levelTimeDuration);
-            scoreSlider.value = timeNormalized;
+                if (timePassed <= 0) //timer reached end
+                {
+                    timePassed = 0;
+                }
+                float timeNormalized = Mathf.Clamp01(timePassed / levelTimeDuration);
+                scoreSlider.value = Mathf.Lerp(scoreSlider.value, timeNormalized, Time.deltaTime * smoothness);
 
-            if (timeNormalized <= star1Percent)
-            {
-                scoreStarImages[0].color = Color.black;
+                if (timeNormalized <= star1Percent)
+                {
+                    scoreStarImages[0].color = Color.black;
+                }
+                else if (timeNormalized <= star2Percent)
+                {
+                    scoreStarImages[1].color = Color.black;
+                }
+                else if (timeNormalized <= star3Percent)
+                {
+                    scoreStarImages[2].color = Color.black;
+                }
             }
-            else if (timeNormalized <= star2Percent)
-            {
-                scoreStarImages[1].color = Color.black;
-            }
-            else if (timeNormalized <= star3Percent)
-            {
-                scoreStarImages[2].color = Color.black;
-            }
+           
         }
     }
 }

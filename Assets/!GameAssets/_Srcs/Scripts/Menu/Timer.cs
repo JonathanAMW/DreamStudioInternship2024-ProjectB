@@ -25,14 +25,19 @@ namespace UnderworldCafe
         // Update is called once per frame
         void Update()
         {
-            timePassed += Time.deltaTime;
-           
-            if(timePassed >= timerDuration) //timer reached end
+            if(!(UIManager.isPaused || UIManager.isRecipeOpen))
             {
-                timePassed = timerDuration;
+                timePassed += Time.deltaTime;
+
+                if (timePassed >= timerDuration) //timer reached end
+                {
+                    timePassed = timerDuration;
+                }
+                float timeNormalized = Mathf.Clamp01(timePassed / timerDuration);
+                timerSlider.value = timeNormalized;
             }
-            float timeNormalized = Mathf.Clamp01(timePassed / timerDuration);
-            timerSlider.value = timeNormalized;
+
+           
         }
     }
 }
