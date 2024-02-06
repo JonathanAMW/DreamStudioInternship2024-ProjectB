@@ -724,7 +724,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 196373011}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1797051448}
+        m_TargetAssemblyTypeName: UnderworldCafe.RecipePanel, Assembly-CSharp
+        m_MethodName: NextPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &196373011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1660,8 +1672,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -203, y: -6}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -292.61023, y: -7}
+  m_SizeDelta: {x: 379.22, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &502209562
 MonoBehaviour:
@@ -2129,8 +2141,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 145, y: -7}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 241.13, y: -8}
+  m_SizeDelta: {x: 392.25, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &565016316
 MonoBehaviour:
@@ -2506,7 +2518,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 648105624}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1797051448}
+        m_TargetAssemblyTypeName: UnderworldCafe.RecipePanel, Assembly-CSharp
+        m_MethodName: PrevPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &648105624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6448,13 +6472,14 @@ GameObject:
   - component: {fileID: 1797051445}
   - component: {fileID: 1797051447}
   - component: {fileID: 1797051446}
+  - component: {fileID: 1797051448}
   m_Layer: 5
   m_Name: pnlRecipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1797051445
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6517,6 +6542,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797051444}
   m_CullTransparentMesh: 1
+--- !u!114 &1797051448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797051444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5337e665508603d4ba09c1d986367a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodImage1: {fileID: 681831824}
+  foodName1: {fileID: 565016316}
+  ingredientString1:
+  - {fileID: 1314324846}
+  - {fileID: 1540004162}
+  - {fileID: 2111037793}
+  - {fileID: 1157582906}
+  - {fileID: 651590624}
+  - {fileID: 1136435311}
+  foodImage2: {fileID: 200090842}
+  foodName2: {fileID: 502209562}
+  ingredientString2:
+  - {fileID: 1853982100}
+  - {fileID: 1440742782}
+  - {fileID: 1198145492}
+  - {fileID: 1804800469}
+  - {fileID: 1130301252}
+  - {fileID: 1112149440}
+  previousPageButton: {fileID: 648105623}
+  nextPageButton: {fileID: 196373010}
+  recipePages:
+  - {fileID: 11400000, guid: 7727057e47bb2e34f88ce67dd007f74f, type: 2}
+  - {fileID: 11400000, guid: 665ce0c1063d3d448a69a0f37a4fbf54, type: 2}
+  - {fileID: 11400000, guid: 901c6395b22130e4d84ddc37d5eae419, type: 2}
+  - {fileID: 11400000, guid: cc71d299419211e4d92b8b8d3b109e00, type: 2}
 --- !u!1 &1804800467
 GameObject:
   m_ObjectHideFlags: 0
