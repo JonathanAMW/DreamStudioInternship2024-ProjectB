@@ -3243,6 +3243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerSlider: {fileID: 2067740697}
   timerDuration: 10
+  timePassed: 0
 --- !u!212 &749966619
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3540,6 +3541,7 @@ MonoBehaviour:
   - {fileID: 48227848}
   - {fileID: 1854563557}
   - {fileID: 896719592}
+  timePassed: 0
   smoothness: 25
 --- !u!1 &970004241
 GameObject:
@@ -6579,6 +6581,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 665ce0c1063d3d448a69a0f37a4fbf54, type: 2}
   - {fileID: 11400000, guid: 901c6395b22130e4d84ddc37d5eae419, type: 2}
   - {fileID: 11400000, guid: cc71d299419211e4d92b8b8d3b109e00, type: 2}
+  currentRecipePage: 0
+  currentFoodRecipes: []
 --- !u!1 &1804800467
 GameObject:
   m_ObjectHideFlags: 0
