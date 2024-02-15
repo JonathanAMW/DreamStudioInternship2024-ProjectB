@@ -25,6 +25,7 @@ namespace UnderworldCafe
         [SerializeField] Sprite nullStarImg;
 
         [SerializeField] TextMeshProUGUI earnedStarsInStageText;
+        [SerializeField] GameObject totalStarGUI;
         public class StageLevel
         {
             public int stageId;
@@ -80,6 +81,11 @@ namespace UnderworldCafe
                 }
                
             }
+            LevelObject lastLevel = _stageSelectManager.levelObjects[_stageSelectManager.stageObjects[_currentStageId].TotalLevels];
+            float xPos= gameObject.GetComponent<RectTransform>().rect.width-465; //the right position of the panel
+            float yPos = lastLevel.GetComponent<RectTransform>().anchoredPosition.y+50; //position below the last level height
+            Debug.Log(yPos);
+            totalStarGUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(xPos, yPos);
             earnedStarsInStageText.text = string.Format("{0}/{1}", _stageSelectManager.stageObjects[selectedStageId].starsEarnedInStage, _stageSelectManager.stageObjects[selectedStageId].TotalLevels*3); //change text of stars earned in that stage
             UpdateUnlockedLevel();
             UpdateStarSprite();
