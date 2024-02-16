@@ -16,15 +16,16 @@ namespace UnderworldCafe
     public class ScoreSlider : MonoBehaviour
     {
         [SerializeField] Slider scoreSlider;
-        [SerializeField] float levelTimeDuration = 60f;
+        [SerializeField] public float levelTimeDuration = 60f;
 
         [SerializeField] Image[] scoreStarImages = new Image[3];
 
-        [SerializeField] const float star3Percent=0.8f;
-        [SerializeField] const float star2Percent=0.5f;
-        [SerializeField] const float star1Percent=0.2f;
+        [SerializeField] public float star3Percent=0.8f;
+        [SerializeField] public float star2Percent=0.5f;
+        [SerializeField] public float star1Percent=0.2f;
 
-        float timePassed;
+        [HideInInspector] float timePassed;
+        [HideInInspector] public float timeNormalized;
         [InspectorRange(0f,20f)]public float smoothness;
         private void Start()
         {
@@ -34,7 +35,7 @@ namespace UnderworldCafe
         // Update is called once per frame
         void FixedUpdate()
         {
-            if(!(UIManager.isPaused || UIManager.isRecipeOpen))
+            if(!(UIManager.isPaused || UIManager.isRecipeOpen || UIManager.isResultOpen))
             {
                 timePassed -= Time.deltaTime;
 
@@ -42,7 +43,7 @@ namespace UnderworldCafe
                 {
                     timePassed = 0;
                 }
-                float timeNormalized = Mathf.Clamp01(timePassed / levelTimeDuration);
+                timeNormalized = Mathf.Clamp01(timePassed / levelTimeDuration);
                 scoreSlider.value = Mathf.Lerp(scoreSlider.value, timeNormalized, Time.deltaTime * smoothness);
 
                 if (timeNormalized <= star1Percent)

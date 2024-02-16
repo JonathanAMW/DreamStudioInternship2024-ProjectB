@@ -15,9 +15,19 @@ namespace UnderworldCafe
     {
         [SerializeField] GameObject pausePanel;
         [SerializeField] GameObject recipePanel;
+        [SerializeField] GameObject resultPanel;
 
         static public bool isPaused = false;
         static public bool isRecipeOpen = false;
+        static public bool isResultOpen = false;
+
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                ShowScore();
+            }
+        }
         public void PauseGame()
        {
             
@@ -48,9 +58,17 @@ namespace UnderworldCafe
 
         }
 
+        public void ShowScore()
+        {
+            isResultOpen = true;
+            resultPanel.SetActive(true);
+            resultPanel.GetComponent<ResultPanel>().UpdateStarSprites();
+        }
+
         public void BackToStageSelect()
         {
             SceneManager.LoadScene("StageSelect"); //back to stage select scene
         }
+
     }
 }
