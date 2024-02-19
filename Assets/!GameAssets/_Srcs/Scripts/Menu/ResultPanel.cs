@@ -1,3 +1,8 @@
+//----------------------------------------------------------------------
+// Author   : "Vanessa"
+// Created  : "2024/02/16"
+//----------------------------------------------------------------------
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +10,9 @@ using UnityEngine.UI;
 
 namespace UnderworldCafe
 {
+    /// <summary>
+    /// Class for Result Panel Functions
+    /// </summary>
     public class ResultPanel : MonoBehaviour
     {
         [SerializeField] Sprite _goldStar;
