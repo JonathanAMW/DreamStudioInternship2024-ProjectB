@@ -695,7 +695,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 32}
+  m_AnchoredPosition: {x: 0, y: 32}
   m_SizeDelta: {x: 597.89, y: 221.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &387220818
@@ -2396,7 +2396,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -291}
+  m_AnchoredPosition: {x: 0, y: -291}
   m_SizeDelta: {x: 597.89, y: 221.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1246742327
@@ -3320,7 +3320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 364.91}
+  m_AnchoredPosition: {x: 0, y: 364.91}
   m_SizeDelta: {x: 597.89, y: 221.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1839485382
@@ -3370,6 +3370,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1844217492}
+  - component: {fileID: 1844217493}
   m_Layer: 0
   m_Name: UpgradeManager
   m_TagString: Untagged
@@ -3392,6 +3393,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 398321168}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1844217493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844217491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e68eeb0562f294da2e008a3fa86a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wareName1: {fileID: 319301580}
+  grades1:
+  - {fileID: 1695477591}
+  - {fileID: 1885965896}
+  - {fileID: 1139060065}
+  wareImage1: {fileID: 1658774929}
+  wareName2: {fileID: 338334297}
+  grades2:
+  - {fileID: 1934679520}
+  - {fileID: 617032367}
+  - {fileID: 268775925}
+  wareImage2: {fileID: 736068598}
+  wareName3: {fileID: 1236043247}
+  grades3:
+  - {fileID: 1703971876}
+  - {fileID: 433329036}
+  - {fileID: 1657486850}
+  wareImage3: {fileID: 806978600}
+  kitchenWares:
+  - {fileID: 11400000, guid: ed243d57733c46f40a8c8c8b56731e9a, type: 2}
+  - {fileID: 11400000, guid: 0f5127008192bc744909843eee7b9d60, type: 2}
+  - {fileID: 11400000, guid: b323e1af29a17c641a59c9646fe8d236, type: 2}
+  - {fileID: 11400000, guid: f08c54b641a85e64ea20d0d46c266b1d, type: 2}
 --- !u!1 &1885965896
 GameObject:
   m_ObjectHideFlags: 0
