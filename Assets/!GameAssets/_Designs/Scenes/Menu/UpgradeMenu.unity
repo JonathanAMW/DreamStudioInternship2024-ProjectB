@@ -1702,7 +1702,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 961037701}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1540637461}
+        m_TargetAssemblyTypeName: UnderworldCafe.UpgradeMenuManager, Assembly-CSharp
+        m_MethodName: NextUpgradePage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &961037701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1974,7 +1986,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1094536759}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1540637461}
+        m_TargetAssemblyTypeName: UnderworldCafe.UpgradeMenuManager, Assembly-CSharp
+        m_MethodName: PrevUpgradePage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1094536759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2848,6 +2872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811aa7078f81b8c4ab8c67685c1190f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextPageButton: {fileID: 961037698}
+  prevPageButton: {fileID: 1094536756}
 --- !u!1 &1563746100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3428,6 +3454,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0f5127008192bc744909843eee7b9d60, type: 2}
   - {fileID: 11400000, guid: b323e1af29a17c641a59c9646fe8d236, type: 2}
   - {fileID: 11400000, guid: f08c54b641a85e64ea20d0d46c266b1d, type: 2}
+  upgradeItemObjects:
+  - {fileID: 1839485380}
+  - {fileID: 387220816}
+  - {fileID: 1246742325}
+  activeGradeColor: {r: 1, g: 0.99607843, b: 0.59607846, a: 1}
+  inactiveGradeColor: {r: 0.19245279, g: 0.19242811, b: 0.18991096, a: 1}
+  currentIndexNumber: 0
 --- !u!1 &1885965896
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,6 +29,8 @@ namespace UnderworldCafe
         public KitchenWare[] kitchenWares; //lists of kitchen wares
 
         [SerializeField] GameObject[] upgradeItemObjects= new GameObject[3];
+        [SerializeField] Color activeGradeColor;
+        [SerializeField] Color inactiveGradeColor;
 
         KitchenWare[] currentKitchenWares= new KitchenWare[3];
 
@@ -116,6 +118,38 @@ namespace UnderworldCafe
             else
             {
                 upgradeItemObjects[2].SetActive(false);
+            }
+
+            UpdateWareGradeAppearance();
+        }
+
+        void UpdateWareGradeAppearance()
+        { //min. grade = 0 (no upgrades yet), max=3
+            for(int i= grades1.Length-1; i >= 0; i--) //change sprite color of the grades in upgradeItem1
+            {
+               
+                grades1[i].GetComponent<Image>().color=inactiveGradeColor;
+                if (currentKitchenWares[0] != null && i+1<= currentKitchenWares[0].grade)
+                {
+                    grades1[i].GetComponent<Image>().color=activeGradeColor;
+                }
+               
+            }
+            for (int i = grades2.Length-1; i >= 0; i--) //change sprite color of the grades in upgradeItem2
+            {
+                grades2[i].GetComponent<Image>().color = inactiveGradeColor;
+                if (currentKitchenWares[1] != null && i+1 <= currentKitchenWares[1].grade)
+                {
+                    grades2[i].GetComponent<Image>().color = activeGradeColor;
+                }
+            }
+            for (int i = grades3.Length - 1; i >= 0; i--) //change sprite color of the grades in upgradeItem3
+            {
+                grades3[i].GetComponent<Image>().color = inactiveGradeColor;
+                if (currentKitchenWares[2] != null && i+1 <= currentKitchenWares[2].grade)
+                {
+                    grades3[i].GetComponent<Image>().color = activeGradeColor;
+                }
             }
         }
     }
