@@ -152,5 +152,23 @@ namespace UnderworldCafe
                 }
             }
         }
+
+        public void UpgradeWare(int buttonId)
+        {
+            if(buttonId == 0) //first upgrade button
+            {
+                currentKitchenWares[0].grade++;
+            }
+            else if(buttonId ==1) //2nd upgrade button
+            {
+                currentKitchenWares[1].grade++;
+            }
+            else if (buttonId ==2)//3rd upgrade button
+            {
+                currentKitchenWares[2].grade++;
+            }
+
+            UpdateWareGradeAppearance();
+        }
     }
 }
