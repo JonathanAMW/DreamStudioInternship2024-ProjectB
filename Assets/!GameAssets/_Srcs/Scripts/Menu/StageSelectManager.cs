@@ -16,16 +16,16 @@ namespace UnderworldCafe
     {
         public StageObject[] stageObjects; //all stages in game
         public LevelObject[] levelObjects; //all levels in game
-        [HideInInspector]public bool isLevelPanelActive = false;
+        [HideInInspector] public bool isLevelPanelActive = false;
         public GameObject levelSelectPanel;
         public static int currentStageId = 0;
 
-        public int totalStarsEarned=0;
+        public int totalStarsEarned = 0;
 
 
         public void GoBack()
         {
-            if(isLevelPanelActive) //closes select level panel
+            if (isLevelPanelActive) //closes select level panel
             {
                 isLevelPanelActive = false;
                 levelSelectPanel.SetActive(false);
@@ -38,6 +38,11 @@ namespace UnderworldCafe
         void ToMainMenu()
         {
             SceneManager.LoadScene(0); //load main menu scene
+        }
+
+        public void ToUpgradeMenu()
+        {
+            SceneManager.LoadScene("UpgradeMenu");
         }
 
         public void UpdateStar(LevelSelectPanel.StageLevel stageLevel, int stars)// updates the stars earned in the stage level, stars min. 1 to be considered completed

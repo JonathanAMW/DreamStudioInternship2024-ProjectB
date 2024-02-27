@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 169563377}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1844217493}
+        m_TargetAssemblyTypeName: UnderworldCafe.UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeWare
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &169563377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2543,7 +2555,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1367580277}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1844217493}
+        m_TargetAssemblyTypeName: UnderworldCafe.UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeWare
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1367580277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2956,9 +2980,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnderworldCafe.StageSelectManager, Assembly-CSharp
-        m_MethodName: GoBack
+      - m_Target: {fileID: 1540637461}
+        m_TargetAssemblyTypeName: UnderworldCafe.UpgradeMenuManager, Assembly-CSharp
+        m_MethodName: ToStageSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3618,7 +3642,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1933501104}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1844217493}
+        m_TargetAssemblyTypeName: UnderworldCafe.UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeWare
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1933501104
 MonoBehaviour:
   m_ObjectHideFlags: 0

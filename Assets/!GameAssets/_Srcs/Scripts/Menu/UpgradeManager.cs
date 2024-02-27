@@ -155,7 +155,13 @@ namespace UnderworldCafe
 
         public void UpgradeWare(int buttonId)
         {
-            if(buttonId == 0) //first upgrade button
+
+            currentKitchenWares[buttonId].grade++;
+            if (currentKitchenWares[buttonId].grade > 3)// caps maks 3
+            {
+                currentKitchenWares[buttonId].grade = 3;
+            }
+            /*if(buttonId == 0) //first upgrade button
             {
                 currentKitchenWares[0].grade++;
             }
@@ -166,7 +172,7 @@ namespace UnderworldCafe
             else if (buttonId ==2)//3rd upgrade button
             {
                 currentKitchenWares[2].grade++;
-            }
+            }*/
 
             UpdateWareGradeAppearance();
         }

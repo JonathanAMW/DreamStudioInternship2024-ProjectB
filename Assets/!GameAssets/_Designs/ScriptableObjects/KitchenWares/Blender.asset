@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Blender
   m_EditorClassIdentifier: 
   wareName: Blender
-  grade: 1
+  grade: 0
   wareImage: {fileID: 88110976, guid: 6a2ea0b0aeb26184ca4ef89425898683, type: 3}
