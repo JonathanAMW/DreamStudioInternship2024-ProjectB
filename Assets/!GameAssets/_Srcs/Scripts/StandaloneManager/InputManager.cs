@@ -3,18 +3,21 @@
 // Created  : "2024/01/09"
 //----------------------------------------------------------------------
 
-using UnderworldCafe.UtensilSystem;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+using UnderworldCafe.CookingSystem;
+using UnderworldCafe.GameManageralSystem;
 
 namespace UnderworldCafe.InputSystem
 {
     /// <summary>
     /// This class will be used to handle input events from player
     /// </summary>
-    public class InputManager : DestroyOnLoadSingletonMonoBehaviour<InputManager>
+    public class InputManager : SingletonMonoBehaviour<InputManager>
     {
+        private LevelManager _levelManagerRef;
         private Camera _mainCameraRef;
         private GameInputAction _gameInputAction;
 
