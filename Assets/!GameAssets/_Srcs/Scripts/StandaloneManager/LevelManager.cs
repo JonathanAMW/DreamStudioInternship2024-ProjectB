@@ -8,7 +8,7 @@ using UnderworldCafe.Player;
 using UnityEngine;
 
 
-namespace UnderworldCafe
+namespace UnderworldCafe.GameManageralSystem
 {
     /// <summary>
     /// Class should handle level information and become service locator for entire level lifecycle
@@ -17,6 +17,7 @@ namespace UnderworldCafe
     {
         public GridManager GridManager { get; private set; }
         public PlayerController PlayerController { get; private set; }
+        
 
         protected override void Awake()
         {

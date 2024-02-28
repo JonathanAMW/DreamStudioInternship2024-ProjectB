@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace UnderworldCafe.UtensilSystem
+namespace UnderworldCafe.CookingSystem
 {
     /// <summary>
     /// Test class for appliances / kitchen utils scripts
