@@ -728,6 +728,8 @@ MonoBehaviour:
   - {fileID: 1223070830}
   - {fileID: 736025268}
   - {fileID: 720010619}
+  lockedStageSprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
+  unlockedStageSprite: {fileID: 21300000, guid: fc4f701668f12c543a9f3269a7cf6cf9, type: 3}
   isLevelPanelActive: 0
   levelSelectPanel: {fileID: 1893288427}
   totalStarsEarned: 0
@@ -2174,6 +2176,7 @@ MonoBehaviour:
   totalLevels: 1
   unlockedLevels: 0
   _stageImg: {fileID: 0}
+  _statusImg: {fileID: 1545729849}
   starsEarnedInStage: 0
   starsRequired: 8
 --- !u!1 &284257942
@@ -3392,6 +3395,7 @@ MonoBehaviour:
   totalLevels: 2
   unlockedLevels: 0
   _stageImg: {fileID: 0}
+  _statusImg: {fileID: 403426384}
   starsEarnedInStage: 0
   starsRequired: 1
 --- !u!1 &396325035
@@ -7904,6 +7908,7 @@ MonoBehaviour:
   totalLevels: 1
   unlockedLevels: 0
   _stageImg: {fileID: 0}
+  _statusImg: {fileID: 502198069}
   starsEarnedInStage: 0
   starsRequired: 15
 --- !u!1 &921253416
@@ -9975,6 +9980,7 @@ MonoBehaviour:
   totalLevels: 1
   unlockedLevels: 0
   _stageImg: {fileID: 0}
+  _statusImg: {fileID: 1330862400}
   starsEarnedInStage: 0
   starsRequired: 20
 --- !u!1 &1223070828
@@ -10416,7 +10422,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fc4f701668f12c543a9f3269a7cf6cf9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13061,6 +13067,7 @@ MonoBehaviour:
   totalLevels: 6
   unlockedLevels: 0
   _stageImg: {fileID: 0}
+  _statusImg: {fileID: 1357913176}
   starsEarnedInStage: 0
   starsRequired: 0
 --- !u!1 &1661265038
@@ -14853,6 +14860,7 @@ MonoBehaviour:
   totalLevels: 3
   unlockedLevels: 1
   _stageImg: {fileID: 0}
+  _statusImg: {fileID: 1134910775}
   starsEarnedInStage: 0
   starsRequired: 4
 --- !u!1 &1914326514

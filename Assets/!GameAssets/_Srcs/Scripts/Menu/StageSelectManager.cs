@@ -16,11 +16,14 @@ namespace UnderworldCafe
     {
         public StageObject[] stageObjects; //all stages in game
         public LevelObject[] levelObjects; //all levels in game
+        public Sprite lockedStageSprite;
+        public Sprite unlockedStageSprite;
         [HideInInspector] public bool isLevelPanelActive = false;
         public GameObject levelSelectPanel;
         public static int currentStageId = 0;
 
         public int totalStarsEarned = 0;
+
 
 
         public void GoBack()
@@ -63,9 +66,11 @@ namespace UnderworldCafe
             for(int i = 0; i < stageObjects.Length-1; i++)
             {
                 stageObjects[i + 1].GetComponentInChildren<Button>().interactable = false;
+                stageObjects[i + 1].StatusImg.GetComponent<Image>().sprite = lockedStageSprite;
                 if (totalStarsEarned >= stageObjects[i+1].starsRequired)
                 {
                     stageObjects[i + 1].GetComponentInChildren<Button>().interactable = true;
+                    stageObjects[i + 1].StatusImg.GetComponent<Image>().sprite = unlockedStageSprite;
                 }
             }
             

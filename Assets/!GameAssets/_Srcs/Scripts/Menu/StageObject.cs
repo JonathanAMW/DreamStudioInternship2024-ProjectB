@@ -27,7 +27,10 @@ namespace UnderworldCafe
         [SerializeField] Image _stageImg;
         public Image StageImage { get { return _stageImg; }}
 
-       
+        [SerializeField] Image _statusImg;
+        public Image StatusImg { get { return _statusImg; } }
+
+
         public int starsEarnedInStage=0;
         public int starsRequired = 0;
 
