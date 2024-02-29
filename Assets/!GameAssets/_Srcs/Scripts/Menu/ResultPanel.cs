@@ -39,8 +39,8 @@ namespace UnderworldCafe
             }
             else if (timeNormalized <= star2Percent)
             {
-                _imgStars[0].sprite = _emptyStar;
                 _imgStars[1].sprite = _emptyStar;
+                _imgStars[2].sprite = _emptyStar;
             }
             else if (timeNormalized <= star3Percent)
             {
