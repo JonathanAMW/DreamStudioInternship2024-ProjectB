@@ -71,9 +71,8 @@ namespace UnderworldCafe.CookingSystem
             //If there are no matched recipe
             if(recipeToSearch.Count <= 0)
             {
-                _isProcessing = true;
-                StartCoroutine(ProcessingFood(FailedFood));
-                return true;
+                ReturnNewFood(player, FailedFood);
+                return false;
             }
             
             foreach(Recipe recipe in recipeToSearch)
@@ -98,9 +97,8 @@ namespace UnderworldCafe.CookingSystem
             }
 
             //If there are no matched recipe
-            _isProcessing = true;
-            StartCoroutine(ProcessingFood(FailedFood));
-            return true;
+            ReturnNewFood(player, FailedFood);
+            return false;
         }
 
         private IEnumerator ProcessingFood(Ingredient createdIngredient)
