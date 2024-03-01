@@ -11,6 +11,7 @@ namespace UnderworldCafe.CookingSystem
     /// <summary>
     /// Class is for ingredient script to create Scriptable object assets
     /// </summary>
+    [CreateAssetMenu(fileName = "[IngredientName]_SO", menuName ="ScriptableObjects/Ingredient")]
     public class Ingredient : ScriptableObject
     {
         [System.Serializable]
@@ -24,9 +25,10 @@ namespace UnderworldCafe.CookingSystem
         [SerializeField] private IngredientInformations _ingredientInformation;
 
         public IngredientInformations IngredientInformation => _ingredientInformation;
+
+        public void CopyIngredientInformation(Ingredient ingredientToCopy)
+        {
+            _ingredientInformation = ingredientToCopy.IngredientInformation;
+        }
     }
 }
-
-//FOR RECIPE SYSTEM
-//you can try make each utensil has its own recipe
-// if the recipe is needed to be compiled as one collention (e.g one universal recipe, try get all utensil)
