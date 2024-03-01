@@ -11,7 +11,7 @@ namespace UnderworldCafe
     /// <summary>
     /// Class is responsible for managing player resources
     /// </summary>
-    public class PlayerResouce : MonoBehaviour
+    public class PlayerGameResouces : SingletonMonoBehaviour<PlayerGameResouces>
     {
         private int _money;
         public int Money => _money;

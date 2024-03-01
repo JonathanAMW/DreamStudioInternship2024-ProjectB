@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------
 // Author   : "Ananta Miyoru Wijaya"
-// Created  : "2024/10/19"
+// Created  : "2024/01/19"
 //----------------------------------------------------------------------
 
 using System;
@@ -22,103 +22,48 @@ namespace UnderworldCafe.CookingSystem
     /// <summary>
     /// Base class for every appliances / kitchen utils scripts
     /// </summary>
-    public class Utensil : MonoBehaviour, IInteractable
+    public abstract class Utensil : MonoBehaviour, IInteractable
     {
-        private PlayerController _playerControllerRef => PlayerController.Instance;
-        private GridManager _gridManagerRef => GridManager.Instance;
+        /// <summary>
+        /// Region for every class that is referenced to be used within this class
+        /// </summary>
+        #region References Dependency
+        protected PlayerController _playerControllerRef => PlayerController.Instance;
+        protected GridManager _gridManagerRef => GridManager.Instance;
+        #endregion
+        
 
-        
-        
+        #region Utensil Information
+        [System.Serializable]
+        public struct UtensilInformation
+        {
+            public string Name;
+            public string Description;
+        }
+
+        [Header("Utensil Information")]
+        [SerializeField] private UtensilInformation _utensilInformations;
+        public UtensilInformation UtensilInformnations => _utensilInformations;
+        #endregion
+
+
+        #region Utensil Properties
+        [Header("Utensil Properties")]
         [SerializeField] private Transform _interactPos;
-        //Indicator
         private bool _isSelected;
         [SerializeField] private GameObject _selectedIndicator;
         private int _indexInQueue;
-        [SerializeField] private TextMeshProUGUI _indexInQueueTMPro;
-        //recipe
-        // private List<Ingredient> _ingredientsInput;
-        
-
-        #region SourceUtensil
-        [Header("Utensil As Generator")]
-        [Header("Select this if the utensil should generate resource! (e.g. )")]
-        [SerializeField] private bool _isGenerator;
-        [SerializeField] private Ingredient _generatedIngredient;
-
+        [SerializeField] private TextMeshProUGUI _indexInQueueText;
+        [SerializeField] private Animator _utensilAnimator;
         #endregion
 
 
-        #region ConvertUtensil
-        [Header("Utensil As Converter")]
-        [Header("Select this if the utensil should convert resource (e.g. combine, mix, etc.)!")]
-        [SerializeField] private bool _isConverter;
-        [SerializeField] private List<Recipe> _recipeList;
-
-        #endregion
-        
-
-        private void Start() 
+        protected virtual void Start() 
         {
             ChangeSelectedState(false);
         }
         
-
-        public virtual void Interact()
-        {
-            if(_isGenerator)
-            {
-
-            }   
-            else if(_isConverter)
-            {
-
-            }
-            else
-            {
-                Debug.Log("");
-            }
-        }
-
-        private void TryProcessInput(List<Ingredient> inputtedIngredients)
-        {
-            int inputSize = inputtedIngredients.Count;
-
-            //Get all recipe with same size as inputtedIngredient
-            List<Recipe> recipeToSearch = new List<Recipe>();
-            foreach (Recipe recipe in _recipeList)
-            {
-                int recipeRequirementSize = recipe.RecipeInformation.Requirements.Count;
-                if(recipeRequirementSize == inputSize)
-                {
-                    recipeToSearch.Add(recipe);
-                }
-            }
-
-            if(recipeToSearch.Count <= 0) return;
-            
-            foreach(Recipe recipe in recipeToSearch)
-            {
-                if(ListComparer.AreListsSame(inputtedIngredients, recipe.RecipeInformation.Requirements))
-                {
-                    Debug.Log("Found the same recipe");
-
-                    // Coroutine 
-                }
-            }
-        }
-
-
-        private IEnumerator ProcessingFood(Recipe recipeToProccess)
-        {
-            yield return null;
-        }
-
-        // private Ingredient ReturnNewFood()
-        // {
-
-        // }
-
-
+        public abstract void Interact();
         
 
         public void TrySelectThisUtensil()
@@ -158,7 +103,7 @@ namespace UnderworldCafe.CookingSystem
         public void AssignUtensilIndex(int assignedIndex)
         {
             _indexInQueue = assignedIndex;
-            _indexInQueueTMPro.text = _indexInQueue.ToString();
+            _indexInQueueText.text = _indexInQueue.ToString();
         }
 
         

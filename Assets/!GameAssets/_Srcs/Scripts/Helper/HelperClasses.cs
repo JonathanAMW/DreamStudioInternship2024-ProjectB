@@ -6,7 +6,7 @@
 
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace UtilityCollections
 {
@@ -15,7 +15,12 @@ namespace UtilityCollections
     /// </summary>
     public static class ListComparer
     {
-        public static bool AreListsSame<T>(List<T> list1, List<T> list2)
+        public static bool IsEqualWithSameOrder<T>(IEnumerable<T> list1, IEnumerable<T> list2)
+        {
+            return list1.SequenceEqual(list2);
+        }
+
+        public static bool IsEqualWithoutSameOrder<T>(List<T> list1, List<T> list2)
         {
             // Create dictionaries to store element counts
             Dictionary<T, int> count1 = new Dictionary<T, int>();

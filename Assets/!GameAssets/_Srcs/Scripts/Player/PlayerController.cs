@@ -11,6 +11,7 @@ using UnityEngine.Tilemaps;
 using UnderworldCafe.PathfindingSystem;
 using UnderworldCafe.GridSystem;
 using UnderworldCafe.InputSystem;
+using UnderworldCafe.CookingSystem;
 
 namespace UnderworldCafe.Player
 {
@@ -19,9 +20,14 @@ namespace UnderworldCafe.Player
     /// </summary>
     public class PlayerController : DestroyOnLoadSingletonMonoBehaviour<PlayerController>
     {
+        #region References Dependency
         private InputManager _inputManagerRef => InputManager.Instance;
         private PathRequestManager _pathRequestManagerRef => PathRequestManager.Instance;
         private GridManager _gridManagerRef => GridManager.Instance;
+        public PlayerInventory PlayerInventory {get; private set;}
+        #endregion
+
+
 
         [SerializeField] private Tilemap _playerWalkableTilemap;
         [SerializeField] private float _movementSpeed = 10f;
@@ -30,10 +36,12 @@ namespace UnderworldCafe.Player
         private int _targetIndex; // Index of the current target waypoint in the path
         private bool _isMoving;
 
+
         private void Start()
         {
             _pathPos = new List<Vector3>();
             _playerMovementRequestList = new List<PlayerMovementRequest>();
+            PlayerInventory = GetComponent<PlayerInventory>();
 
             transform.position = _gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position);
         }
@@ -200,5 +208,6 @@ namespace UnderworldCafe.Player
             TryProcessNext(); 
         }
         #endregion
+
     }
 }
