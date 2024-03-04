@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1364486071
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 340485086, guid: 6a2ea0b0aeb26184ca4ef89425898683, type: 3}
   m_Color: {r: 1, g: 0.87304306, b: 0, a: 1}
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 3309926804449112057}
   - component: {fileID: 237493057579481133}
   - component: {fileID: 3007596062520981632}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: pref_ConverterUtensil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,6 +347,7 @@ MonoBehaviour:
   _indexInQueueText: {fileID: 0}
   _utensilAnimator: {fileID: 0}
   StatsDataPerLevel: []
+  FailedFood: {fileID: 0}
 --- !u!1 &7625041113750758069
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,8 +418,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1364486071
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -751502848, guid: 6a2ea0b0aeb26184ca4ef89425898683, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.11372549}
@@ -502,8 +503,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -150254521
-  m_SortingLayer: 0
+  m_SortingLayerID: 1033149939
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1120853115, guid: 6a2ea0b0aeb26184ca4ef89425898683, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
@@ -574,7 +575,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: -150254521
+  m_SortingLayerID: 1033149939
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &7609591062887837234

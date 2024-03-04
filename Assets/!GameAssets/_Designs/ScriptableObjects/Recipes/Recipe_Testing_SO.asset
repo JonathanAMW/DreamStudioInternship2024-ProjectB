@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Recipe_Testing_SO
   m_EditorClassIdentifier: 
   _recipeInformation:
-    RecipeName: 
+    RecipeName: Testing
     RecipeOutput: {fileID: 0}
     Requirements: []

@@ -20,6 +20,11 @@ namespace UnderworldCafe.Player
     {
         private ObjectPool<Ingredient> _ingredientPool;
         public List<Ingredient> PlayerInventoryList { get; private set; }
+
+        #region Visual
+        
+
+        #endregion
         
         private void Awake()
         {
