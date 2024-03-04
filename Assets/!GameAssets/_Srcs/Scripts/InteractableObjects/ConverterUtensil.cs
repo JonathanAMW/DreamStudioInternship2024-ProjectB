@@ -25,12 +25,13 @@ namespace UnderworldCafe.CookingSystem
         [Header("Converter Properties")]
         [SerializeField] private List<ConverterUtensilStatsData> StatsDataPerLevel;
         private ConverterUtensilStatsData _currentStatsData;
+        [SerializeField] private Ingredient FailedFood;
 
         private bool _isProcessing;
         private bool _isFoodReady;
         public Ingredient ReadyToTakeFood {get; private set;}
         
-        
+
         protected override void Start()
         {
             base.Start();
@@ -54,6 +55,8 @@ namespace UnderworldCafe.CookingSystem
 
             int inputSize = inputtedIngredients.Count;
 
+            if(inputSize <= 0) return false;
+
             //Get all recipe with same size as inputtedIngredient
             List<Recipe> recipeToSearch = new List<Recipe>();
             foreach (Recipe recipe in _currentStatsData.RecipeList)
@@ -65,7 +68,12 @@ namespace UnderworldCafe.CookingSystem
                 }
             }
 
-            if(recipeToSearch.Count <= 0) return false;
+            //If there are no matched recipe
+            if(recipeToSearch.Count <= 0)
+            {
+                ReturnNewFood(player, FailedFood);
+                return false;
+            }
             
             foreach(Recipe recipe in recipeToSearch)
             {
@@ -83,19 +91,21 @@ namespace UnderworldCafe.CookingSystem
                 {
                     Debug.Log("Found the same recipe");
                     _isProcessing = true;
-                    StartCoroutine(ProcessingFood(recipe));
+                    StartCoroutine(ProcessingFood(recipe.RecipeInformation.RecipeOutput));
                     return true;
                 }
             }
 
+            //If there are no matched recipe
+            ReturnNewFood(player, FailedFood);
             return false;
         }
 
-        private IEnumerator ProcessingFood(Recipe recipeToProccess)
+        private IEnumerator ProcessingFood(Ingredient createdIngredient)
         {
             yield return new WaitForSeconds(_currentStatsData.ConvertingTime);
             
-            ReadyToTakeFood = recipeToProccess.RecipeInformation.RecipeOutput;
+            ReadyToTakeFood = createdIngredient;
             _isProcessing = false;
             _isFoodReady = true;
         }
