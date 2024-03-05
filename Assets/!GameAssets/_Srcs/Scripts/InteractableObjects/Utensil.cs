@@ -24,9 +24,7 @@ namespace UnderworldCafe.CookingSystem
     /// </summary>
     public abstract class Utensil : MonoBehaviour, IInteractable
     {
-        /// <summary>
-        /// Region for every class that is referenced to be used within this class
-        /// </summary>
+        // Region for every class that is referenced to be used within this class
         #region References Dependency
         protected PlayerController _playerControllerRef => PlayerController.Instance;
         protected GridManager _gridManagerRef => GridManager.Instance;
