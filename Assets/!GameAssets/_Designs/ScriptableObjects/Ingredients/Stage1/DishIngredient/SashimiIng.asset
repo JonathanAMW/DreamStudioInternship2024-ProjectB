@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92ea9c908b1696e439de57b1d558bdf7, type: 3}
-  m_Name: Espresso
+  m_Script: {fileID: 11500000, guid: cb3c843baf29a6648bdd71b8c951ee30, type: 3}
+  m_Name: SashimiIng
   m_EditorClassIdentifier: 
-  foodImage: {fileID: -831899496, guid: 3625591fcf86e704d829badb84fbf8b4, type: 3}
-  foodName: Espresso
-  ingredients:
-  - Coffee Powder
-  - Sugar
-  - Hot water
+  _ingredientInformation:
+    Name: Sashimi
+    Description: 
+    IngredientSprite: {fileID: 1493117288, guid: ea5e1a988da35c24e81773042bfa2ff4, type: 3}

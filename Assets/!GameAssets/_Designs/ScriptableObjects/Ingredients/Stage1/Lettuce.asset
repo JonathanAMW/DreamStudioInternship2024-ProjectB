@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92ea9c908b1696e439de57b1d558bdf7, type: 3}
-  m_Name: Sashimi
+  m_Script: {fileID: 11500000, guid: cb3c843baf29a6648bdd71b8c951ee30, type: 3}
+  m_Name: Lettuce
   m_EditorClassIdentifier: 
-  foodImage: {fileID: -634674055, guid: 6a2ea0b0aeb26184ca4ef89425898683, type: 3}
-  foodName: Sashimi
-  ingredients:
-  - Fish
-  - Fish
+  _ingredientInformation:
+    Name: Lettuce
+    Description: 
+    IngredientSprite: {fileID: 492779517, guid: 3625591fcf86e704d829badb84fbf8b4, type: 3}

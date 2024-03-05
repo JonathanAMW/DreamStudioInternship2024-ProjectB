@@ -16,10 +16,12 @@ namespace UnderworldCafe
         [SerializeField] GameObject pausePanel;
         [SerializeField] GameObject recipePanel;
         [SerializeField] GameObject resultPanel;
+        [SerializeField] GameObject settingsPanel;
 
         static public bool isPaused = false;
         static public bool isRecipeOpen = false;
         static public bool isResultOpen = false;
+        static public bool isSettingsOpened=false;
 
         private void Update()
         {
@@ -55,6 +57,21 @@ namespace UnderworldCafe
                 recipePanel.SetActive(false);
             }
             isRecipeOpen = !isRecipeOpen;
+
+        }
+
+        public void ToggleSettings()
+        {
+
+            if (isSettingsOpened == false)
+            {
+                settingsPanel.SetActive(true);
+            }
+            else //is already opened settings
+            {
+                settingsPanel.SetActive(false);
+            }
+            isSettingsOpened = !isSettingsOpened;
 
         }
 

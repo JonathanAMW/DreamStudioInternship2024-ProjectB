@@ -4,6 +4,7 @@
 //----------------------------------------------------------------------
 
 using TMPro;
+using UnderworldCafe.CookingSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,7 +30,7 @@ namespace UnderworldCafe
 
         int currentRecipePage = 0;
 
-        FoodRecipe[] currentFoodRecipes;
+        Recipe.RecipeInformations[] currentRecipesInformation;
         private void Start()
         {
             if(recipePages.Length >1)//more than 1 pages
@@ -43,15 +44,15 @@ namespace UnderworldCafe
                 nextPageButton.gameObject.SetActive(false);
             }
 
-            currentFoodRecipes = recipePages[currentRecipePage].recipes; //default food recipes is from 1st page
+            currentRecipesInformation = recipePages[0].recipes; //default food recipes is from 1st page
             UpdateRecipeDisplay();
         }
 
         void UpdateRecipeDisplay()
         {
-            currentFoodRecipes = recipePages[currentRecipePage].recipes;
+            currentRecipesInformation = recipePages[currentRecipePage].recipes;
 
-            if (currentFoodRecipes[0] == null)
+            if (string.IsNullOrEmpty(currentRecipesInformation[0].RecipeName))
             {
                 foodImage1.gameObject.SetActive(false);
                 foodName1.gameObject.SetActive(false);
@@ -62,20 +63,26 @@ namespace UnderworldCafe
             }
             else
             {
-                foodImage1.sprite = currentFoodRecipes[0].foodImage; //foodImage1 appearance based on currentFoodRecipe[0]
-                foodName1.text = currentFoodRecipes[0].foodName;//foodName1 text based on currentFoodRecipe[0]
+                foodImage1.gameObject.SetActive(true);
+                foodName1.gameObject.SetActive(true);
+                for (int i = 0; i < ingredientString2.Length; i++)//for every ingredient string in panel
+                {
+                    ingredientString1[i].gameObject.SetActive(true);
+                }
+                foodImage1.sprite = currentRecipesInformation[0].RecipeOutput.IngredientInformation.IngredientSprite; //foodImage1 appearance based on currentFoodRecipe[0]
+                foodName1.text = currentRecipesInformation[0].RecipeName;//foodName1 text based on currentFoodRecipe[0]
                 for (int i = 0; i < ingredientString1.Length; i++)//for every ingredient string in panel
                 {
                     ingredientString1[i].text = "";
-                    if (i < currentFoodRecipes[0].ingredients.Length)//ensures that it doesnt go over actual amount of ingredients list
+                    if (i < currentRecipesInformation[0].Requirements.Count)//ensures that it doesnt go over actual amount of ingredients list
                     {
-                        ingredientString1[i].text = currentFoodRecipes[0].ingredients[i];
+                        ingredientString1[i].text = currentRecipesInformation[0].Requirements[i].IngredientInformation.Name;
                     }
                 }
             }
             
             
-            if(currentFoodRecipes[1] == null)
+            if(string.IsNullOrEmpty(currentRecipesInformation[1].RecipeName))
             {
                 foodImage2.gameObject.SetActive(false);
                 foodName2.gameObject.SetActive(false);
@@ -86,14 +93,20 @@ namespace UnderworldCafe
             }
             else
             {
-                foodImage2.sprite = currentFoodRecipes[1].foodImage; //foodImage2 appearance based on currentFoodRecipe[1]
-                foodName2.text = currentFoodRecipes[1].foodName;//foodName2 text based on currentFoodRecipe[1]
+                foodImage2.gameObject.SetActive(true);
+                foodName2.gameObject.SetActive(true);
+                for (int i = 0; i < ingredientString2.Length; i++)//for every ingredient string in panel
+                {
+                    ingredientString2[i].gameObject.SetActive(true);
+                }
+                foodImage2.sprite = currentRecipesInformation[1].RecipeOutput.IngredientInformation.IngredientSprite;//foodImage2 appearance based on currentFoodRecipe[1]
+                foodName2.text = currentRecipesInformation[1].RecipeName;//foodName2 text based on currentFoodRecipe[1]
                 for (int i = 0; i < ingredientString2.Length; i++)//for every ingredient string in panel
                 {
                     ingredientString2[i].text = "";
-                    if (i < currentFoodRecipes[1].ingredients.Length)//ensures that it doesnt go over actual amount of ingredients list
+                    if (i < currentRecipesInformation[1].Requirements.Count)//ensures that it doesnt go over actual amount of ingredients list
                     {
-                        ingredientString2[i].text = currentFoodRecipes[1].ingredients[i];
+                        ingredientString2[i].text = currentRecipesInformation[1].Requirements[i].IngredientInformation.Name;
                     }
                 }
 
