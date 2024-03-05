@@ -346,8 +346,8 @@ MonoBehaviour:
   _selectedIndicator: {fileID: 0}
   _indexInQueueText: {fileID: 0}
   _utensilAnimator: {fileID: 0}
-  _generatedIngredient: {fileID: 0}
-  _isMultipleCarryable: {fileID: 11400000, guid: 21f2ecce9fb30b24c9551d43ab4c5067, type: 2}
+  _generatedIngredient: {fileID: 11400000, guid: 21f2ecce9fb30b24c9551d43ab4c5067, type: 2}
+  _isMultipleCarryable: 1
 --- !u!1 &7625041113750758069
 GameObject:
   m_ObjectHideFlags: 0
