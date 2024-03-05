@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ee8136cf3ee4442904eac2458a61e2, type: 3}
+  m_Name: Recipes_Sishimi
+  m_EditorClassIdentifier: 
+  _recipeInformation:
+    RecipeName: Sashimi
+    RecipeOutput: {fileID: 11400000, guid: 5c3d641fb84382544bfa2c274f0f5d57, type: 2}
+    Requirements:
+    - {fileID: 11400000, guid: ee2d9ca677f8e4642a8ff8f9786aa240, type: 2}
+    - {fileID: 11400000, guid: 858bcba70262d8145bc9be8c7fce73cb, type: 2}

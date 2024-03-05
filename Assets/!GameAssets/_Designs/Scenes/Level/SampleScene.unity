@@ -195,7 +195,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1577562861
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -1792,7 +1792,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1577562861
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -4144,6 +4144,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 412999037426069152, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 412999037426069152, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 412999037426069152, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 412999037426069152, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276032924945450703, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276032924945450703, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276032924945450703, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276032924945450703, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5000349698057685995, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5
@@ -4192,6 +4224,22 @@ PrefabInstance:
       propertyPath: _playerWalkableTilemap
       value: 
       objectReference: {fileID: 50454594}
+    - target: {fileID: 7774044349113213756, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7774044349113213756, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7774044349113213756, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7774044349113213756, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8174833714522374440, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
       propertyPath: m_Name
       value: Player
