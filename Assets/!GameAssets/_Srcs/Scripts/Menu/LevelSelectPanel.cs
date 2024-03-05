@@ -26,6 +26,7 @@ namespace UnderworldCafe
 
         [SerializeField] TextMeshProUGUI earnedStarsInStageText;
         [SerializeField] GameObject totalStarGUI;
+       
         public class StageLevel
         {
             public int stageId;
@@ -94,34 +95,41 @@ namespace UnderworldCafe
         public void UpdateUnlockedLevel()
         {
             _stageSelectManager.stageObjects[_currentStageId].unlockedLevels=0;
-            for (int j = 0; j < _stageSelectManager.stageObjects[_currentStageId].TotalLevels; j++)
+            for (int j = 0; j < _stageSelectManager.stageObjects[_currentStageId].TotalLevels; j++) //unlocks levels on that stage
             {
-                if (stageLevels[_currentStageId,j].isCompleted)
+                if (stageLevels[_currentStageId,j].isCompleted && j+1 < _stageSelectManager.stageObjects[_currentStageId].TotalLevels) //unlocks next level if current level is already completed
+                                                                                                                                       //while make sure that the current level is not the last level
                 {
                     _stageSelectManager.stageObjects[_currentStageId].unlockedLevels++;
                 }
             }
 
-            for(int i= 0; i < _stageSelectManager.levelObjects.Length; i++)//show all unlocked levels
+            for(int i= 0; i < _stageSelectManager.stageObjects[_currentStageId].TotalLevels; i++)//show all unlocked levels
             {
-                _stageSelectManager.levelObjects[i].GetComponent<Button>().interactable=false;
-                if(i <= _stageSelectManager.stageObjects[_currentStageId].unlockedLevels)
+
+                _stageSelectManager.levelObjects[i].GetComponent<Button>().interactable = false;
+                _stageSelectManager.levelObjects[i].statusImg.SetActive(true);
+                if (i <= _stageSelectManager.stageObjects[_currentStageId].unlockedLevels) //make unlocked levels interactable
                 {
                     _stageSelectManager.levelObjects[i].GetComponent<Button>().interactable = true;
+                    _stageSelectManager.levelObjects[i].statusImg.SetActive(false);
                 }
+               
             }
         }
 
         public void SelectLevel(int levelId) //upon pressing level
         {
-
-
-                currentStageLevel = stageLevels[_currentStageId, levelId];
+            currentStageLevel = stageLevels[_currentStageId, levelId];
                 
-                int starEarned = currentStageLevel.starsEarned;
+            int starEarned = currentStageLevel.starsEarned;
+            if(starEarned < 3)
+            {
                 starEarned++;
-                _stageSelectManager.UpdateStar(currentStageLevel, starEarned);
-                UpdateStarSprite();
+            }
+            
+            _stageSelectManager.UpdateStar(currentStageLevel, starEarned);
+            UpdateStarSprite();
             UpdateUnlockedLevel();
             CalculateTotalStars();
             //SceneManager.LoadScene(2); //loads gameplay
