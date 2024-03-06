@@ -15,7 +15,8 @@ namespace UnderworldCafe.CookingSystem
     {
         [Header("Generator Properties")]   
         [SerializeField] private Ingredient _generatedIngredient;
-        [SerializeField] private Ingredient _isMultipleCarryable;
+        
+        [SerializeField] private bool _isMultipleCarryable;
 
         public override void Interact()
         {
