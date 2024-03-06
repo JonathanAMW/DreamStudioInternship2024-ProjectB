@@ -91,7 +91,7 @@ namespace UnderworldCafe.Player
                 // if (_gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position) == currentWaypoint) 
                 if (transform.position == currentWaypoint) 
                 { 
-                    Debug.Log("Finished at: "+currentWaypoint);
+                    // Debug.Log("Finished at: "+currentWaypoint);
                     _targetIndex++;
 
                     if (_targetIndex >= _pathPos.Count) 
