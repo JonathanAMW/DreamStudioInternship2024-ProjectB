@@ -15,4 +15,4 @@ MonoBehaviour:
   _ingredientInformation:
     Name: Failed Dish
     Description: Failed Dish
-    IngredientSprite: {fileID: 78463665, guid: 2acd47dce3c502f4684158eb38b70838, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: 5b3978c0a033d07418f49c1e8b7f3286, type: 3}

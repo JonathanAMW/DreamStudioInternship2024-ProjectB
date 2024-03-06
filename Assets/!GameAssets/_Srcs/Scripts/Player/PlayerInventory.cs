@@ -24,9 +24,9 @@ namespace UnderworldCafe.Player
 
         #region Visual
         [SerializeField] private Transform _slotSpawnPoint;
+        [SerializeField] private Transform _slotPoolPoint;
         [SerializeField] private GameObject _inventorySlotPrefab;
         private ObjectPool<GameObject> _inventorySlotPool; 
-
 
         #endregion
         
@@ -63,6 +63,8 @@ namespace UnderworldCafe.Player
             foreach(var slot in slotTransform)
             {
                 slot.gameObject.SetActive(false);
+                slot.transform.SetParent(_slotPoolPoint);
+
                 _inventorySlotPool.Release(slot.gameObject);
             }
 
