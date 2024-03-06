@@ -3,6 +3,7 @@
 // Created  : "2024/02/06"
 //----------------------------------------------------------------------
 
+using UnderworldCafe.CookingSystem;
 using UnityEngine;
 
 
@@ -16,6 +17,6 @@ namespace UnderworldCafe
     {
 
        
-        public FoodRecipe[] recipes = new FoodRecipe[2];
+        public Recipe.RecipeInformations[] recipes = new Recipe.RecipeInformations[2];
     }
 }

@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92ea9c908b1696e439de57b1d558bdf7, type: 3}
-  m_Name: Fruit Juice
+  m_Script: {fileID: 11500000, guid: cb3c843baf29a6648bdd71b8c951ee30, type: 3}
+  m_Name: Frother
   m_EditorClassIdentifier: 
-  foodImage: {fileID: -136830640, guid: 6a2ea0b0aeb26184ca4ef89425898683, type: 3}
-  foodName: Fruit Juice
-  ingredients:
-  - Banana
-  - Apple
-  - Strawberry
+  _ingredientInformation:
+    Name: Frother
+    Description: 
+    IngredientSprite: {fileID: -1439474965, guid: 6a2ea0b0aeb26184ca4ef89425898683, type: 3}

@@ -9,17 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b7ae4d0f6ffe34d9af19427b2db763, type: 3}
-  m_Name: Page (1)
+  m_Script: {fileID: 11500000, guid: f8ee8136cf3ee4442904eac2458a61e2, type: 3}
+  m_Name: Fruit Juice
   m_EditorClassIdentifier: 
-  recipes:
-  - RecipeName: Simple Salad
-    RecipeOutput: {fileID: 11400000, guid: e6a65c5cd03c7854e9a7ea945f8e0837, type: 2}
-    Requirements:
-    - {fileID: 11400000, guid: e219edbf64b6ff94a93c4c70d9dbbd8d, type: 2}
-    - {fileID: 11400000, guid: a04a8451cfab60d4f8ccc7e201e3153c, type: 2}
-    - {fileID: 11400000, guid: 8b7424761dde93c4a921fd8cda8630b6, type: 2}
-  - RecipeName: Fruit Juice
+  _recipeInformation:
+    RecipeName: Fruit Juice
     RecipeOutput: {fileID: 11400000, guid: 4bd0084d728df9c4c87694ccea3d9025, type: 2}
     Requirements:
     - {fileID: 11400000, guid: 75b9c4bf082594d4c8e69114a8fd927e, type: 2}

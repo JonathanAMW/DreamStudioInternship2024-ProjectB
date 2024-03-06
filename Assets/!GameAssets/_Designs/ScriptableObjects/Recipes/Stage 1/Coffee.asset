@@ -9,16 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b7ae4d0f6ffe34d9af19427b2db763, type: 3}
-  m_Name: Page (0)
+  m_Script: {fileID: 11500000, guid: f8ee8136cf3ee4442904eac2458a61e2, type: 3}
+  m_Name: Coffee
   m_EditorClassIdentifier: 
-  recipes:
-  - RecipeName: Glass of Milk
-    RecipeOutput: {fileID: 11400000, guid: 83acd1bef58f9b34d9c22bfcc7cccbae, type: 2}
-    Requirements:
-    - {fileID: 11400000, guid: 75b9c4bf082594d4c8e69114a8fd927e, type: 2}
-    - {fileID: 11400000, guid: e75acc9378d889a429f55ee1005e4043, type: 2}
-  - RecipeName: Coffee
+  _recipeInformation:
+    RecipeName: Coffee
     RecipeOutput: {fileID: 11400000, guid: ca9f83ea68916ff4ab6b5c6dbae36284, type: 2}
     Requirements:
     - {fileID: 11400000, guid: 75b9c4bf082594d4c8e69114a8fd927e, type: 2}
