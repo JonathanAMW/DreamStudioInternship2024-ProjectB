@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 3309926804449112057}
   - component: {fileID: 237493057579481133}
   - component: {fileID: 3007596062520981632}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pref_ConverterFrother
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,9 +342,9 @@ MonoBehaviour:
   _utensilInformations:
     Name: Frother
     Description: 
-  _interactPos: {fileID: 0}
-  _selectedIndicator: {fileID: 0}
-  _indexInQueueText: {fileID: 0}
+  _interactPos: {fileID: 9182812213336863791}
+  _selectedIndicator: {fileID: 7691055194879091446}
+  _indexInQueueText: {fileID: 1534687146145955894}
   _utensilAnimator: {fileID: 0}
   StatsDataPerLevel:
   - RecipeList:
@@ -363,7 +363,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 837b61343debba14c9e5c19c4c307ac6, type: 2}
     - {fileID: 11400000, guid: 2d1c52e6c1e478e44817e247a5a1e10d, type: 2}
     ConvertingTime: 1
-  FailedFood: {fileID: 0}
+  FailedFood: {fileID: 11400000, guid: 656c598db18148343b715a8f24673c9b, type: 2}
 --- !u!1 &7625041113750758069
 GameObject:
   m_ObjectHideFlags: 0

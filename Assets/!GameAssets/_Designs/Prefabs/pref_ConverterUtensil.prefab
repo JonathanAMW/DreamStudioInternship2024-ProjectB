@@ -342,9 +342,9 @@ MonoBehaviour:
   _utensilInformations:
     Name: 
     Description: 
-  _interactPos: {fileID: 0}
-  _selectedIndicator: {fileID: 0}
-  _indexInQueueText: {fileID: 0}
+  _interactPos: {fileID: 9182812213336863791}
+  _selectedIndicator: {fileID: 7625041113750758069}
+  _indexInQueueText: {fileID: 1534687146145955894}
   _utensilAnimator: {fileID: 0}
   StatsDataPerLevel: []
   FailedFood: {fileID: 0}

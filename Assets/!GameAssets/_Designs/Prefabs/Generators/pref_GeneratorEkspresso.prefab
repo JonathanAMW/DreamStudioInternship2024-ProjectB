@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 3309926804449112057}
   - component: {fileID: 237493057579481133}
   - component: {fileID: 1374833496142211657}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pref_GeneratorEkspresso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,9 +342,9 @@ MonoBehaviour:
   _utensilInformations:
     Name: 
     Description: 
-  _interactPos: {fileID: 0}
-  _selectedIndicator: {fileID: 0}
-  _indexInQueueText: {fileID: 0}
+  _interactPos: {fileID: 9182812213336863791}
+  _selectedIndicator: {fileID: 7691055194879091446}
+  _indexInQueueText: {fileID: 1534687146145955894}
   _utensilAnimator: {fileID: 0}
   _generatedIngredient: {fileID: 11400000, guid: 27018a954e426ca44b5fddbee6d7706e, type: 2}
   _isMultipleCarryable: 1

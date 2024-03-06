@@ -35,6 +35,8 @@ namespace UnderworldCafe.CookingSystem
         protected override void Start()
         {
             base.Start();
+            _isProcessing = false;
+            _isFoodReady = false;
 
             // Need additional check for if player has loading save or not
             _currentStatsData = StatsDataPerLevel[0];
@@ -42,40 +44,51 @@ namespace UnderworldCafe.CookingSystem
 
         public override void Interact()
         {
-            if(_isProcessing) return;
+            if(_isProcessing)
+            {
+                Debug.LogWarning("Already Processing");
+                return;
+            }
 
-            if(!_isFoodReady) _isProcessing = TryProcessInput(_playerControllerRef);
+            if(!_isFoodReady) 
+            {
+                Debug.LogWarning("Food Not Ready");
+                _isProcessing = TryProcessInput(_playerControllerRef);
+                return;
+            }
 
             ReturnNewFood(_playerControllerRef, ReadyToTakeFood);
         }
 
         private bool TryProcessInput(PlayerController player)
         {
+            if(player.PlayerInventory.PlayerInventoryList.Count <= 0) return false;
+
             List<Ingredient> inputtedIngredients = new List<Ingredient>(player.PlayerInventory.PlayerInventoryList);
+            player.PlayerInventory.RemoveInventoryAll();
 
             int inputSize = inputtedIngredients.Count;
 
-            if(inputSize <= 0) return false;
-
             //Get all recipe with same size as inputtedIngredient
-            List<Recipe> recipeToSearch = new List<Recipe>();
+            List<Recipe> recipeWithSameSize = new List<Recipe>();
             foreach (Recipe recipe in _currentStatsData.RecipeList)
             {
                 int recipeRequirementSize = recipe.RecipeInformation.Requirements.Count;
                 if(recipeRequirementSize == inputSize)
                 {
-                    recipeToSearch.Add(recipe);
+                    recipeWithSameSize.Add(recipe);
                 }
             }
 
             //If there are no matched recipe
-            if(recipeToSearch.Count <= 0)
+            if(recipeWithSameSize.Count <= 0)
             {
                 ReturnNewFood(player, FailedFood);
                 return false;
             }
+
             
-            foreach(Recipe recipe in recipeToSearch)
+            foreach(Recipe recipe in recipeWithSameSize)
             {
                 //This behavior doesnt care about the order of ingredients
                 // if(ListComparer.IsEqualWithoutSameOrder(inputtedIngredients, recipe.RecipeInformation.Requirements))
@@ -89,7 +102,7 @@ namespace UnderworldCafe.CookingSystem
                 //This behavior does care about the order of ingredients
                 if(ListComparer.IsEqualWithSameOrder(inputtedIngredients, recipe.RecipeInformation.Requirements))
                 {
-                    Debug.Log("Found the same recipe");
+                    Debug.LogWarning("Found the same recipe");
                     _isProcessing = true;
                     StartCoroutine(ProcessingFood(recipe.RecipeInformation.RecipeOutput));
                     return true;
@@ -97,6 +110,7 @@ namespace UnderworldCafe.CookingSystem
             }
 
             //If there are no matched recipe
+            Debug.LogWarning("Recipe not founded");
             ReturnNewFood(player, FailedFood);
             return false;
         }
