@@ -22,10 +22,11 @@ namespace UnderworldCafe.CookingSystem
     /// </summary>
     public class ConverterUtensil : Utensil
     {
-        [Header("Converter Properties")]
-        [SerializeField] private List<ConverterUtensilStatsData> StatsDataPerLevel;
+        [Header("=======[Converter Utensil Properties]=======")]
+        [SerializeField] private List<ConverterUtensilStatsData> _statsDataPerLevel;
+        public List<ConverterUtensilStatsData> StatsDataPerLevel => _statsDataPerLevel;
+
         private ConverterUtensilStatsData _currentStatsData;
-        [SerializeField] private Ingredient FailedFood;
 
         private bool _isProcessing;
         private bool _isFoodReady;

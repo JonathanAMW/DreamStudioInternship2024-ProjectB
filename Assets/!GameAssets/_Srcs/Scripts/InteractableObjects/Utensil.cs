@@ -32,21 +32,28 @@ namespace UnderworldCafe.CookingSystem
         
 
         #region Utensil Information
+        [Header("=======[Utensil Information]=======")]        
+        [SerializeField] private UtensilInformation _utensilInformations;
+        public UtensilInformation UtensilInformnations => _utensilInformations;
+
         [System.Serializable]
         public struct UtensilInformation
         {
             public string Name;
             public string Description;
         }
-
-        [Header("Utensil Information")]
-        [SerializeField] private UtensilInformation _utensilInformations;
-        public UtensilInformation UtensilInformnations => _utensilInformations;
         #endregion
 
 
-        #region Utensil Properties
-        [Header("Utensil Properties")]
+        #region Utensil Properties 
+        [Header("=======[Utensil General Properties]=======")]        
+        
+        
+        [Header("Utensil Failed Food")]
+        [SerializeField] protected Ingredient FailedFood;
+
+
+        [Header("Utensil Visual")]
         [SerializeField] private Transform _interactPos;
         private bool _isSelected;
         [SerializeField] private GameObject _selectedIndicator;

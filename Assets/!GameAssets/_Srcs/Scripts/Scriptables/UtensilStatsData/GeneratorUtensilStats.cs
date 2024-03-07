@@ -24,6 +24,6 @@ namespace UnderworldCafe.CookingSystem
     [System.Serializable]
     public struct GeneratorUtensilStatsData
     {
-        
+        public List<Recipe> RecipeList;
     }
 }
