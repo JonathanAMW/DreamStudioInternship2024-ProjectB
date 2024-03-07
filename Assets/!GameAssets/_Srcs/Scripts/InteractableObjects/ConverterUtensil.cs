@@ -54,19 +54,19 @@ namespace UnderworldCafe.CookingSystem
             if(!_isFoodReady) 
             {
                 Debug.LogWarning("Food Not Ready");
-                _isProcessing = TryProcessInput(_playerControllerRef);
+                _isProcessing = TryProcessInput(_playerControllerRef.PlayerInventory);
                 return;
             }
 
-            ReturnNewFood(_playerControllerRef, ReadyToTakeFood);
+            ReturnNewFood(_playerControllerRef.PlayerInventory, ReadyToTakeFood);
         }
 
-        private bool TryProcessInput(PlayerController player)
+        private bool TryProcessInput(PlayerInventory playerInventory)
         {
-            if(player.PlayerInventory.PlayerInventoryList.Count <= 0) return false;
+            if(playerInventory.PlayerInventoryList.Count <= 0) return false;
 
-            List<Ingredient> inputtedIngredients = new List<Ingredient>(player.PlayerInventory.PlayerInventoryList);
-            player.PlayerInventory.RemoveInventoryAll();
+            List<Ingredient> inputtedIngredients = new List<Ingredient>(playerInventory.PlayerInventoryList);
+            playerInventory.RemoveInventoryAll();
 
             int inputSize = inputtedIngredients.Count;
 
@@ -84,7 +84,7 @@ namespace UnderworldCafe.CookingSystem
             //If there are no matched recipe
             if(recipeWithSameSize.Count <= 0)
             {
-                ReturnNewFood(player, FailedFood);
+                ReturnNewFood(playerInventory, FailedFood);
                 return false;
             }
 
@@ -112,7 +112,7 @@ namespace UnderworldCafe.CookingSystem
 
             //If there are no matched recipe
             Debug.LogWarning("Recipe not founded");
-            ReturnNewFood(player, FailedFood);
+            ReturnNewFood(playerInventory, FailedFood);
             return false;
         }
 
@@ -125,9 +125,9 @@ namespace UnderworldCafe.CookingSystem
             _isFoodReady = true;
         }
 
-        private void ReturnNewFood(PlayerController player, Ingredient newFood)
+        private void ReturnNewFood(PlayerInventory playerInventory, Ingredient newFood)
         {
-            player.PlayerInventory.AddInventory(newFood);
+            playerInventory.AddInventory(newFood);
             _isFoodReady = false;
         }
 
