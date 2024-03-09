@@ -25,10 +25,9 @@ namespace UnderworldCafe.CookingSystem
 
         [Header("=======[Generator Utensil Types]=======")]
         
-        [Tooltip("Pure: Will delete any ingredient then add this utensil generated ingredient. \n" +
-                 "Normal: Will only add this utensil generated ingredient. \n" + 
-                 "Conversion: Will generate and then convert to a new ingredient. \n")]
-         
+        [Tooltip("Normal: Will add this utensil generated ingredient. \n" + 
+                 "Pure: Will delete every ingredient in player inventory and then add this utensil generated ingredient. \n" +
+                 "Conversion: Will add this utensil generated ingredient and then convert all the ingredients in player inventory to a new ingredient. \n")]
         [SerializeField] private GeneratorUtensilType _generatorUtensilType;
         public enum GeneratorUtensilType
         {
