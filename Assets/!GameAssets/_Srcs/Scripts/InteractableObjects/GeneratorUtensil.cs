@@ -9,7 +9,8 @@ using UnityEngine;
 using UtilityCollections;
 
 using UnderworldCafe.Player;
-
+using UnderworldCafe.DataPersistenceSystem.Interfaces;
+using UnderworldCafe.DataPersistenceSystem.GameDatas;
 
 namespace UnderworldCafe.CookingSystem
 {
@@ -19,69 +20,66 @@ namespace UnderworldCafe.CookingSystem
     public class GeneratorUtensil : Utensil
     {
         [Header("=======[Generator Utensil Properties]=======")]
-        
         [SerializeField] private Ingredient _generatedIngredient;
 
+
         [Header("=======[Generator Utensil Types]=======")]
+        
+        [Tooltip("Pure: Will delete any ingredient then add this utensil generated ingredient. \n" +
+                 "Normal: Will only add this utensil generated ingredient. \n" + 
+                 "Conversion: Will generate and then convert to a new ingredient. \n")]
+         
+        [SerializeField] private GeneratorUtensilType _generatorUtensilType;
+        public enum GeneratorUtensilType
+        {
+            NORMAL_GENERATOR = 0,
+            PURE_GENERATOR,
+            CONVERSION_GENERATOR
+        }
+        
 
-        [Header("Pure Generator (Hover below field for explanation)")]
-        [Tooltip("Only generate one ingredient / If has more, will delete PlayerInventory (CHOOSE ONE ONLY!)")]
-        [SerializeField] private bool _isPureGenerator;   
-
-        [Header("Hybrid Generator (Hover below field for explanation)" )]    
-        [Tooltip("Can generate and convert if has correct ingredient combination (CHOOSE ONE ONLY!)")]
-        [SerializeField] private bool _isHybridGenerator;
+        [Header("Conversion Generator Properties (Fill only when selecting Converting Generator)")]
         [SerializeField] private List<GeneratorUtensilStatsData> StatsDataPerLevel;
         private GeneratorUtensilStatsData _currentStatsData;
 
         protected override void Start()
         {
             base.Start();
-            if(_isPureGenerator == _isHybridGenerator)
-            {
-                Debug.LogError("Pure Generator and Hybrid Generator cannot be the same!");
-            }
-
-            if(_isPureGenerator)
-            {
-                //None for now
-            }
-            else if(_isHybridGenerator)
+            
+            if(_generatorUtensilType == GeneratorUtensilType.CONVERSION_GENERATOR)
             {
                 // Need additional check for if player has loading save or not
                 _currentStatsData = StatsDataPerLevel[0];
             }
-
         }
 
         public override void Interact()
         {
-            if(_isPureGenerator)
+            switch(_generatorUtensilType)
             {
-                if(_playerControllerRef.PlayerInventory.PlayerInventoryList.Count != 0)
-                {
+                case GeneratorUtensilType.PURE_GENERATOR:
                     _playerControllerRef.PlayerInventory.RemoveInventoryAll();
                     _playerControllerRef.PlayerInventory.AddInventory(_generatedIngredient);
-                }
-            }
-            else if(_isHybridGenerator)
-            {
-                if(_playerControllerRef.PlayerInventory.PlayerInventoryList.Count <= 0) return; //No ingredient to process
+                    break;
 
-                //Give ingredient first
-                //Process it by looking at all possible recipe
-                //Return new processed ingredient
-                ReturnNewFood(_playerControllerRef.PlayerInventory, _generatedIngredient);
-                TryProcessInput(_playerControllerRef.PlayerInventory);
+                case GeneratorUtensilType.NORMAL_GENERATOR:
+                    ReturnNewFood(_playerControllerRef.PlayerInventory, _generatedIngredient);
+                    break;
+
+                case GeneratorUtensilType.CONVERSION_GENERATOR:
+                    ReturnNewFood(_playerControllerRef.PlayerInventory, _generatedIngredient);
+                    TryProcessInput(_playerControllerRef.PlayerInventory);
+                    break;
+
+                default:
+                    Debug.LogError("Unknown GeneratorUtensilType");
+                    break;
             }
         }
 
         private void TryProcessInput(PlayerInventory playerInventory)
         {
-            List<Ingredient> inputtedIngredients = new List<Ingredient>(playerInventory.PlayerInventoryList);
-            playerInventory.RemoveInventoryAll();
-
-            int inputSize = inputtedIngredients.Count;
+            int inputSize = playerInventory.PlayerInventoryList.Count;
 
             //Get all recipe with same size as inputtedIngredient
             List<Recipe> recipeWithSameSize = new List<Recipe>();
@@ -97,6 +95,7 @@ namespace UnderworldCafe.CookingSystem
             //If there are no matched size recipe
             if(recipeWithSameSize.Count <= 0)
             {
+                playerInventory.RemoveInventoryAll();
                 ReturnNewFood(playerInventory, FailedFood);
                 return;
             }
@@ -105,14 +104,17 @@ namespace UnderworldCafe.CookingSystem
             foreach(Recipe recipe in recipeWithSameSize)
             {
                 //This behavior does care about the order of ingredients
-                if(ListComparer.IsEqualWithSameOrder(inputtedIngredients, recipe.RecipeInformation.Requirements))
+                if(ListComparer.IsEqualWithSameOrder(playerInventory.PlayerInventoryList, recipe.RecipeInformation.Requirements))
                 {
+                    playerInventory.RemoveInventoryAll();
+                    ReturnNewFood(playerInventory, recipe.RecipeInformation.RecipeOutput);
                     return;
                 }
             }
 
             //If there are no matched recipe
             // Debug.LogWarning("Recipe not founded");
+            playerInventory.RemoveInventoryAll();
             ReturnNewFood(playerInventory, FailedFood);
             return;
         }
