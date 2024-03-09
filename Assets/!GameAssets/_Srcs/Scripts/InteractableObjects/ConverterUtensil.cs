@@ -17,7 +17,7 @@ using UnderworldCafe.DataPersistenceSystem.GameDatas;
 namespace UnderworldCafe.CookingSystem
 {
     /// <summary>
-    /// Base class for every appliances / kitchen utils scripts
+    /// Class that responsible to manage converter utensils behavior
     /// </summary>
     public class ConverterUtensil : Utensil
     {
@@ -60,57 +60,104 @@ namespace UnderworldCafe.CookingSystem
             ReturnNewFood(_playerControllerRef.PlayerInventory, ReadyToTakeFood);
         }
 
-        private bool TryProcessInput(PlayerInventory playerInventory)
-        {
-            if(playerInventory.PlayerInventoryList.Count <= 0) return false;
+        // private bool TryProcessInput(PlayerInventory playerInventory)
+        // {
+        //     if(playerInventory.PlayerInventoryList.Count <= 0) return false;
 
-            List<Ingredient> inputtedIngredients = new List<Ingredient>(playerInventory.PlayerInventoryList);
-            playerInventory.RemoveInventoryAll();
+        //     List<Ingredient> inputtedIngredients = new List<Ingredient>(playerInventory.PlayerInventoryList);
+        //     playerInventory.RemoveInventoryAll();
 
-            int inputSize = inputtedIngredients.Count;
+        //     int inputSize = inputtedIngredients.Count;
 
-            //Get all recipe with same size as inputtedIngredient
-            List<Recipe> recipeWithSameSize = new List<Recipe>();
-            foreach (Recipe recipe in _currentStatsData.RecipeList)
-            {
-                int recipeRequirementSize = recipe.RecipeInformation.Requirements.Count;
-                if(recipeRequirementSize == inputSize)
-                {
-                    recipeWithSameSize.Add(recipe);
-                }
-            }
+        //     //Get all recipe with same size as inputtedIngredient
+        //     List<Recipe> recipeWithSameSize = new List<Recipe>();
+        //     foreach (Recipe recipe in _currentStatsData.RecipeList)
+        //     {
+        //         int recipeRequirementSize = recipe.RecipeInformation.Requirements.Count;
+        //         if(recipeRequirementSize == inputSize)
+        //         {
+        //             recipeWithSameSize.Add(recipe);
+        //         }
+        //     }
 
-            //If there are no matched recipe
-            if(recipeWithSameSize.Count <= 0)
-            {
-                ReturnNewFood(playerInventory, FailedFood);
-                return false;
-            }
+        //     //If there are no matched recipe
+        //     if(recipeWithSameSize.Count <= 0)
+        //     {
+        //         ReturnNewFood(playerInventory, FailedFood);
+        //         return false;
+        //     }
 
             
-            foreach(Recipe recipe in recipeWithSameSize)
-            {
-                //This behavior doesnt care about the order of ingredients
-                // if(ListComparer.IsEqualWithoutSameOrder(inputtedIngredients, recipe.RecipeInformation.Requirements))
-                // {
-                //     Debug.Log("Found the same recipe");
-                //     _isProcessing = true;
-                //     StartCoroutine(ProcessingFood(recipe));
-                //     return true;
-                // }
+        //     foreach(Recipe recipe in recipeWithSameSize)
+        //     {
+        //         //This behavior doesnt care about the order of ingredients
+        //         // if(ListComparer.IsEqualWithoutSameOrder(inputtedIngredients, recipe.RecipeInformation.Requirements))
+        //         // {
+        //         //     Debug.Log("Found the same recipe");
+        //         //     _isProcessing = true;
+        //         //     StartCoroutine(ProcessingFood(recipe));
+        //         //     return true;
+        //         // }
 
-                //This behavior does care about the order of ingredients
-                if(ListComparer.IsEqualWithSameOrder(inputtedIngredients, recipe.RecipeInformation.Requirements))
+        //         //This behavior does care about the order of ingredients
+        //         if(ListComparer.IsEqualWithSameOrder(inputtedIngredients, recipe.RecipeInformation.Requirements))
+        //         {
+        //             Debug.LogWarning("Found the same recipe");
+        //             _isProcessing = true;
+        //             StartCoroutine(ProcessingFood(recipe.RecipeInformation.RecipeOutput));
+        //             return true;
+        //         }
+        //     }
+
+        //     //If there are no matched recipe
+        //     Debug.LogWarning("Recipe not founded");
+        //     ReturnNewFood(playerInventory, FailedFood);
+        //     return false;
+        // }
+
+        private bool TryProcessInput(PlayerInventory playerInventory)
+        {
+            // int inputSize = playerInventory.PlayerInventoryList.Count;
+
+            // //Get all recipe with same size as inputtedIngredient
+            // List<Recipe> recipeWithSameSize = new List<Recipe>();
+            // foreach (Recipe recipe in _currentStatsData.RecipeList)
+            // {
+            //     int recipeRequirementSize = recipe.RecipeInformation.Requirements.Count;
+            //     if(recipeRequirementSize == inputSize)
+            //     {
+            //         recipeWithSameSize.Add(recipe);
+            //     }
+            // }
+
+            // //If there are no matched size recipe
+            // if(recipeWithSameSize.Count <= 0)
+            // {
+            //     playerInventory.RemoveInventoryAll();
+            //     ReturnNewFood(playerInventory, FailedFood);
+            //     return;
+            // }
+
+            
+            foreach(Recipe recipe in _currentStatsData.RecipeList)
+            {
+                if(recipe.RecipeInformation.Requirements.Count == playerInventory.PlayerInventoryList.Count)
                 {
-                    Debug.LogWarning("Found the same recipe");
-                    _isProcessing = true;
-                    StartCoroutine(ProcessingFood(recipe.RecipeInformation.RecipeOutput));
-                    return true;
+                    //This behavior does care about the order of ingredients
+                    if(ListComparer.IsEqualWithSameOrder(playerInventory.PlayerInventoryList, recipe.RecipeInformation.Requirements))
+                    {
+                        playerInventory.RemoveInventoryAll();
+
+                        StartCoroutine(ProcessingFood(recipe.RecipeInformation.RecipeOutput));
+
+                        return true;
+                    }
                 }
             }
 
             //If there are no matched recipe
-            Debug.LogWarning("Recipe not founded");
+            // Debug.LogWarning("Recipe not founded");
+            playerInventory.RemoveInventoryAll();
             ReturnNewFood(playerInventory, FailedFood);
             return false;
         }

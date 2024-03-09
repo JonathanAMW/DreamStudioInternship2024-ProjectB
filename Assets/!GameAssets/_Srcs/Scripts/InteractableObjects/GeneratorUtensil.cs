@@ -15,7 +15,7 @@ using UnderworldCafe.DataPersistenceSystem.GameDatas;
 namespace UnderworldCafe.CookingSystem
 {
     /// <summary>
-    /// Base class for every appliances / kitchen utils scripts
+    /// Class that responsible to manage generator utensils behavior
     /// </summary>
     public class GeneratorUtensil : Utensil
     {
@@ -78,36 +78,39 @@ namespace UnderworldCafe.CookingSystem
 
         private void TryProcessInput(PlayerInventory playerInventory)
         {
-            int inputSize = playerInventory.PlayerInventoryList.Count;
+            // int inputSize = playerInventory.PlayerInventoryList.Count;
 
-            //Get all recipe with same size as inputtedIngredient
-            List<Recipe> recipeWithSameSize = new List<Recipe>();
-            foreach (Recipe recipe in _currentStatsData.RecipeList)
-            {
-                int recipeRequirementSize = recipe.RecipeInformation.Requirements.Count;
-                if(recipeRequirementSize == inputSize)
-                {
-                    recipeWithSameSize.Add(recipe);
-                }
-            }
+            // //Get all recipe with same size as inputtedIngredient
+            // List<Recipe> recipeWithSameSize = new List<Recipe>();
+            // foreach (Recipe recipe in _currentStatsData.RecipeList)
+            // {
+            //     int recipeRequirementSize = recipe.RecipeInformation.Requirements.Count;
+            //     if(recipeRequirementSize == inputSize)
+            //     {
+            //         recipeWithSameSize.Add(recipe);
+            //     }
+            // }
 
-            //If there are no matched size recipe
-            if(recipeWithSameSize.Count <= 0)
-            {
-                playerInventory.RemoveInventoryAll();
-                ReturnNewFood(playerInventory, FailedFood);
-                return;
-            }
+            // //If there are no matched size recipe
+            // if(recipeWithSameSize.Count <= 0)
+            // {
+            //     playerInventory.RemoveInventoryAll();
+            //     ReturnNewFood(playerInventory, FailedFood);
+            //     return;
+            // }
 
             
-            foreach(Recipe recipe in recipeWithSameSize)
+            foreach(Recipe recipe in _currentStatsData.RecipeList)
             {
-                //This behavior does care about the order of ingredients
-                if(ListComparer.IsEqualWithSameOrder(playerInventory.PlayerInventoryList, recipe.RecipeInformation.Requirements))
+                if(recipe.RecipeInformation.Requirements.Count == playerInventory.PlayerInventoryList.Count)
                 {
-                    playerInventory.RemoveInventoryAll();
-                    ReturnNewFood(playerInventory, recipe.RecipeInformation.RecipeOutput);
-                    return;
+                    //This behavior does care about the order of ingredients
+                    if(ListComparer.IsEqualWithSameOrder(playerInventory.PlayerInventoryList, recipe.RecipeInformation.Requirements))
+                    {
+                        playerInventory.RemoveInventoryAll();
+                        ReturnNewFood(playerInventory, recipe.RecipeInformation.RecipeOutput);
+                        return;
+                    }
                 }
             }
 
