@@ -57,7 +57,39 @@ namespace UnderworldCafe.CookingSystem
         [SerializeField] private TextMeshProUGUI _indexInQueueText;
         [SerializeField] private Animator _utensilAnimator;
         #endregion
-
+            
+        protected virtual void OnValidate()
+        {
+            if(string.IsNullOrEmpty(_utensilInformations.Name))
+            {
+                Debug.LogWarning("No name has been set on utensil: " + gameObject.name);
+            }
+            if(string.IsNullOrEmpty(_utensilInformations.Description))
+            {
+                Debug.LogWarning("No description has been set on utensil: " + gameObject.name);
+            }
+            if(FailedFood == null)
+            {
+                Debug.LogWarning("No failed food has been set on utensil: " + gameObject.name);
+            }
+            if(_interactPos == null)
+            {
+                Debug.LogWarning("No interact position has been set on utensil: " + gameObject.name);
+            }
+            if(_selectedIndicator == null)
+            {
+                Debug.LogWarning("No selected indicator has been set on utensil: " + gameObject.name);
+            }
+            if(_indexInQueueText == null)
+            {
+                Debug.LogWarning("No index in queue text has been set on utensil: " + gameObject.name);
+            }
+            // if(_utensilAnimator == null)
+            // {
+            //     Debug.LogWarning("No animator has been set on utensil: " + gameObject.name);
+            // }
+            
+        }
 
         protected virtual void Start() 
         {

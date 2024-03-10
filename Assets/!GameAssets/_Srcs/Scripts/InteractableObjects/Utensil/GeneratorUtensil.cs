@@ -29,17 +29,37 @@ namespace UnderworldCafe.CookingSystem
                  "Pure: Will delete every ingredient in player inventory and then add this utensil generated ingredient. \n" +
                  "Conversion: Will add this utensil generated ingredient and then convert all the ingredients in player inventory to a new ingredient. \n")]
         [SerializeField] private GeneratorUtensilType _generatorUtensilType;
+        
+        [Header("Conversion Generator Properties (Fill only when selecting Converting Generator)")]
+        [SerializeField] private List<GeneratorUtensilStatsData> _statsDataPerLevel;
+        private GeneratorUtensilStatsData _currentStatsData;
+
+
+
         public enum GeneratorUtensilType
         {
             NORMAL_GENERATOR = 0,
             PURE_GENERATOR,
             CONVERSION_GENERATOR
         }
+        public List<GeneratorUtensilStatsData> StatsDataPerLevel => _statsDataPerLevel;
         
 
-        [Header("Conversion Generator Properties (Fill only when selecting Converting Generator)")]
-        [SerializeField] private List<GeneratorUtensilStatsData> StatsDataPerLevel;
-        private GeneratorUtensilStatsData _currentStatsData;
+        //Validating Data
+        protected override void OnValidate()
+        {
+            base.OnValidate();
+
+            if(_generatedIngredient == null)
+            {
+                Debug.LogWarning("No generated ingredient data have been set on " + gameObject.name);
+            }
+
+            if(_generatorUtensilType == GeneratorUtensilType.CONVERSION_GENERATOR && _statsDataPerLevel.Count <= 0)
+            {
+                Debug.LogWarning("No stats data have been set on " + gameObject.name);
+            }
+        }
 
         protected override void Start()
         {
@@ -48,7 +68,7 @@ namespace UnderworldCafe.CookingSystem
             if(_generatorUtensilType == GeneratorUtensilType.CONVERSION_GENERATOR)
             {
                 // Need additional check for if player has loading save or not
-                _currentStatsData = StatsDataPerLevel[0];
+                _currentStatsData = _statsDataPerLevel[0];
             }
         }
 
@@ -77,35 +97,16 @@ namespace UnderworldCafe.CookingSystem
         }
 
         private void TryProcessInput(PlayerInventory playerInventory)
-        {
-            // int inputSize = playerInventory.PlayerInventoryList.Count;
-
-            // //Get all recipe with same size as inputtedIngredient
-            // List<Recipe> recipeWithSameSize = new List<Recipe>();
-            // foreach (Recipe recipe in _currentStatsData.RecipeList)
-            // {
-            //     int recipeRequirementSize = recipe.RecipeInformation.Requirements.Count;
-            //     if(recipeRequirementSize == inputSize)
-            //     {
-            //         recipeWithSameSize.Add(recipe);
-            //     }
-            // }
-
-            // //If there are no matched size recipe
-            // if(recipeWithSameSize.Count <= 0)
-            // {
-            //     playerInventory.RemoveInventoryAll();
-            //     ReturnNewFood(playerInventory, FailedFood);
-            //     return;
-            // }
-
-            
+        { 
             foreach(Recipe recipe in _currentStatsData.RecipeList)
             {
                 if(recipe.RecipeInformation.Requirements.Count == playerInventory.PlayerInventoryList.Count)
                 {
                     //This behavior does care about the order of ingredients
                     if(ListComparer.IsEqualWithSameOrder(playerInventory.PlayerInventoryList, recipe.RecipeInformation.Requirements))
+
+                    //This behavior does not care about the order of ingredients
+                    // if(ListComparer.IsEqualWithoutSameOrder(playerInventory.PlayerInventoryList, recipe.RecipeInformation.Requirements))
                     {
                         playerInventory.RemoveInventoryAll();
                         ReturnNewFood(playerInventory, recipe.RecipeInformation.RecipeOutput);

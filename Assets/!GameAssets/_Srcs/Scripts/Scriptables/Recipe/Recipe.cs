@@ -26,5 +26,21 @@ namespace UnderworldCafe.CookingSystem
         [SerializeField] private RecipeInformations _recipeInformation;
         public RecipeInformations RecipeInformation => _recipeInformation;
 
+
+        private void OnValidate()
+        {
+            if(string.IsNullOrEmpty(_recipeInformation.RecipeName))
+            {
+                Debug.LogError("No name has been set on recipe: " + name);
+            }
+            if(_recipeInformation.RecipeOutput == null)
+            {
+                Debug.LogError("No output has been set on recipe: " + name);
+            }
+            if(_recipeInformation.Requirements == null)
+            {
+                Debug.LogError("No requirements has been set on recipe: " + name);
+            }
+        }
     }
 }

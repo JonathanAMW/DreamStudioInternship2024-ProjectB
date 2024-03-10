@@ -27,6 +27,24 @@ namespace UnderworldCafe.Player
         [SerializeField] private GameObject _inventorySlotPrefab;
         #endregion
         
+        //Validating Only
+        private void OnValidate()
+        {
+            if(_slotSpawnPointObject == null)
+            {
+                Debug.LogWarning("No slot spawn point has been set on " + gameObject.name);
+            }
+            if(_slotObjectInScene == null)
+            {
+                Debug.LogWarning("No slot has been set on " + gameObject.name);
+            }
+            if(_inventorySlotPrefab == null)
+            {
+                Debug.LogWarning("No slot prefab has been set on " + gameObject.name);
+            }
+        }
+
+
         private void Awake()
         {
             PlayerInventoryList = new List<Ingredient>();
@@ -46,14 +64,15 @@ namespace UnderworldCafe.Player
         {
             //Back-end
             var newIngredient = _ingredientPool.Get();
-            newIngredient.CopyIngredientInformation(ingredientToAdd);
-            PlayerInventoryList.Add(newIngredient);
+            // newIngredient.CopyIngredientInformation(ingredientToAdd);
+            newIngredient = ingredientToAdd;
 
+            PlayerInventoryList.Add(newIngredient);
 
             //visual or front-end
             for(int i = 0; i < _slotObjectInScene.Count; i++)
             {
-                Debug.Log("Checking slot " + i);
+                // Debug.Log("Checking slot " + i);
                 if(!_slotObjectInScene[i].activeSelf)
                 {
                     _slotObjectInScene[i].GetComponent<SpriteRenderer>().sprite = ingredientToAdd.IngredientInformation.IngredientSprite;
@@ -64,12 +83,12 @@ namespace UnderworldCafe.Player
                 //Create new slot if all slot is full
                 if(i >= _slotObjectInScene.Count - 1)
                 {
-                    Debug.Log("Creating new slot");
+                    // Debug.Log("Creating new slot");
                     var newSlot = Instantiate(_inventorySlotPrefab, _slotSpawnPointObject.transform);
                     _slotObjectInScene.Add(newSlot);
                     newSlot.GetComponent<SpriteRenderer>().sprite = ingredientToAdd.IngredientInformation.IngredientSprite;
                     newSlot.SetActive(true);
-                    Debug.Log("Creating new slot finished");
+                    // Debug.Log("Creating new slot finished");
                     break;
                 }
             }
