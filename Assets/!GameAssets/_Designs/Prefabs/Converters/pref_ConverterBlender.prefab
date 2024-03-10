@@ -342,28 +342,15 @@ MonoBehaviour:
   _utensilInformations:
     Name: Blender
     Description: 
+  FailedFood: {fileID: 11400000, guid: 656c598db18148343b715a8f24673c9b, type: 2}
   _interactPos: {fileID: 9182812213336863791}
   _selectedIndicator: {fileID: 7691055194879091446}
   _indexInQueueText: {fileID: 1534687146145955894}
   _utensilAnimator: {fileID: 0}
-  StatsDataPerLevel:
+  _statsDataPerLevel:
   - RecipeList:
-    - {fileID: 11400000, guid: 945aa90cacc62f0498c06f97af182256, type: 2}
-    - {fileID: 11400000, guid: 837b61343debba14c9e5c19c4c307ac6, type: 2}
-    ConvertingTime: 4
-  - RecipeList:
-    - {fileID: 11400000, guid: 945aa90cacc62f0498c06f97af182256, type: 2}
-    - {fileID: 11400000, guid: 837b61343debba14c9e5c19c4c307ac6, type: 2}
-    ConvertingTime: 3
-  - RecipeList:
-    - {fileID: 11400000, guid: 945aa90cacc62f0498c06f97af182256, type: 2}
-    - {fileID: 11400000, guid: 837b61343debba14c9e5c19c4c307ac6, type: 2}
-    ConvertingTime: 2
-  - RecipeList:
-    - {fileID: 11400000, guid: 945aa90cacc62f0498c06f97af182256, type: 2}
-    - {fileID: 11400000, guid: 837b61343debba14c9e5c19c4c307ac6, type: 2}
-    ConvertingTime: 1
-  FailedFood: {fileID: 11400000, guid: 656c598db18148343b715a8f24673c9b, type: 2}
+    - {fileID: 11400000, guid: f0ab87823f0d1134a836ea90b309e40c, type: 2}
+    ConvertingTime: 0
 --- !u!1 &7625041113750758069
 GameObject:
   m_ObjectHideFlags: 0

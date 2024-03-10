@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 237493057579481133}
   - component: {fileID: 1374833496142211657}
   m_Layer: 0
-  m_Name: pref_GeneratorPlate
+  m_Name: pref_GeneratorGlass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,12 +342,14 @@ MonoBehaviour:
   _utensilInformations:
     Name: 
     Description: 
-  _interactPos: {fileID: 0}
-  _selectedIndicator: {fileID: 0}
-  _indexInQueueText: {fileID: 0}
+  FailedFood: {fileID: 0}
+  _interactPos: {fileID: 9182812213336863791}
+  _selectedIndicator: {fileID: 7691055194879091446}
+  _indexInQueueText: {fileID: 1534687146145955894}
   _utensilAnimator: {fileID: 0}
-  _generatedIngredient: {fileID: 11400000, guid: ee2d9ca677f8e4642a8ff8f9786aa240, type: 2}
-  _isMultipleCarryable: {fileID: 0}
+  _generatedIngredient: {fileID: 11400000, guid: fc860d23578a5f846a1a1bf734c626e4, type: 2}
+  _generatorUtensilType: 0
+  StatsDataPerLevel: []
 --- !u!1 &7625041113750758069
 GameObject:
   m_ObjectHideFlags: 0
