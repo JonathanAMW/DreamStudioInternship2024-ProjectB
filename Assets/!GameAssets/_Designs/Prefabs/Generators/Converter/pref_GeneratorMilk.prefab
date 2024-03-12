@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 237493057579481133}
   - component: {fileID: 1374833496142211657}
   m_Layer: 3
-  m_Name: pref_GeneratorLettuce
+  m_Name: pref_GeneratorMilk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,11 +347,13 @@ MonoBehaviour:
   _selectedIndicator: {fileID: 7691055194879091446}
   _indexInQueueText: {fileID: 1534687146145955894}
   _utensilAnimator: {fileID: 0}
-  _generatedIngredient: {fileID: 11400000, guid: 78781c606182c6a479de8667b58bf5a2, type: 2}
+  _generatedIngredient: {fileID: 11400000, guid: 21f2ecce9fb30b24c9551d43ab4c5067, type: 2}
   _generatorUtensilType: 2
   _statsDataPerLevel:
   - RecipeList:
-    - {fileID: 11400000, guid: c930b0c69d88e444ab27314dfc3af2ea, type: 2}
+    - {fileID: 11400000, guid: eeb34074934773a44923db3baa0dbc3e, type: 2}
+    - {fileID: 11400000, guid: f0ab87823f0d1134a836ea90b309e40c, type: 2}
+    - {fileID: 11400000, guid: 4f76983909f42674babf8447be6857b0, type: 2}
 --- !u!1 &7625041113750758069
 GameObject:
   m_ObjectHideFlags: 0
