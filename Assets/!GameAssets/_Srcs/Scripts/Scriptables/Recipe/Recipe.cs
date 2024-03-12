@@ -24,6 +24,7 @@ namespace UnderworldCafe.CookingSystem
         }
 
         [SerializeField] private RecipeInformations _recipeInformation;
+
         public RecipeInformations RecipeInformation => _recipeInformation;
 
 

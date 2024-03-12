@@ -26,12 +26,11 @@ namespace UnderworldCafe.CookingSystem
         }
 
         [SerializeField] private IngredientInformations _ingredientInformation;
-
         public IngredientInformations IngredientInformation => _ingredientInformation;
 
 
         private void OnValidate()
-        {
+        {            
             if(string.IsNullOrEmpty(_ingredientInformation.Name))
             {
                 Debug.LogWarning("No name has been set on ingredient: " + name);
