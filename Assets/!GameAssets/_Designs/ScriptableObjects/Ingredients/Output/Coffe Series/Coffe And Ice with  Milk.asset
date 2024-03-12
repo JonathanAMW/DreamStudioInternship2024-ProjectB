@@ -15,4 +15,4 @@ MonoBehaviour:
   _ingredientInformation:
     Name: Coffe And Ice with Milk
     Description: Coffe And Ice With Milk
-    IngredientSprite: {fileID: 78463665, guid: 2acd47dce3c502f4684158eb38b70838, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: 93d1b70b0909764499322752f36acd20, type: 3}

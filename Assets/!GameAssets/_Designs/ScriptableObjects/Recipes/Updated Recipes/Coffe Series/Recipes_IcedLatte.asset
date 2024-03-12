@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _recipeInformation:
     RecipeName: Ice Coffe
-    RecipeOutput: {fileID: 11400000, guid: 163342fb48e5c9448ab9490a8833833c, type: 2}
+    RecipeOutput: {fileID: 11400000, guid: 4331fb9680be8e84799c764609bba8aa, type: 2}
     Requirements:
     - {fileID: 11400000, guid: 163342fb48e5c9448ab9490a8833833c, type: 2}

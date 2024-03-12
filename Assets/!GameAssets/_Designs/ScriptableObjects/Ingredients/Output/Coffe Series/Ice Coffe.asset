@@ -15,4 +15,4 @@ MonoBehaviour:
   _ingredientInformation:
     Name: Ice Coffe
     Description: Ice Coffe
-    IngredientSprite: {fileID: 78463665, guid: 2acd47dce3c502f4684158eb38b70838, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: 1d63b3a0547cb674087ba7644c61325b, type: 3}
