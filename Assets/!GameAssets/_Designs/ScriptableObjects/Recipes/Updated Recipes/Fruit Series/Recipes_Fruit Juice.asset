@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8ee8136cf3ee4442904eac2458a61e2, type: 3}
-  m_Name: Recipes_Sishimi
+  m_Name: Recipes_Fruit Juice
   m_EditorClassIdentifier: 
   _recipeInformation:
-    RecipeName: Sashimi
-    RecipeOutput: {fileID: 11400000, guid: 5c3d641fb84382544bfa2c274f0f5d57, type: 2}
+    RecipeName: Fruit Juice
+    RecipeOutput: {fileID: 11400000, guid: 3fecfe217bff439458851158742dd138, type: 2}
     Requirements:
-    - {fileID: 11400000, guid: ee2d9ca677f8e4642a8ff8f9786aa240, type: 2}
-    - {fileID: 11400000, guid: 858bcba70262d8145bc9be8c7fce73cb, type: 2}
+    - {fileID: 11400000, guid: 8f231f8f419436148817673c004bec66, type: 2}

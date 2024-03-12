@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8ee8136cf3ee4442904eac2458a61e2, type: 3}
-  m_Name: Recipes_FruitJuice
+  m_Name: Recipes_Glass and apple
   m_EditorClassIdentifier: 
   _recipeInformation:
-    RecipeName: Fruit Juice
-    RecipeOutput: {fileID: 11400000, guid: 3fecfe217bff439458851158742dd138, type: 2}
+    RecipeName: Glass and apple
+    RecipeOutput: {fileID: 11400000, guid: 8f231f8f419436148817673c004bec66, type: 2}
     Requirements:
     - {fileID: 11400000, guid: fc860d23578a5f846a1a1bf734c626e4, type: 2}
     - {fileID: 11400000, guid: 60d609842a35bf34587647c84721b018, type: 2}

@@ -339,15 +339,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b0a5a5e38232746b2b4bda3c317adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _utensilInformations:
+  <UtensilInformnations>k__BackingField:
     Name: 
     Description: 
+  FailedFood: {fileID: 11400000, guid: 656c598db18148343b715a8f24673c9b, type: 2}
   _interactPos: {fileID: 0}
   _selectedIndicator: {fileID: 0}
   _indexInQueueText: {fileID: 0}
   _utensilAnimator: {fileID: 0}
   _generatedIngredient: {fileID: 11400000, guid: 1ef5e2029b5cef64aa7f4b4923d34f6c, type: 2}
-  _isMultipleCarryable: 1
+  _generatorUtensilType: 2
+  _statsDataPerLevel:
+  - RecipeList:
+    - {fileID: 11400000, guid: 9ae5040d62324b5438c5dd18db331ce5, type: 2}
 --- !u!1 &7625041113750758069
 GameObject:
   m_ObjectHideFlags: 0

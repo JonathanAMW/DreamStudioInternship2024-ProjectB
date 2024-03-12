@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8ee8136cf3ee4442904eac2458a61e2, type: 3}
-  m_Name: Recipes_SimpleSalad
+  m_Name: Recipes_Plate and Fish
   m_EditorClassIdentifier: 
   _recipeInformation:
-    RecipeName: Plate With Lettuce
-    RecipeOutput: {fileID: 11400000, guid: 6f111dd7398e5604ab83c003fb7769b1, type: 2}
+    RecipeName: Plate And Fish
+    RecipeOutput: {fileID: 11400000, guid: 233295adb6a6198429a25e60a92c5c37, type: 2}
     Requirements:
-    - {fileID: 11400000, guid: 6f111dd7398e5604ab83c003fb7769b1, type: 2}
+    - {fileID: 11400000, guid: ee2d9ca677f8e4642a8ff8f9786aa240, type: 2}
+    - {fileID: 11400000, guid: 858bcba70262d8145bc9be8c7fce73cb, type: 2}

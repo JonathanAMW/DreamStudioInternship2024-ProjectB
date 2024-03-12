@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1374833496142211657, guid: bfbd2d181c7cf1e4190bf6a0394475f7, type: 3}
+      propertyPath: FailedFood
+      value: 
+      objectReference: {fileID: 11400000, guid: 656c598db18148343b715a8f24673c9b, type: 2}
+    - target: {fileID: 1374833496142211657, guid: bfbd2d181c7cf1e4190bf6a0394475f7, type: 3}
       propertyPath: _generatedIngredient
       value: 
       objectReference: {fileID: 11400000, guid: 21f2ecce9fb30b24c9551d43ab4c5067, type: 2}
@@ -21,13 +25,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1374833496142211657, guid: bfbd2d181c7cf1e4190bf6a0394475f7, type: 3}
+      propertyPath: _statsDataPerLevel.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374833496142211657, guid: bfbd2d181c7cf1e4190bf6a0394475f7, type: 3}
       propertyPath: StatsDataPerLevel.Array.data[0].RecipeList.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374833496142211657, guid: bfbd2d181c7cf1e4190bf6a0394475f7, type: 3}
+      propertyPath: _statsDataPerLevel.Array.data[0].RecipeList.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1374833496142211657, guid: bfbd2d181c7cf1e4190bf6a0394475f7, type: 3}
       propertyPath: StatsDataPerLevel.Array.data[0].RecipeList.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: f0ab87823f0d1134a836ea90b309e40c, type: 2}
+    - target: {fileID: 1374833496142211657, guid: bfbd2d181c7cf1e4190bf6a0394475f7, type: 3}
+      propertyPath: _statsDataPerLevel.Array.data[0].RecipeList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f76983909f42674babf8447be6857b0, type: 2}
+    - target: {fileID: 1374833496142211657, guid: bfbd2d181c7cf1e4190bf6a0394475f7, type: 3}
+      propertyPath: _statsDataPerLevel.Array.data[0].RecipeList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f0ab87823f0d1134a836ea90b309e40c, type: 2}
+    - target: {fileID: 1374833496142211657, guid: bfbd2d181c7cf1e4190bf6a0394475f7, type: 3}
+      propertyPath: _statsDataPerLevel.Array.data[0].RecipeList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: eeb34074934773a44923db3baa0dbc3e, type: 2}
     - target: {fileID: 3930631001790222133, guid: bfbd2d181c7cf1e4190bf6a0394475f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
