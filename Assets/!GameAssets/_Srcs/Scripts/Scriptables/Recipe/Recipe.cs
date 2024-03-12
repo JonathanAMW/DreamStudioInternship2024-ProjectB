@@ -31,15 +31,15 @@ namespace UnderworldCafe.CookingSystem
         {
             if(string.IsNullOrEmpty(_recipeInformation.RecipeName))
             {
-                Debug.LogError("No name has been set on recipe: " + name);
+                Debug.LogWarning("No name has been set on recipe: " + name);
             }
             if(_recipeInformation.RecipeOutput == null)
             {
-                Debug.LogError("No output has been set on recipe: " + name);
+                Debug.LogWarning("No output has been set on recipe: " + name);
             }
             if(_recipeInformation.Requirements == null)
             {
-                Debug.LogError("No requirements has been set on recipe: " + name);
+                Debug.LogWarning("No requirements has been set on recipe: " + name);
             }
         }
     }

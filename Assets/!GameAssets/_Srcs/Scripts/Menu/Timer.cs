@@ -17,6 +17,7 @@ namespace UnderworldCafe
         [SerializeField] float timerDuration = 10f;
 
         float timePassed;
+        public float TimePassed => timePassed;
         private void Start()
         {
             timePassed = 0;

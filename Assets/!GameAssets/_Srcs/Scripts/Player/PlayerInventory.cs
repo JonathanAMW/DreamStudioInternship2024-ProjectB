@@ -18,7 +18,7 @@ namespace UnderworldCafe.Player
     /// </summary>
     public class PlayerInventory : MonoBehaviour
     {
-        private ObjectPool<Ingredient> _ingredientPool;
+        // private ObjectPool<Ingredient> _ingredientPool;
         public List<Ingredient> PlayerInventoryList { get; private set; }
 
         #region Visual
@@ -51,7 +51,7 @@ namespace UnderworldCafe.Player
 
             // Initialize the object pool
             // Arg => Constructor, Action when getting object from pool, Action when returning object to pool
-            _ingredientPool = new ObjectPool<Ingredient>(() => ScriptableObject.CreateInstance<Ingredient>(), null, null); 
+            // _ingredientPool = new ObjectPool<Ingredient>(() => ScriptableObject.CreateInstance<Ingredient>(), null, null); 
 
             // Initialize the slots
             _slotObjectInScene = new List<GameObject>();
@@ -63,11 +63,11 @@ namespace UnderworldCafe.Player
         public void AddInventory(Ingredient ingredientToAdd)
         {
             //Back-end
-            var newIngredient = _ingredientPool.Get();
+            // var newIngredient = _ingredientPool.Get();
             // newIngredient.CopyIngredientInformation(ingredientToAdd);
-            newIngredient = ingredientToAdd;
+            // newIngredient = ingredientToAdd;
 
-            PlayerInventoryList.Add(newIngredient);
+            PlayerInventoryList.Add(ingredientToAdd);
 
             //visual or front-end
             for(int i = 0; i < _slotObjectInScene.Count; i++)
@@ -106,10 +106,10 @@ namespace UnderworldCafe.Player
             }
 
             // Return the object to the pool for each ingredient in the inventory list
-            foreach (Ingredient ingredient in PlayerInventoryList)
-            {
-                _ingredientPool.Release(ingredient);
-            }
+            // foreach (Ingredient ingredient in PlayerInventoryList)
+            // {
+            //     _ingredientPool.Release(ingredient);
+            // }
 
             PlayerInventoryList.Clear();
         }

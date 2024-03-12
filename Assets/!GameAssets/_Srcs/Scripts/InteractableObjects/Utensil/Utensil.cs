@@ -28,14 +28,15 @@ namespace UnderworldCafe.CookingSystem
         
 
         #region Utensil Information
-        [Header("=======[Utensil Information]=======")]        
-        [SerializeField] private UtensilInformation _utensilInformations;
-        public UtensilInformation UtensilInformnations => _utensilInformations;
-
+        [field: Header("=======[Utensil Information]=======")]        
+        [field: SerializeField] public UtensilInformation UtensilInformnations { get; private set; }
+        
         [System.Serializable]
         public struct UtensilInformation
         {
             public string Name;
+
+            [TextArea]
             public string Description;
         }
         #endregion
@@ -60,11 +61,11 @@ namespace UnderworldCafe.CookingSystem
             
         protected virtual void OnValidate()
         {
-            if(string.IsNullOrEmpty(_utensilInformations.Name))
+            if(string.IsNullOrEmpty(UtensilInformnations.Name))
             {
                 Debug.LogWarning("No name has been set on utensil: " + gameObject.name);
             }
-            if(string.IsNullOrEmpty(_utensilInformations.Description))
+            if(string.IsNullOrEmpty(UtensilInformnations.Description))
             {
                 Debug.LogWarning("No description has been set on utensil: " + gameObject.name);
             }
