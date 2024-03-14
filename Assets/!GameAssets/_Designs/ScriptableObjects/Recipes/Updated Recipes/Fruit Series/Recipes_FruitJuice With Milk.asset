@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ee8136cf3ee4442904eac2458a61e2, type: 3}
+  m_Name: Recipes_FruitJuice With Milk
+  m_EditorClassIdentifier: 
+  _recipeInformation:
+    RecipeName: Fruit Juice WIth Milk
+    RecipeOutput: {fileID: 11400000, guid: 3ba0c534114c7f54eb7777482da81ae1, type: 2}
+    Requirements:
+    - {fileID: 11400000, guid: 3fecfe217bff439458851158742dd138, type: 2}
+    - {fileID: 11400000, guid: 21f2ecce9fb30b24c9551d43ab4c5067, type: 2}

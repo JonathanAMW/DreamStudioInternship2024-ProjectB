@@ -3,6 +3,7 @@
 // Created  : "2024/10/05"
 //----------------------------------------------------------------------
 
+using System.ComponentModel;
 using UnityEngine;
 
 
@@ -18,17 +19,30 @@ namespace UnderworldCafe.CookingSystem
         public struct IngredientInformations
         {
             public string Name;
+
+            [TextArea]
             public string Description;
             public Sprite IngredientSprite;
         }
 
         [SerializeField] private IngredientInformations _ingredientInformation;
-
         public IngredientInformations IngredientInformation => _ingredientInformation;
 
-        public void CopyIngredientInformation(Ingredient ingredientToCopy)
-        {
-            _ingredientInformation = ingredientToCopy.IngredientInformation;
+
+        private void OnValidate()
+        {            
+            if(string.IsNullOrEmpty(_ingredientInformation.Name))
+            {
+                Debug.LogWarning("No name has been set on ingredient: " + name);
+            }
+            if(string.IsNullOrEmpty(_ingredientInformation.Description))
+            {
+                Debug.LogWarning("No name has been set on ingredient: " + name);
+            }
+            if(_ingredientInformation.IngredientSprite == null)
+            {
+                Debug.LogWarning("No Sprite has been set on ingredient: " + name);
+            }
         }
     }
 }

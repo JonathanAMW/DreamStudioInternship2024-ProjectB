@@ -20,20 +20,20 @@ namespace UnderworldCafe.PathfindingSystem
         {
             if(end==null)
             {
-                Debug.Log("end is null");
+                Debug.LogWarning("end is null");
             }
             if(start == null)
             {
-                Debug.Log("start is null");
+                Debug.LogWarning("start is null");
             }
             if(end.Height >= 1)
             {
-                Debug.Log("end height is more than 1");
+                Debug.LogWarning("end height is more than 1");
             }
 
             if (end == null || start == null || end.Height >= 1)
             {
-                Debug.Log("Path is not valid");
+                Debug.LogWarning("Path is not valid");
                 return false;
             }
                 

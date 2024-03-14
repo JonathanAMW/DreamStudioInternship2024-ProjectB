@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ee8136cf3ee4442904eac2458a61e2, type: 3}
+  m_Name: Recipes_PlateWithLettuce
+  m_EditorClassIdentifier: 
+  _recipeInformation:
+    RecipeName: Plate With Lettuce
+    RecipeOutput: {fileID: 11400000, guid: 6f111dd7398e5604ab83c003fb7769b1, type: 2}
+    Requirements:
+    - {fileID: 11400000, guid: ee2d9ca677f8e4642a8ff8f9786aa240, type: 2}
+    - {fileID: 11400000, guid: 78781c606182c6a479de8667b58bf5a2, type: 2}

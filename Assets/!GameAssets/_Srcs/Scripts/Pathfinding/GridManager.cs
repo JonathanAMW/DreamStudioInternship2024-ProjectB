@@ -22,6 +22,17 @@ namespace UnderworldCafe.GridSystem
         [Header("The Pathing Tilemaps ('These tilemaps will not be rendered by game and will not get calculated if outside of Game Tilemap bound')")]
         [SerializeField] private Tilemap _playerWalkableMap;
 
+        private void OnValidate()
+        {
+            if(_gameTilemap == null)
+            {
+                Debug.LogError("No Game Tilemap has been set in: " + gameObject.name);
+            }
+            if(_playerWalkableMap == null)
+            {
+                Debug.LogError("No Player Walkable Map has been set in: " + gameObject.name);
+            }
+        }
 
         protected override void Awake()
         {
