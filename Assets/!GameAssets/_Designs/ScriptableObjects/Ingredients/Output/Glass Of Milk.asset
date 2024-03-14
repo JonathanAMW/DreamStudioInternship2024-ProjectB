@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Glass Of Milk
   m_EditorClassIdentifier: 
   _ingredientInformation:
-    Name: Glass Off Milk
+    Id: INGREDIENT_GlassOfMilk
+    Name: Glass Of Milk
     Description: Glass Of Milk
-    IngredientSprite: {fileID: 78463665, guid: 2acd47dce3c502f4684158eb38b70838, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: a9f544ded6beaa9438c40f66ad9f9e8a, type: 3}

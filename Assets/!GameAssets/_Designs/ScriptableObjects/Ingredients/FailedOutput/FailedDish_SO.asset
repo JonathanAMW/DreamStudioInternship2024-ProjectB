@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FailedDish_SO
   m_EditorClassIdentifier: 
   _ingredientInformation:
+    Id: INGREDIENT_FailedDish
     Name: Failed Dish
     Description: Failed Dish
-    IngredientSprite: {fileID: 21300000, guid: 5b3978c0a033d07418f49c1e8b7f3286, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: 3f7cd12c91281d9418ce5102251824f0, type: 3}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Plate With Lettuce
   m_EditorClassIdentifier: 
   _ingredientInformation:
-    Name: Simple Salad
-    Description: Simple Salad
+    Id: INGREDIENT_PlateWithLettuce
+    Name: Plate With Lettuce
+    Description: Plate With Lettuce
     IngredientSprite: {fileID: 78463665, guid: 2acd47dce3c502f4684158eb38b70838, type: 3}
