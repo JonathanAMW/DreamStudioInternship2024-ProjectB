@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Milk
   m_EditorClassIdentifier: 
   _ingredientInformation:
-    Id: INGREDIENT_Milk
     Name: Milk
     Description: Milk
-    IngredientSprite: {fileID: 21300000, guid: 709213c45ce67144aabb76e3563d4d71, type: 3}
+    IngredientSprite: {fileID: 78463665, guid: 2acd47dce3c502f4684158eb38b70838, type: 3}

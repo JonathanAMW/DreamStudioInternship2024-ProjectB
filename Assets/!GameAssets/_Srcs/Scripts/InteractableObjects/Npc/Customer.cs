@@ -52,31 +52,13 @@ namespace UnderworldCafe.CustomerSystem
             IsServedCorrectly = false;
         }
 
-        public void Init()
+        public void SettingUpCustomer(float orderDuration, Ingredient orderedFood)
         {
-            _orderVisualSprite = OrderedFood.IngredientInformation.IngredientSprite;
-            _orderVisualObject.SetActive(true);
-        }
-
-        public void CopyAndSettingUpCustomer(Animator npcAnimator, float orderDuration, Ingredient orderedFood)
-        {
-            _npcAnimator = npcAnimator;
-
             OrderDuration = orderDuration;
             OrderedFood = orderedFood;
-        }
 
-        public void ResetCustomer()
-        {
-            _startOrderTime = 0.0f;
-            _isServed = false;
-            _isWaitingForFood = false;
-
-            IsServedCorrectly = false;
-            OrderDuration = 0.0f;
-            OrderedFood = null;
-
-            gameObject.SetActive(false);
+            _orderVisualSprite = orderedFood.IngredientInformation.IngredientSprite;
+            _orderVisualObject.SetActive(true);
         }
 
         public void StartOrderingFood()
@@ -101,16 +83,23 @@ namespace UnderworldCafe.CustomerSystem
             }
         }
 
-        public void ServedFood(Ingredient servedFood)
+        public bool ServedFood(Ingredient servedFood)
         {
             // if(!_isWaitingForFood) return;
 
             StopCoroutine(WaitingForFood());
             _isServed = true;
 
-            IsServedCorrectly = servedFood == OrderedFood ? true : false;
+            if(servedFood == OrderedFood)
+            {
+                IsServedCorrectly = true;
+            }
+            else
+            {
+                IsServedCorrectly = false;
+            }
+
+            return IsServedCorrectly;
         }
-
-
     }
 }
