@@ -13,15 +13,5 @@ MonoBehaviour:
   m_Name: Page (2)
   m_EditorClassIdentifier: 
   recipes:
-  - RecipeName: Sashimi
-    RecipeOutput: {fileID: 11400000, guid: 349406ff8edbd0d43b66d97126c6b1b2, type: 2}
-    Requirements:
-    - {fileID: 11400000, guid: e219edbf64b6ff94a93c4c70d9dbbd8d, type: 2}
-    - {fileID: 11400000, guid: 5edd2e77dd831ee408c02a0a3f0432b1, type: 2}
-    - {fileID: 11400000, guid: 8b7424761dde93c4a921fd8cda8630b6, type: 2}
-  - RecipeName: Iced Coffee
-    RecipeOutput: {fileID: 11400000, guid: 582f35c391e4ce642a2ddef2ebd66e62, type: 2}
-    Requirements:
-    - {fileID: 11400000, guid: ca9f83ea68916ff4ab6b5c6dbae36284, type: 2}
-    - {fileID: 11400000, guid: 527e53eb09a3a234d9f4229d6e6b7ea4, type: 2}
-    - {fileID: 11400000, guid: 5cd73ed0dc821ac4f823e35aee302b81, type: 2}
+  - {fileID: 11400000, guid: e5512d6d80001e5438a2cf3897d70074, type: 2}
+  - {fileID: 11400000, guid: 99a8422325364a84aaf591ffae27c11d, type: 2}

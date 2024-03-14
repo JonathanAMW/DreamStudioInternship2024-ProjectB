@@ -13,15 +13,5 @@ MonoBehaviour:
   m_Name: Page (1)
   m_EditorClassIdentifier: 
   recipes:
-  - RecipeName: Simple Salad
-    RecipeOutput: {fileID: 11400000, guid: e6a65c5cd03c7854e9a7ea945f8e0837, type: 2}
-    Requirements:
-    - {fileID: 11400000, guid: e219edbf64b6ff94a93c4c70d9dbbd8d, type: 2}
-    - {fileID: 11400000, guid: a04a8451cfab60d4f8ccc7e201e3153c, type: 2}
-    - {fileID: 11400000, guid: 8b7424761dde93c4a921fd8cda8630b6, type: 2}
-  - RecipeName: Fruit Juice
-    RecipeOutput: {fileID: 11400000, guid: 4bd0084d728df9c4c87694ccea3d9025, type: 2}
-    Requirements:
-    - {fileID: 11400000, guid: 75b9c4bf082594d4c8e69114a8fd927e, type: 2}
-    - {fileID: 11400000, guid: bef389c0e1a36fc46b1e232d87f534df, type: 2}
-    - {fileID: 11400000, guid: 335bac1746040c446b65497a4db8e164, type: 2}
+  - {fileID: 11400000, guid: 90affc9612f99964eb7433c5ec5c47cb, type: 2}
+  - {fileID: 11400000, guid: d1941c0860e291446bc9058d7116e8bd, type: 2}
