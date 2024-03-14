@@ -18,8 +18,11 @@ namespace UnderworldCafe.Player
     /// </summary>
     public class PlayerInventory : MonoBehaviour
     {
-        // private ObjectPool<Ingredient> _ingredientPool;
-        public List<Ingredient> PlayerInventoryList { get; private set; }
+        private ObjectPool<Ingredient> _ingredientPool;
+
+        [SerializeField] private List<Ingredient> _playerInventoryList;
+        public List<Ingredient> PlayerInventoryList => _playerInventoryList;
+
 
         #region Visual
         [SerializeField] private GameObject _slotSpawnPointObject;
@@ -47,11 +50,11 @@ namespace UnderworldCafe.Player
 
         private void Awake()
         {
-            PlayerInventoryList = new List<Ingredient>();
+            _playerInventoryList = new List<Ingredient>();
 
             // Initialize the object pool
             // Arg => Constructor, Action when getting object from pool, Action when returning object to pool
-            // _ingredientPool = new ObjectPool<Ingredient>(() => ScriptableObject.CreateInstance<Ingredient>(), null, null); 
+            _ingredientPool = new ObjectPool<Ingredient>(() => ScriptableObject.CreateInstance<Ingredient>(), null, null); 
 
             // Initialize the slots
             _slotObjectInScene = new List<GameObject>();
@@ -63,35 +66,30 @@ namespace UnderworldCafe.Player
         public void AddInventory(Ingredient ingredientToAdd)
         {
             //Back-end
-            // var newIngredient = _ingredientPool.Get();
-            // newIngredient.CopyIngredientInformation(ingredientToAdd);
+            var newIngredient = _ingredientPool.Get();
+            // newIngredient.IngredientInformation = ingredientToAdd.IngredientInformation;
             // newIngredient = ingredientToAdd;
+            newIngredient.Init(ingredientToAdd.IngredientInformation);
+            Debug.Log("Ingredient added to inventory: " + newIngredient.IngredientInformation.Name);
 
-            PlayerInventoryList.Add(ingredientToAdd);
+            _playerInventoryList.Add(newIngredient);
 
             //visual or front-end
             for(int i = 0; i < _slotObjectInScene.Count; i++)
             {
-                // Debug.Log("Checking slot " + i);
                 if(!_slotObjectInScene[i].activeSelf)
                 {
-                    _slotObjectInScene[i].GetComponent<SpriteRenderer>().sprite = ingredientToAdd.IngredientInformation.IngredientSprite;
+                    _slotObjectInScene[i].GetComponent<SpriteRenderer>().sprite = newIngredient.IngredientInformation.IngredientSprite;
                     _slotObjectInScene[i].SetActive(true);
-                    break;
-                }
-
-                //Create new slot if all slot is full
-                if(i >= _slotObjectInScene.Count - 1)
-                {
-                    // Debug.Log("Creating new slot");
-                    var newSlot = Instantiate(_inventorySlotPrefab, _slotSpawnPointObject.transform);
-                    _slotObjectInScene.Add(newSlot);
-                    newSlot.GetComponent<SpriteRenderer>().sprite = ingredientToAdd.IngredientInformation.IngredientSprite;
-                    newSlot.SetActive(true);
-                    // Debug.Log("Creating new slot finished");
-                    break;
+                    return;
                 }
             }
+
+            //Create new slot if all slot is full
+            var newSlot = Instantiate(_inventorySlotPrefab, _slotSpawnPointObject.transform);
+            _slotObjectInScene.Add(newSlot);
+            newSlot.GetComponent<SpriteRenderer>().sprite = newIngredient.IngredientInformation.IngredientSprite;
+            newSlot.SetActive(true);
         }
 
         public void RemoveInventoryAll()
@@ -106,12 +104,13 @@ namespace UnderworldCafe.Player
             }
 
             // Return the object to the pool for each ingredient in the inventory list
-            // foreach (Ingredient ingredient in PlayerInventoryList)
-            // {
-            //     _ingredientPool.Release(ingredient);
-            // }
+            foreach (Ingredient ingredient in _playerInventoryList)
+            {
+                Debug.Log("Ingredient removed from inventory: " + ingredient.IngredientInformation.Name);
+                _ingredientPool.Release(ingredient);
+            }
 
-            PlayerInventoryList.Clear();
+            _playerInventoryList.Clear();
         }
 
         

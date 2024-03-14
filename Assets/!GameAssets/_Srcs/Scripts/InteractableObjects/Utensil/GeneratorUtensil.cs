@@ -6,7 +6,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using UtilityCollections;
 
 using UnderworldCafe.Player;
 using UnderworldCafe.DataPersistenceSystem.Interfaces;
@@ -103,11 +102,14 @@ namespace UnderworldCafe.CookingSystem
                 if(recipe.RecipeInformation.Requirements.Count == playerInventory.PlayerInventoryList.Count)
                 {
                     //This behavior does care about the order of ingredients
-                    if(ListComparer.IsEqualWithSameOrder(playerInventory.PlayerInventoryList, recipe.RecipeInformation.Requirements))
+                    // if(UtensilRecipeComparer.IsEqualWithSameOrder(playerInventory.PlayerInventoryList, recipe.RecipeInformation.Requirements))
+
 
                     //This behavior does not care about the order of ingredients
                     // if(ListComparer.IsEqualWithoutSameOrder(playerInventory.PlayerInventoryList, recipe.RecipeInformation.Requirements))
+                    if(UtensilComparer.IsEqualWithSameOrder(playerInventory.PlayerInventoryList, recipe.RecipeInformation.Requirements, ingredient => ingredient.IngredientInformation.Id))
                     {
+                        // Debug.Log("Generator Recipe founded");
                         playerInventory.RemoveInventoryAll();
                         ReturnNewFood(playerInventory, recipe.RecipeInformation.RecipeOutput);
                         return;
@@ -116,7 +118,7 @@ namespace UnderworldCafe.CookingSystem
             }
 
             //If there are no matched recipe
-            // Debug.LogWarning("Recipe not founded");
+            // Debug.Log("Generator Recipe not founded");
             playerInventory.RemoveInventoryAll();
             ReturnNewFood(playerInventory, FailedFood);
             return;
