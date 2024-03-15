@@ -342,12 +342,12 @@ MonoBehaviour:
   _utensilInformations:
     Name: 
     Description: 
-  _interactPos: {fileID: 0}
-  _selectedIndicator: {fileID: 0}
-  _indexInQueueText: {fileID: 0}
+  FailedFood: {fileID: 11400000, guid: 656c598db18148343b715a8f24673c9b, type: 2}
+  _interactPos: {fileID: 9182812213336863791}
+  _selectedIndicator: {fileID: 7691055194879091446}
+  _indexInQueueText: {fileID: 1534687146145955894}
   _utensilAnimator: {fileID: 0}
-  StatsDataPerLevel: []
-  FailedFood: {fileID: 0}
+  _statsDataPerLevel: []
 --- !u!1 &7625041113750758069
 GameObject:
   m_ObjectHideFlags: 0

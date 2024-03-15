@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ee8136cf3ee4442904eac2458a61e2, type: 3}
+  m_Name: Recipes_IcedLatte
+  m_EditorClassIdentifier: 
+  _recipeInformation:
+    RecipeName: Ice Coffe
+    RecipeOutput: {fileID: 11400000, guid: 4331fb9680be8e84799c764609bba8aa, type: 2}
+    Requirements:
+    - {fileID: 11400000, guid: 163342fb48e5c9448ab9490a8833833c, type: 2}

@@ -30,11 +30,24 @@ namespace UnderworldCafe.Player
 
 
         [SerializeField] private Tilemap _playerWalkableTilemap;
-        [SerializeField] private float _movementSpeed = 10f;
+        [SerializeField] private float _movementSpeed;
 
         private List<Vector3> _pathPos; // Array to hold the calculated path
         private int _targetIndex; // Index of the current target waypoint in the path
         private bool _isMoving;
+
+
+        private void OnValidate()
+        {
+            if(_playerWalkableTilemap == null)
+            {
+                Debug.LogWarning("No player walkable tilemap has been set on " + gameObject.name);
+            }
+            if(_movementSpeed <= 0)
+            {
+                Debug.LogWarning("No movement speed has been set on " + gameObject.name);
+            }
+        }
 
 
         private void Start()
@@ -91,7 +104,7 @@ namespace UnderworldCafe.Player
                 // if (_gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position) == currentWaypoint) 
                 if (transform.position == currentWaypoint) 
                 { 
-                    Debug.Log("Finished at: "+currentWaypoint);
+                    // Debug.Log("Finished at: "+currentWaypoint);
                     _targetIndex++;
 
                     if (_targetIndex >= _pathPos.Count) 

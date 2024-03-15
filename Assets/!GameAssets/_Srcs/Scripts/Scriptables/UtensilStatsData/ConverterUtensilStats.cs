@@ -20,11 +20,11 @@ namespace UnderworldCafe.CookingSystem
 
         public ConverterUtensilStatsData StatsData => _statsData;
     }
-
     [System.Serializable]
     public struct ConverterUtensilStatsData
     {
         public List<Recipe> RecipeList;
         public int ConvertingTime;
     }
+
 }

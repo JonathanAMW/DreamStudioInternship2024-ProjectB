@@ -19,6 +19,7 @@ namespace UnderworldCafe
         float timePassed;
 
         [HideInInspector] public bool startTimer = false;
+        public float TimePassed => timePassed;
         private void Start()
         {
            timePassed = 0;

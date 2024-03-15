@@ -18,37 +18,102 @@ namespace UnderworldCafe.Player
     /// </summary>
     public class PlayerInventory : MonoBehaviour
     {
-        private ObjectPool<Ingredient> _ingredientPool;
+        // private ObjectPool<Ingredient> _ingredientPool;
         public List<Ingredient> PlayerInventoryList { get; private set; }
 
         #region Visual
-        
-
+        [SerializeField] private GameObject _slotSpawnPointObject;
+        [SerializeField] private List<GameObject> _slotObjectInScene;
+        [SerializeField] private GameObject _inventorySlotPrefab;
         #endregion
         
+        //Validating Only
+        private void OnValidate()
+        {
+            if(_slotSpawnPointObject == null)
+            {
+                Debug.LogWarning("No slot spawn point has been set on " + gameObject.name);
+            }
+            if(_slotObjectInScene == null)
+            {
+                Debug.LogWarning("No slot has been set on " + gameObject.name);
+            }
+            if(_inventorySlotPrefab == null)
+            {
+                Debug.LogWarning("No slot prefab has been set on " + gameObject.name);
+            }
+        }
+
+
         private void Awake()
         {
-            // Initialize the object pool
-            // Arg => Constructor, Action when getting object from pool, Action when returning object to pool, Default Capacity
-            _ingredientPool = new ObjectPool<Ingredient>(() => new Ingredient(), null, null, defaultCapacity: 10); 
             PlayerInventoryList = new List<Ingredient>();
+
+            // Initialize the object pool
+            // Arg => Constructor, Action when getting object from pool, Action when returning object to pool
+            // _ingredientPool = new ObjectPool<Ingredient>(() => ScriptableObject.CreateInstance<Ingredient>(), null, null); 
+
+            // Initialize the slots
+            _slotObjectInScene = new List<GameObject>();
+            var newSlot = Instantiate(_inventorySlotPrefab, _slotSpawnPointObject.transform); // Create the first placeholder slot
+            newSlot.SetActive(false);
+            _slotObjectInScene.Add(newSlot);
         }
 
         public void AddInventory(Ingredient ingredientToAdd)
         {
-            var temp = _ingredientPool.Get();
-            temp.CopyIngredientInformation(ingredientToAdd);
+            //Back-end
+            // var newIngredient = _ingredientPool.Get();
+            // newIngredient.CopyIngredientInformation(ingredientToAdd);
+            // newIngredient = ingredientToAdd;
+
+            PlayerInventoryList.Add(ingredientToAdd);
+
+            //visual or front-end
+            for(int i = 0; i < _slotObjectInScene.Count; i++)
+            {
+                // Debug.Log("Checking slot " + i);
+                if(!_slotObjectInScene[i].activeSelf)
+                {
+                    _slotObjectInScene[i].GetComponent<SpriteRenderer>().sprite = ingredientToAdd.IngredientInformation.IngredientSprite;
+                    _slotObjectInScene[i].SetActive(true);
+                    break;
+                }
+
+                //Create new slot if all slot is full
+                if(i >= _slotObjectInScene.Count - 1)
+                {
+                    // Debug.Log("Creating new slot");
+                    var newSlot = Instantiate(_inventorySlotPrefab, _slotSpawnPointObject.transform);
+                    _slotObjectInScene.Add(newSlot);
+                    newSlot.GetComponent<SpriteRenderer>().sprite = ingredientToAdd.IngredientInformation.IngredientSprite;
+                    newSlot.SetActive(true);
+                    // Debug.Log("Creating new slot finished");
+                    break;
+                }
+            }
         }
 
         public void RemoveInventoryAll()
         {
-            // Return the object to the pool for each ingredient in the inventory list
-            foreach (Ingredient ingredient in PlayerInventoryList)
+            //turn off all slot visual
+            foreach(var slot in _slotObjectInScene)
             {
-                _ingredientPool.Release(ingredient);
+                if(slot.activeSelf)
+                {
+                    slot.SetActive(false);
+                }
             }
+
+            // Return the object to the pool for each ingredient in the inventory list
+            // foreach (Ingredient ingredient in PlayerInventoryList)
+            // {
+            //     _ingredientPool.Release(ingredient);
+            // }
 
             PlayerInventoryList.Clear();
         }
+
+        
     }
 }

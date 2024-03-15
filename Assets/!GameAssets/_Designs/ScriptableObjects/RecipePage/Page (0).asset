@@ -13,13 +13,5 @@ MonoBehaviour:
   m_Name: Page (0)
   m_EditorClassIdentifier: 
   recipes:
-  - RecipeName: Glass of Milk
-    RecipeOutput: {fileID: 11400000, guid: 83acd1bef58f9b34d9c22bfcc7cccbae, type: 2}
-    Requirements:
-    - {fileID: 11400000, guid: 75b9c4bf082594d4c8e69114a8fd927e, type: 2}
-    - {fileID: 11400000, guid: e75acc9378d889a429f55ee1005e4043, type: 2}
-  - RecipeName: Coffee
-    RecipeOutput: {fileID: 11400000, guid: ca9f83ea68916ff4ab6b5c6dbae36284, type: 2}
-    Requirements:
-    - {fileID: 11400000, guid: 75b9c4bf082594d4c8e69114a8fd927e, type: 2}
-    - {fileID: 11400000, guid: c95d3d64f2fdee542af29e6af670c318, type: 2}
+  - {fileID: 11400000, guid: 0e1cfee490a09ac4db4c2b9e11970775, type: 2}
+  - {fileID: 11400000, guid: 1af092a2895b90b429f3814b816898c9, type: 2}

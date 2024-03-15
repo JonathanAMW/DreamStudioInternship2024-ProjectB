@@ -17,6 +17,6 @@ namespace UnderworldCafe
     {
 
        
-        public Recipe.RecipeInformations[] recipes = new Recipe.RecipeInformations[2];
+        public FoodRecipe[] recipes = new FoodRecipe[2];
     }
 }
