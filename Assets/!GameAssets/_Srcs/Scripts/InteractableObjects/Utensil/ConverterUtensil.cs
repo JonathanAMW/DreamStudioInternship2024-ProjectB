@@ -67,6 +67,10 @@ namespace UnderworldCafe.CookingSystem
                 return;
             }
 
+            //reset the player inv first
+            _playerControllerRef.PlayerInventory.RemoveInventoryAll();
+
+            //give back the food 
             ReturnNewFood(_playerControllerRef.PlayerInventory, ReadyToTakeFood);
         }
 
