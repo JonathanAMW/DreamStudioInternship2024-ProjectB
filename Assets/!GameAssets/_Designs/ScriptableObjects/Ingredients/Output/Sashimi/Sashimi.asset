@@ -15,4 +15,4 @@ MonoBehaviour:
   _ingredientInformation:
     Name: Sashimi
     Description: Sashimi
-    IngredientSprite: {fileID: 78463665, guid: 2acd47dce3c502f4684158eb38b70838, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: 636dd7264e0a8654aa0c0a314c3f3767, type: 3}

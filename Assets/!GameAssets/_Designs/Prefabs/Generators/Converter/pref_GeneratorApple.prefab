@@ -339,9 +339,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b0a5a5e38232746b2b4bda3c317adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <UtensilInformnations>k__BackingField:
-    Name: 
-    Description: 
+  _utensilInformation:
+    Name: Apple
+    Description: Apple
   FailedFood: {fileID: 11400000, guid: 656c598db18148343b715a8f24673c9b, type: 2}
   _interactPos: {fileID: 9182812213336863791}
   _selectedIndicator: {fileID: 7691055194879091446}
