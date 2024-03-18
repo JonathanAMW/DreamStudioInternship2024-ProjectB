@@ -30,8 +30,7 @@ namespace UnderworldCafe
         [SerializeField] TextMeshProUGUI description;
         [Space(20)]
 
-        [SerializeField] Button previousPageButton;
-        [SerializeField] Button nextPageButton;
+        [SerializeField] Button[] pageButtons;
 
         [SerializeField] GameObject recipeObjects;
         [SerializeField] GameObject codeObjects;
@@ -171,42 +170,14 @@ namespace UnderworldCafe
             if(recipeObjects.activeSelf)
             {
                 currentRecipePage++;
-                if (currentRecipePage == 0) //1st page
-                {
-                    previousPageButton.gameObject.SetActive(false);
-                    nextPageButton.gameObject.SetActive(true);
-                }
-                else if (currentRecipePage == recipePages.Length - 1) //last page
-                {
-                    previousPageButton.gameObject.SetActive(true);
-                    nextPageButton.gameObject.SetActive(false);
-                }
-                else //middle page
-                {
-                    previousPageButton.gameObject.SetActive(true);
-                    nextPageButton.gameObject.SetActive(true);
-                }
+                ActivatePageButtons(currentRecipePage, recipePages);
                 UpdateRecipeDisplay();
                 return;
             }
             else if(codeObjects.activeSelf)
             {
                 currentCodePage++;
-                if (currentCodePage == 0) //1st page
-                {
-                    previousPageButton.gameObject.SetActive(false);
-                    nextPageButton.gameObject.SetActive(true);
-                }
-                else if (currentCodePage == codePages.Length - 1) //last page
-                {
-                    previousPageButton.gameObject.SetActive(true);
-                    nextPageButton.gameObject.SetActive(false);
-                }
-                else //middle page
-                {
-                    previousPageButton.gameObject.SetActive(true);
-                    nextPageButton.gameObject.SetActive(true);
-                }
+                ActivatePageButtons(currentCodePage, codePages);
                 UpdateRecipeDisplay();
                 return;
             }
@@ -222,81 +193,70 @@ namespace UnderworldCafe
             if(recipeObjects.activeSelf)
             {
                 currentRecipePage--;
-                if (currentRecipePage == 0) //1st page
-                {
-                    previousPageButton.gameObject.SetActive(false);
-                    nextPageButton.gameObject.SetActive(true);
-                }
-                else if (currentRecipePage == recipePages.Length - 1) //last page
-                {
-                    previousPageButton.gameObject.SetActive(true);
-                    nextPageButton.gameObject.SetActive(false);
-                }
-                else //middle page
-                {
-                    previousPageButton.gameObject.SetActive(true);
-                    nextPageButton.gameObject.SetActive(true);
-                }
+                ActivatePageButtons(currentRecipePage, recipePages);
                 UpdateRecipeDisplay();
                 return;
             }
             if (codeObjects.activeSelf)
             {
                 currentCodePage--;
-                if (currentCodePage == 0) //1st page
-                {
-                    previousPageButton.gameObject.SetActive(false);
-                    nextPageButton.gameObject.SetActive(true);
-                }
-                else if (currentCodePage == codePages.Length - 1) //last page
-                {
-                    previousPageButton.gameObject.SetActive(true);
-                    nextPageButton.gameObject.SetActive(false);
-                }
-                else //middle page
-                {
-                    previousPageButton.gameObject.SetActive(true);
-                    nextPageButton.gameObject.SetActive(true);
-                }
+                ActivatePageButtons(currentCodePage, codePages);
                 UpdateRecipeDisplay();
                 return;
             }
         }
 
-        public void OpenRecipeSection()
+        void ActivatePageButtons(int currentPageType, RecipePage[] recipePage)
         {
-            if (recipePages.Length > 1 && recipeObjects.activeSelf)//more than 1 pages on recipe pages
+            if (recipePage.Length > 1)//more than 1 pages on code pages
             {
-                previousPageButton.gameObject.SetActive(false);
-                nextPageButton.gameObject.SetActive(true);
+
+                if (currentPageType == 0) //1st page
+                {
+                    pageButtons[0].gameObject.SetActive(false);
+                    pageButtons[1].gameObject.SetActive(true);
+                }
+                else if (currentPageType == recipePage.Length - 1) //last page
+                {
+                    pageButtons[0].gameObject.SetActive(true);
+                    pageButtons[1].gameObject.SetActive(false);
+                }
+                else //middle page
+                {
+                    pageButtons[0].gameObject.SetActive(true);
+                    pageButtons[1].gameObject.SetActive(true);
+                }
             }
             else
             {
-                previousPageButton.gameObject.SetActive(false);
-                nextPageButton.gameObject.SetActive(false);
+                pageButtons[0].gameObject.SetActive(false);
+                pageButtons[1].gameObject.SetActive(false);
             }
+
+         
+        }
+
+        public void OpenRecipeSection()
+        {
+           
 
             currentRecipePage = 0;
             recipeObjects.SetActive(true);
             codeObjects.SetActive(false);
+
+
+            ActivatePageButtons(currentRecipePage, recipePages);
             UpdateRecipeDisplay();
         }
 
         public void OpenCodeSection()
         {
-            if (codePages.Length > 1)//more than 1 pages on code pages
-            {
-                previousPageButton.gameObject.SetActive(false);
-                nextPageButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                previousPageButton.gameObject.SetActive(false);
-                nextPageButton.gameObject.SetActive(false);
-            }
+          
             currentCodePage = 0;
             recipeObjects.SetActive(false);
             codeObjects.SetActive(true);
+
+            ActivatePageButtons(currentCodePage, codePages);
             UpdateRecipeDisplay();
         }
     }
