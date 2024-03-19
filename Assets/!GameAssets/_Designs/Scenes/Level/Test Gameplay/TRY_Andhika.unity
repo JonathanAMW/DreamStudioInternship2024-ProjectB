@@ -5116,6 +5116,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6223798184013570971, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6223798184013570971, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
       propertyPath: _movementSpeed
       value: 15
       objectReference: {fileID: 0}
@@ -5145,6 +5149,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8619758987135428914, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
       propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621511693876372656, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
+      propertyPath: _playerInventoryList.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

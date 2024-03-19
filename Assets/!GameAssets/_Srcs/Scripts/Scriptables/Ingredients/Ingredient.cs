@@ -18,6 +18,7 @@ namespace UnderworldCafe.CookingSystem
         [System.Serializable]
         public struct IngredientInformations
         {
+            public string Id;
             public string Name;
 
             [TextArea]
@@ -28,6 +29,10 @@ namespace UnderworldCafe.CookingSystem
         [SerializeField] private IngredientInformations _ingredientInformation;
         public IngredientInformations IngredientInformation => _ingredientInformation;
 
+        public void Init(IngredientInformations ingredientInformations)
+        {
+            _ingredientInformation = ingredientInformations;
+        }
 
         private void OnValidate()
         {            
@@ -43,6 +48,9 @@ namespace UnderworldCafe.CookingSystem
             {
                 Debug.LogWarning("No Sprite has been set on ingredient: " + name);
             }
+
+            //Set Id
+            _ingredientInformation.Id = GetType().Name.ToUpper() + "_" + _ingredientInformation.Name.Replace(" ", "");
         }
     }
 }
