@@ -4,39 +4,46 @@
 //----------------------------------------------------------------------
 
 using UnderworldCafe.GridSystem;
+using UnderworldCafe.PathfindingSystem;
 using UnderworldCafe.Player;
+using UnderworldCafe.WaveSystem;
 using UnityEngine;
 
 
-namespace UnderworldCafe.GameManageralSystem
+namespace UnderworldCafe
 {
     /// <summary>
     /// Class should handle level information and become service locator for entire level lifecycle
     /// </summary>
-    public class LevelManager : SingletonMonoBehaviour<LevelManager>
+    [DefaultExecutionOrder(-1)]
+    public class LevelManager : DestroyOnLoadSingletonMonoBehaviour<LevelManager>
     {
-        public GridManager GridManager { get; private set; }
-        public PlayerController PlayerController { get; private set; }
-        
+        #region Dependencies
+        [field: Header("DEPENDENCIES")]
+        [field: SerializeField] public InputManager LevelInputManagerRef { get; private set; }
+        [field: SerializeField] public GridManager LevelGridManagerRef { get; private set; }
+        [field: SerializeField] public TimeManager LevelTimeManagerRef { get; private set; }
+        [field: SerializeField] public PoolManager LevelPoolManagerRef { get; private set; }
+        [field: SerializeField] public PathRequestManager LevelPathRequestManagerRef { get; private set; }
+        [field: SerializeField] public WaveManager LevelWaveManagerRef { get; private set; }
+        [field: SerializeField] public PlayerController LevelPlayerControllerRef { get; private set; }
+        #endregion
+
+        [Header("LEVEL SETTINGS")]
+        [SerializeField] private float LevelTimeDuration;
+
 
         protected override void Awake()
         {
             base.Awake();
-            
-            GridManager = FindObjectOfType<GridManager>();
-            PlayerController = FindObjectOfType<PlayerController>();
         }
 
-        // Start is called before the first frame update
         private void Start()
         {
-            
+            LevelTimeManagerRef.StartTimer(LevelTimeDuration);
+
+            LevelWaveManagerRef.StartWaveSequence();
         }
 
-        // Update is called once per frame
-        private void Update()
-        {
-            
-        }
     }
 }

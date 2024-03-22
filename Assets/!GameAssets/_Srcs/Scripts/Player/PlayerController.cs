@@ -10,7 +10,6 @@ using UnityEngine.Tilemaps;
 
 using UnderworldCafe.PathfindingSystem;
 using UnderworldCafe.GridSystem;
-using UnderworldCafe.InputSystem;
 using UnderworldCafe.CookingSystem;
 
 namespace UnderworldCafe.Player
@@ -18,19 +17,18 @@ namespace UnderworldCafe.Player
     /// <summary>
     /// Class that responsible to manage players character
     /// </summary>
-    public class PlayerController : DestroyOnLoadSingletonMonoBehaviour<PlayerController>
+    public class PlayerController : MonoBehaviour
     {
         #region References Dependency
-        private InputManager _inputManagerRef => InputManager.Instance;
-        private PathRequestManager _pathRequestManagerRef => PathRequestManager.Instance;
-        private GridManager _gridManagerRef => GridManager.Instance;
-        public PlayerInventory PlayerInventory {get; private set;}
+        private PathRequestManager _pathRequestManagerRef;
+        private GridManager _gridManagerRef;
+        
+        public PlayerInventory PlayerInventory { get; private set; }
         #endregion
-
-
 
         [SerializeField] private Tilemap _playerWalkableTilemap;
         [SerializeField] private float _movementSpeed;
+        [SerializeField] private Animator _playerAnimator;
 
         private List<Vector3> _pathPos; // Array to hold the calculated path
         private int _targetIndex; // Index of the current target waypoint in the path
@@ -49,14 +47,30 @@ namespace UnderworldCafe.Player
             }
         }
 
-
-        private void Start()
+        private void Awake()
         {
+            _pathRequestManagerRef = LevelManager.Instance.LevelPathRequestManagerRef;
+            _gridManagerRef = LevelManager.Instance.LevelGridManagerRef;
+
+
             _pathPos = new List<Vector3>();
             _playerMovementRequestList = new List<PlayerMovementRequest>();
             PlayerInventory = GetComponent<PlayerInventory>();
 
             transform.position = _gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position);
+        }
+
+        private void Start()
+        {
+            // _pathRequestManagerRef = LevelManager.Instance.LevelPathRequestManagerRef;
+            // _gridManagerRef = LevelManager.Instance.LevelGridManagerRef;
+
+
+            // _pathPos = new List<Vector3>();
+            // _playerMovementRequestList = new List<PlayerMovementRequest>();
+            // PlayerInventory = GetComponent<PlayerInventory>();
+
+            // transform.position = _gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position);
         }
 
 

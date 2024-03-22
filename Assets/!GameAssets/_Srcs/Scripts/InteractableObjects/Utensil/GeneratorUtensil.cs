@@ -41,7 +41,7 @@ namespace UnderworldCafe.CookingSystem
             PURE_GENERATOR,
             CONVERSION_GENERATOR
         }
-        public List<GeneratorUtensilStatsData> StatsDataPerLevel => _statsDataPerLevel;
+        public IReadOnlyList<GeneratorUtensilStatsData> StatsDataPerLevel => _statsDataPerLevel;
         
 
         //Validating Data

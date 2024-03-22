@@ -14,7 +14,7 @@ namespace UnderworldCafe.GridSystem
     /// <summary>
     /// Class for managing tilemap specifiq operations
     /// </summary>
-    public class GridManager : DestroyOnLoadSingletonMonoBehaviour<GridManager>
+    public class GridManager : MonoBehaviour
     {
         [Header("The Game Tilemap ('Every tiles in this tilemap will be rendered by game')")]
         [SerializeField] private Tilemap _gameTilemap;
@@ -34,10 +34,8 @@ namespace UnderworldCafe.GridSystem
             }
         }
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
-
             //Compress/resize bound of the tilemaps gameobject by removing unused rows/columns from tilemaps
             _gameTilemap.CompressBounds();
             _playerWalkableMap.CompressBounds();

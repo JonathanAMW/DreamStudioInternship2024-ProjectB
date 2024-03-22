@@ -7,18 +7,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using UnderworldCafe.CookingSystem;
-using UnderworldCafe.GameManageralSystem;
-
-namespace UnderworldCafe.InputSystem
+namespace UnderworldCafe
 {
     /// <summary>
     /// This class will be used to handle input events from player
     /// </summary>
-    public class InputManager : SingletonMonoBehaviour<InputManager>
+    public class InputManager : MonoBehaviour
     {
-        private LevelManager _levelManagerRef;
-        private Camera _mainCameraRef;
+        // private LevelManager _levelManagerRef;
+
+        [SerializeField] private Camera _mainCameraRef;
         private GameInputAction _gameInputAction;
 
         [SerializeField] private LayerMask _clickableLayerMask;
@@ -29,17 +27,18 @@ namespace UnderworldCafe.InputSystem
         // #endregion
 
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
-
             _gameInputAction = new GameInputAction();
-            _mainCameraRef = Camera.main;    
+
+            _gameInputAction.Gameplay.Press.started += ctx => ClickOrPress(ctx);
+
         }
+
 
         private void Start()
         {
-            _gameInputAction.Gameplay.Press.started += ctx => ClickOrPress(ctx);
+            // _gameInputAction.Gameplay.Press.started += ctx => ClickOrPress(ctx);
         }
 
         private void OnEnable()
@@ -71,15 +70,14 @@ namespace UnderworldCafe.InputSystem
             IInteractable interactedObj = hit2D.collider.gameObject.GetComponent<IInteractable>();
 
             // Check type of interactable object
-            if(interactedObj is Utensil)
+            if(interactedObj is QueuedInteractableObject)
             {
-                ((Utensil)interactedObj).TrySelectThisUtensil();
+                ((QueuedInteractableObject)interactedObj).TryInteract();
             }
             else
             {
-                interactedObj.Interact();
+                Debug.LogError("Not Implemented: " + interactedObj.GetType());
             }
-
         }
     }
 }

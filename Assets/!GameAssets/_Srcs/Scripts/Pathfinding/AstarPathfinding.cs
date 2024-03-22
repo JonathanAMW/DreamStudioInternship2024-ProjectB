@@ -15,7 +15,20 @@ namespace UnderworldCafe.PathfindingSystem
     /// </summary>
     public class AstarPathfinding : MonoBehaviour
     {
-        PathRequestManager _requestManagerRef => PathRequestManager.Instance;
+        #region Dependencies
+        PathRequestManager _requestManagerRef;
+        #endregion
+
+        private void Awake()
+        {
+            _requestManagerRef = LevelManager.Instance.LevelPathRequestManagerRef;
+        }
+
+        private void Start()
+        {
+            // _requestManagerRef = LevelManager.Instance.LevelPathRequestManagerRef;
+        }
+
         private bool IsValidPath(Node start, Node end)
         {
             if(end==null)

@@ -11,7 +11,6 @@ using UnderworldCafe.Player;
 using UnderworldCafe.DataPersistenceSystem.Interfaces;
 using UnderworldCafe.DataPersistenceSystem.GameDatas;
 
-
 namespace UnderworldCafe.CookingSystem
 {
     /// <summary>
@@ -19,9 +18,13 @@ namespace UnderworldCafe.CookingSystem
     /// </summary>
     public class ConverterUtensil : Utensil
     {
+        #region Dependency Injection
+        TimeManager _timeManagerRef;
+        #endregion
+
         [Header("=======[Converter Utensil Properties]=======")]
         [SerializeField] private List<ConverterUtensilStatsData> _statsDataPerLevel;
-        public List<ConverterUtensilStatsData> StatsDataPerLevel => _statsDataPerLevel;
+        public IReadOnlyList<ConverterUtensilStatsData> StatsDataPerLevel => _statsDataPerLevel;
 
         private ConverterUtensilStatsData _currentStatsData;
 
@@ -40,16 +43,30 @@ namespace UnderworldCafe.CookingSystem
                 Debug.LogWarning("No stats data set in " + gameObject.name);
             }
         }
-        
 
-        protected override void Start()
+        protected override void Awake()
         {
-            base.Start();
+            base.Awake();
+
+            _timeManagerRef = LevelManager.Instance.LevelTimeManagerRef;
             _isProcessing = false;
             _isFoodReady = false;
 
             // Need additional check for if player has loading save or not
             _currentStatsData = StatsDataPerLevel[0];
+        }
+        
+
+        protected override void Start()
+        {
+            // _timeManagerRef = LevelManager.Instance.LevelTimeManagerRef;
+
+            // base.Start();
+            // _isProcessing = false;
+            // _isFoodReady = false;
+
+            // // Need additional check for if player has loading save or not
+            // _currentStatsData = StatsDataPerLevel[0];
         }
 
         public override void Interact()
@@ -103,7 +120,13 @@ namespace UnderworldCafe.CookingSystem
 
         private IEnumerator ProcessingFood(Ingredient createdIngredient)
         {
-            yield return new WaitForSeconds(_currentStatsData.ConvertingTime);
+            // yield return new WaitForSeconds(_currentStatsData.ConvertingTime);   
+
+            float _startProcessingTime = _timeManagerRef.TimePassed;
+            while(_timeManagerRef.TimePassed - _startProcessingTime < _currentStatsData.ConvertingTime)
+            {
+                yield return null;
+            }
             
             ReadyToTakeFood = createdIngredient;
             _isProcessing = false;
