@@ -17,7 +17,7 @@ namespace UnderworldCafe.WaveSystem
     /// </summary>
     public class WaveManager : MonoBehaviour
     {
-        #region Dependency Injection
+        #region Dependencies
         PoolManager _poolManagerRef;
         TimeManager _timeManagerRef;
         #endregion

@@ -4,7 +4,7 @@
 //----------------------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 namespace UnderworldCafe
 {
@@ -20,7 +20,6 @@ namespace UnderworldCafe
         #endregion
 
         
-
         protected override void Awake()
         {
             base.Awake();
