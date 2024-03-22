@@ -70,6 +70,13 @@ namespace UnderworldCafe.CustomerSystem
         protected override void OnValidate()
         {
             base.OnValidate();
+
+            if(String.IsNullOrEmpty(_customerName))
+            {
+                Debug.LogWarning("No customer name has been set on " + gameObject.name);
+            }
+            
+            _customerId = GetType().Name.ToUpper() + "_" + _customerName.Replace(" ", "");
         }
 
         public override void Interact()

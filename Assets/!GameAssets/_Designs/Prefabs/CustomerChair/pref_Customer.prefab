@@ -441,7 +441,7 @@ MonoBehaviour:
   _queuedIndicatorAnimator: {fileID: 7965569980075902817}
   _queuedIndexText: {fileID: 7503357615620355064}
   _customerId: 
-  _customerName: 
+  _customerName: testing
   _customerSpriteAnimator: {fileID: 562692005615529907}
   _customerSpriteRenderer: {fileID: 339130700670100853}
   _orderObj: {fileID: 2373562278574572576}
