@@ -339,13 +339,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5b0a5a5e38232746b2b4bda3c317adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactPos: {fileID: 9182812213336863791}
+  _queuedIndicator: {fileID: 7981750430984988132}
+  _queuedIndicatorAnimator: {fileID: 0}
+  _queuedIndexText: {fileID: 1534687146145955894}
   _utensilInformation:
     Name: Ekspresso
     Description: Ekspresso
   FailedFood: {fileID: 11400000, guid: 656c598db18148343b715a8f24673c9b, type: 2}
-  _interactPos: {fileID: 9182812213336863791}
-  _selectedIndicator: {fileID: 7691055194879091446}
-  _indexInQueueText: {fileID: 1534687146145955894}
   _utensilAnimator: {fileID: 0}
   _generatedIngredient: {fileID: 11400000, guid: 27018a954e426ca44b5fddbee6d7706e, type: 2}
   _generatorUtensilType: 2
