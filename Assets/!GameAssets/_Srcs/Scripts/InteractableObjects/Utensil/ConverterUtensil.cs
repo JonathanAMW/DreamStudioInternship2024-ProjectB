@@ -47,7 +47,7 @@ namespace UnderworldCafe.CookingSystem
 
         protected override void Start()
         {
-            _timeManagerRef = LevelManager.Instance.LevelTimeManager;
+            _timeManagerRef = LevelManager.Instance.LevelTimeManagerRef;
 
             base.Start();
             _isProcessing = false;

@@ -10,7 +10,6 @@ using UnityEngine.Tilemaps;
 
 using UnderworldCafe.PathfindingSystem;
 using UnderworldCafe.GridSystem;
-using UnderworldCafe.InputSystem;
 using UnderworldCafe.CookingSystem;
 
 namespace UnderworldCafe.Player

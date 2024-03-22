@@ -43,7 +43,7 @@ namespace UnderworldCafe.WaveSystem
             // {
             //     _waveList[i] = new Wave(_waveInformationSOList[i].WaveInformation);
             // }
-            _poolManagerRef = LevelManager.Instance.LevelPoolManager;
+            _poolManagerRef = LevelManager.Instance.LevelPoolManagerRef;
 
             _usedCustomersFromPool = new();
             _currentWave = new Wave();

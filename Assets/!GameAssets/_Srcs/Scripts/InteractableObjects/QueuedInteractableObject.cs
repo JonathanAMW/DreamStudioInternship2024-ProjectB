@@ -52,7 +52,7 @@ namespace UnderworldCafe
         {
             ChangeQueuedState(false);
 
-            _playerControllerRef = LevelManager.Instance.LevelPlayerController;
+            _playerControllerRef = LevelManager.Instance.LevelPlayerControllerRef;
         }        
         
         public abstract void Interact();
