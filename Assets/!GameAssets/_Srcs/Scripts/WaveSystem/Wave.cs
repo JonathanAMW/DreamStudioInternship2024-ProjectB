@@ -16,7 +16,7 @@ namespace UnderworldCafe.WaveSystem
     public class Wave
     {
         #region Dependency Injection 
-        private Timer _timerRef;
+        private TimeManager _timeManagerRef;
         #endregion
 
         #region Events
@@ -38,9 +38,9 @@ namespace UnderworldCafe.WaveSystem
         //     CurrentWaveCustomerLeft = WaveInformation.WaveCustomerInformations.Count;
         // }
 
-        public void Init(WaveInformationStruct waveInformation, Timer timerRef)
+        public void Init(WaveInformationStruct waveInformation, TimeManager timeManagerRef)
         {
-            _timerRef = timerRef;
+            _timeManagerRef = timeManagerRef;
             _waveInformation = waveInformation;
 
             CurrentWaveCustomerLeft = WaveInformation.WaveCustomerInformations.Count;
@@ -48,7 +48,7 @@ namespace UnderworldCafe.WaveSystem
 
         public void DeInit()
         {
-            _timerRef = null;
+            _timeManagerRef = null;
 
             CurrentWaveCustomerLeft = 0;
         }
@@ -84,14 +84,14 @@ namespace UnderworldCafe.WaveSystem
 
         public void OnCustomerOrderDurationEndedEventHandlerMethod()
         {
-            _timerRef.AddTimePassed(WaveInformation.WaveTimeDecrementByOrderDurationEnded);
+            _timeManagerRef.AddTimePassed(WaveInformation.WaveTimeDecrementByOrderDurationEnded);
         }
 
         public void OnCustomerServedEventHandlerMethod(bool isServedCorrectly)
         {
             if(!isServedCorrectly)
             {
-                _timerRef.AddTimePassed(WaveInformation.WaveTimeDecrementByWrongServing);
+                _timeManagerRef.AddTimePassed(WaveInformation.WaveTimeDecrementByWrongServing);
             }
             else
             {

@@ -14,7 +14,7 @@ namespace UnderworldCafe
     /// <summary>
     /// Class is for managing pool in game
     /// </summary>
-    public class PoolManager : DestroyOnLoadSingletonMonoBehaviour<PoolManager>
+    public class PoolManager : MonoBehaviour
     {
         public Dictionary<string, IObjectPool<GameObject>> GameObjectPools;
 

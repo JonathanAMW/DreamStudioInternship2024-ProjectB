@@ -17,8 +17,14 @@ namespace UnderworldCafe.PathfindingSystem
     /// <summary>
     /// Class summary
     /// </summary>
-    public class PathRequestManager : DestroyOnLoadSingletonMonoBehaviour<PathRequestManager>
+    public class PathRequestManager : MonoBehaviour
     {
+        #region Dependencies
+        private GridManager _gridManagerRef;
+        private AstarPathfinding _astarPathfindingRef;
+        #endregion
+        
+        
         // // Structure to hold a path request
         struct PathRequest
         {
@@ -36,9 +42,6 @@ namespace UnderworldCafe.PathfindingSystem
             }
         }
 
-        private GridManager _gridManagerRef => GridManager.Instance;
-        private AstarPathfinding _astarPathfindingRef;
-
         private PathRequest currentPathRequest;
         private Queue<PathRequest> pathRequestQueue = new Queue<PathRequest>();
         private bool _isProcessingPath;
@@ -46,6 +49,7 @@ namespace UnderworldCafe.PathfindingSystem
 
         private void Start()
         {
+            _gridManagerRef = LevelManager.Instance.LevelGridManagerRef;
             _astarPathfindingRef = GetComponent<AstarPathfinding>();
         }
 

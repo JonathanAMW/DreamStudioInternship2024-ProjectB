@@ -8,16 +8,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 using UnderworldCafe.CookingSystem;
-using UnderworldCafe.GameManageralSystem;
 
 namespace UnderworldCafe.InputSystem
 {
     /// <summary>
     /// This class will be used to handle input events from player
     /// </summary>
-    public class InputManager : SingletonMonoBehaviour<InputManager>
+    public class InputManager : MonoBehaviour
     {
-        private LevelManager _levelManagerRef;
+        // private LevelManager _levelManagerRef;
         private Camera _mainCameraRef;
         private GameInputAction _gameInputAction;
 
@@ -29,10 +28,8 @@ namespace UnderworldCafe.InputSystem
         // #endregion
 
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
-
             _gameInputAction = new GameInputAction();
             _mainCameraRef = Camera.main;    
         }

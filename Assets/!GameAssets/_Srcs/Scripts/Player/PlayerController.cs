@@ -18,11 +18,11 @@ namespace UnderworldCafe.Player
     /// <summary>
     /// Class that responsible to manage players character
     /// </summary>
-    public class PlayerController : DestroyOnLoadSingletonMonoBehaviour<PlayerController>
+    public class PlayerController : MonoBehaviour
     {
         #region References Dependency
-        private PathRequestManager _pathRequestManagerRef => PathRequestManager.Instance;
-        private GridManager _gridManagerRef => GridManager.Instance;
+        private PathRequestManager _pathRequestManagerRef;
+        private GridManager _gridManagerRef;
         
         public PlayerInventory PlayerInventory { get; private set; }
         #endregion
@@ -51,6 +51,10 @@ namespace UnderworldCafe.Player
 
         private void Start()
         {
+            _pathRequestManagerRef = LevelManager.Instance.LevelPathRequestManagerRef;
+            _gridManagerRef = LevelManager.Instance.LevelGridManagerRef;
+
+
             _pathPos = new List<Vector3>();
             _playerMovementRequestList = new List<PlayerMovementRequest>();
             PlayerInventory = GetComponent<PlayerInventory>();

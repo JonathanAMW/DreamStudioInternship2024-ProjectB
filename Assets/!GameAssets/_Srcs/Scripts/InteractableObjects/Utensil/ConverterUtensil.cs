@@ -10,8 +10,6 @@ using UnityEngine;
 using UnderworldCafe.Player;
 using UnderworldCafe.DataPersistenceSystem.Interfaces;
 using UnderworldCafe.DataPersistenceSystem.GameDatas;
-using UnderworldCafe.GameManageralSystem;
-
 
 namespace UnderworldCafe.CookingSystem
 {
@@ -21,7 +19,7 @@ namespace UnderworldCafe.CookingSystem
     public class ConverterUtensil : Utensil
     {
         #region Dependency Injection
-        Timer _timerRef => LevelManager.Instance.LevelTimer;
+        TimeManager _timeManagerRef;
         #endregion
 
         [Header("=======[Converter Utensil Properties]=======")]
@@ -49,6 +47,8 @@ namespace UnderworldCafe.CookingSystem
 
         protected override void Start()
         {
+            _timeManagerRef = LevelManager.Instance.LevelTimeManager;
+
             base.Start();
             _isProcessing = false;
             _isFoodReady = false;
@@ -110,8 +110,8 @@ namespace UnderworldCafe.CookingSystem
         {
             // yield return new WaitForSeconds(_currentStatsData.ConvertingTime);   
 
-            float _startProcessingTime = _timerRef.TimePassed;
-            while(_timerRef.TimePassed - _startProcessingTime < _currentStatsData.ConvertingTime)
+            float _startProcessingTime = _timeManagerRef.TimePassed;
+            while(_timeManagerRef.TimePassed - _startProcessingTime < _currentStatsData.ConvertingTime)
             {
                 yield return null;
             }

@@ -14,19 +14,11 @@ namespace UnderworldCafe
     /// Class for animating timer for Customer's Order
     /// </summary>
     public class Timer : MonoBehaviour
-    {
-        #region Events
-        public event Action OnTimerEndedEvent;
-        #endregion
-        
-        
+    {        
         [SerializeField] Slider timerSlider;
         [SerializeField] float timerDuration = 10f;
         float timePassed;
 
-        public float TimePassed => timePassed;
-        
-        
         private void Start()
         {
             timePassed = 0;
@@ -42,20 +34,10 @@ namespace UnderworldCafe
                 if (timePassed >= timerDuration) //timer reached end
                 {
                     timePassed = timerDuration;
-                    OnTimerEndedEvent?.Invoke();
                 }
                 float timeNormalized = Mathf.Clamp01(timePassed / timerDuration);
                 timerSlider.value = timeNormalized;
             }
         }
-
-        //For time penalty mechanic
-        public void AddTimePassed(float addedTime)
-        {
-            timePassed += addedTime;
-        }
-
-
-
     }
 }

@@ -11,7 +11,6 @@ using UnityEngine;
 using UnderworldCafe.CookingSystem;
 using UnderworldCafe.Player;
 using UnityEngine.Pool;
-using Unity.VisualScripting;
 
 
 namespace UnderworldCafe.CustomerSystem
@@ -22,7 +21,7 @@ namespace UnderworldCafe.CustomerSystem
     public class Customer : QueuedInteractableObject
     {
         #region Dependency Injection
-        private Timer _timerRef;
+        TimeManager _timeManagerRef;
         #endregion
 
         #region Events
@@ -87,9 +86,9 @@ namespace UnderworldCafe.CustomerSystem
             }
         }
 
-        public void Init(Ingredient orderedFood, float orderDuration, Timer timerRef)
+        public void Init(Ingredient orderedFood, float orderDuration, TimeManager timeManagerRef)
         {
-            _timerRef = timerRef;
+            _timeManagerRef = timeManagerRef;
 
             //set variables
             IsServedCorrectly = false;
@@ -106,7 +105,7 @@ namespace UnderworldCafe.CustomerSystem
         {
             StopAllCoroutines();
 
-            _timerRef = null;
+            _timeManagerRef = null;
 
             IsServedCorrectly = false;
             OrderDuration = 0.0f;
@@ -134,9 +133,9 @@ namespace UnderworldCafe.CustomerSystem
 
         private IEnumerator WaitingForFood()
         {
-            float startOrderTime = _timerRef.TimePassed;
+            float startOrderTime = _timeManagerRef.TimePassed;
 
-            while(_timerRef.TimePassed - startOrderTime < OrderDuration)
+            while(_timeManagerRef.TimePassed - startOrderTime < OrderDuration)
             {
                 yield return null;
             }

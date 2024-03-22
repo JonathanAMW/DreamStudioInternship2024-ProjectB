@@ -51,6 +51,8 @@ namespace UnderworldCafe
         protected virtual void Start() 
         {
             ChangeQueuedState(false);
+
+            _playerControllerRef = LevelManager.Instance.LevelPlayerController;
         }        
         
         public abstract void Interact();

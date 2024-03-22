@@ -15,11 +15,11 @@ namespace UnderworldCafe.WaveSystem
     /// <summary>
     /// Class is for managing the wave sequence or wave-line of the level
     /// </summary>
-    public class WaveManager : DestroyOnLoadSingletonMonoBehaviour<WaveManager>
+    public class WaveManager : MonoBehaviour
     {
         #region Dependency Injection
-        PoolManager _poolManagerRef => PoolManager.Instance;
-        Timer _timerRef;
+        PoolManager _poolManagerRef;
+        TimeManager _timeManagerRef;
         #endregion
 
 
@@ -43,6 +43,7 @@ namespace UnderworldCafe.WaveSystem
             // {
             //     _waveList[i] = new Wave(_waveInformationSOList[i].WaveInformation);
             // }
+            _poolManagerRef = LevelManager.Instance.LevelPoolManager;
 
             _usedCustomersFromPool = new();
             _currentWave = new Wave();
@@ -51,7 +52,7 @@ namespace UnderworldCafe.WaveSystem
 
         private void OnEnable()
         {
-            _timerRef.OnTimerEndedEvent += OnTimerEndedEventHandlerMethod;
+            _timeManagerRef.OnTimerEndedEvent += OnTimerEndedEventHandlerMethod;
             _currentWave.OnWaveDoneEvent += OnCurrentWaveDoneEventHandlerMethod;
 
             if(_usedCustomersFromPool.Count > 0 || _usedCustomersFromPool != null)
@@ -65,7 +66,7 @@ namespace UnderworldCafe.WaveSystem
         }
         private void OnDisable()
         {
-            _timerRef.OnTimerEndedEvent -= OnTimerEndedEventHandlerMethod;
+            _timeManagerRef.OnTimerEndedEvent -= OnTimerEndedEventHandlerMethod;
             _currentWave.OnWaveDoneEvent -= OnCurrentWaveDoneEventHandlerMethod;
 
             if(_usedCustomersFromPool.Count > 0 || _usedCustomersFromPool != null)
@@ -130,7 +131,7 @@ namespace UnderworldCafe.WaveSystem
 
         private void StartCurrentWave()
         {
-            _currentWave.Init(_waveInformationSOList[_waveIndex].WaveInformation, _timerRef);
+            _currentWave.Init(_waveInformationSOList[_waveIndex].WaveInformation, _timeManagerRef);
 
             _currentWave.OnWaveDoneEvent += OnCurrentWaveDoneEventHandlerMethod;
 
@@ -146,7 +147,7 @@ namespace UnderworldCafe.WaveSystem
 
                 
                 customerObj.transform.position = _customerChairSpawnPointsInScene[customer.CustomerChairIndex].position;
-                customerObj.GetComponent<Customer>().Init(customer.CustomerOrderedFood, customer.CustomerOrderDuration, _timerRef);
+                customerObj.GetComponent<Customer>().Init(customer.CustomerOrderedFood, customer.CustomerOrderDuration, _timeManagerRef);
 
                 customerObj.GetComponent<Customer>().OnServedEvent += _currentWave.OnCustomerServedEventHandlerMethod;
                 customerObj.GetComponent<Customer>().OnOrderDurationEndedEvent += _currentWave.OnCustomerOrderDurationEndedEventHandlerMethod;

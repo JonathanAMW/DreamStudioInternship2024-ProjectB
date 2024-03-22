@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9c51ae665293824f97ec7d6fa380d31, type: 3}
-  m_Name: '[CustomerDataName]_SO'
+  m_Script: {fileID: 11500000, guid: d2fa270d060741a409a6c1893264b000, type: 3}
+  m_Name: TestWave1_SO
   m_EditorClassIdentifier: 
-  _customerInformation:
-    Id: 
-    Name: 
-    CustomerSprite: {fileID: 0}
+  _waveInformation:
+    WaveTimeDecrementByWrongServing: 2
+    WaveTimeDecrementByOrderDurationEnded: 2
+    WaveCustomerInformations: []
