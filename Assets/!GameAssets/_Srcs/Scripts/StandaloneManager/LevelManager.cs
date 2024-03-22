@@ -19,6 +19,7 @@ namespace UnderworldCafe
     public class LevelManager : DestroyOnLoadSingletonMonoBehaviour<LevelManager>
     {
         #region Dependencies
+        [field: Header("DEPENDENCIES")]
         [field: SerializeField] public InputManager LevelInputManagerRef { get; private set; }
         [field: SerializeField] public GridManager LevelGridManagerRef { get; private set; }
         [field: SerializeField] public TimeManager LevelTimeManagerRef { get; private set; }
@@ -28,6 +29,10 @@ namespace UnderworldCafe
         [field: SerializeField] public PlayerController LevelPlayerControllerRef { get; private set; }
         #endregion
 
+        [Header("LEVEL SETTINGS")]
+        [SerializeField] private float LevelTimeDuration;
+
+
         protected override void Awake()
         {
             base.Awake();
@@ -35,7 +40,7 @@ namespace UnderworldCafe
 
         private void Start()
         {
-            LevelTimeManagerRef.StartTimer(10);
+            LevelTimeManagerRef.StartTimer(LevelTimeDuration);
 
             LevelWaveManagerRef.StartWaveSequence();
         }
