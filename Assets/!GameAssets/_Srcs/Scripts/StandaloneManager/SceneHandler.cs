@@ -3,6 +3,7 @@
 // Created  : "2024/03/22"
 //----------------------------------------------------------------------
 
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace UnderworldCafe
@@ -10,12 +11,13 @@ namespace UnderworldCafe
     /// <summary>
     /// Class for managing scene
     /// </summary>
-    public static class SceneHandler
+    public class SceneHandler : MonoBehaviour
     {
         public static void LoadScene(string sceneName)
         {
             SceneManager.LoadScene(sceneName);
         }
+
         public static void LoadScene(int sceneIndex)
         {
             SceneManager.LoadScene(sceneIndex);
