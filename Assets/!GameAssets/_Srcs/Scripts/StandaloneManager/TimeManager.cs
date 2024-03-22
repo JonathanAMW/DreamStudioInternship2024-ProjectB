@@ -6,7 +6,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 namespace UnderworldCafe
 {
@@ -19,19 +19,16 @@ namespace UnderworldCafe
         public event Action OnTimerEndedEvent;
         #endregion
         
-        
-        private float _timerDuration;
-        private float _timePassed;
 
-
-        public float TimerDuration =>_timerDuration;        
-        public float TimePassed => _timePassed;
+        public bool IsTimerPaused { get; private set; }
+        public float TimerDuration { get; private set; }  
+        public float TimePassed { get; private set; }
         
 
         public void StartTimer(float timerDuration)
         {
-            _timePassed = 0;
-            _timerDuration = timerDuration;
+            TimePassed = 0;
+            TimerDuration = timerDuration;
 
             StartCoroutine(TimerCoroutine());
         }
@@ -41,23 +38,31 @@ namespace UnderworldCafe
             StopCoroutine(TimerCoroutine());
         }
 
+        public void SetPauseTimer(bool isPaused)
+        {
+            IsTimerPaused = isPaused;
+        }
+
         private IEnumerator TimerCoroutine()
         {
-            while(_timePassed < _timerDuration)
+            while(TimePassed < TimerDuration)
             {
-                _timePassed += Time.deltaTime;
-
+                if(IsTimerPaused) yield return null;
+                
+                TimePassed += Time.deltaTime;
+                Debug.Log(TimePassed);
                 yield return null;
             }
 
-            _timePassed = _timerDuration;
+            TimePassed = TimerDuration;
             OnTimerEndedEvent?.Invoke();
+            Debug.Log("Timer ended");
         }
 
         //For time penalty mechanic
         public void AddTimePassed(float addedTime)
         {
-            _timePassed += addedTime;
+            TimePassed += addedTime;
         }
     }
 }

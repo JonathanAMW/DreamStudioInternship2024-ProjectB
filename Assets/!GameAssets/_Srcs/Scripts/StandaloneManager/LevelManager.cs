@@ -35,7 +35,9 @@ namespace UnderworldCafe
 
         private void Start()
         {
-            
+            LevelTimeManagerRef.StartTimer(10);
+
+            LevelWaveManagerRef.StartWaveSequence();
         }
 
     }
