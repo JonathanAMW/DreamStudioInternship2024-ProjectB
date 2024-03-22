@@ -132,6 +132,10 @@ namespace UnderworldCafe.Player
                 }
 
                 
+                _playerAnimator.SetFloat("Horizontal", transform.position.x - currentWaypoint.x);
+                _playerAnimator.SetFloat("Vertical", transform.position.y - currentWaypoint.y);
+                // _playerAnimator.SetFloat("Speed", _movementSpeed);
+
                 transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, _movementSpeed * Time.deltaTime);
                 
                 // yield return new WaitForSeconds(3); 
