@@ -11,6 +11,7 @@ namespace UnderworldCafe
     /// <summary>
     /// Class summary
     /// </summary>
+    [DefaultExecutionOrder(-1)]
     public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         #region Dependency Injection
