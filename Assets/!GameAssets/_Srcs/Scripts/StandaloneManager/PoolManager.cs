@@ -20,10 +20,15 @@ namespace UnderworldCafe
 
 
         #region MonoBehavior
-        private void Start()
+        private void Awake()
         {
             GameObjectPools = new Dictionary<string, IObjectPool<GameObject>>();
         }
+
+        // private void Start()
+        // {
+        //     GameObjectPools = new Dictionary<string, IObjectPool<GameObject>>();
+        // }
         #endregion
 
 

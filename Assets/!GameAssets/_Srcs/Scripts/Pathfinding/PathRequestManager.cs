@@ -47,10 +47,16 @@ namespace UnderworldCafe.PathfindingSystem
         private bool _isProcessingPath;
 
 
-        private void Start()
+        private void Awake()
         {
             _gridManagerRef = LevelManager.Instance.LevelGridManagerRef;
             _astarPathfindingRef = GetComponent<AstarPathfinding>();
+        }
+
+        private void Start()
+        {
+            // _gridManagerRef = LevelManager.Instance.LevelGridManagerRef;
+            // _astarPathfindingRef = GetComponent<AstarPathfinding>();
         }
 
 

@@ -43,18 +43,30 @@ namespace UnderworldCafe.CookingSystem
                 Debug.LogWarning("No stats data set in " + gameObject.name);
             }
         }
-        
 
-        protected override void Start()
+        protected override void Awake()
         {
-            _timeManagerRef = LevelManager.Instance.LevelTimeManagerRef;
+            base.Awake();
 
-            base.Start();
+            _timeManagerRef = LevelManager.Instance.LevelTimeManagerRef;
             _isProcessing = false;
             _isFoodReady = false;
 
             // Need additional check for if player has loading save or not
             _currentStatsData = StatsDataPerLevel[0];
+        }
+        
+
+        protected override void Start()
+        {
+            // _timeManagerRef = LevelManager.Instance.LevelTimeManagerRef;
+
+            // base.Start();
+            // _isProcessing = false;
+            // _isFoodReady = false;
+
+            // // Need additional check for if player has loading save or not
+            // _currentStatsData = StatsDataPerLevel[0];
         }
 
         public override void Interact()

@@ -30,12 +30,15 @@ namespace UnderworldCafe
         protected void Awake()
         {
             _gameInputAction = new GameInputAction();
+
+            _gameInputAction.Gameplay.Press.started += ctx => ClickOrPress(ctx);
+
         }
 
 
         private void Start()
         {
-            _gameInputAction.Gameplay.Press.started += ctx => ClickOrPress(ctx);
+            // _gameInputAction.Gameplay.Press.started += ctx => ClickOrPress(ctx);
         }
 
         private void OnEnable()

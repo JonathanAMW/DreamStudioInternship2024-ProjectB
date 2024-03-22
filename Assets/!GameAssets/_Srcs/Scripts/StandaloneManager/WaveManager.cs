@@ -35,6 +35,15 @@ namespace UnderworldCafe.WaveSystem
 
 
         #region MonoBehavior
+
+        private void Awake()
+        {
+            _poolManagerRef = LevelManager.Instance.LevelPoolManagerRef;
+
+            _usedCustomersFromPool = new();
+            _currentWave = new Wave();
+            SetupCustomerPool();
+        }
         private void Start()
         {
             // //No need to copy as it is not going to be reused
@@ -43,11 +52,13 @@ namespace UnderworldCafe.WaveSystem
             // {
             //     _waveList[i] = new Wave(_waveInformationSOList[i].WaveInformation);
             // }
-            _poolManagerRef = LevelManager.Instance.LevelPoolManagerRef;
 
-            _usedCustomersFromPool = new();
-            _currentWave = new Wave();
-            SetupCustomerPool();
+            
+            // _poolManagerRef = LevelManager.Instance.LevelPoolManagerRef;
+
+            // _usedCustomersFromPool = new();
+            // _currentWave = new Wave();
+            // SetupCustomerPool();
         }
 
         private void OnEnable()

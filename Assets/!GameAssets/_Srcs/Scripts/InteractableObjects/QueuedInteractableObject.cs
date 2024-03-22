@@ -47,12 +47,19 @@ namespace UnderworldCafe
                 Debug.LogWarning("No queued index text has been set on queued interactable object: " + gameObject.name);
             }
         }
-        
-        protected virtual void Start() 
+
+        protected virtual void Awake()
         {
             ChangeQueuedState(false);
 
             _playerControllerRef = LevelManager.Instance.LevelPlayerControllerRef;
+        }
+        
+        protected virtual void Start() 
+        {
+            // ChangeQueuedState(false);
+
+            // _playerControllerRef = LevelManager.Instance.LevelPlayerControllerRef;
         }        
         
         public abstract void Interact();

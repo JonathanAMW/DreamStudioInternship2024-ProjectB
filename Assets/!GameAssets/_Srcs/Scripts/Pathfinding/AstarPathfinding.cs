@@ -19,9 +19,14 @@ namespace UnderworldCafe.PathfindingSystem
         PathRequestManager _requestManagerRef;
         #endregion
 
-        private void Start()
+        private void Awake()
         {
             _requestManagerRef = LevelManager.Instance.LevelPathRequestManagerRef;
+        }
+
+        private void Start()
+        {
+            // _requestManagerRef = LevelManager.Instance.LevelPathRequestManagerRef;
         }
 
         private bool IsValidPath(Node start, Node end)

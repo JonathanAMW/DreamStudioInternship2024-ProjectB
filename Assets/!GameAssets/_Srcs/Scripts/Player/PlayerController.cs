@@ -47,8 +47,7 @@ namespace UnderworldCafe.Player
             }
         }
 
-
-        private void Start()
+        private void Awake()
         {
             _pathRequestManagerRef = LevelManager.Instance.LevelPathRequestManagerRef;
             _gridManagerRef = LevelManager.Instance.LevelGridManagerRef;
@@ -59,6 +58,19 @@ namespace UnderworldCafe.Player
             PlayerInventory = GetComponent<PlayerInventory>();
 
             transform.position = _gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position);
+        }
+
+        private void Start()
+        {
+            // _pathRequestManagerRef = LevelManager.Instance.LevelPathRequestManagerRef;
+            // _gridManagerRef = LevelManager.Instance.LevelGridManagerRef;
+
+
+            // _pathPos = new List<Vector3>();
+            // _playerMovementRequestList = new List<PlayerMovementRequest>();
+            // PlayerInventory = GetComponent<PlayerInventory>();
+
+            // transform.position = _gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position);
         }
 
 

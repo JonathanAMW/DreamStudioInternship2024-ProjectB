@@ -18,7 +18,7 @@ namespace UnderworldCafe
     [DefaultExecutionOrder(-1)]
     public class LevelManager : DestroyOnLoadSingletonMonoBehaviour<LevelManager>
     {
-        #region Dependency Injection
+        #region Dependencies
         [field: SerializeField] public InputManager LevelInputManagerRef { get; private set; }
         [field: SerializeField] public GridManager LevelGridManagerRef { get; private set; }
         [field: SerializeField] public TimeManager LevelTimeManagerRef { get; private set; }
@@ -35,7 +35,7 @@ namespace UnderworldCafe
 
         private void Start()
         {
-
+            
         }
 
     }
