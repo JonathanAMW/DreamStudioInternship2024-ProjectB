@@ -27,7 +27,7 @@ namespace UnderworldCafe.WaveSystem
         [Tooltip("Drag the Wave SO here")]
         [SerializeField] private WaveInformationSO[] _waveInformationSOList;
         [Tooltip("Drag the customer object spawn points here")]
-        [SerializeField] private Transform[] _customerChairSpawnPointsInScene;
+        [SerializeField] private Transform[] _customerSpawnPointsInScene;
         private Wave _currentWave;
         private int _waveIndex;
         private Queue<GameObject> _usedCustomersFromPool;
@@ -150,7 +150,7 @@ namespace UnderworldCafe.WaveSystem
             foreach(var customer in _currentWave.WaveInformation.WaveCustomerInformations)
             {
                 // skip if customer chair index is out of bounds
-                if(customer.CustomerChairIndex >= _customerChairSpawnPointsInScene.Length || customer.CustomerChairIndex < 0)
+                if(customer.CustomerChairIndex >= _customerSpawnPointsInScene.Length || customer.CustomerChairIndex < 0)
                 {
                     continue;
                 }
@@ -158,7 +158,7 @@ namespace UnderworldCafe.WaveSystem
                 var customerObj = _poolManagerRef.TryGetFromPool(customer.CustomerPrefab.GetComponent<Customer>().CustomerId);
 
                 
-                customerObj.transform.position = _customerChairSpawnPointsInScene[customer.CustomerChairIndex].position;
+                customerObj.transform.position = _customerSpawnPointsInScene[customer.CustomerChairIndex].position;
                 customerObj.GetComponent<Customer>().Init(customer.CustomerOrderedFood, customer.CustomerOrderDuration, _timeManagerRef);
 
                 customerObj.GetComponent<Customer>().OnServedEvent += _currentWave.OnCustomerServedEventHandlerMethod;

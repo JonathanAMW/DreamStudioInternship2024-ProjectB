@@ -15,4 +15,8 @@ MonoBehaviour:
   _waveInformation:
     WaveTimeDecrementByWrongServing: 2
     WaveTimeDecrementByOrderDurationEnded: 2
-    WaveCustomerInformations: []
+    WaveCustomerInformations:
+    - CustomerChairIndex: 0
+      CustomerPrefab: {fileID: 0}
+      CustomerOrderedFood: {fileID: 0}
+      CustomerOrderDuration: 0
