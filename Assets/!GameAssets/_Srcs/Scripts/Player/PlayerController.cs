@@ -21,16 +21,15 @@ namespace UnderworldCafe.Player
     public class PlayerController : DestroyOnLoadSingletonMonoBehaviour<PlayerController>
     {
         #region References Dependency
-        private InputManager _inputManagerRef => InputManager.Instance;
         private PathRequestManager _pathRequestManagerRef => PathRequestManager.Instance;
         private GridManager _gridManagerRef => GridManager.Instance;
-        public PlayerInventory PlayerInventory {get; private set;}
+        
+        public PlayerInventory PlayerInventory { get; private set; }
         #endregion
-
-
 
         [SerializeField] private Tilemap _playerWalkableTilemap;
         [SerializeField] private float _movementSpeed;
+        [SerializeField] private Animator _playerAnimator;
 
         private List<Vector3> _pathPos; // Array to hold the calculated path
         private int _targetIndex; // Index of the current target waypoint in the path

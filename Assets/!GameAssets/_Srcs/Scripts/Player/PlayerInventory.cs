@@ -21,7 +21,7 @@ namespace UnderworldCafe.Player
         private ObjectPool<Ingredient> _ingredientPool;
 
         [SerializeField] private List<Ingredient> _playerInventoryList;
-        public List<Ingredient> PlayerInventoryList => _playerInventoryList;
+        public IReadOnlyList<Ingredient> PlayerInventoryList => _playerInventoryList;
 
 
         #region Visual

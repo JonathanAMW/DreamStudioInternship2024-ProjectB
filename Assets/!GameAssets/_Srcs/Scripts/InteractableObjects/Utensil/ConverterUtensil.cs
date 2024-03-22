@@ -10,6 +10,7 @@ using UnityEngine;
 using UnderworldCafe.Player;
 using UnderworldCafe.DataPersistenceSystem.Interfaces;
 using UnderworldCafe.DataPersistenceSystem.GameDatas;
+using UnderworldCafe.GameManageralSystem;
 
 
 namespace UnderworldCafe.CookingSystem
@@ -19,9 +20,13 @@ namespace UnderworldCafe.CookingSystem
     /// </summary>
     public class ConverterUtensil : Utensil
     {
+        #region Dependency Injection
+        Timer _timerRef => LevelManager.Instance.LevelTimer;
+        #endregion
+
         [Header("=======[Converter Utensil Properties]=======")]
         [SerializeField] private List<ConverterUtensilStatsData> _statsDataPerLevel;
-        public List<ConverterUtensilStatsData> StatsDataPerLevel => _statsDataPerLevel;
+        public IReadOnlyList<ConverterUtensilStatsData> StatsDataPerLevel => _statsDataPerLevel;
 
         private ConverterUtensilStatsData _currentStatsData;
 
@@ -103,7 +108,13 @@ namespace UnderworldCafe.CookingSystem
 
         private IEnumerator ProcessingFood(Ingredient createdIngredient)
         {
-            yield return new WaitForSeconds(_currentStatsData.ConvertingTime);
+            // yield return new WaitForSeconds(_currentStatsData.ConvertingTime);   
+
+            float _startProcessingTime = _timerRef.TimePassed;
+            while(_timerRef.TimePassed - _startProcessingTime < _currentStatsData.ConvertingTime)
+            {
+                yield return null;
+            }
             
             ReadyToTakeFood = createdIngredient;
             _isProcessing = false;

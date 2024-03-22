@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8619758987135428914}
   - component: {fileID: 5279347264588368017}
+  - component: {fileID: 6462800116618761321}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6462800116618761321
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4945515690235244989}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5203804885975476204
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerWalkableTilemap: {fileID: 0}
   _movementSpeed: 50
+  _playerAnimator: {fileID: 6462800116618761321}
   _maxListSize: 6
 --- !u!114 &8621511693876372656
 MonoBehaviour:
@@ -224,6 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b4b80c119dbe04b9a85de8ac665de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerInventoryList: []
   _slotSpawnPointObject: {fileID: 8897402957338472014}
   _slotObjectInScene: []
   _inventorySlotPrefab: {fileID: 5408135206834621677, guid: 5448312ea7aaa354183e3e8640c429da, type: 3}

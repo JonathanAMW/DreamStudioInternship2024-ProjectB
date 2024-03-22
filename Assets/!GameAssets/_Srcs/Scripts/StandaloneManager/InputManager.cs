@@ -71,15 +71,14 @@ namespace UnderworldCafe.InputSystem
             IInteractable interactedObj = hit2D.collider.gameObject.GetComponent<IInteractable>();
 
             // Check type of interactable object
-            if(interactedObj is Utensil)
+            if(interactedObj is QueuedInteractableObject)
             {
-                ((Utensil)interactedObj).TrySelectThisUtensil();
+                ((QueuedInteractableObject)interactedObj).TryInteract();
             }
             else
             {
-                interactedObj.Interact();
+                Debug.LogError("Not Implemented: " + interactedObj.GetType());
             }
-
         }
     }
 }

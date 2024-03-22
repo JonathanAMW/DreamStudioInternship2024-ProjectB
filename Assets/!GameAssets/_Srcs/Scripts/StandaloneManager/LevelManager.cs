@@ -13,30 +13,22 @@ namespace UnderworldCafe.GameManageralSystem
     /// <summary>
     /// Class should handle level information and become service locator for entire level lifecycle
     /// </summary>
-    public class LevelManager : SingletonMonoBehaviour<LevelManager>
+    public class LevelManager : DestroyOnLoadSingletonMonoBehaviour<LevelManager>
     {
-        public GridManager GridManager { get; private set; }
-        public PlayerController PlayerController { get; private set; }
-        
+        #region Dependency Injection
+        public GridManager LevelGridManager { get; private set; }
+        public PlayerController LevelPlayerController { get; private set; }
+        public Timer LevelTimer { get; private set; }
+
+        #endregion
 
         protected override void Awake()
         {
             base.Awake();
             
-            GridManager = FindObjectOfType<GridManager>();
-            PlayerController = FindObjectOfType<PlayerController>();
-        }
-
-        // Start is called before the first frame update
-        private void Start()
-        {
-            
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
-            
+            LevelGridManager = FindObjectOfType<GridManager>();
+            LevelPlayerController = FindObjectOfType<PlayerController>();
+            LevelTimer = FindObjectOfType<Timer>();
         }
     }
 }
