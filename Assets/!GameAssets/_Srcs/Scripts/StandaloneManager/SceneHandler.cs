@@ -13,22 +13,26 @@ namespace UnderworldCafe
     /// </summary>
     public class SceneHandler : MonoBehaviour
     {
-        public static void LoadScene(string sceneName)
+        //Can be used as transition animator
+        [SerializeField] private Animator _sceneTransitionAnimator;
+
+        
+        public void LoadScene(string sceneName)
         {
             SceneManager.LoadScene(sceneName);
         }
 
-        public static void LoadScene(int sceneIndex)
+        public void LoadScene(int sceneIndex)
         {
             SceneManager.LoadScene(sceneIndex);
         }
 
-        public static void ReloadScene()
+        public void ReloadScene()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        public static void QuitGame()
+        public void QuitGame()
         {
             #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
@@ -40,13 +44,13 @@ namespace UnderworldCafe
 
         #region Additive
         // Load a scene additively
-        public static void LoadSceneAdditive(string sceneName)
+        public void LoadSceneAdditive(string sceneName)
         {
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
         }
 
         // Unload a scene
-        public static void UnloadScene(string sceneName)
+        public void UnloadScene(string sceneName)
         {
             SceneManager.UnloadSceneAsync(sceneName);
         }
