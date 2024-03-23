@@ -104,8 +104,8 @@ namespace UnderworldCafe.Player
                 
                 _targetIndex = 0;
 
-                StopCoroutine(FollowPath()); 
-                StartCoroutine(FollowPath());
+                StopCoroutine("FollowPath"); 
+                StartCoroutine("FollowPath");
             }
         }
 
@@ -115,27 +115,31 @@ namespace UnderworldCafe.Player
             Vector3 currentWaypoint = _pathPos[0]; // Get the first waypoint from the path
             while (true) 
             {
-                // if (_gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position) == currentWaypoint) 
                 if (transform.position == currentWaypoint) 
-                { 
-                    // Debug.Log("Finished at: "+currentWaypoint);
+                {
+                    _playerAnimator.SetFloat("Horizontal", 0);
+                    _playerAnimator.SetFloat("Vertical", 0);
+                    _playerAnimator.SetFloat("Speed", 0);
+
                     _targetIndex++;
 
                     if (_targetIndex >= _pathPos.Count) 
                     { 
-                        // transform.position = _gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position);
                         _isMoving = false;
                         FinishedFollowingPath(true);
                         yield break;
                     }
+
                     currentWaypoint = _pathPos[_targetIndex];
+
+                    yield return null; 
                 }
 
                 transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, _movementSpeed * Time.deltaTime);
                 
                 _playerAnimator.SetFloat("Horizontal", transform.position.x - currentWaypoint.x);
                 _playerAnimator.SetFloat("Vertical", transform.position.y - currentWaypoint.y);
-                _playerAnimator.SetFloat("Speed", (transform.position - currentWaypoint).sqrMagnitude);
+                _playerAnimator.SetFloat("Speed", 1);
 
                 // yield return new WaitForSeconds(3); 
                 yield return null; 
@@ -191,7 +195,7 @@ namespace UnderworldCafe.Player
                     //if current movement is what being removed
                     if(i==0)
                     {
-                        StopCoroutine(FollowPath());
+                        StopCoroutine("FollowPath");
                         _isMoving = false;
                     }
                     
