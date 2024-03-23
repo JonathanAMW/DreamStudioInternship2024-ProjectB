@@ -161,7 +161,7 @@ namespace UnderworldCafe.WaveSystem
             {
                 foreach(var spawnPoint in _customerSpawnPointsConfig)
                 {
-                    if(spawnPoint.pointIndex == customer.CustomerChairIndex)
+                    if(spawnPoint.pointIndex == customer.CustomerSpawnPointIndex)
                     {
                         var customerObj = _poolManagerRef.TryGetFromPool(customer.CustomerPrefab.GetComponent<Customer>().CustomerId);
                         
