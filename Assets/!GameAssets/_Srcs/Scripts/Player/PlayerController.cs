@@ -49,8 +49,8 @@ namespace UnderworldCafe.Player
 
         private void Awake()
         {
-            _pathRequestManagerRef = LevelManager.Instance.LevelPathRequestManagerRef;
-            _gridManagerRef = LevelManager.Instance.LevelGridManagerRef;
+            _pathRequestManagerRef = LevelManager.Instance.PathRequestManager;
+            _gridManagerRef = LevelManager.Instance.GridManager;
 
 
             _pathPos = new List<Vector3>();

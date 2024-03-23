@@ -49,7 +49,7 @@ namespace UnderworldCafe.PathfindingSystem
 
         private void Awake()
         {
-            _gridManagerRef = LevelManager.Instance.LevelGridManagerRef;
+            _gridManagerRef = LevelManager.Instance.GridManager;
             _astarPathfindingRef = GetComponent<AstarPathfinding>();
         }
 

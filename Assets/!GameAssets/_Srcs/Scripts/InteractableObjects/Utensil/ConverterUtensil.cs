@@ -48,7 +48,7 @@ namespace UnderworldCafe.CookingSystem
         {
             base.Awake();
 
-            _timeManagerRef = LevelManager.Instance.LevelTimeManagerRef;
+            _timeManagerRef = LevelManager.Instance.TimeManager;
             _isProcessing = false;
             _isFoodReady = false;
 

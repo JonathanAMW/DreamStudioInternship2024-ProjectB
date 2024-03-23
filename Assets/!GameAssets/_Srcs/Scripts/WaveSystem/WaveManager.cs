@@ -38,8 +38,8 @@ namespace UnderworldCafe.WaveSystem
 
         private void Awake()
         {
-            _poolManagerRef = LevelManager.Instance.LevelPoolManagerRef;
-            _timeManagerRef = LevelManager.Instance.LevelTimeManagerRef;
+            _poolManagerRef = LevelManager.Instance.PoolManager;
+            _timeManagerRef = LevelManager.Instance.TimeManager;
 
             _usedCustomersFromPool = new();
             _currentWave = new Wave();
