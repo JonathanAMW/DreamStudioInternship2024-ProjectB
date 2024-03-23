@@ -123,6 +123,7 @@ namespace UnderworldCafe.Player
 
                     _targetIndex++;
 
+                    // If we reached the end of the path, stop following it
                     if (_targetIndex >= _pathPos.Count) 
                     { 
                         _isMoving = false;
@@ -131,8 +132,6 @@ namespace UnderworldCafe.Player
                     }
 
                     currentWaypoint = _pathPos[_targetIndex];
-
-                    yield return null; 
                 }
 
                 transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, _movementSpeed * Time.deltaTime);
