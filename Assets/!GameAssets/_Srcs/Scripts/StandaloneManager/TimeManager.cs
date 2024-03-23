@@ -30,12 +30,12 @@ namespace UnderworldCafe
             TimePassed = 0;
             TimerDuration = timerDuration;
 
-            StartCoroutine(TimerCoroutine());
+            StartCoroutine("TimerCoroutine");
         }
 
         public void StopTimer()
         {
-            StopCoroutine(TimerCoroutine());
+            StopCoroutine("TimerCoroutine");
         }
 
         public void SetPauseTimer(bool isPaused)
