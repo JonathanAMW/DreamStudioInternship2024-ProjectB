@@ -22,12 +22,18 @@ namespace UnderworldCafe.WaveSystem
         TimeManager _timeManagerRef;
         #endregion
 
+        [System.Serializable]
+        public struct CustomerSpawnPointsStruct
+        {
+            public int pointIndex;
+            public Transform pointTransform;
+        }
 
         #region Private
         [Tooltip("Drag the Wave SO here")]
         [SerializeField] private WaveInformationSO[] _waveInformationSOList;
         [Tooltip("Drag the customer object spawn points here")]
-        [SerializeField] private Transform[] _customerSpawnPointsInScene;
+        [SerializeField] private CustomerSpawnPointsStruct[] _customerSpawnPointsConfig;
         private Wave _currentWave;
         private int _waveIndex;
         private Queue<GameObject> _usedCustomersFromPool;
@@ -100,7 +106,7 @@ namespace UnderworldCafe.WaveSystem
             {
                 foreach(var waveCustomerInfos in waveSO.WaveInformation.WaveCustomerInformations)
                 {
-                    _poolManagerRef.TryAddToPool(waveCustomerInfos.CustomerPrefab.GetComponent<Customer>().CustomerId, waveCustomerInfos.CustomerPrefab);
+                    _poolManagerRef.TryCreateNewPool(waveCustomerInfos.CustomerPrefab.GetComponent<Customer>().CustomerId, waveCustomerInfos.CustomerPrefab);
                 }
             }
         }
@@ -150,22 +156,34 @@ namespace UnderworldCafe.WaveSystem
             foreach(var customer in _currentWave.WaveInformation.WaveCustomerInformations)
             {
                 // skip if customer chair index is out of bounds
-                if(customer.CustomerChairIndex >= _customerSpawnPointsInScene.Length || customer.CustomerChairIndex < 0)
+                if(customer.CustomerChairIndex >= _customerSpawnPointsConfig.Length || customer.CustomerChairIndex < 0)
                 {
+                    Debug.LogWarning("Customer chair index out of bounds: " + customer.CustomerChairIndex);
                     continue;
                 }
-
-                var customerObj = _poolManagerRef.TryGetFromPool(customer.CustomerPrefab.GetComponent<Customer>().CustomerId);
-
                 
-                customerObj.transform.position = _customerSpawnPointsInScene[customer.CustomerChairIndex].position;
-                customerObj.GetComponent<Customer>().Init(customer.CustomerOrderedFood, customer.CustomerOrderDuration, _timeManagerRef);
+                foreach(var spawnPoint in _customerSpawnPointsConfig)
+                {
+                    if(spawnPoint.pointIndex == customer.CustomerChairIndex)
+                    {
+                        var customerObj = _poolManagerRef.TryGetFromPool(customer.CustomerPrefab.GetComponent<Customer>().CustomerId);
+                        
+                        if(customerObj == null)
+                        {
+                            Debug.LogWarning("Customer prefab not found: " + customer.CustomerPrefab.name);
+                            continue;
+                        }
+                        
+                        customerObj.transform.position = spawnPoint.pointTransform.position;
+                        
+                        customerObj.GetComponent<Customer>().Init(customer.CustomerOrderedFood, customer.CustomerOrderDuration, _timeManagerRef);
+                        customerObj.GetComponent<Customer>().OnServedEvent += _currentWave.OnCustomerServedEventHandlerMethod;
+                        customerObj.GetComponent<Customer>().OnOrderDurationEndedEvent += _currentWave.OnCustomerOrderDurationEndedEventHandlerMethod;
 
-                customerObj.GetComponent<Customer>().OnServedEvent += _currentWave.OnCustomerServedEventHandlerMethod;
-                customerObj.GetComponent<Customer>().OnOrderDurationEndedEvent += _currentWave.OnCustomerOrderDurationEndedEventHandlerMethod;
-
-
-                _usedCustomersFromPool.Enqueue(customerObj);
+                        _usedCustomersFromPool.Enqueue(customerObj);
+                        break;
+                    }
+                }        
             }
         }
 
@@ -173,11 +191,17 @@ namespace UnderworldCafe.WaveSystem
         {
             _currentWave.OnWaveDoneEvent -= OnCurrentWaveDoneEventHandlerMethod;
             
-            for(int i = 0; i < _usedCustomersFromPool.Count; i++)
+            while (_usedCustomersFromPool.Count > 0)
             {
-                var customerObj = _usedCustomersFromPool.Peek();
+                var customerObj = _usedCustomersFromPool.Dequeue();
                 
-                _poolManagerRef.TryReleaseToPool(customerObj.GetComponent<Customer>().CustomerId, customerObj);
+                bool released = _poolManagerRef.TryReleaseToPool(customerObj.GetComponent<Customer>().CustomerId, customerObj);
+                if(!released)
+                {
+                    Debug.LogWarning("Customer object failed to be released: " + customerObj.name);
+                    Destroy(customerObj);
+                    continue;
+                }
 
                 customerObj.transform.position = new Vector3(0, 0, 0);
                 customerObj.GetComponent<Customer>().DeInit();
@@ -185,7 +209,6 @@ namespace UnderworldCafe.WaveSystem
                 customerObj.GetComponent<Customer>().OnServedEvent -= _currentWave.OnCustomerServedEventHandlerMethod;
                 customerObj.GetComponent<Customer>().OnOrderDurationEndedEvent -= _currentWave.OnCustomerOrderDurationEndedEventHandlerMethod;
 
-                _usedCustomersFromPool.Dequeue();
             }
 
             _currentWave.DeInit();

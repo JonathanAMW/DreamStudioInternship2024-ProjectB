@@ -15,7 +15,7 @@ namespace UnderworldCafe.WaveSystem
     /// </summary>
     public class Wave
     {
-        #region Dependency Injection 
+        #region Dependencies
         private TimeManager _timeManagerRef;
         #endregion
 

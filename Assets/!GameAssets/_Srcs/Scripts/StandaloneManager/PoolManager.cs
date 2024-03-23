@@ -32,14 +32,18 @@ namespace UnderworldCafe
         #endregion
 
 
-        public void TryAddToPool(string id, GameObject prefab)
+        public bool TryCreateNewPool(string id, GameObject prefab)
         {
-            if(!GameObjectPools.ContainsKey(id))
+            if(GameObjectPools.ContainsKey(id))
             {
-                IObjectPool<GameObject> temp = new ObjectPool<GameObject>(() => Instantiate<GameObject>(prefab), null, null); 
-                
-                GameObjectPools.Add(id, temp);
+                Debug.LogWarning($"Object pool with ID '{id}' already exist.");
+                return false;
             }
+
+            IObjectPool<GameObject> temp = new ObjectPool<GameObject>(() => Instantiate<GameObject>(prefab), null, null); 
+            GameObjectPools.Add(id, temp);
+
+            return true;
         }
 
 
@@ -47,20 +51,23 @@ namespace UnderworldCafe
         {
             if(!GameObjectPools.ContainsKey(id))
             {
+                Debug.LogWarning($"Object pool with ID '{id}' does not exist.");
                 return null;
             }
+
             return GameObjectPools[id].Get();
         }
 
 
-        public void TryReleaseToPool(string id, GameObject obj)
+        public bool TryReleaseToPool(string id, GameObject obj)
         {
             if (!GameObjectPools.ContainsKey(id))
             {
                 Debug.LogWarning($"Object pool with ID '{id}' does not exist.");
-                return;
+                return false;
             }
             GameObjectPools[id].Release(obj);
+            return true;
         }
     }
 }
