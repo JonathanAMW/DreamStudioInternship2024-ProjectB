@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 1364486071
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5f4661e1600ff794ead354ed3281b7d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6859f9a6edc9844894bba263dd75c49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerWalkableTilemap: {fileID: 0}
-  _movementSpeed: 15
+  _movementSpeed: 10
   _playerAnimator: {fileID: 6462800116618761321}
   _maxListSize: 6
 --- !u!114 &8621511693876372656
