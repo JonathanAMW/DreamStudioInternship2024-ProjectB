@@ -77,6 +77,8 @@ namespace UnderworldCafe.WaveSystem
             {
                 foreach(var customerObj in _usedCustomersFromPool)
                 {
+                    if(customerObj == null) continue;
+
                     customerObj.GetComponent<Customer>().OnServedEvent += _currentWave.OnCustomerServedEventHandlerMethod;
                     customerObj.GetComponent<Customer>().OnOrderDurationEndedEvent += _currentWave.OnCustomerOrderDurationEndedEventHandlerMethod;
                 }
@@ -91,6 +93,8 @@ namespace UnderworldCafe.WaveSystem
             {
                 foreach(var customerObj in _usedCustomersFromPool)
                 {
+                    if(customerObj == null) continue;
+                    
                     customerObj.GetComponent<Customer>().OnServedEvent -= _currentWave.OnCustomerServedEventHandlerMethod;
                     customerObj.GetComponent<Customer>().OnOrderDurationEndedEvent -= _currentWave.OnCustomerOrderDurationEndedEventHandlerMethod;
                 }
@@ -155,13 +159,6 @@ namespace UnderworldCafe.WaveSystem
 
             foreach(var customer in _currentWave.WaveInformation.WaveCustomerInformations)
             {
-                // skip if customer chair index is out of bounds
-                if(customer.CustomerChairIndex >= _customerSpawnPointsConfig.Length || customer.CustomerChairIndex < 0)
-                {
-                    Debug.LogWarning("Customer chair index out of bounds: " + customer.CustomerChairIndex);
-                    continue;
-                }
-                
                 foreach(var spawnPoint in _customerSpawnPointsConfig)
                 {
                     if(spawnPoint.pointIndex == customer.CustomerChairIndex)
@@ -181,9 +178,16 @@ namespace UnderworldCafe.WaveSystem
                         customerObj.GetComponent<Customer>().OnOrderDurationEndedEvent += _currentWave.OnCustomerOrderDurationEndedEventHandlerMethod;
 
                         _usedCustomersFromPool.Enqueue(customerObj);
+
                         break;
                     }
+
                 }        
+            }
+
+            if(_usedCustomersFromPool.Count != _currentWave.WaveInformation.WaveCustomerInformations.Count)
+            {
+                Debug.LogError($"There are still '{_usedCustomersFromPool.Count - _currentWave.WaveInformation.WaveCustomerInformations.Count}' customers that has not been assigned on spawn points!");
             }
         }
 

@@ -8,8 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnderworldCafe.Player;
-using UnderworldCafe.DataPersistenceSystem.Interfaces;
-using UnderworldCafe.DataPersistenceSystem.GameDatas;
+using UnderworldCafe.DataPersistenceSystem;
 
 namespace UnderworldCafe.CookingSystem
 {

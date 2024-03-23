@@ -36,7 +36,7 @@ namespace UnderworldCafe
         {
             if(GameObjectPools.ContainsKey(id))
             {
-                Debug.LogWarning($"Object pool with ID '{id}' already exist.");
+                Debug.LogWarning($"Object pool with ID '{id}' already exist. Failed to create new pool.");
                 return false;
             }
 
@@ -51,7 +51,7 @@ namespace UnderworldCafe
         {
             if(!GameObjectPools.ContainsKey(id))
             {
-                Debug.LogWarning($"Object pool with ID '{id}' does not exist.");
+                Debug.LogError($"Object pool with ID '{id}' does not exist. Failed to get object.");
                 return null;
             }
 
@@ -63,7 +63,7 @@ namespace UnderworldCafe
         {
             if (!GameObjectPools.ContainsKey(id))
             {
-                Debug.LogWarning($"Object pool with ID '{id}' does not exist.");
+                Debug.LogWarning($"Object pool with ID '{id}' does not exist. Failed to release object.");
                 return false;
             }
             GameObjectPools[id].Release(obj);
