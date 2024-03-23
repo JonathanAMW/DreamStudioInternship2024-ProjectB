@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7383af3a861aacc42bec2df28a51966c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <SceneHandlerRef>k__BackingField: {fileID: 8679543150816640002}
-  <PlayerGameResoucesRef>k__BackingField: {fileID: 8863498087874744091}
+  <SceneHandler>k__BackingField: {fileID: 8679543150816640002}
+  <PlayerGameResouces>k__BackingField: {fileID: 8863498087874744091}
 --- !u!1 &6977096502724723142
 GameObject:
   m_ObjectHideFlags: 0
