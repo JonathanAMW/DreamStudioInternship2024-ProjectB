@@ -150,7 +150,7 @@ namespace UnderworldCafe.CustomerSystem
 
         private void ServedFood(PlayerInventory playerInventory)
         {
-            // if(!_isWaitingForFood) return;
+            if(playerInventory == null || playerInventory.PlayerInventoryList.Count == 0) return;
 
             bool IsServedCorrectly = playerInventory.PlayerInventoryList[0].IngredientInformation.Id == OrderedFood.IngredientInformation.Id ? true : false;
 

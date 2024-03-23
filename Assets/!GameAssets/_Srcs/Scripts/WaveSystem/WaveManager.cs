@@ -94,7 +94,7 @@ namespace UnderworldCafe.WaveSystem
                 foreach(var customerObj in _usedCustomersFromPool)
                 {
                     if(customerObj == null) continue;
-                    
+
                     customerObj.GetComponent<Customer>().OnServedEvent -= _currentWave.OnCustomerServedEventHandlerMethod;
                     customerObj.GetComponent<Customer>().OnOrderDurationEndedEvent -= _currentWave.OnCustomerOrderDurationEndedEventHandlerMethod;
                 }
@@ -126,17 +126,15 @@ namespace UnderworldCafe.WaveSystem
             StartCurrentWave();
         }
 
-        private void ContinueWaveSequence()
+        
+        public void ContinueWaveSequence()
         {
+            EndCurrentWave();
+            
+            _waveIndex++;
+
             if(_waveIndex < _waveInformationSOList.Length)
             {
-                // _currentWave.EndWave();
-                EndCurrentWave();
-                
-                _waveIndex++;
-                // _currentWave = new Wave(_waveInformationSOList[_waveIndex].WaveInformation, _timerRef);
-
-                // _currentWave.StartWave(_customerObjectSpawnPointsInScene, _timerRef);
                 StartCurrentWave();
             }
             else
@@ -153,6 +151,8 @@ namespace UnderworldCafe.WaveSystem
 
         private void StartCurrentWave()
         {
+            Debug.LogWarning("Start Current Wave");
+
             _currentWave.Init(_waveInformationSOList[_waveIndex].WaveInformation, _timeManagerRef);
 
             _currentWave.OnWaveDoneEvent += OnCurrentWaveDoneEventHandlerMethod;
@@ -193,6 +193,7 @@ namespace UnderworldCafe.WaveSystem
 
         private void EndCurrentWave()
         {
+            Debug.LogWarning("End Current Wave");
             _currentWave.OnWaveDoneEvent -= OnCurrentWaveDoneEventHandlerMethod;
             
             while (_usedCustomersFromPool.Count > 0)
@@ -220,7 +221,6 @@ namespace UnderworldCafe.WaveSystem
 
         private void OnCurrentWaveDoneEventHandlerMethod()
         {
-            _currentWave.OnWaveDoneEvent -= OnCurrentWaveDoneEventHandlerMethod;
             ContinueWaveSequence();
         }
 
