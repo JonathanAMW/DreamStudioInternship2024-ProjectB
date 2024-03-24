@@ -2416,50 +2416,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3930631001790222133, guid: 887633879e4f4e842839d8a9b60011be, type: 3}
   m_PrefabInstance: {fileID: 1511050197}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &803299093
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 803299095}
-  - component: {fileID: 803299094}
-  m_Layer: 0
-  m_Name: PoolManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &803299094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803299093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf882d8e219e14e438fac570813c443b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &803299095
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803299093}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1245830916}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &824363291 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7114932322789463697, guid: 9c85fdf4ad6ceac4d987d80a9dc109f0, type: 3}
@@ -2799,7 +2755,6 @@ MonoBehaviour:
   <InputManager>k__BackingField: {fileID: 1733551984}
   <GridManager>k__BackingField: {fileID: 1655963785}
   <TimeManager>k__BackingField: {fileID: 642343565}
-  <PoolManager>k__BackingField: {fileID: 803299094}
   <PathRequestManager>k__BackingField: {fileID: 2133809577}
   <WaveManager>k__BackingField: {fileID: 1689067136}
   <PlayerController>k__BackingField: {fileID: 540369413}
@@ -2820,7 +2775,6 @@ Transform:
   - {fileID: 1733551985}
   - {fileID: 1655963786}
   - {fileID: 642343566}
-  - {fileID: 803299095}
   - {fileID: 1689067135}
   - {fileID: 2133809579}
   m_Father: {fileID: 0}

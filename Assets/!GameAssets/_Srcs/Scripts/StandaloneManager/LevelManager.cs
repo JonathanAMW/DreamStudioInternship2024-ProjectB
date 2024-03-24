@@ -3,12 +3,13 @@
 // Created  : "2024/02/02"
 //----------------------------------------------------------------------
 
+using System;
+using UnityEngine;
+
 using UnderworldCafe.GridSystem;
 using UnderworldCafe.PathfindingSystem;
 using UnderworldCafe.Player;
 using UnderworldCafe.WaveSystem;
-using UnityEngine;
-
 
 namespace UnderworldCafe
 {
@@ -23,7 +24,6 @@ namespace UnderworldCafe
         [field: SerializeField] public InputManager InputManager { get; private set; }
         [field: SerializeField] public GridManager GridManager { get; private set; }
         [field: SerializeField] public TimeManager TimeManager { get; private set; }
-        [field: SerializeField] public PoolManager PoolManager { get; private set; }
         [field: SerializeField] public PathRequestManager PathRequestManager { get; private set; }
         [field: SerializeField] public WaveManager WaveManager { get; private set; }
         [field: SerializeField] public PlayerController PlayerController { get; private set; }
@@ -32,6 +32,9 @@ namespace UnderworldCafe
         [Header("LEVEL SETTINGS")]
         [SerializeField] private float LevelTimeDuration;
 
+        #region Events
+        public event Action OnLevelCompletedEvent;
+        #endregion
 
         protected override void Awake()
         {
@@ -43,6 +46,11 @@ namespace UnderworldCafe
             TimeManager.StartTimer(LevelTimeDuration);
 
             WaveManager.StartWaveSequence();
+        }
+
+        public void LevelIsCompleted()
+        {
+            OnLevelCompletedEvent?.Invoke();
         }
 
     }

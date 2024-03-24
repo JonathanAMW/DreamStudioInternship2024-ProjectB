@@ -18,8 +18,8 @@ namespace UnderworldCafe.WaveSystem
     public class WaveManager : MonoBehaviour
     {
         #region Dependencies
-        PoolManager _poolManagerRef;
-        TimeManager _timeManagerRef;
+        private LevelManager _levelManagerRef;
+        private TimeManager _timeManagerRef;
         #endregion
 
         [System.Serializable]
@@ -34,140 +34,129 @@ namespace UnderworldCafe.WaveSystem
         [SerializeField] private WaveInformationSO[] _waveInformationSOList;
         [Tooltip("Drag the customer object spawn points here")]
         [SerializeField] private CustomerSpawnPointsStruct[] _customerSpawnPointsConfig;
+        
         private Wave _currentWave;
-        private int _waveIndex;
+        private int _currentWaveIndex;
         private Queue<GameObject> _usedCustomersFromPool;
+        private Dictionary<string, IObjectPool<GameObject>> _customerObjPool;
+
+        #endregion
+
+        #region Public
+        public int CurrentWaveCustomerLeftCount => _currentWave.CurrentWaveCustomerLeft;
         #endregion
 
 
         #region MonoBehavior
-
         private void Awake()
         {
-            _poolManagerRef = LevelManager.Instance.PoolManager;
-            _timeManagerRef = LevelManager.Instance.TimeManager;
-
+            _levelManagerRef = LevelManager.Instance;
+            // _poolManagerRef = _levelManagerRef.PoolManager;
+            _timeManagerRef = _levelManagerRef.TimeManager;
+            
             _usedCustomersFromPool = new();
             _currentWave = new Wave();
             SetupCustomerPool();
         }
         private void Start()
         {
-            // //No need to copy as it is not going to be reused
-            // _waveList = new Wave[_waveInformationSOList.Length];
-            // for(int i = 0; i < _waveInformationSOList.Length; i++)
-            // {
-            //     _waveList[i] = new Wave(_waveInformationSOList[i].WaveInformation);
-            // }
-
-            
-            // _poolManagerRef = LevelManager.Instance.LevelPoolManagerRef;
-
-            // _usedCustomersFromPool = new();
-            // _currentWave = new Wave();
-            // SetupCustomerPool();
-        }
-
-        private void OnEnable()
-        {
-            _timeManagerRef.OnTimerEndedEvent += OnTimerEndedEventHandlerMethod;
-            _currentWave.OnWaveDoneEvent += OnCurrentWaveDoneEventHandlerMethod;
-
-            if(_usedCustomersFromPool.Count > 0 || _usedCustomersFromPool != null)
-            {
-                foreach(var customerObj in _usedCustomersFromPool)
-                {
-                    if(customerObj == null) continue;
-
-                    customerObj.GetComponent<Customer>().OnServedEvent += _currentWave.OnCustomerServedEventHandlerMethod;
-                    customerObj.GetComponent<Customer>().OnOrderDurationEndedEvent += _currentWave.OnCustomerOrderDurationEndedEventHandlerMethod;
-                }
-            }
-        }
-        private void OnDisable()
-        {
-            _timeManagerRef.OnTimerEndedEvent -= OnTimerEndedEventHandlerMethod;
-            _currentWave.OnWaveDoneEvent -= OnCurrentWaveDoneEventHandlerMethod;
-
-            if(_usedCustomersFromPool.Count > 0 || _usedCustomersFromPool != null)
-            {
-                foreach(var customerObj in _usedCustomersFromPool)
-                {
-                    if(customerObj == null) continue;
-
-                    customerObj.GetComponent<Customer>().OnServedEvent -= _currentWave.OnCustomerServedEventHandlerMethod;
-                    customerObj.GetComponent<Customer>().OnOrderDurationEndedEvent -= _currentWave.OnCustomerOrderDurationEndedEventHandlerMethod;
-                }
-            }
+            _levelManagerRef.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
         }
         #endregion
 
 
-        #region CustomerObj Pool
+        #region CustomerObjPool Methods
         private void SetupCustomerPool()
         {
+            _customerObjPool = new();
+
             foreach(WaveInformationSO waveSO in _waveInformationSOList)
             {
                 foreach(var waveCustomerInfos in waveSO.WaveInformation.WaveCustomerInformations)
                 {
-                    _poolManagerRef.TryCreateNewPool(waveCustomerInfos.CustomerPrefab.GetComponent<Customer>().CustomerId, waveCustomerInfos.CustomerPrefab);
+                    if(!_customerObjPool.ContainsKey(waveCustomerInfos.CustomerPrefab.GetComponent<Customer>().CustomerId))
+                    {
+                        _customerObjPool.Add(waveCustomerInfos.CustomerPrefab.GetComponent<Customer>().CustomerId, 
+                                            new ObjectPool<GameObject>(() => Instantiate<GameObject>(waveCustomerInfos.CustomerPrefab), null, null));
+                    }
                 }
             }
         }
+        private GameObject TryGetFromCustomerObjPool(string customerId)
+        {
+            if(!_customerObjPool.ContainsKey(customerId))
+            {
+                Debug.LogError($"CustomerObj pool with ID '{customerId}' does not exist. Failed to get object.");
+                return null;
+            }
+
+            var obj = _customerObjPool[customerId].Get();
+            obj.SetActive(true);
+            return obj;
+        }
+        private void TryReleaseToCustomerObjPool(string customerId, GameObject obj)
+        {
+            if (!_customerObjPool.ContainsKey(customerId))
+            {
+                Debug.LogWarning($"CustomerObj pool with ID '{customerId}' does not exist. Failed to release object.");
+                Destroy(obj);
+                return;
+            }
+            obj.SetActive(false);
+            _customerObjPool[customerId].Release(obj);
+        }
+        
         #endregion
 
 
         public void StartWaveSequence()
         {
-            _waveIndex = 0;
+            _currentWaveIndex = 0;
 
             // _currentWave = new Wave(_waveInformationSOList[_waveIndex].WaveInformation, _timerRef);
 
             StartCurrentWave();
         }
-
-        
         public void ContinueWaveSequence()
         {
             EndCurrentWave();
             
-            _waveIndex++;
+            _currentWaveIndex++;
 
-            if(_waveIndex < _waveInformationSOList.Length)
+            if(_currentWaveIndex < _waveInformationSOList.Length)
             {
                 StartCurrentWave();
             }
             else
             {
-                EndWaveSequence();
+                _levelManagerRef.LevelIsCompleted();
+                // EndWaveSequence();
             }
         }
-
         public void EndWaveSequence()
         {
-            // _currentWave.EndWave();
             EndCurrentWave();
         }
 
         private void StartCurrentWave()
         {
-            Debug.LogWarning("Start Current Wave");
+            Debug.Log("Start Wave: " + _currentWaveIndex);
 
-            _currentWave.Init(_waveInformationSOList[_waveIndex].WaveInformation, _timeManagerRef);
+            _currentWave.Init(_waveInformationSOList[_currentWaveIndex].WaveInformation, _timeManagerRef);
 
             _currentWave.OnWaveDoneEvent += OnCurrentWaveDoneEventHandlerMethod;
 
+            Debug.Log("Expected Spawned customers: " + _currentWave.WaveInformation.WaveCustomerInformations.Count);
             foreach(var customer in _currentWave.WaveInformation.WaveCustomerInformations)
             {
                 foreach(var spawnPoint in _customerSpawnPointsConfig)
                 {
                     if(spawnPoint.pointIndex == customer.CustomerSpawnPointIndex)
                     {
-                        var customerObj = _poolManagerRef.TryGetFromPool(customer.CustomerPrefab.GetComponent<Customer>().CustomerId);
+                        var customerObj = TryGetFromCustomerObjPool(customer.CustomerPrefab.GetComponent<Customer>().CustomerId);
                         
                         if(customerObj == null)
                         {
-                            Debug.LogWarning("Customer prefab not found: " + customer.CustomerPrefab.name);
                             continue;
                         }
                         
@@ -179,6 +168,7 @@ namespace UnderworldCafe.WaveSystem
 
                         _usedCustomersFromPool.Enqueue(customerObj);
 
+                        Debug.Log("Spawned customer: " + customerObj.name);
                         break;
                     }
 
@@ -193,20 +183,12 @@ namespace UnderworldCafe.WaveSystem
 
         private void EndCurrentWave()
         {
-            Debug.LogWarning("End Current Wave");
+            Debug.Log("End Wave: " + _currentWaveIndex);
             _currentWave.OnWaveDoneEvent -= OnCurrentWaveDoneEventHandlerMethod;
             
             while (_usedCustomersFromPool.Count > 0)
             {
                 var customerObj = _usedCustomersFromPool.Dequeue();
-                
-                bool released = _poolManagerRef.TryReleaseToPool(customerObj.GetComponent<Customer>().CustomerId, customerObj);
-                if(!released)
-                {
-                    Debug.LogWarning("Customer object failed to be released: " + customerObj.name);
-                    Destroy(customerObj);
-                    continue;
-                }
 
                 customerObj.transform.position = new Vector3(0, 0, 0);
                 customerObj.GetComponent<Customer>().DeInit();
@@ -214,6 +196,7 @@ namespace UnderworldCafe.WaveSystem
                 customerObj.GetComponent<Customer>().OnServedEvent -= _currentWave.OnCustomerServedEventHandlerMethod;
                 customerObj.GetComponent<Customer>().OnOrderDurationEndedEvent -= _currentWave.OnCustomerOrderDurationEndedEventHandlerMethod;
 
+                TryReleaseToCustomerObjPool(customerObj.GetComponent<Customer>().CustomerId, customerObj);
             }
 
             _currentWave.DeInit();
@@ -224,14 +207,11 @@ namespace UnderworldCafe.WaveSystem
             ContinueWaveSequence();
         }
 
-        private void OnTimerEndedEventHandlerMethod()
+        private void OnLevelCompletedEventHandlerMethod()
         {
             EndWaveSequence();
-        }
 
-        public int GetCustomerLeftCount()
-        {
-            return _currentWave.CurrentWaveCustomerLeft;
+            _levelManagerRef.OnLevelCompletedEvent -= OnLevelCompletedEventHandlerMethod;
         }
     }
 }

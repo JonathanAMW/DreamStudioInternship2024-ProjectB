@@ -87,7 +87,7 @@ namespace UnderworldCafe.WaveSystem
             _timeManagerRef.AddTimePassed(WaveInformation.WaveTimeDecrementByOrderDurationEnded);
         }
 
-        public void OnCustomerServedEventHandlerMethod(bool isServedCorrectly)
+        public void OnCustomerServedEventHandlerMethod(Customer servedCustomer, bool isServedCorrectly)
         {
             if(!isServedCorrectly)
             {
@@ -96,10 +96,12 @@ namespace UnderworldCafe.WaveSystem
             else
             {
                 CurrentWaveCustomerLeft--;
-                
+                servedCustomer.gameObject.SetActive(false);
+                Debug.Log("Current Wave Customer Left: " + CurrentWaveCustomerLeft);
                 //if all customers in this wave have been served correctly
                 if(CurrentWaveCustomerLeft <= 0)
                 {
+                    DeInit();
                     OnWaveDoneEvent?.Invoke();
                 }
             }
