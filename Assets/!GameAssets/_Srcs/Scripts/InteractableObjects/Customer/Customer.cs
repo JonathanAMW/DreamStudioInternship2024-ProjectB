@@ -53,7 +53,7 @@ namespace UnderworldCafe.CustomerSystem
         [SerializeField] private GameObject _orderObj;
         [SerializeField] private SpriteRenderer _orderFoodSpriteRenderer;
         
-        private CustomerState _customerState;
+        [SerializeField] private CustomerState _customerState;
         #endregion
 
 
@@ -147,12 +147,12 @@ namespace UnderworldCafe.CustomerSystem
 
             playerInventory.RemoveInventoryAll();
 
-            OnServedEvent?.Invoke(this, IsServedCorrectly);
-
             if(IsServedCorrectly)
             {
                 DeInit();
             }
+
+            OnServedEvent?.Invoke(this, IsServedCorrectly);
         }
     }
 }
