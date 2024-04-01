@@ -24,6 +24,9 @@ namespace UnderworldCafe
 
         public int unlockedLevels=0; //unlocked levels in the stage, min. 0-> level 1
 
+        [SerializeField] int moneyRequired = 100; //all levels in the stage, min.1
+        public int MoneyRequired { get { return moneyRequired; } }
+
         [SerializeField] Image _stageImg;
         public Image StageImage { get { return _stageImg; }}
 
@@ -34,6 +37,8 @@ namespace UnderworldCafe
         public int starsEarnedInStage=0;
         public int starsRequired = 0;
 
+        public bool isUnlockable = false; //enough stars to unlock
+        public bool isOpened = false; //unlocked with money
 
         StageSelectManager _stageSelectManager;
         LevelSelectPanel _levelSelectPanel;
@@ -45,13 +50,28 @@ namespace UnderworldCafe
             _levelSelectPanel = FindObjectOfType<LevelSelectPanel>();
         }
 
+        private void Start()
+        {
+            _stageSelectManager.UpdateUnlockStage(StageId);
+        }
+
         // Update is called once per frame
         void Update()
         {
             
         }
 
-        public void ShowLevelPanel()
+        public void ToggleStageButton(int stageId)
+        {
+            if (isOpened) //already unlocked
+            {
+                ShowLevelPanel();
+                return;
+            }
+            _stageSelectManager.UpdateUnlockStage(stageId);
+        }
+
+        void ShowLevelPanel()
         {
             StageSelectManager.currentStageId = StageId;
             _levelSelectPanel.UpdateStageSelected(StageSelectManager.currentStageId);

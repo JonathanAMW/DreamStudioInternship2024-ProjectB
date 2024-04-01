@@ -24,5 +24,15 @@ namespace UnderworldCafe
         {
             base.Awake();
         }
+
+        public void AddPlayerMoney(int amount)
+        {
+            PlayerGameResoucesRef.Money+=amount;
+        }
+
+        public void ReducePlayerMoney(int amount)
+        {
+            PlayerGameResoucesRef.Money -= amount;
+        }
     }
 }

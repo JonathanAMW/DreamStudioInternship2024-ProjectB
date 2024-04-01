@@ -83,9 +83,10 @@ namespace UnderworldCafe
                
             }
             LevelObject lastLevel = _stageSelectManager.levelObjects[_stageSelectManager.stageObjects[_currentStageId].TotalLevels];
+
+            //position of total stars on stage box
             float xPos= gameObject.GetComponent<RectTransform>().rect.width-465; //the right position of the panel
             float yPos = lastLevel.GetComponent<RectTransform>().anchoredPosition.y+50; //position below the last level height
-            Debug.Log(yPos);
             totalStarGUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(xPos, yPos);
             earnedStarsInStageText.text = string.Format("{0}/{1}", _stageSelectManager.stageObjects[selectedStageId].starsEarnedInStage, _stageSelectManager.stageObjects[selectedStageId].TotalLevels*3); //change text of stars earned in that stage
             UpdateUnlockedLevel();
@@ -143,7 +144,7 @@ namespace UnderworldCafe
                 totalStars += _stageSelectManager.stageObjects[i].CalculateTotalStarsInStage(stageLevels);
             }
             _stageSelectManager.totalStarsEarned = totalStars;
-            _stageSelectManager.UpdateUnlockStage(stageLevels);
+            _stageSelectManager.UpdateUnlockableStages();
             earnedStarsInStageText.text = string.Format("{0}/{1}", _stageSelectManager.stageObjects[_currentStageId].starsEarnedInStage.ToString(), _stageSelectManager.stageObjects[_currentStageId].TotalLevels * 3); //change text of stars earned in that stage
         }
 
