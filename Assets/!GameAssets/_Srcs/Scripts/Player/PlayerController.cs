@@ -49,8 +49,8 @@ namespace UnderworldCafe.Player
 
         private void Awake()
         {
-            _pathRequestManagerRef = LevelManager.Instance.LevelPathRequestManagerRef;
-            _gridManagerRef = LevelManager.Instance.LevelGridManagerRef;
+            _pathRequestManagerRef = LevelManager.Instance.PathRequestManager;
+            _gridManagerRef = LevelManager.Instance.GridManager;
 
 
             _pathPos = new List<Vector3>();
@@ -115,25 +115,31 @@ namespace UnderworldCafe.Player
             Vector3 currentWaypoint = _pathPos[0]; // Get the first waypoint from the path
             while (true) 
             {
-                // if (_gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position) == currentWaypoint) 
                 if (transform.position == currentWaypoint) 
-                { 
-                    // Debug.Log("Finished at: "+currentWaypoint);
+                {
+                    _playerAnimator.SetFloat("Horizontal", 0);
+                    _playerAnimator.SetFloat("Vertical", 0);
+                    _playerAnimator.SetFloat("Speed", 0);
+
                     _targetIndex++;
 
+                    // If we reached the end of the path, stop following it
                     if (_targetIndex >= _pathPos.Count) 
                     { 
-                        // transform.position = _gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position);
                         _isMoving = false;
                         FinishedFollowingPath(true);
                         yield break;
                     }
+
                     currentWaypoint = _pathPos[_targetIndex];
                 }
 
-                
                 transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, _movementSpeed * Time.deltaTime);
                 
+                _playerAnimator.SetFloat("Horizontal", transform.position.x - currentWaypoint.x);
+                _playerAnimator.SetFloat("Vertical", transform.position.y - currentWaypoint.y);
+                _playerAnimator.SetFloat("Speed", 1);
+
                 // yield return new WaitForSeconds(3); 
                 yield return null; 
             }

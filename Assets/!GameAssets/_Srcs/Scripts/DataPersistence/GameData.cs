@@ -5,7 +5,7 @@
 
 using System.Collections.Generic;
 
-namespace UnderworldCafe.DataPersistenceSystem.GameDatas
+namespace UnderworldCafe.DataPersistenceSystem
 {
     /// <summary>
     /// Class for defining game data that will be saveable and loadable
@@ -15,14 +15,17 @@ namespace UnderworldCafe.DataPersistenceSystem.GameDatas
     [System.Serializable]
     public class GameData
     {
+        public long lastUpdated;
+
+        public PlayerResourceDataStruct PlayerResourceDatas;
         public Dictionary<string, LevelData> LevelDatas;
         
-        
+
         // The values defined in this constructor will be the default values the game starts with when there's no data to load
         public GameData()
         {
+            PlayerResourceDatas = new PlayerResourceDataStruct(0);
             LevelDatas = new Dictionary<string, LevelData>();
-
         }
     }
     
@@ -40,6 +43,16 @@ namespace UnderworldCafe.DataPersistenceSystem.GameDatas
             LevelName = levelName;
             LevelStars = levelStars;
             LevelUtensilsTier = levelUtensilsTier;
+        }
+    }
+
+
+    public struct PlayerResourceDataStruct
+    {
+        public int Money;
+        public PlayerResourceDataStruct(int money)
+        {
+            Money = money;
         }
     }
 }

@@ -15,8 +15,8 @@ namespace UnderworldCafe
     /// </summary>
     public class TimeManager : MonoBehaviour
     {
-        #region Events
-        public event Action OnTimerEndedEvent;
+        #region Dependencies
+        private LevelManager _levelManagerRef;
         #endregion
         
 
@@ -25,22 +25,35 @@ namespace UnderworldCafe
         public float TimePassed { get; private set; }
         
 
+        #region MonoBehavior
+        private void Awake()
+        {
+            _levelManagerRef = LevelManager.Instance;
+        }
+        private void Start()
+        {
+            _levelManagerRef.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
+        }
+        #endregion
+
         public void StartTimer(float timerDuration)
         {
             TimePassed = 0;
             TimerDuration = timerDuration;
 
-            StartCoroutine(TimerCoroutine());
+            StartCoroutine("TimerCoroutine");
         }
-
         public void StopTimer()
         {
-            StopCoroutine(TimerCoroutine());
+            StopCoroutine("TimerCoroutine");
         }
-
         public void SetPauseTimer(bool isPaused)
         {
             IsTimerPaused = isPaused;
+        }
+        public void AddTimePassed(float addedTime)
+        {
+            TimePassed += addedTime;
         }
 
         private IEnumerator TimerCoroutine()
@@ -50,19 +63,19 @@ namespace UnderworldCafe
                 if(IsTimerPaused) yield return null;
                 
                 TimePassed += Time.deltaTime;
-                Debug.Log(TimePassed);
+                // Debug.Log(TimePassed);
                 yield return null;
             }
 
             TimePassed = TimerDuration;
-            OnTimerEndedEvent?.Invoke();
-            Debug.Log("Timer ended");
+            _levelManagerRef.LevelIsCompleted();
         }
 
-        //For time penalty mechanic
-        public void AddTimePassed(float addedTime)
+        private void OnLevelCompletedEventHandlerMethod()
         {
-            TimePassed += addedTime;
+            StopTimer();
+
+            _levelManagerRef.OnLevelCompletedEvent -= OnLevelCompletedEventHandlerMethod;
         }
     }
 }

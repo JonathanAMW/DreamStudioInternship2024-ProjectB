@@ -8,8 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnderworldCafe.Player;
-using UnderworldCafe.DataPersistenceSystem.Interfaces;
-using UnderworldCafe.DataPersistenceSystem.GameDatas;
+using UnderworldCafe.DataPersistenceSystem;
 
 namespace UnderworldCafe.CookingSystem
 {
@@ -48,7 +47,7 @@ namespace UnderworldCafe.CookingSystem
         {
             base.Awake();
 
-            _timeManagerRef = LevelManager.Instance.LevelTimeManagerRef;
+            _timeManagerRef = LevelManager.Instance.TimeManager;
             _isProcessing = false;
             _isFoodReady = false;
 

@@ -33,7 +33,7 @@ namespace UnderworldCafe.WaveSystem
         [System.Serializable]
         public struct WaveCustomerInformationStruct
         {
-            public int CustomerChairIndex;
+            public int CustomerSpawnPointIndex;
             public GameObject CustomerPrefab;
             public Ingredient CustomerOrderedFood;
             public float CustomerOrderDuration;

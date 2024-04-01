@@ -3,11 +3,8 @@
 // Created  : "2024/02/11"
 //----------------------------------------------------------------------
 
-using UnderworldCafe.DataPersistenceSystem.GameDatas;
-
-namespace UnderworldCafe.DataPersistenceSystem.Interfaces
+namespace UnderworldCafe.DataPersistenceSystem
 {
-
     /// <summary>
     /// Interface for defining contract to implement load and save data behaviour in class
     /// </summary>

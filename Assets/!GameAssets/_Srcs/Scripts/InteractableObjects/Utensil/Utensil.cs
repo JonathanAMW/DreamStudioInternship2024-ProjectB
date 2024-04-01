@@ -9,8 +9,7 @@ using System.Linq;
 
 using UnityEngine;
 
-using UnderworldCafe.DataPersistenceSystem.Interfaces;
-using UnderworldCafe.DataPersistenceSystem.GameDatas;
+using UnderworldCafe.DataPersistenceSystem;
 
 
 namespace UnderworldCafe.CookingSystem

@@ -21,7 +21,7 @@ namespace UnderworldCafe.PathfindingSystem
 
         private void Awake()
         {
-            _requestManagerRef = LevelManager.Instance.LevelPathRequestManagerRef;
+            _requestManagerRef = LevelManager.Instance.PathRequestManager;
         }
 
         private void Start()

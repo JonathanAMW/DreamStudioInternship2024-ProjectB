@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 1364486071
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6859f9a6edc9844894bba263dd75c49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 4945515690235244989}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 777f6dfa471d2b243a46a79525f48123, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerWalkableTilemap: {fileID: 0}
-  _movementSpeed: 50
+  _movementSpeed: 10
   _playerAnimator: {fileID: 6462800116618761321}
   _maxListSize: 6
 --- !u!114 &8621511693876372656

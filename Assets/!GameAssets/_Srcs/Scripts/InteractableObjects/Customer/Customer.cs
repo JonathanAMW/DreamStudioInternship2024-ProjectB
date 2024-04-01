@@ -20,14 +20,16 @@ namespace UnderworldCafe.CustomerSystem
     /// </summary>
     public class Customer : QueuedInteractableObject
     {
-        #region Dependency Injection
-        TimeManager _timeManagerRef;
+        #region Dependencies
+        private TimeManager _timeManagerRef;
         #endregion
 
+
         #region Events
-        public event Action<bool> OnServedEvent;
+        public event Action<Customer, bool> OnServedEvent;
         public event Action OnOrderDurationEndedEvent;
         #endregion
+
 
         [System.Serializable]
         private enum CustomerState
@@ -43,17 +45,15 @@ namespace UnderworldCafe.CustomerSystem
         [SerializeField] private string _customerId;
         [SerializeField] private string _customerName;
 
-        
         [Header("Customer Visuals")]
         [SerializeField] private Animator _customerSpriteAnimator;
         [SerializeField] private SpriteRenderer _customerSpriteRenderer;
-
         
         [Header("Customer UI")]
         [SerializeField] private GameObject _orderObj;
         [SerializeField] private SpriteRenderer _orderFoodSpriteRenderer;
         
-        private CustomerState _customerState;
+        [SerializeField] private CustomerState _customerState;
         #endregion
 
 
@@ -61,8 +61,6 @@ namespace UnderworldCafe.CustomerSystem
         public bool IsServedCorrectly { get; private set; }
         public float OrderDuration { get; private set; }
         public Ingredient OrderedFood { get; private set; }
-
-        public static IObjectPool<Customer> CustomerPool { get; private set; }
         public string CustomerId => _customerId;
         #endregion
 
@@ -99,11 +97,9 @@ namespace UnderworldCafe.CustomerSystem
             IsServedCorrectly = false;
             OrderDuration = orderDuration;
             OrderedFood = orderedFood;
-
             _customerState = CustomerState.READY_TO_ORDER;
 
-            //set the gameobject active
-            gameObject.SetActive(true);
+            _orderObj.SetActive(false);
         }
 
         public void DeInit()
@@ -115,13 +111,9 @@ namespace UnderworldCafe.CustomerSystem
             IsServedCorrectly = false;
             OrderDuration = 0.0f;
             OrderedFood = null;
-
             _customerState = CustomerState.NONE;
 
-            _orderFoodSpriteRenderer.sprite = null;
             _orderObj.SetActive(false);
-
-            gameObject.SetActive(false);
         }
 
         private void StartOrderingFood()
@@ -132,8 +124,7 @@ namespace UnderworldCafe.CustomerSystem
             _orderFoodSpriteRenderer.sprite = OrderedFood.IngredientInformation.IngredientSprite;
             _orderObj.SetActive(true);
 
-
-            StartCoroutine(WaitingForFood());
+            StartCoroutine("WaitingForFood");
         }
 
         private IEnumerator WaitingForFood()
@@ -150,18 +141,18 @@ namespace UnderworldCafe.CustomerSystem
 
         private void ServedFood(PlayerInventory playerInventory)
         {
-            // if(!_isWaitingForFood) return;
+            if(playerInventory == null || playerInventory.PlayerInventoryList.Count == 0) return;
 
-            bool IsServedCorrectly = playerInventory.PlayerInventoryList[0].IngredientInformation.Id == OrderedFood.IngredientInformation.Id ? true : false;
+            bool IsServedCorrectly = playerInventory.PlayerInventoryList[0].IngredientInformation.Id == OrderedFood.IngredientInformation.Id;
 
             playerInventory.RemoveInventoryAll();
-
-            OnServedEvent?.Invoke(IsServedCorrectly);
 
             if(IsServedCorrectly)
             {
                 DeInit();
             }
+
+            OnServedEvent?.Invoke(this, IsServedCorrectly);
         }
     }
 }

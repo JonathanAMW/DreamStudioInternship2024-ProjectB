@@ -1574,17 +1574,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7691055194879091446, guid: 776976d0ee79465418213869592bf78f, type: 3}
   m_PrefabInstance: {fileID: 1521066182}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &800131343 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6223798184013570971, guid: 6a8e10aa6b9fec141bca2bc2d64ae780, type: 3}
-  m_PrefabInstance: {fileID: 2777623775924775200}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51386abdf3b26b1479fb494599503e67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &855826450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,12 +1640,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e08b47ca6bd4b469a9fd3eafa16e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <LevelInputManagerRef>k__BackingField: {fileID: 701059252}
-  <LevelGridManagerRef>k__BackingField: {fileID: 439951911}
-  <LevelTimeManagerRef>k__BackingField: {fileID: 1804592045}
-  <LevelPoolManagerRef>k__BackingField: {fileID: 2035461826}
-  <LevelPathRequestManagerRef>k__BackingField: {fileID: 981404832}
-  <LevelPlayerControllerRef>k__BackingField: {fileID: 800131343}
+  <InputManager>k__BackingField: {fileID: 0}
+  <GridManager>k__BackingField: {fileID: 0}
+  <TimeManager>k__BackingField: {fileID: 0}
+  <PathRequestManager>k__BackingField: {fileID: 0}
+  <WaveManager>k__BackingField: {fileID: 0}
+  <PlayerController>k__BackingField: {fileID: 0}
+  LevelTimeDuration: 0
 --- !u!4 &905012254
 Transform:
   m_ObjectHideFlags: 0
@@ -1673,7 +1663,6 @@ Transform:
   - {fileID: 701059251}
   - {fileID: 439951910}
   - {fileID: 1804592044}
-  - {fileID: 2035461827}
   - {fileID: 981404834}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4246,50 +4235,6 @@ Transform:
   - {fileID: 1555670459}
   - {fileID: 50454592}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2035461825
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2035461827}
-  - component: {fileID: 2035461826}
-  m_Layer: 0
-  m_Name: PoolManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2035461826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035461825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf882d8e219e14e438fac570813c443b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &2035461827
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035461825}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 905012254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2104802769 stripped
 Transform:
