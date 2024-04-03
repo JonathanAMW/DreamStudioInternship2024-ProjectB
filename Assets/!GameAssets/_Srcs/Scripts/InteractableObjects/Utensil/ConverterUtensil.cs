@@ -82,8 +82,6 @@ namespace UnderworldCafe.CookingSystem
                 _isProcessing = TryProcessInput(_playerControllerRef.PlayerInventory);
                 return;
             }
-            
-            _utensilAnimator.SetTrigger("Generating");
 
             //reset the player inv first
             _playerControllerRef.PlayerInventory.RemoveInventoryAll();
@@ -136,6 +134,8 @@ namespace UnderworldCafe.CookingSystem
 
         private void ReturnNewFood(PlayerInventory playerInventory, Ingredient newFood)
         {
+            _utensilAnimator.SetTrigger("Generating");
+
             playerInventory.AddInventory(newFood);
             _isFoodReady = false;
         }
