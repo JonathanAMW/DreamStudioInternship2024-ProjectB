@@ -108,7 +108,7 @@ namespace UnderworldCafe
         {
             GameManager gameManager=FindObjectOfType<GameManager>();
 
-            playerMoney = gameManager.PlayerGameResoucesRef.Money;
+            playerMoney = gameManager.PlayerGameResouces.Money;
 
             playerMoneyText.text = playerMoney.ToString();
         }
