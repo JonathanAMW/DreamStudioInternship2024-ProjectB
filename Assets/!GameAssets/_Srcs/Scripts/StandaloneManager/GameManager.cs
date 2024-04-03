@@ -15,6 +15,7 @@ namespace UnderworldCafe
     public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         #region Dependencies
+        [field: SerializeField] public AudioManager AudioManager { get; private set; }
         [field: SerializeField] public SceneHandler SceneHandler { get; private set; }
         [field: SerializeField] public PlayerGameResouces PlayerGameResouces { get; private set; }
         #endregion

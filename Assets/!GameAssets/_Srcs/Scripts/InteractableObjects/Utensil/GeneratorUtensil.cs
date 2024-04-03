@@ -126,6 +126,7 @@ namespace UnderworldCafe.CookingSystem
         private void ReturnNewFood(PlayerInventory playerInventory, Ingredient newFood)
         {
             _utensilAnimator.SetTrigger("Generating");
+            _audioManagerRef.PlaySFX(_audioManagerRef.UtensilGeneratingSFX);
 
             playerInventory.AddInventory(newFood);
         }
