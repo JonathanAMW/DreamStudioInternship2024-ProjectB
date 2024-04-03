@@ -82,6 +82,8 @@ namespace UnderworldCafe.CookingSystem
                 _isProcessing = TryProcessInput(_playerControllerRef.PlayerInventory);
                 return;
             }
+            
+            _utensilAnimator.SetTrigger("Generating");
 
             //reset the player inv first
             _playerControllerRef.PlayerInventory.RemoveInventoryAll();
@@ -120,7 +122,7 @@ namespace UnderworldCafe.CookingSystem
         private IEnumerator ProcessingFood(Ingredient createdIngredient)
         {
             // yield return new WaitForSeconds(_currentStatsData.ConvertingTime);   
-
+            _utensilAnimator.SetTrigger("Processing");
             float _startProcessingTime = _timeManagerRef.TimePassed;
             while(_timeManagerRef.TimePassed - _startProcessingTime < _currentStatsData.ConvertingTime)
             {

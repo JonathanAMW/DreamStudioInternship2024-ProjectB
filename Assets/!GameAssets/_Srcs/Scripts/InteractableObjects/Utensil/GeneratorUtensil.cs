@@ -72,6 +72,8 @@ namespace UnderworldCafe.CookingSystem
 
         public override void Interact()
         {
+            _utensilAnimator.SetTrigger("Generating");
+
             switch(_generatorUtensilType)
             {
                 case GeneratorUtensilType.PURE_GENERATOR:

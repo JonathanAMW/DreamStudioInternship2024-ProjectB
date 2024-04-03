@@ -40,7 +40,7 @@ namespace UnderworldCafe.CookingSystem
         #region Utensil Properties 
         [Header("=======[Utensil General Properties]=======")]        
         [SerializeField] protected Ingredient FailedFood;
-        [SerializeField] private Animator _utensilAnimator;
+        [SerializeField] protected Animator _utensilAnimator;
         #endregion
             
         protected override void OnValidate()
