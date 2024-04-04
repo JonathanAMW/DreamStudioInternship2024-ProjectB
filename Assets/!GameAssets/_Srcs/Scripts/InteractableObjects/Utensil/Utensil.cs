@@ -78,6 +78,14 @@ namespace UnderworldCafe.CookingSystem
         }
         
 
+        protected override void Awake()
+        {
+            base.Awake();
+            
+            _audioManagerRef = GameManager.Instance.AudioManager;
+        }
+        
+
         protected static class UtensilComparer
         {
             public static bool IsEqualWithSameOrder<T>(IEnumerable<T> list1, IEnumerable<T> list2, Func<T, object> propertySelector)
