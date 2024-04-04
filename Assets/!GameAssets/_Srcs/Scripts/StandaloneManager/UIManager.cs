@@ -3,6 +3,8 @@
 // Created  : "2024/02/05"
 //----------------------------------------------------------------------
 
+using TMPro;
+using UnderworldCafe.WaveSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,7 +19,9 @@ namespace UnderworldCafe
         [SerializeField] GameObject recipePanel;
         [SerializeField] GameObject resultPanel;
         [SerializeField] GameObject settingsPanel;
-
+        [SerializeField] TextMeshProUGUI customerCountText;
+        [SerializeField] WaveManager waveManager;
+ 
         static public bool isPaused = false;
         static public bool isRecipeOpen = false;
         static public bool isResultOpen = false;
@@ -87,5 +91,9 @@ namespace UnderworldCafe
             SceneManager.LoadScene("StageSelect"); //back to stage select scene
         }
 
+        public void UpdateCustomerCount()
+        {
+            customerCountText.text= waveManager.CurrentWaveCustomerLeftCount.ToString();
+        }
     }
 }
