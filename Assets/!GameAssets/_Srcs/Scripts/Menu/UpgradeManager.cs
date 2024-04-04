@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnderworldCafe.WaveSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,6 +38,8 @@ namespace UnderworldCafe
         public List<int[]> kitchenWaresIndexCollection= new List<int[]>();
         public int currentIndexNumber=0;
         int[] currentIndexCollection = new int[3];
+
+        [field: SerializeField] public UpgradeMenuManager upgradeMenuManager { get; private set; }
         private void Awake()
         {
             //assign kitchewareindexcollection based on kitchenwares
@@ -155,25 +158,32 @@ namespace UnderworldCafe
 
         public void UpgradeWare(int buttonId)
         {
+          
+            int accountedCost=0;
+            switch (currentKitchenWares[buttonId].grade)
+            {
+                case 0: //currently lvl 0
+                    accountedCost = currentKitchenWares[buttonId].Grade1Cost;
+                break;
+                case 1: //currently lvl 1
+                    accountedCost = currentKitchenWares[buttonId].Grade2Cost;
+                break;
+                case 2: //currently lvl 2
+                    accountedCost = currentKitchenWares[buttonId].Grade3Cost;
+                break;
 
-            currentKitchenWares[buttonId].grade++;
-            if (currentKitchenWares[buttonId].grade > 3)// caps maks 3
-            {
-                currentKitchenWares[buttonId].grade = 3;
             }
-            /*if(buttonId == 0) //first upgrade button
-            {
-                currentKitchenWares[0].grade++;
-            }
-            else if(buttonId ==1) //2nd upgrade button
-            {
-                currentKitchenWares[1].grade++;
-            }
-            else if (buttonId ==2)//3rd upgrade button
-            {
-                currentKitchenWares[2].grade++;
-            }*/
 
+            if(upgradeMenuManager.PlayerMoney >= accountedCost)//player has enough money
+            {
+                currentKitchenWares[buttonId].grade++;
+                if (currentKitchenWares[buttonId].grade > 3)// caps maks 3
+                {
+                    currentKitchenWares[buttonId].grade = 3;
+                }
+                upgradeMenuManager.PlayerResource.ReduceMoney(accountedCost);
+            }
+            upgradeMenuManager.UpdatePlayerMoney();
             UpdateWareGradeAppearance();
         }
     }
