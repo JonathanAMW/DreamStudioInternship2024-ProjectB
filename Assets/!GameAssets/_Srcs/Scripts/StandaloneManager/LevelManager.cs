@@ -21,6 +21,7 @@ namespace UnderworldCafe
     {
         #region Dependencies
         [field: Header("DEPENDENCIES")]
+        [field: SerializeField] public GameManager GameManager { get; private set; }
         [field: SerializeField] public InputManager InputManager { get; private set; }
         [field: SerializeField] public GridManager GridManager { get; private set; }
         [field: SerializeField] public TimeManager TimeManager { get; private set; }
@@ -39,6 +40,10 @@ namespace UnderworldCafe
         protected override void Awake()
         {
             base.Awake();
+
+            GameManager = GameManager.Instance;
+
+            GameManager.SceneHandler.LoadSceneAdditive("Stage1");
         }
 
         private void Start()
