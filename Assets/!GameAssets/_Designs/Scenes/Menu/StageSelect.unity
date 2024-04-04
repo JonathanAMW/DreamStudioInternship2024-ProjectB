@@ -412,7 +412,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -732,6 +732,7 @@ MonoBehaviour:
   unlockedStageSprite: {fileID: 21300000, guid: fc4f701668f12c543a9f3269a7cf6cf9, type: 3}
   isLevelPanelActive: 0
   levelSelectPanel: {fileID: 1893288427}
+  playerMoneyText: {fileID: 853931008}
   totalStarsEarned: 0
 --- !u!1 &87220284
 GameObject:
@@ -790,7 +791,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1193,7 +1194,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1678,8 +1679,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1655808487}
         m_TargetAssemblyTypeName: UnderworldCafe.StageObject, Assembly-CSharp
-        m_MethodName: ShowLevelPanel
-        m_Mode: 1
+        m_MethodName: ToggleStageButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2175,10 +2176,12 @@ MonoBehaviour:
   stageId: 3
   totalLevels: 1
   unlockedLevels: 0
+  moneyRequired: 100
   _stageImg: {fileID: 0}
   _statusImg: {fileID: 1545729849}
   starsEarnedInStage: 0
   starsRequired: 8
+  isUnlockable: 0
 --- !u!1 &284257942
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,7 +2463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &313978846
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2500,7 +2503,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3086,12 +3089,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 383769473}
         m_TargetAssemblyTypeName: UnderworldCafe.StageObject, Assembly-CSharp
-        m_MethodName: ShowLevelPanel
-        m_Mode: 1
+        m_MethodName: ToggleStageButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3191,7 +3194,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3293,12 +3296,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1907256253}
         m_TargetAssemblyTypeName: UnderworldCafe.StageObject, Assembly-CSharp
-        m_MethodName: ShowLevelPanel
-        m_Mode: 1
+        m_MethodName: ToggleStageButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3469,10 +3472,12 @@ MonoBehaviour:
   stageId: 1
   totalLevels: 2
   unlockedLevels: 0
+  moneyRequired: 20
   _stageImg: {fileID: 0}
   _statusImg: {fileID: 403426384}
   starsEarnedInStage: 0
   starsRequired: 1
+  isUnlockable: 0
 --- !u!1 &396325035
 GameObject:
   m_ObjectHideFlags: 0
@@ -3857,12 +3862,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1210176930}
         m_TargetAssemblyTypeName: UnderworldCafe.StageObject, Assembly-CSharp
-        m_MethodName: ShowLevelPanel
-        m_Mode: 1
+        m_MethodName: ToggleStageButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4410,7 +4415,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542818632}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
   m_Name: 
@@ -4567,7 +4572,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551348094}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
   m_Name: 
@@ -5685,7 +5690,7 @@ MonoBehaviour:
   - {fileID: 1109832936}
   - {fileID: 1480865403}
   textLevel: {fileID: 1603016697}
-  statusImg: {fileID: 0}
+  statusImg: {fileID: 1449788173}
 --- !u!1 &655856271
 GameObject:
   m_ObjectHideFlags: 0
@@ -6051,38 +6056,7 @@ MonoBehaviour:
   - {fileID: 229167233}
   - {fileID: 1632827846}
   textLevel: {fileID: 1588930678}
-  statusImg: {fileID: 0}
---- !u!1 &693361413
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 693361414}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &693361414
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693361413}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.68, y: -4.86, z: 466.29056}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  statusImg: {fileID: 1704231000}
 --- !u!1 &701315178
 GameObject:
   m_ObjectHideFlags: 0
@@ -6100,7 +6074,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &701315179
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6140,7 +6114,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6943,7 +6917,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 720, y: 1380.6}
+  m_SizeDelta: {x: 720, y: 2024.6}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &814678735
 MonoBehaviour:
@@ -7016,7 +6990,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7679,7 +7653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7982,10 +7956,12 @@ MonoBehaviour:
   stageId: 4
   totalLevels: 1
   unlockedLevels: 0
+  moneyRequired: 100
   _stageImg: {fileID: 0}
   _statusImg: {fileID: 502198069}
   starsEarnedInStage: 0
   starsRequired: 15
+  isUnlockable: 0
 --- !u!1 &921253416
 GameObject:
   m_ObjectHideFlags: 0
@@ -8003,7 +7979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &921253417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8043,7 +8019,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9076,7 +9052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1081689998
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9116,7 +9092,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9191,7 +9167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9955,12 +9931,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 275683394}
         m_TargetAssemblyTypeName: UnderworldCafe.StageObject, Assembly-CSharp
-        m_MethodName: ShowLevelPanel
-        m_Mode: 1
+        m_MethodName: ToggleStageButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -10056,10 +10032,12 @@ MonoBehaviour:
   stageId: 5
   totalLevels: 1
   unlockedLevels: 0
+  moneyRequired: 100
   _stageImg: {fileID: 0}
   _statusImg: {fileID: 1330862400}
   starsEarnedInStage: 0
   starsRequired: 20
+  isUnlockable: 0
 --- !u!1 &1223070828
 GameObject:
   m_ObjectHideFlags: 0
@@ -10574,7 +10552,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10724,7 +10702,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10933,7 +10911,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11241,7 +11219,7 @@ MonoBehaviour:
   - {fileID: 780352172}
   - {fileID: 1374946357}
   textLevel: {fileID: 655856273}
-  statusImg: {fileID: 0}
+  statusImg: {fileID: 1081689997}
 --- !u!1 &1449788173
 GameObject:
   m_ObjectHideFlags: 0
@@ -11259,7 +11237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1449788174
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11299,7 +11277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12640,7 +12618,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594563853}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f16f4b22275be50448a3f523f06b1a37, type: 3}
   m_Name: 
@@ -12839,7 +12817,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -442.00006}
+  m_AnchoredPosition: {x: 7.375, y: -118.00006}
   m_SizeDelta: {x: 680.70996, y: 1288.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1614626539
@@ -13144,10 +13122,12 @@ MonoBehaviour:
   stageId: 0
   totalLevels: 6
   unlockedLevels: 0
+  moneyRequired: 0
   _stageImg: {fileID: 0}
   _statusImg: {fileID: 1357913176}
   starsEarnedInStage: 0
   starsRequired: 0
+  isUnlockable: 1
 --- !u!1 &1661265038
 GameObject:
   m_ObjectHideFlags: 0
@@ -13280,7 +13260,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 172ae4c7f5ff3e44cb8225dd45decc4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13540,7 +13520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1704231001
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13580,7 +13560,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13655,7 +13635,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13805,7 +13785,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14656,12 +14636,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 920392106}
         m_TargetAssemblyTypeName: UnderworldCafe.StageObject, Assembly-CSharp
-        m_MethodName: ShowLevelPanel
-        m_Mode: 1
+        m_MethodName: ToggleStageButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -15012,10 +14992,12 @@ MonoBehaviour:
   stageId: 2
   totalLevels: 3
   unlockedLevels: 1
+  moneyRequired: 30
   _stageImg: {fileID: 0}
   _statusImg: {fileID: 1134910775}
   starsEarnedInStage: 0
   starsRequired: 4
+  isUnlockable: 0
 --- !u!1 &1914326514
 GameObject:
   m_ObjectHideFlags: 0
@@ -15582,7 +15564,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15999,7 +15981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2111666951
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16039,7 +16021,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 56316fc37a9af6349a08d34ea429d25a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16349,4 +16331,3 @@ SceneRoots:
   - {fileID: 1069406478}
   - {fileID: 326134271}
   - {fileID: 312131263}
-  - {fileID: 693361414}

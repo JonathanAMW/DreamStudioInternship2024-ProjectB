@@ -3,6 +3,7 @@
 // Created  : "2024/01/25"
 //----------------------------------------------------------------------
 
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -22,9 +23,16 @@ namespace UnderworldCafe
         public GameObject levelSelectPanel;
         public static int currentStageId = 0;
 
+        [SerializeField] TextMeshProUGUI playerMoneyText;
+        int playerMoney;
+
         public int totalStarsEarned = 0;
 
-
+        private void Awake()
+        {
+            UpdatePlayerMoney();
+            UpdateUnlockableStages();
+        }
 
         public void GoBack()
         {
@@ -61,19 +69,48 @@ namespace UnderworldCafe
             
         }
 
-        public void UpdateUnlockStage(LevelSelectPanel.StageLevel[,] stageLevels)
+        public void UpdateUnlockStage(int stageId)
         {
-            for(int i = 0; i < stageObjects.Length-1; i++)
-            {
-                stageObjects[i + 1].GetComponentInChildren<Button>().interactable = false;
-                stageObjects[i + 1].StatusImg.GetComponent<Image>().sprite = lockedStageSprite;
-                if (totalStarsEarned >= stageObjects[i+1].starsRequired)
+
+                stageObjects[stageId].StatusImg.GetComponent<Image>().sprite = lockedStageSprite;
+                if (totalStarsEarned >= stageObjects[stageId].starsRequired && playerMoney >= stageObjects[stageId].MoneyRequired)
                 {
-                    stageObjects[i + 1].GetComponentInChildren<Button>().interactable = true;
-                    stageObjects[i + 1].StatusImg.GetComponent<Image>().sprite = unlockedStageSprite;
+                    
+                    stageObjects[stageId].StatusImg.GetComponent<Image>().sprite = unlockedStageSprite;
+
+                    if (stageObjects[stageId].isUnlockable)
+                    {
+                        GameManager gameManager = FindObjectOfType<GameManager>();
+                        gameManager.ReducePlayerMoney(stageObjects[stageId].MoneyRequired);
+                        UpdatePlayerMoney();
+                        stageObjects[stageId].isOpened = true;
+                    }
+                   
+                }
+            
+            
+        }
+
+        public void UpdateUnlockableStages()
+        {
+            for(int i = 0; i < stageObjects.Length; i++)
+            {
+                stageObjects[i].isUnlockable = false;
+                stageObjects[i].GetComponentInChildren<Button>().interactable = false;
+                if (totalStarsEarned >= stageObjects[i].starsRequired)
+                {
+                    stageObjects[i].isUnlockable = true;
+                    stageObjects[i].GetComponentInChildren<Button>().interactable = true;
                 }
             }
-            
+        }
+            public void UpdatePlayerMoney() //updates player's money UI
+        {
+            GameManager gameManager=FindObjectOfType<GameManager>();
+
+            playerMoney = gameManager.PlayerGameResouces.Money;
+
+            playerMoneyText.text = playerMoney.ToString();
         }
     }
 }

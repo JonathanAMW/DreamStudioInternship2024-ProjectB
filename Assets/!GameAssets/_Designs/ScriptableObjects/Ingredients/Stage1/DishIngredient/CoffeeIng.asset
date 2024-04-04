@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3c843baf29a6648bdd71b8c951ee30, type: 3}
+  m_Name: CoffeeIng
+  m_EditorClassIdentifier: 
+  _ingredientInformation:
+    Name: Coffee
+    Description: 
+    IngredientSprite: {fileID: -1069409254, guid: 6a2ea0b0aeb26184ca4ef89425898683, type: 3}

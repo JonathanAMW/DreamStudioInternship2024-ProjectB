@@ -13,9 +13,6 @@ namespace UnderworldCafe
     /// </summary>
     public class MainMenuManager : MonoBehaviour
     {
-       public void ToSelectLevel()
-       {
-            SceneManager.LoadScene(1); //load stage select scene
-       }
+        
     }
 }

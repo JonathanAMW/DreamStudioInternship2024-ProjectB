@@ -13,10 +13,14 @@ namespace UnderworldCafe
     /// </summary>
     public class PlayerGameResouces : MonoBehaviour
     {
-        private int _money;
-        public int Money => _money;
+        private int _money=100;
+        public int Money
+        {
+            get { return _money; }
+            set { _money = value; }
+        }
 
-        
+
         // Start is called before the first frame update
         private void Start()
         {
@@ -28,5 +32,7 @@ namespace UnderworldCafe
         {
             
         }
+
+       
     }
 }

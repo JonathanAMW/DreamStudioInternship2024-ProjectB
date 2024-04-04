@@ -20,7 +20,7 @@ namespace UnderworldCafe
 
         [SerializeField] public Image[] levelStars= new Image[3];
         [SerializeField] TextMeshProUGUI textLevel;
-        [SerializeField] GameObject statusImg;
+        [SerializeField] public GameObject statusImg;
 
         LevelSelectPanel _levelSelectPanel;
         private void Awake()
