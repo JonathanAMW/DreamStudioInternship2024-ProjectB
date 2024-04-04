@@ -34,13 +34,13 @@ namespace UnderworldCafe.DataPersistenceSystem
     /// </summary>
     public struct LevelData
     {
-        public string LevelId;
+        public string LevelName;
         public Dictionary<int, bool> LevelStars;
         public Dictionary<string, int> LevelUtensilsTier; 
 
-        public LevelData(string levelId, Dictionary<int, bool> levelStars, Dictionary<string, int> levelUtensilsTier)
+        public LevelData(string levelName, Dictionary<int, bool> levelStars, Dictionary<string, int> levelUtensilsTier)
         {
-            LevelId = levelId;
+            LevelName = levelName;
             LevelStars = levelStars;
             LevelUtensilsTier = levelUtensilsTier;
         }

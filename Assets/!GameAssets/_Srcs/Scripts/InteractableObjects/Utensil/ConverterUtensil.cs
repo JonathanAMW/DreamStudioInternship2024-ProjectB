@@ -17,8 +17,8 @@ namespace UnderworldCafe.CookingSystem
     /// </summary>
     public class ConverterUtensil : Utensil
     {
-        #region Dependencies
-        private TimeManager _timeManagerRef;
+        #region Dependency Injection
+        TimeManager _timeManagerRef;
         #endregion
 
         [Header("=======[Converter Utensil Properties]=======")]
@@ -120,11 +120,10 @@ namespace UnderworldCafe.CookingSystem
         private IEnumerator ProcessingFood(Ingredient createdIngredient)
         {
             // yield return new WaitForSeconds(_currentStatsData.ConvertingTime);   
+
             float _startProcessingTime = _timeManagerRef.TimePassed;
             while(_timeManagerRef.TimePassed - _startProcessingTime < _currentStatsData.ConvertingTime)
             {
-                _utensilAnimator.SetTrigger("Processing");
-                _audioManagerRef.PlaySFX(_audioManagerRef.UtensilProcessingSFX);
                 yield return null;
             }
             
@@ -135,9 +134,6 @@ namespace UnderworldCafe.CookingSystem
 
         private void ReturnNewFood(PlayerInventory playerInventory, Ingredient newFood)
         {
-            _utensilAnimator.SetTrigger("Generating");
-            _audioManagerRef.PlaySFX(_audioManagerRef.UtensilGeneratingSFX);
-
             playerInventory.AddInventory(newFood);
             _isFoodReady = false;
         }

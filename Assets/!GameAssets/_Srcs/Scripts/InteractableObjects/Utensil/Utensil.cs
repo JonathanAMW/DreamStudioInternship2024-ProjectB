@@ -19,10 +19,6 @@ namespace UnderworldCafe.CookingSystem
     /// </summary>
     public abstract class Utensil : QueuedInteractableObject
     {
-        #region Dependencies
-        protected AudioManager _audioManagerRef;
-        #endregion
-
         #region Utensil Information
         [Header("=======[Utensil Information]=======")] 
 
@@ -44,7 +40,7 @@ namespace UnderworldCafe.CookingSystem
         #region Utensil Properties 
         [Header("=======[Utensil General Properties]=======")]        
         [SerializeField] protected Ingredient FailedFood;
-        [SerializeField] protected Animator _utensilAnimator;
+        [SerializeField] private Animator _utensilAnimator;
         #endregion
             
         protected override void OnValidate()
@@ -68,13 +64,6 @@ namespace UnderworldCafe.CookingSystem
             //     Debug.LogWarning("No animator has been set on utensil: " + gameObject.name);
             // }
             
-        }
-
-        protected override void Awake()
-        {
-            base.Awake();
-            
-            _audioManagerRef = GameManager.Instance.AudioManager;
         }
 
 

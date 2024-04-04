@@ -76,7 +76,7 @@ namespace UnderworldCafe.CookingSystem
             {
                 case GeneratorUtensilType.PURE_GENERATOR:
                     _playerControllerRef.PlayerInventory.RemoveInventoryAll();
-                    ReturnNewFood(_playerControllerRef.PlayerInventory, _generatedIngredient);
+                    _playerControllerRef.PlayerInventory.AddInventory(_generatedIngredient);
                     break;
 
                 case GeneratorUtensilType.NORMAL_GENERATOR:
@@ -125,9 +125,6 @@ namespace UnderworldCafe.CookingSystem
 
         private void ReturnNewFood(PlayerInventory playerInventory, Ingredient newFood)
         {
-            _utensilAnimator.SetTrigger("Generating");
-            _audioManagerRef.PlaySFX(_audioManagerRef.UtensilGeneratingSFX);
-
             playerInventory.AddInventory(newFood);
         }
     }
