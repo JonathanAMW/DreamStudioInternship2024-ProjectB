@@ -29,9 +29,10 @@ namespace UnderworldCafe
             IsGamePaused = false;
         }
 
-        public void SetGamePaused(bool isPaused)
+        public void PauseGame(bool isPaused)
         {
             IsGamePaused = isPaused;
+            AudioListener.pause = isPaused;
         }
     }
 }
