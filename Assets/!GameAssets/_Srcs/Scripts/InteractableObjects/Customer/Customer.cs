@@ -53,7 +53,7 @@ namespace UnderworldCafe.CustomerSystem
         [SerializeField] private GameObject _orderObj;
         [SerializeField] private SpriteRenderer _orderFoodSpriteRenderer;
         
-        [SerializeField] private CustomerState _customerState;
+        private CustomerState _customerState;
         #endregion
 
 

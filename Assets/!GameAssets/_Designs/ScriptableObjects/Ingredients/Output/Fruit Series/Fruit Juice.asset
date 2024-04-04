@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Fruit Juice
   m_EditorClassIdentifier: 
   _ingredientInformation:
+    Id: INGREDIENT_FruitJuice
     Name: Fruit Juice
     Description: Fruit Juice
-    IngredientSprite: {fileID: 78463665, guid: 2acd47dce3c502f4684158eb38b70838, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: 51c7ef48a1e85f240a65e9c58d1712d6, type: 3}
