@@ -33,7 +33,11 @@ namespace UnderworldCafe
         }
         private void OnEnable()
         {
-            _levelManagerRef.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
+            if(_levelManagerRef != null) _levelManagerRef.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
+        }
+        private void OnDisable()
+        {
+            if(_levelManagerRef != null) _levelManagerRef.OnLevelCompletedEvent -= OnLevelCompletedEventHandlerMethod;
         }
 
         private void Update()

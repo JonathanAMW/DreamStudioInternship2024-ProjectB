@@ -20,10 +20,18 @@ namespace UnderworldCafe
         [field: SerializeField] public PlayerGameResouces PlayerGameResouces { get; private set; }
         #endregion
 
+        public bool IsGamePaused { get; private set; }
         
         protected override void Awake()
         {
             base.Awake();
+
+            IsGamePaused = false;
+        }
+
+        public void SetGamePaused(bool isPaused)
+        {
+            IsGamePaused = isPaused;
         }
     }
 }

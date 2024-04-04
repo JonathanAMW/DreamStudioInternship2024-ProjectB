@@ -53,7 +53,6 @@ namespace UnderworldCafe.WaveSystem
         {
             _audioManagerRef = GameManager.Instance.AudioManager;
             _levelManagerRef = LevelManager.Instance;
-            // _poolManagerRef = _levelManagerRef.PoolManager;
             _timeManagerRef = _levelManagerRef.TimeManager;
             
             _usedCustomersFromPool = new();
@@ -62,7 +61,11 @@ namespace UnderworldCafe.WaveSystem
         }
         private void OnEnable()
         {
-            _levelManagerRef.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
+            if(_levelManagerRef != null) _levelManagerRef.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
+        }
+        private void OnDisable()
+        {
+            if(_levelManagerRef != null) _levelManagerRef.OnLevelCompletedEvent -= OnLevelCompletedEventHandlerMethod;
         }
         #endregion
 

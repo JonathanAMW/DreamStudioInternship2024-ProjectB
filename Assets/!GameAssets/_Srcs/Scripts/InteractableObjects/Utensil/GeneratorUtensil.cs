@@ -32,8 +32,6 @@ namespace UnderworldCafe.CookingSystem
         [SerializeField] private List<GeneratorUtensilStatsData> _statsDataPerLevel;
         private GeneratorUtensilStatsData _currentStatsData;
 
-
-
         public enum GeneratorUtensilType
         {
             NORMAL_GENERATOR = 0,
