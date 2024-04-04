@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Coffe And Ice
   m_EditorClassIdentifier: 
   _ingredientInformation:
+    Id: INGREDIENT_CoffeAndIce
     Name: Coffe And Ice
     Description: Coffe And Ice
-    IngredientSprite: {fileID: 21300000, guid: 709213c45ce67144aabb76e3563d4d71, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: a163075014dbf2a42bc36a0a7fa52c40, type: 3}
