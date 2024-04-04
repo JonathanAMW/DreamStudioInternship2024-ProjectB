@@ -19,6 +19,10 @@ namespace UnderworldCafe.CookingSystem
     /// </summary>
     public abstract class Utensil : QueuedInteractableObject
     {
+        #region Dependencies
+        protected AudioManager _audioManagerRef;
+        #endregion
+
         #region Utensil Information
         [Header("=======[Utensil Information]=======")] 
 
@@ -40,7 +44,7 @@ namespace UnderworldCafe.CookingSystem
         #region Utensil Properties 
         [Header("=======[Utensil General Properties]=======")]        
         [SerializeField] protected Ingredient FailedFood;
-        [SerializeField] private Animator _utensilAnimator;
+        [SerializeField] protected Animator _utensilAnimator;
         #endregion
             
         protected override void OnValidate()
@@ -66,6 +70,14 @@ namespace UnderworldCafe.CookingSystem
             
         }
 
+
+        protected override void Awake()
+        {
+            base.Awake();
+            
+            _audioManagerRef = GameManager.Instance.AudioManager;
+        }
+        
 
         protected static class UtensilComparer
         {
