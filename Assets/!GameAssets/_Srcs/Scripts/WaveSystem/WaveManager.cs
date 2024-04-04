@@ -60,7 +60,7 @@ namespace UnderworldCafe.WaveSystem
             _currentWave = new Wave();
             SetupCustomerPool();
         }
-        private void Start()
+        private void OnEnable()
         {
             _levelManagerRef.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
         }

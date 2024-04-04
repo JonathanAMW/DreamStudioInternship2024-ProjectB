@@ -13,6 +13,10 @@ namespace UnderworldCafe
     /// </summary>
     public class UIManager : MonoBehaviour
     {
+        #region Dependencies
+        private LevelManager _levelManagerRef;
+        #endregion
+
         [SerializeField] GameObject pausePanel;
         [SerializeField] GameObject recipePanel;
         [SerializeField] GameObject resultPanel;
@@ -23,6 +27,15 @@ namespace UnderworldCafe
         static public bool isResultOpen = false;
         static public bool isSettingsOpened=false;
 
+        private void Awake()
+        {
+            _levelManagerRef = LevelManager.Instance;
+        }
+        private void OnEnable()
+        {
+            _levelManagerRef.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
+        }
+
         private void Update()
         {
             if(Input.GetKeyDown(KeyCode.R))
@@ -30,9 +43,9 @@ namespace UnderworldCafe
                 ShowScore();
             }
         }
+
         public void PauseGame()
-       {
-            
+        {
             if(isPaused==false)
             {
                 pausePanel.SetActive(true);
@@ -47,7 +60,6 @@ namespace UnderworldCafe
 
         public void ToggleRecipe()
         {
-
             if (isRecipeOpen == false)
             {
                 recipePanel.SetActive(true);
@@ -85,6 +97,11 @@ namespace UnderworldCafe
         public void BackToStageSelect()
         {
             SceneManager.LoadScene("StageSelect"); //back to stage select scene
+        }
+
+        private void OnLevelCompletedEventHandlerMethod()
+        {
+            ShowScore();
         }
 
     }
