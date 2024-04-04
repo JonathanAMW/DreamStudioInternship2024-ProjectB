@@ -25,7 +25,7 @@ namespace UnderworldCafe
             transitionSceneObject.SetActive(true);
 
             // Menunggu beberapa saat agar animasi transisi selesai
-            yield return new WaitForSeconds(2);
+            //yield return new WaitForSeconds(2);
 
             Animator anim = transitionSceneObject.GetComponent<Animator>();
             while (anim.GetCurrentAnimatorStateInfo(0).IsName("Transisi") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)

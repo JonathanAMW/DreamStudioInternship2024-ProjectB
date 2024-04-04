@@ -490,7 +490,7 @@ Canvas:
   m_GameObject: {fileID: 103828415}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 343757498}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1537,7 +1537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &343757497
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1934,7 +1934,7 @@ Canvas:
   m_GameObject: {fileID: 393648439}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 343757498}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -4039,6 +4039,7 @@ MonoBehaviour:
   recipePanel: {fileID: 1797051444}
   resultPanel: {fileID: 822058704}
   settingsPanel: {fileID: 1748538626}
+  customerCountText: {fileID: 1248313843}
 --- !u!1 &673337529
 GameObject:
   m_ObjectHideFlags: 0
@@ -4846,7 +4847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &749966619
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6759,7 +6760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1283831367
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7534,7 +7535,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &1378225162
 GameObject:
   m_ObjectHideFlags: 0
@@ -9264,7 +9265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1686162377
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9473,7 +9474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1706529760
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9838,7 +9839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1761172208
 RectTransform:
   m_ObjectHideFlags: 0

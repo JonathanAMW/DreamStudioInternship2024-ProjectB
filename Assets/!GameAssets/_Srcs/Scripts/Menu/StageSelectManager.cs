@@ -25,6 +25,7 @@ namespace UnderworldCafe
 
         [SerializeField] TextMeshProUGUI playerMoneyText;
         int playerMoney;
+        PlayerGameResouces playerResource=GameManager.Instance.PlayerGameResouces;
 
         public int totalStarsEarned = 0;
 
@@ -80,8 +81,8 @@ namespace UnderworldCafe
 
                     if (stageObjects[stageId].isUnlockable)
                     {
-                        GameManager gameManager = FindObjectOfType<GameManager>();
-                        // gameManager.ReducePlayerMoney(stageObjects[stageId].MoneyRequired);
+                       
+                        playerResource.ReduceMoney(stageObjects[stageId].MoneyRequired);
                         UpdatePlayerMoney();
                         stageObjects[stageId].isOpened = true;
                     }
@@ -106,7 +107,7 @@ namespace UnderworldCafe
         }
         public void UpdatePlayerMoney() //updates player's money UI
         {
-            // playerMoney = playerResource.Money;
+            playerMoney = playerResource.Money;
             playerMoneyText.text = playerMoney.ToString();
         }
     }
