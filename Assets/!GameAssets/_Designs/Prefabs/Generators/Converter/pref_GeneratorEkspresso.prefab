@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8701639595087524037}
   - component: {fileID: 6173623747103639485}
-  - component: {fileID: 5558204132253076374}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -26,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086441348184158981}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.33, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3930631001790222133}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6173623747103639485
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -74,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 1364486071
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d85c5fc3477f3404280cd19d2cfe0e44, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 340485086, guid: 6a2ea0b0aeb26184ca4ef89425898683, type: 3}
+  m_Color: {r: 0, g: 1, b: 0.29414654, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,27 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5558204132253076374
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086441348184158981}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5721a39bc53e735408d6e5566b2a74f4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4950914142228265769
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +347,7 @@ MonoBehaviour:
     Name: Ekspresso
     Description: Ekspresso
   FailedFood: {fileID: 11400000, guid: 656c598db18148343b715a8f24673c9b, type: 2}
-  _utensilAnimator: {fileID: 5558204132253076374}
+  _utensilAnimator: {fileID: 0}
   _generatedIngredient: {fileID: 11400000, guid: 27018a954e426ca44b5fddbee6d7706e, type: 2}
   _generatorUtensilType: 2
   _statsDataPerLevel:

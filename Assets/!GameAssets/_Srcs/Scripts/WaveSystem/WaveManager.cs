@@ -51,19 +51,16 @@ namespace UnderworldCafe.WaveSystem
         private void Awake()
         {
             _levelManagerRef = LevelManager.Instance;
+            // _poolManagerRef = _levelManagerRef.PoolManager;
             _timeManagerRef = _levelManagerRef.TimeManager;
             
             _usedCustomersFromPool = new();
             _currentWave = new Wave();
             SetupCustomerPool();
         }
-        private void OnEnable()
+        private void Start()
         {
-            if(_levelManagerRef != null) _levelManagerRef.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
-        }
-        private void OnDisable()
-        {
-            if(_levelManagerRef != null) _levelManagerRef.OnLevelCompletedEvent -= OnLevelCompletedEventHandlerMethod;
+            _levelManagerRef.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
         }
         #endregion
 

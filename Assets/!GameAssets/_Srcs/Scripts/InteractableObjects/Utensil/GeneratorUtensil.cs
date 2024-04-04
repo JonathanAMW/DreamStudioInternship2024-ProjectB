@@ -32,6 +32,8 @@ namespace UnderworldCafe.CookingSystem
         [SerializeField] private List<GeneratorUtensilStatsData> _statsDataPerLevel;
         private GeneratorUtensilStatsData _currentStatsData;
 
+
+
         public enum GeneratorUtensilType
         {
             NORMAL_GENERATOR = 0,
@@ -57,18 +59,16 @@ namespace UnderworldCafe.CookingSystem
             }
         }
 
-
-        protected override void Awake()
+        protected override void Start()
         {
+            base.Start();
+            
             if(_generatorUtensilType == GeneratorUtensilType.CONVERSION_GENERATOR)
             {
                 // Need additional check for if player has loading save or not
                 _currentStatsData = _statsDataPerLevel[0];
             }
-
-            _utensilAnimator.SetTrigger("Idling");
         }
-
 
         public override void Interact()
         {
@@ -92,8 +92,6 @@ namespace UnderworldCafe.CookingSystem
                     Debug.LogError("Unknown GeneratorUtensilType");
                     break;
             }
-
-            _utensilAnimator.SetTrigger("Idling");
         }
 
         private void TryProcessInput(PlayerInventory playerInventory)

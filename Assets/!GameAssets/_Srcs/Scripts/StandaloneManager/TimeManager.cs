@@ -16,11 +16,11 @@ namespace UnderworldCafe
     public class TimeManager : MonoBehaviour
     {
         #region Dependencies
-        private GameManager _gameManagerRef;
         private LevelManager _levelManagerRef;
         #endregion
         
 
+        public bool IsTimerPaused { get; private set; }
         public float TimerDuration { get; private set; }  
         public float TimePassed { get; private set; }
         
@@ -28,16 +28,11 @@ namespace UnderworldCafe
         #region MonoBehavior
         private void Awake()
         {
-            _gameManagerRef = GameManager.Instance;
             _levelManagerRef = LevelManager.Instance;
         }
-        private void OnEnable()
+        private void Start()
         {
-            if(_levelManagerRef != null) _levelManagerRef.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
-        }
-        private void OnDisable()
-        {
-            if(_levelManagerRef != null) _levelManagerRef.OnLevelCompletedEvent -= OnLevelCompletedEventHandlerMethod;
+            _levelManagerRef.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
         }
         #endregion
 
@@ -52,7 +47,10 @@ namespace UnderworldCafe
         {
             StopCoroutine("TimerCoroutine");
         }
-        
+        public void SetPauseTimer(bool isPaused)
+        {
+            IsTimerPaused = isPaused;
+        }
         public void AddTimePassed(float addedTime)
         {
             TimePassed += addedTime;
@@ -62,7 +60,7 @@ namespace UnderworldCafe
         {
             while(TimePassed < TimerDuration)
             {
-                if(_gameManagerRef.IsGamePaused) yield return null;
+                if(IsTimerPaused) yield return null;
                 
                 TimePassed += Time.deltaTime;
                 // Debug.Log(TimePassed);
