@@ -76,14 +76,6 @@ namespace UnderworldCafe.CookingSystem
             
             _audioManagerRef = GameManager.Instance.AudioManager;
         }
-
-
-        protected override void Awake()
-        {
-            base.Awake();
-            
-            _audioManagerRef = GameManager.Instance.AudioManager;
-        }
         
 
         protected static class UtensilComparer

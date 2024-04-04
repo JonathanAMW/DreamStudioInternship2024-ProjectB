@@ -21,7 +21,8 @@ namespace UnderworldCafe
     {
         #region Dependencies
         [field: Header("DEPENDENCIES")]
-        [field: SerializeField] public GameManager GameManager { get; private set; }
+        private GameManager GameManager;
+        
         [field: SerializeField] public InputManager InputManager { get; private set; }
         [field: SerializeField] public GridManager GridManager { get; private set; }
         [field: SerializeField] public TimeManager TimeManager { get; private set; }

@@ -45,6 +45,8 @@ namespace UnderworldCafe.WaveSystem
 
         #region Public
         public int CurrentWaveCustomerLeftCount => _currentWave.CurrentWaveCustomerLeft;
+        public int CurrentWavesCountInLevel => _waveInformationSOList.Length;
+        public int CurrentWaveIndex => _currentWaveIndex;
         #endregion
 
 

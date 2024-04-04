@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/!GameAssets/_Designs/Scenes/Menu/UpgradeMenu.unity
     guid: 16579bb236abbc144990189fe7cd56e7
+  - enabled: 1
+    path: Assets/!GameAssets/_Designs/Scenes/Level/Stage1.unity
+    guid: 8ffeb268883fb2549951f8330b7abdb3
   m_configObjects: {}
