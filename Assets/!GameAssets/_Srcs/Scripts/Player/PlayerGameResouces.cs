@@ -33,14 +33,6 @@ namespace UnderworldCafe
             
         }
 
-        public void AddPlayerMoney(int amount)
-        {
-            Money += amount;
-        }
-
-        public void ReducePlayerMoney(int amount)
-        {
-            Money -= amount;
-        }
+       
     }
 }

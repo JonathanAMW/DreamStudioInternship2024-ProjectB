@@ -18,6 +18,7 @@ namespace UnderworldCafe.WaveSystem
     public class WaveManager : MonoBehaviour
     {
         #region Dependencies
+        private AudioManager _audioManagerRef;
         private LevelManager _levelManagerRef;
         private TimeManager _timeManagerRef;
         #endregion
@@ -50,6 +51,7 @@ namespace UnderworldCafe.WaveSystem
         #region MonoBehavior
         private void Awake()
         {
+            _audioManagerRef = GameManager.Instance.AudioManager;
             _levelManagerRef = LevelManager.Instance;
             // _poolManagerRef = _levelManagerRef.PoolManager;
             _timeManagerRef = _levelManagerRef.TimeManager;
@@ -169,6 +171,7 @@ namespace UnderworldCafe.WaveSystem
                         _usedCustomersFromPool.Enqueue(customerObj);
 
                         Debug.Log("Spawned customer: " + customerObj.name);
+                        _audioManagerRef.PlaySFX(_audioManagerRef.CustomerSpawnSFX);
                         break;
                     }
 

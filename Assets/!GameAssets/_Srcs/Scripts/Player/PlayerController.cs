@@ -20,6 +20,7 @@ namespace UnderworldCafe.Player
     public class PlayerController : MonoBehaviour
     {
         #region References Dependency
+        private AudioManager _audioManagerRef;
         private PathRequestManager _pathRequestManagerRef;
         private GridManager _gridManagerRef;
         
@@ -49,6 +50,7 @@ namespace UnderworldCafe.Player
 
         private void Awake()
         {
+            _audioManagerRef = GameManager.Instance.AudioManager;
             _pathRequestManagerRef = LevelManager.Instance.PathRequestManager;
             _gridManagerRef = LevelManager.Instance.GridManager;
 
@@ -133,9 +135,11 @@ namespace UnderworldCafe.Player
 
                     currentWaypoint = _pathPos[_targetIndex];
                 }
-
+                
                 transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, _movementSpeed * Time.deltaTime);
                 
+                _audioManagerRef.PlaySFX(_audioManagerRef.PlayerWalkSFX);
+
                 _playerAnimator.SetFloat("Horizontal", transform.position.x - currentWaypoint.x);
                 _playerAnimator.SetFloat("Vertical", transform.position.y - currentWaypoint.y);
                 _playerAnimator.SetFloat("Speed", 1);
