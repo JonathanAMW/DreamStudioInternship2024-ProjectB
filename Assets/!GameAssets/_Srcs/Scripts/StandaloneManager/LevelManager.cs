@@ -29,6 +29,7 @@ namespace UnderworldCafe
         [field: SerializeField] public PathRequestManager PathRequestManager { get; private set; }
         [field: SerializeField] public WaveManager WaveManager { get; private set; }
         [field: SerializeField] public PlayerController PlayerController { get; private set; }
+        [field: SerializeField] public UIManager UIManager { get; private set; }
         #endregion
 
         [Header("LEVEL SETTINGS")]

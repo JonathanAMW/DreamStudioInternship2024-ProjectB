@@ -24,7 +24,6 @@ namespace UnderworldCafe
         [SerializeField] GameObject resultPanel;
         [SerializeField] GameObject settingsPanel;
         [SerializeField] TextMeshProUGUI customerCountText;
-        [SerializeField] WaveManager waveManager;
  
         static public bool isPaused = false;
         static public bool isRecipeOpen = false;
@@ -50,6 +49,7 @@ namespace UnderworldCafe
             {
                 ShowScore();
             }
+            UpdateCustomerCount(_levelManagerRef.WaveManager.CurrentWaveCustomerLeftCount);
         }
 
         public void PauseGame()
@@ -110,6 +110,11 @@ namespace UnderworldCafe
         private void OnLevelCompletedEventHandlerMethod()
         {
             ShowScore();
+        }
+
+        public void UpdateCustomerCount(int customerCount)
+        {
+            customerCountText.text =customerCount.ToString();
         }
 
     }

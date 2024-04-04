@@ -1537,7 +1537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &343757497
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4039,6 +4039,7 @@ MonoBehaviour:
   recipePanel: {fileID: 1797051444}
   resultPanel: {fileID: 822058704}
   settingsPanel: {fileID: 1748538626}
+  customerCountText: {fileID: 1248313843}
 --- !u!1 &673337529
 GameObject:
   m_ObjectHideFlags: 0
@@ -7534,7 +7535,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &1378225162
 GameObject:
   m_ObjectHideFlags: 0
