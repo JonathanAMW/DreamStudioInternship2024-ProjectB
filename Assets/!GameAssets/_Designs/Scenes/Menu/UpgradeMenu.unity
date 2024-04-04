@@ -2997,6 +2997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextPageButton: {fileID: 961037698}
   prevPageButton: {fileID: 1094536756}
+  playerMoneyText: {fileID: 853931008}
 --- !u!1 &1563746100
 GameObject:
   m_ObjectHideFlags: 0

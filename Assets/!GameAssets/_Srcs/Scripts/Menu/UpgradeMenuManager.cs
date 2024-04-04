@@ -4,6 +4,8 @@
 //----------------------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 namespace UnderworldCafe
@@ -18,6 +20,11 @@ namespace UnderworldCafe
         [SerializeField] GameObject nextPageButton;
         [SerializeField] GameObject prevPageButton;
 
+        [SerializeField] TextMeshProUGUI playerMoneyText;
+        int playerMoney;
+
+        PlayerGameResouces playerResource = GameManager.Instance.PlayerGameResouces;
+
         private void Awake()
         {
             _upgradeManager = FindObjectOfType<UpgradeManager>();
@@ -27,6 +34,7 @@ namespace UnderworldCafe
         private void Start()
         {
             ActivatePageButtons();
+            UpdatePlayerMoney();
         }
         public void ToStageSelect()
         {
@@ -75,6 +83,12 @@ namespace UnderworldCafe
             {
                 prevPageButton.SetActive(true);
             }
+        }
+
+        public void UpdatePlayerMoney() //updates player's money UI
+        {
+            playerMoney = playerResource.Money;
+            playerMoneyText.text = playerMoney.ToString();
         }
     }
 }

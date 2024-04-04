@@ -105,12 +105,9 @@ namespace UnderworldCafe
                 }
             }
         }
-            public void UpdatePlayerMoney() //updates player's money UI
+        public void UpdatePlayerMoney() //updates player's money UI
         {
-            GameManager gameManager=FindObjectOfType<GameManager>();
-
-            playerMoney = gameManager.PlayerGameResouces.Money;
-
+            playerMoney = playerResource.Money;
             playerMoneyText.text = playerMoney.ToString();
         }
     }
