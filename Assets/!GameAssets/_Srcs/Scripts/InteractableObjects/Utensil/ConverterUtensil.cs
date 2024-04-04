@@ -48,25 +48,16 @@ namespace UnderworldCafe.CookingSystem
             base.Awake();
 
             _timeManagerRef = LevelManager.Instance.TimeManager;
+
             _isProcessing = false;
             _isFoodReady = false;
 
             // Need additional check for if player has loading save or not
             _currentStatsData = StatsDataPerLevel[0];
+
+            _utensilAnimator.SetTrigger("Idling");
         }
         
-
-        protected override void Start()
-        {
-            // _timeManagerRef = LevelManager.Instance.LevelTimeManagerRef;
-
-            // base.Start();
-            // _isProcessing = false;
-            // _isFoodReady = false;
-
-            // // Need additional check for if player has loading save or not
-            // _currentStatsData = StatsDataPerLevel[0];
-        }
 
         public override void Interact()
         {
@@ -88,6 +79,8 @@ namespace UnderworldCafe.CookingSystem
 
             //give back the food 
             ReturnNewFood(_playerControllerRef.PlayerInventory, ReadyToTakeFood);
+
+            _utensilAnimator.SetTrigger("Idling");
         }
 
         private bool TryProcessInput(PlayerInventory playerInventory)
@@ -141,7 +134,5 @@ namespace UnderworldCafe.CookingSystem
             playerInventory.AddInventory(newFood);
             _isFoodReady = false;
         }
-
-        
     }
 }

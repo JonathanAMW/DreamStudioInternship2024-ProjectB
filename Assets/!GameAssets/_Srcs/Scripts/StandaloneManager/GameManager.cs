@@ -15,24 +15,24 @@ namespace UnderworldCafe
     public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         #region Dependencies
+        [field: SerializeField] public AudioManager AudioManager { get; private set; }
         [field: SerializeField] public SceneHandler SceneHandler { get; private set; }
         [field: SerializeField] public PlayerGameResouces PlayerGameResouces { get; private set; }
         #endregion
 
+        public bool IsGamePaused { get; private set; }
         
         protected override void Awake()
         {
             base.Awake();
+
+            IsGamePaused = false;
         }
 
-        public void AddPlayerMoney(int amount)
+        public void PauseGame(bool isPaused)
         {
-            PlayerGameResouces.Money+=amount;
-        }
-
-        public void ReducePlayerMoney(int amount)
-        {
-            PlayerGameResouces.Money -= amount;
+            IsGamePaused = isPaused;
+            AudioListener.pause = isPaused;
         }
     }
 }
