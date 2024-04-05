@@ -32,6 +32,7 @@ namespace UnderworldCafe.CookingSystem
         public Ingredient ReadyToTakeFood {get; private set;}
 
 
+        #region MonoBehaviour
         //Validating Data
         protected override void OnValidate()
         {
@@ -57,6 +58,7 @@ namespace UnderworldCafe.CookingSystem
 
             _utensilAnimator.SetTrigger("Idling");
         }
+        #endregion
         
 
         public override void Interact()

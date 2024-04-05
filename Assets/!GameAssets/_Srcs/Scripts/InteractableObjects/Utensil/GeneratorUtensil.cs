@@ -41,6 +41,7 @@ namespace UnderworldCafe.CookingSystem
         public IReadOnlyList<GeneratorUtensilStatsData> StatsDataPerLevel => _statsDataPerLevel;
         
 
+        #region MonoBehaviour
         //Validating Data
         protected override void OnValidate()
         {
@@ -57,9 +58,9 @@ namespace UnderworldCafe.CookingSystem
             }
         }
 
-
         protected override void Awake()
         {
+            base.Awake();
             if(_generatorUtensilType == GeneratorUtensilType.CONVERSION_GENERATOR)
             {
                 // Need additional check for if player has loading save or not
@@ -68,6 +69,7 @@ namespace UnderworldCafe.CookingSystem
 
             _utensilAnimator.SetTrigger("Idling");
         }
+        #endregion
 
 
         public override void Interact()
