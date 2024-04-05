@@ -16,4 +16,4 @@ MonoBehaviour:
     Id: INGREDIENT_Fish
     Name: Fish
     Description: Fish
-    IngredientSprite: {fileID: 21300000, guid: cbe8547b1384df6438d1f0f281d3f8a3, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: b648a22b407770747b96f2ca993c3c59, type: 3}

@@ -16,4 +16,4 @@ MonoBehaviour:
     Id: INGREDIENT_Milk
     Name: Milk
     Description: Milk
-    IngredientSprite: {fileID: 21300000, guid: 0bba2deaa0eed994b944ab27d386347d, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: c0d978413055a1f42827933b005d1e22, type: 3}

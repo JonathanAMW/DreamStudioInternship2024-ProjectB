@@ -16,4 +16,4 @@ MonoBehaviour:
     Id: INGREDIENT_Lettuce
     Name: Lettuce
     Description: Lettuce
-    IngredientSprite: {fileID: 21300000, guid: 0e3ae26ce2982a4438a6886333951450, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: 4c6504cd2bbee964b83cd79b93a1a8bd, type: 3}

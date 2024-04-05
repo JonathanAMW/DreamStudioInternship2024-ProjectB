@@ -16,4 +16,4 @@ MonoBehaviour:
     Id: INGREDIENT_Plate
     Name: Plate
     Description: Plate
-    IngredientSprite: {fileID: 21300000, guid: faad3e09a053df640add57349aa8431f, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: d6f1be7eb2b2b6d4dbe44dc49622c320, type: 3}
