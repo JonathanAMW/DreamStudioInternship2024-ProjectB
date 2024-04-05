@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   _ingredientInformation:
+    Id: INGREDIENT_Apple
     Name: Apple
     Description: Apple
-    IngredientSprite: {fileID: 78463665, guid: 2acd47dce3c502f4684158eb38b70838, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: c3b1fa0bd57dd5f448a7a6ebdbcfdf6f, type: 3}

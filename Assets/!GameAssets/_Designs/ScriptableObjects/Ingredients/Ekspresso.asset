@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Ekspresso
   m_EditorClassIdentifier: 
   _ingredientInformation:
+    Id: INGREDIENT_Ekspresso
     Name: Ekspresso
     Description: Ekspresso
-    IngredientSprite: {fileID: 78463665, guid: 2acd47dce3c502f4684158eb38b70838, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: 84a84a72c2693a84ca82f360d1acf425, type: 3}

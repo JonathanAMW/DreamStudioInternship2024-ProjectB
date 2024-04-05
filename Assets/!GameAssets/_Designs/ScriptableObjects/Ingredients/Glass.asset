@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Glass
   m_EditorClassIdentifier: 
   _ingredientInformation:
+    Id: INGREDIENT_Glass
     Name: Glass
     Description: Glass
-    IngredientSprite: {fileID: 78463665, guid: 2acd47dce3c502f4684158eb38b70838, type: 3}
+    IngredientSprite: {fileID: 21300000, guid: 2e5c19832606dd145a8a486b531898e9, type: 3}
