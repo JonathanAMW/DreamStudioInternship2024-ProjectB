@@ -16,6 +16,7 @@ namespace UnderworldCafe
     public class UIManager : MonoBehaviour
     {
         #region Dependencies
+        private GameManager _gameManagerRef;
         private LevelManager _levelManagerRef;
         #endregion
 
@@ -32,6 +33,7 @@ namespace UnderworldCafe
 
         private void Awake()
         {
+            _gameManagerRef = GameManager.Instance;
             _levelManagerRef = LevelManager.Instance;
         }
         private void OnEnable()
