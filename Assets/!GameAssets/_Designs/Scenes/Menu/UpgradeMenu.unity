@@ -3660,6 +3660,7 @@ MonoBehaviour:
   activeGradeColor: {r: 1, g: 0.99607843, b: 0.59607846, a: 1}
   inactiveGradeColor: {r: 0.19245279, g: 0.19242811, b: 0.18991096, a: 1}
   currentIndexNumber: 0
+  <upgradeMenuManager>k__BackingField: {fileID: 1540637461}
 --- !u!1 &1885965896
 GameObject:
   m_ObjectHideFlags: 0

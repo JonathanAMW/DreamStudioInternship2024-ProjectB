@@ -2182,6 +2182,7 @@ MonoBehaviour:
   starsEarnedInStage: 0
   starsRequired: 8
   isUnlockable: 0
+  isOpened: 0
 --- !u!1 &284257942
 GameObject:
   m_ObjectHideFlags: 0
@@ -3478,6 +3479,7 @@ MonoBehaviour:
   starsEarnedInStage: 0
   starsRequired: 1
   isUnlockable: 0
+  isOpened: 0
 --- !u!1 &396325035
 GameObject:
   m_ObjectHideFlags: 0
@@ -3685,7 +3687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1bf20e71e1893e641844a290a6025237, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7962,6 +7964,7 @@ MonoBehaviour:
   starsEarnedInStage: 0
   starsRequired: 15
   isUnlockable: 0
+  isOpened: 0
 --- !u!1 &921253416
 GameObject:
   m_ObjectHideFlags: 0
@@ -8773,8 +8776,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e53d5975edea8c5459951857c42459a1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10038,6 +10041,7 @@ MonoBehaviour:
   starsEarnedInStage: 0
   starsRequired: 20
   isUnlockable: 0
+  isOpened: 0
 --- !u!1 &1223070828
 GameObject:
   m_ObjectHideFlags: 0
@@ -12112,8 +12116,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: cd4904697e9cb314cae971282ba4c7b3, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -13128,6 +13132,7 @@ MonoBehaviour:
   starsEarnedInStage: 0
   starsRequired: 0
   isUnlockable: 1
+  isOpened: 0
 --- !u!1 &1661265038
 GameObject:
   m_ObjectHideFlags: 0
@@ -14998,6 +15003,7 @@ MonoBehaviour:
   starsEarnedInStage: 0
   starsRequired: 4
   isUnlockable: 0
+  isOpened: 0
 --- !u!1 &1914326514
 GameObject:
   m_ObjectHideFlags: 0

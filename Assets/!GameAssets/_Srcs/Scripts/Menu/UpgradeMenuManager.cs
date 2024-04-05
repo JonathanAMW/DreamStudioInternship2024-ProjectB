@@ -21,9 +21,10 @@ namespace UnderworldCafe
         [SerializeField] GameObject prevPageButton;
 
         [SerializeField] TextMeshProUGUI playerMoneyText;
-        int playerMoney;
+        public int PlayerMoney { get; private set; }
 
         PlayerGameResouces playerResource = GameManager.Instance.PlayerGameResouces;
+        public PlayerGameResouces PlayerResource { get { return playerResource; } private set { playerResource = value; } }
 
         private void Awake()
         {
@@ -87,8 +88,8 @@ namespace UnderworldCafe
 
         public void UpdatePlayerMoney() //updates player's money UI
         {
-            playerMoney = playerResource.Money;
-            playerMoneyText.text = playerMoney.ToString();
+            PlayerMoney = playerResource.Money;
+            playerMoneyText.text = PlayerMoney.ToString();
         }
     }
 }
