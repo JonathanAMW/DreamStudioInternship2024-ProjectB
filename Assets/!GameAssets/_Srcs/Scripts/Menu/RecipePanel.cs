@@ -163,9 +163,6 @@ namespace UnderworldCafe
         }
         public void NextPage()
         {
-            
-
-           
 
             if(recipeObjects.activeSelf)
             {

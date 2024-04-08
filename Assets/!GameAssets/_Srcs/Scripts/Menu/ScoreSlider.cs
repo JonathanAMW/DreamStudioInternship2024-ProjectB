@@ -27,15 +27,22 @@ namespace UnderworldCafe
         [HideInInspector] float timePassed;
         [HideInInspector] public float timeNormalized;
         [InspectorRange(0f,20f)]public float smoothness;
+
+        LevelManager levelManager;
+        private void Awake()
+        {
+            levelManager = FindObjectOfType<LevelManager>();
+        }
         private void Start()
         {
+            levelTimeDuration = levelManager.ReturnLevelDuration();
             timePassed = levelTimeDuration;
         }
 
         // Update is called once per frame
         void FixedUpdate()
         {
-            if(!(UIManager.isPaused || UIManager.isRecipeOpen || UIManager.isResultOpen))
+            if(!(UIManager.isPaused || UIManager.isResultOpen))
             {
                 timePassed -= Time.deltaTime;
 

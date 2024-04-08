@@ -59,5 +59,10 @@ namespace UnderworldCafe
             OnLevelCompletedEvent?.Invoke();
         }
 
+        public float ReturnLevelDuration()
+        {
+            return LevelTimeDuration;
+        }
+
     }
 }

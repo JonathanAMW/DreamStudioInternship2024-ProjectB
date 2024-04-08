@@ -4550,8 +4550,7 @@ MonoBehaviour:
   <PathRequestManager>k__BackingField: {fileID: 2133809577}
   <WaveManager>k__BackingField: {fileID: 1689067136}
   <PlayerController>k__BackingField: {fileID: 540369413}
-  <UIManager>k__BackingField: {fileID: 0}
-  LevelTimeDuration: 60
+  LevelTimeDuration: 6
 --- !u!4 &1245830916
 Transform:
   m_ObjectHideFlags: 0

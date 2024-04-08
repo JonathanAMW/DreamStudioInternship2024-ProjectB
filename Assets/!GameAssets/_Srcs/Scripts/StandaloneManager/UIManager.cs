@@ -65,6 +65,7 @@ namespace UnderworldCafe
                 pausePanel.SetActive(false);
             }
             isPaused = !isPaused;
+            _gameManagerRef.PauseGame(!isPaused);
 
         }
 
@@ -79,6 +80,7 @@ namespace UnderworldCafe
                 recipePanel.SetActive(false);
             }
             isRecipeOpen = !isRecipeOpen;
+            _gameManagerRef.PauseGame(!isPaused);
 
         }
 

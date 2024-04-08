@@ -59,7 +59,7 @@ namespace UnderworldCafe
         void UpdateTimer()
         {
             
-            if (!(UIManager.isPaused || UIManager.isRecipeOpen))
+            if (!(UIManager.isPaused))
             {
                 timePassed += Time.deltaTime;
 
