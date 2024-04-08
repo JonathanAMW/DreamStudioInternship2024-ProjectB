@@ -37,6 +37,7 @@ namespace UnderworldCafe
         {
             levelTimeDuration = levelManager.ReturnLevelDuration();
             timePassed = levelTimeDuration;
+            FixStarsPlacement();
         }
 
         // Update is called once per frame
@@ -67,6 +68,15 @@ namespace UnderworldCafe
                 }
             }
            
+        }
+
+        void FixStarsPlacement()
+        {
+            float sliderWidth = scoreSlider.gameObject.GetComponent<RectTransform>().rect.size.x;
+            
+            scoreStarImages[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(star1Percent * sliderWidth, scoreStarImages[0].GetComponent<RectTransform>().anchoredPosition.y);
+            scoreStarImages[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(star2Percent * sliderWidth, scoreStarImages[1].GetComponent<RectTransform>().anchoredPosition.y);
+            scoreStarImages[2].GetComponent<RectTransform>().anchoredPosition = new Vector2(star3Percent * sliderWidth, scoreStarImages[2].GetComponent<RectTransform>().anchoredPosition.y);
         }
     }
 }
