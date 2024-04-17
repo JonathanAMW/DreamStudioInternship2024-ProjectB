@@ -227,8 +227,8 @@ namespace UnderworldCafe.DataPersistenceSystem
                 // otherwise, compare to see which date is the most recent
                 else 
                 {
-                    DateTime mostRecentDateTime = DateTime.FromBinary(profilesGameData[mostRecentProfileId].lastUpdated);
-                    DateTime newDateTime = DateTime.FromBinary(gameData.lastUpdated);
+                    DateTime mostRecentDateTime = DateTime.FromBinary(profilesGameData[mostRecentProfileId].LastUpdated);
+                    DateTime newDateTime = DateTime.FromBinary(gameData.LastUpdated);
                     // the greatest DateTime value is the most recent
                     if (newDateTime > mostRecentDateTime) 
                     {

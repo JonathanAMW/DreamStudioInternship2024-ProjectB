@@ -15,7 +15,7 @@ namespace UnderworldCafe.DataPersistenceSystem
     [System.Serializable]
     public class GameData
     {
-        public long lastUpdated;
+        public long LastUpdated;
 
         public PlayerResourceDataStruct PlayerResourceDatas;
         public Dictionary<string, LevelData> LevelDatas;

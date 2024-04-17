@@ -19,6 +19,7 @@ namespace UnderworldCafe.CookingSystem
     {
         #region Dependencies
         private TimeManager _timeManagerRef;
+        [SerializeField] private Timer _timerVisualRef;
         #endregion
 
         [Header("=======[Converter Utensil Properties]=======")]
@@ -29,6 +30,8 @@ namespace UnderworldCafe.CookingSystem
 
         private bool _isProcessing;
         private bool _isFoodReady;
+        private Coroutine _processingCoroutine;
+        
         public Ingredient ReadyToTakeFood {get; private set;}
 
 
@@ -98,7 +101,7 @@ namespace UnderworldCafe.CookingSystem
 
                         playerInventory.RemoveInventoryAll();
 
-                        StartCoroutine(ProcessingFood(recipe.RecipeInformation.RecipeOutput));
+                        _processingCoroutine = StartCoroutine(ProcessingFood(recipe.RecipeInformation.RecipeOutput));
 
                         return true;
                     }
@@ -113,16 +116,22 @@ namespace UnderworldCafe.CookingSystem
         }
 
         private IEnumerator ProcessingFood(Ingredient createdIngredient)
-        {
-            // yield return new WaitForSeconds(_currentStatsData.ConvertingTime);   
-            float _startProcessingTime = _timeManagerRef.TimePassed;
-            while(_timeManagerRef.TimePassed - _startProcessingTime < _currentStatsData.ConvertingTime)
+        {   
+            float startProcessingTime = _timeManagerRef.TimePassed;
+            float timePassed = 0;
+            _timerVisualRef.ToggleTimerVisual(true);
+
+            do 
             {
+                timePassed = _timeManagerRef.TimePassed - startProcessingTime;
+                _timerVisualRef.UpdateTimerSlider(timePassed, _currentStatsData.ConvertingTime);
                 _utensilAnimator.SetTrigger("Processing");
                 _audioManagerRef.PlaySFX(_audioManagerRef.UtensilProcessingSFX);
                 yield return null;
-            }
+            } 
+            while(timePassed < _currentStatsData.ConvertingTime);
             
+            _timerVisualRef.ToggleTimerVisual(false);
             ReadyToTakeFood = createdIngredient;
             _isProcessing = false;
             _isFoodReady = true;

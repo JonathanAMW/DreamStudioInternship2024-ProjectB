@@ -19,6 +19,7 @@ namespace UnderworldCafe.DataPersistenceSystem
         [SerializeField] private bool _useEncryption;
 
         [Header("Auto Saving Configuration")]
+        [SerializeField] private bool _enableAutoSave = false;
         [SerializeField] private float _autoSaveTimeSeconds = 60f;
 
         private GameData _gameData;
@@ -61,7 +62,11 @@ namespace UnderworldCafe.DataPersistenceSystem
             {
                 StopCoroutine(_autoSaveCoroutine);
             }
-            _autoSaveCoroutine = StartCoroutine(AutoSave());
+
+            if(_enableAutoSave)
+            {
+                _autoSaveCoroutine = StartCoroutine(AutoSave());
+            }
         }
 
         public void ChangeSelectedProfileId(string newProfileId) 
@@ -150,7 +155,7 @@ namespace UnderworldCafe.DataPersistenceSystem
             }
 
             // timestamp the data so we know when it was last saved
-            _gameData.lastUpdated = System.DateTime.Now.ToBinary();
+            _gameData.LastUpdated = System.DateTime.Now.ToBinary();
 
             // save that data to a file using the data handler
             _dataHandler.Save(_gameData, _selectedProfileId);

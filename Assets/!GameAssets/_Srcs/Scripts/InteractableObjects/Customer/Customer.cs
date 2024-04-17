@@ -22,7 +22,7 @@ namespace UnderworldCafe.CustomerSystem
     {
         #region Dependencies
         private TimeManager _timeManagerRef;
-        [SerializeField] private CustomerTimer _customerTimerRef;
+        [SerializeField] private Timer _timerVisualRef;
         #endregion
 
 
@@ -53,7 +53,7 @@ namespace UnderworldCafe.CustomerSystem
         [Header("Customer UI")]
         [SerializeField] private GameObject _orderObj;
         [SerializeField] private SpriteRenderer _orderFoodSpriteRenderer;
-        [SerializeField] private GameObject _timerCanvaObj;
+
         
         private CustomerState _customerState;
         #endregion
@@ -116,7 +116,6 @@ namespace UnderworldCafe.CustomerSystem
             _customerState = CustomerState.NONE;
 
             _orderObj.SetActive(false);
-            _timerCanvaObj.SetActive(false);
         }
 
         private void StartOrderingFood()
@@ -133,18 +132,18 @@ namespace UnderworldCafe.CustomerSystem
         private IEnumerator WaitingForFood()
         {
             float startOrderTime = _timeManagerRef.TimePassed;
-            _timerCanvaObj.SetActive(true);
-            _customerTimerRef.UpdateTimerSlider(startOrderTime, OrderDuration);
+            float timePassed = 0;
+            _timerVisualRef.ToggleTimerVisual(true);
 
-            while(_timeManagerRef.TimePassed - startOrderTime < OrderDuration)
+            do
             {
-                _customerTimerRef.UpdateTimerSlider(_timeManagerRef.TimePassed - startOrderTime, OrderDuration);
+                timePassed = _timeManagerRef.TimePassed - startOrderTime;
+                _timerVisualRef.UpdateTimerSlider(timePassed, OrderDuration);
                 yield return null;
             }
+            while(timePassed < OrderDuration);
 
-            _customerTimerRef.UpdateTimerSlider(OrderDuration, OrderDuration);
-            _timerCanvaObj.SetActive(false);
-
+            _timerVisualRef.ToggleTimerVisual(false);
             OnOrderDurationEndedEvent?.Invoke();
         }
 
