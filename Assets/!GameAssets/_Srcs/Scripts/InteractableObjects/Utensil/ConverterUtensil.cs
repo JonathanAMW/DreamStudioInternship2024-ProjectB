@@ -9,6 +9,7 @@ using UnityEngine;
 
 using UnderworldCafe.Player;
 using UnderworldCafe.DataPersistenceSystem;
+using UnityEditor.EditorTools;
 
 namespace UnderworldCafe.CookingSystem
 {
@@ -23,16 +24,17 @@ namespace UnderworldCafe.CookingSystem
         #endregion
 
         [Header("=======[Converter Utensil Properties]=======")]
+        
+        [Tooltip("The Id of the utensil in Level / Local")]
+        [SerializeField] private string LocalId;
         [SerializeField] private List<ConverterUtensilStatsData> _statsDataPerLevel;
-        public IReadOnlyList<ConverterUtensilStatsData> StatsDataPerLevel => _statsDataPerLevel;
-
         private ConverterUtensilStatsData _currentStatsData;
-
         private bool _isProcessing;
         private bool _isFoodReady;
         private Coroutine _processingCoroutine;
         
         public Ingredient ReadyToTakeFood {get; private set;}
+        public IReadOnlyList<ConverterUtensilStatsData> StatsDataPerLevel => _statsDataPerLevel;
 
 
         #region MonoBehaviour

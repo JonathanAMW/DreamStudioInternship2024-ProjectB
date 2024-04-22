@@ -33,11 +33,11 @@ namespace UnderworldCafe
         }
         private void OnEnable()
         {
-            if(_levelManagerRef != null) _levelManagerRef.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
+            LevelManager.OnLevelCompletedEvent += OnLevelCompletedEventHandlerMethod;
         }
         private void OnDisable()
         {
-            if(_levelManagerRef != null) _levelManagerRef.OnLevelCompletedEvent -= OnLevelCompletedEventHandlerMethod;
+            LevelManager.OnLevelCompletedEvent -= OnLevelCompletedEventHandlerMethod;
         }
         #endregion
 
@@ -77,7 +77,7 @@ namespace UnderworldCafe
         {
             StopTimer();
 
-            _levelManagerRef.OnLevelCompletedEvent -= OnLevelCompletedEventHandlerMethod;
+            // _levelManagerRef.OnLevelCompletedEvent -= OnLevelCompletedEventHandlerMethod;
         }
     }
 }

@@ -35,7 +35,7 @@ namespace UnderworldCafe
         [SerializeField] private float LevelTimeDuration;
 
         #region Events
-        public event Action OnLevelCompletedEvent;
+        public static event Action OnLevelCompletedEvent;
         #endregion
 
         protected override void Awake()
@@ -57,6 +57,9 @@ namespace UnderworldCafe
         public void LevelIsCompleted()
         {
             OnLevelCompletedEvent?.Invoke();
+            
+            //clear all subscribers
+            OnLevelCompletedEvent = null;
         }
 
         public float ReturnLevelDuration()

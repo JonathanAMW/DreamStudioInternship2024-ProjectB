@@ -33,8 +33,13 @@ namespace UnderworldCafe.CookingSystem
         [System.Serializable]
         public struct UtensilInformation
         {
-            public string Name;
+            [Tooltip("The Id of the utensil")]
+            public string BaseId;
 
+            [Tooltip("The Id of the utensil in Level/Scene (Locally)")]
+            public string ReferenceId;
+            
+            public string Name;
             [TextArea]
             public string Description;
         }
@@ -50,7 +55,7 @@ namespace UnderworldCafe.CookingSystem
         protected override void OnValidate()
         {
             base.OnValidate();
-            
+
             if(string.IsNullOrEmpty(_utensilInformation.Name))
             {
                 Debug.LogWarning("No name has been set on utensil: " + gameObject.name);
@@ -67,7 +72,7 @@ namespace UnderworldCafe.CookingSystem
             // {
             //     Debug.LogWarning("No animator has been set on utensil: " + gameObject.name);
             // }
-            
+            _utensilInformation.BaseId = GetType().Name.ToUpper() + "_" + _utensilInformation.Name.Replace(" ", "");
         }
 
         protected override void Awake()

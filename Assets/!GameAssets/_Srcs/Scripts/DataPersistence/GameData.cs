@@ -17,14 +17,14 @@ namespace UnderworldCafe.DataPersistenceSystem
     {
         public long LastUpdated;
 
-        public PlayerResourceDataStruct PlayerResourceDatas;
+        public PlayerResourceData PlayerResourceDatas;
         public Dictionary<string, LevelData> LevelDatas;
         
 
         // The values defined in this constructor will be the default values the game starts with when there's no data to load
         public GameData()
         {
-            PlayerResourceDatas = new PlayerResourceDataStruct(0);
+            PlayerResourceDatas = new PlayerResourceData(0);
             LevelDatas = new Dictionary<string, LevelData>();
         }
     }
@@ -32,10 +32,22 @@ namespace UnderworldCafe.DataPersistenceSystem
     /// <summary>
     /// Struct for defining level data that will be saveable and loadable
     /// </summary>
-    public struct LevelData
+    public class LevelData
     {
+        /// <summary>
+        /// The Id of the level
+        /// </summary>
         public string LevelId;
+
+        /// <summary>
+        /// Dictionary representing the stars aquired in each level, 
+        /// where the key is an integer for index of each stars and the value is a bool for checking if that index's star has been aquired.
+        /// </summary>
         public Dictionary<int, bool> LevelStars;
+
+        /// <summary>
+        /// Dictionary representing the tier of each utensil, where the key is a string reference ID and the value is an integer representing the tier.
+        /// </summary>
         public Dictionary<string, int> LevelUtensilsTier; 
 
         public LevelData(string levelId, Dictionary<int, bool> levelStars, Dictionary<string, int> levelUtensilsTier)
@@ -47,10 +59,11 @@ namespace UnderworldCafe.DataPersistenceSystem
     }
 
 
-    public struct PlayerResourceDataStruct
+    public class PlayerResourceData
     {
         public int Money;
-        public PlayerResourceDataStruct(int money)
+
+        public PlayerResourceData(int money)
         {
             Money = money;
         }
