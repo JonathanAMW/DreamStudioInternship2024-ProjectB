@@ -68,7 +68,6 @@ namespace UnderworldCafe.CookingSystem
         {
             _timeManagerRef = LevelManager.Instance.TimeManager;
         }
-
         #endregion
         
 
