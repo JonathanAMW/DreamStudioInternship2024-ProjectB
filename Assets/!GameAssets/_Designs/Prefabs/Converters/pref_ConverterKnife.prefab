@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactPos: {fileID: 9182812213336863791}
-  _queuedIndicator: {fileID: 7981750430984988132}
+  _queuedIndicator: {fileID: 7691055194879091446}
   _queuedIndicatorAnimator: {fileID: 0}
   _queuedIndexText: {fileID: 1534687146145955894}
   _utensilInformation:

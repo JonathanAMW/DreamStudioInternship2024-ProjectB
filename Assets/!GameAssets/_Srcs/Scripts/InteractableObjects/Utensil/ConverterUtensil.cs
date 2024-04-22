@@ -53,8 +53,6 @@ namespace UnderworldCafe.CookingSystem
         {
             base.Awake();
 
-            _timeManagerRef = LevelManager.Instance.TimeManager;
-
             _isProcessing = false;
             _isFoodReady = false;
 
@@ -62,7 +60,15 @@ namespace UnderworldCafe.CookingSystem
             _currentStatsData = StatsDataPerLevel[0];
 
             _utensilAnimator.SetTrigger("Idling");
+
+            _timerVisualRef.ToggleTimerVisual(false);
         }
+
+        protected void Start()
+        {
+            _timeManagerRef = LevelManager.Instance.TimeManager;
+        }
+
         #endregion
         
 
