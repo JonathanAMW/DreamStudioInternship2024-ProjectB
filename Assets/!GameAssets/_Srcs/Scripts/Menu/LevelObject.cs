@@ -7,7 +7,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 namespace UnderworldCafe
 {
     /// <summary>

@@ -6,16 +6,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+using UnderworldCafe.DataPersistenceSystem;
+
 
 namespace UnderworldCafe
 {
     /// <summary>
     /// Blueprint of stage object
     /// </summary>
-    public class StageObject : MonoBehaviour
-
+    public class StageObject : MonoBehaviour, IDataPersistence
     {
-        
         [SerializeField] int stageId; 
         public int StageId { get { return stageId; } }
 
@@ -88,7 +88,33 @@ namespace UnderworldCafe
             }
             return starsEarnedInStage;
         }
-      
-       
+
+
+        #region DataPersistence
+        public void LoadData(GameData data)
+        {
+            if(data.StageDatas.ContainsKey(StageId.ToString()))
+            {
+                unlockedLevels = data.StageDatas[StageId.ToString()].UnlockedLevels;
+                starsEarnedInStage = data.StageDatas[StageId.ToString()].StarsEarnedInStage;
+                isUnlockable = data.StageDatas[StageId.ToString()].IsUnlockable;
+                isOpened = data.StageDatas[StageId.ToString()].IsOpened;
+            }
+        }
+
+        public void SaveData(GameData data)
+        {
+            //If StageData of this Id doesn't exist, create one
+            if(!data.StageDatas.ContainsKey(StageId.ToString()))
+            {
+                data.StageDatas.Add(StageId.ToString(), new StageData());
+            }
+
+            data.StageDatas[StageId.ToString()].UnlockedLevels = unlockedLevels;
+            data.StageDatas[StageId.ToString()].StarsEarnedInStage = starsEarnedInStage;
+            data.StageDatas[StageId.ToString()].IsUnlockable = isUnlockable;
+            data.StageDatas[StageId.ToString()].IsOpened = isOpened;
+        }
+        #endregion
     }
 }

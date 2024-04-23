@@ -30,7 +30,7 @@ namespace UnderworldCafe.DataPersistenceSystem
 
         private Coroutine _autoSaveCoroutine;
 
-        protected void Awake() 
+        private void Awake() 
         {
             if (_disableDataPersistence) 
             {

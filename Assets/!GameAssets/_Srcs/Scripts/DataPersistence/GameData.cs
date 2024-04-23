@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace UnderworldCafe.DataPersistenceSystem
 {
     /// <summary>
-    /// Class for defining game data that will be saveable and loadable
+    /// Class for defining game data that will be saved and loaded
     /// Try to save only necessary information! 
     /// Ex: SAVE variable that will change class behaviour and not the behaviour itself 
     /// </summary>
@@ -18,43 +18,78 @@ namespace UnderworldCafe.DataPersistenceSystem
         public long LastUpdated;
 
         public PlayerResourceData PlayerResourceDatas;
-        public Dictionary<string, LevelData> LevelDatas;
+
+        /// <summary>
+        /// Dictionary for storing all the game stage datas. 
+        /// The key is a string for id of the stage, while the value is a class representing that stage data.
+        /// </summary>
+        public SerializableDictionary<string, StageData> StageDatas;
+
+        /// <summary>
+        /// Dictionary for storing all the game level datas. 
+        /// The key is a string for id of the level, while the value is a class representing that level data.
+        /// </summary>
+        public SerializableDictionary<string, LevelData> LevelDatas;
         
 
+        //Default Constructor
         // The values defined in this constructor will be the default values the game starts with when there's no data to load
         public GameData()
         {
-            PlayerResourceDatas = new PlayerResourceData(0);
-            LevelDatas = new Dictionary<string, LevelData>();
+            PlayerResourceDatas = new PlayerResourceData();
+            StageDatas = new SerializableDictionary<string, StageData>();
+            LevelDatas = new SerializableDictionary<string, LevelData>();
         }
     }
     
+
     /// <summary>
-    /// Struct for defining level data that will be saveable and loadable
+    /// Class for defining the stage data that will be saved and loaded
+    /// </summary>
+    public class StageData
+    {
+        public int UnlockedLevels;
+        public int StarsEarnedInStage;
+        public bool IsUnlockable;
+        public bool IsOpened;
+
+
+        //Default Constructor
+        public StageData()
+        {
+            UnlockedLevels = 0;
+            StarsEarnedInStage = 0;
+            IsUnlockable = false;
+            IsOpened = false;
+        }
+    }
+
+
+    /// <summary>
+    /// Class for defining the level data that will be saved and loaded
     /// </summary>
     public class LevelData
     {
-        /// <summary>
-        /// The Id of the level
-        /// </summary>
-        public string LevelId;
+        public bool IsUnlocked;
 
         /// <summary>
         /// Dictionary representing the stars aquired in each level, 
         /// where the key is an integer for index of each stars and the value is a bool for checking if that index's star has been aquired.
         /// </summary>
-        public Dictionary<int, bool> LevelStars;
+        public SerializableDictionary<int, bool> LevelStars;
 
         /// <summary>
         /// Dictionary representing the tier of each utensil, where the key is a string reference ID and the value is an integer representing the tier.
         /// </summary>
-        public Dictionary<string, int> LevelUtensilsTier; 
+        public SerializableDictionary<string, int> LevelUtensilsTier;
 
-        public LevelData(string levelId, Dictionary<int, bool> levelStars, Dictionary<string, int> levelUtensilsTier)
+
+        //Default Constructor
+        public LevelData()
         {
-            LevelId = levelId;
-            LevelStars = levelStars;
-            LevelUtensilsTier = levelUtensilsTier;
+            IsUnlocked = false;
+            LevelStars = new SerializableDictionary<int, bool>();
+            LevelUtensilsTier = new SerializableDictionary<string, int>();
         }
     }
 
@@ -63,9 +98,11 @@ namespace UnderworldCafe.DataPersistenceSystem
     {
         public int Money;
 
-        public PlayerResourceData(int money)
+
+        //Default Constructor
+        public PlayerResourceData()
         {
-            Money = money;
+            Money = 0;
         }
     }
 }

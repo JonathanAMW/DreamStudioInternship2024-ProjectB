@@ -26,7 +26,7 @@ namespace UnderworldCafe
 
         [SerializeField] TextMeshProUGUI earnedStarsInStageText;
         [SerializeField] GameObject totalStarGUI;
-       
+        
         public class StageLevel
         {
             public int stageId;
