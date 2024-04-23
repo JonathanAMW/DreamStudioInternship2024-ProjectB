@@ -71,15 +71,11 @@ namespace UnderworldCafe.DataPersistenceSystem
     public class LevelData
     {
         public bool IsUnlocked;
+        public int LevelStarsEarned;
 
         /// <summary>
-        /// Dictionary representing the stars aquired in each level, 
-        /// where the key is an integer for index of each stars and the value is a bool for checking if that index's star has been aquired.
-        /// </summary>
-        public SerializableDictionary<int, bool> LevelStars;
-
-        /// <summary>
-        /// Dictionary representing the tier of each utensil, where the key is a string reference ID and the value is an integer representing the tier.
+        /// Dictionary representing the tier of each utensil. 
+        /// The key is a string reference ID, while the value is an integer representing the tier.
         /// </summary>
         public SerializableDictionary<string, int> LevelUtensilsTier;
 
@@ -88,7 +84,7 @@ namespace UnderworldCafe.DataPersistenceSystem
         public LevelData()
         {
             IsUnlocked = false;
-            LevelStars = new SerializableDictionary<int, bool>();
+            LevelStarsEarned = 0;
             LevelUtensilsTier = new SerializableDictionary<string, int>();
         }
     }
