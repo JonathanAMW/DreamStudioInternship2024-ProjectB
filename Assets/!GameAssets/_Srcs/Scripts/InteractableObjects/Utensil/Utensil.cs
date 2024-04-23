@@ -33,10 +33,10 @@ namespace UnderworldCafe.CookingSystem
         [System.Serializable]
         public struct UtensilInformation
         {
-            [Tooltip("The Id of the utensil")]
+            [Tooltip("The Id of the utensil! Set this on prefab and not the copies")]
             public string BaseId;
 
-            [Tooltip("The Id of the utensil in Level/Scene (Locally)")]
+            [Tooltip("The Id of the utensil copies! Set this on each deployed prefabs inside the hierarchy of scene")]
             public string ReferenceId;
             
             public string Name;

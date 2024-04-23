@@ -21,7 +21,7 @@ namespace UnderworldCafe
         [field: SerializeField] public PlayerGameResouces PlayerGameResouces { get; private set; }
         #endregion
 
-        public bool IsGamePaused { get; private set; }
+        public bool IsGamePaused { get; private set; } 
         
         protected override void Awake()
         {
@@ -34,6 +34,15 @@ namespace UnderworldCafe
         {
             IsGamePaused = isPaused;
             AudioListener.pause = isPaused;
+
+            if(isPaused)
+            {
+                Time.timeScale = 0.0f;
+            }
+            else
+            {
+                Time.timeScale = 1.0f;
+            }
         }
     }
 }

@@ -71,7 +71,7 @@ namespace UnderworldCafe.DataPersistenceSystem
     public class LevelData
     {
         public bool IsUnlocked;
-        public int LevelStarsEarned;
+        public int StarsEarnedInLevel;
 
         /// <summary>
         /// Dictionary representing the tier of each utensil. 
@@ -84,7 +84,7 @@ namespace UnderworldCafe.DataPersistenceSystem
         public LevelData()
         {
             IsUnlocked = false;
-            LevelStarsEarned = 0;
+            StarsEarnedInLevel = 0;
             LevelUtensilsTier = new SerializableDictionary<string, int>();
         }
     }
@@ -93,7 +93,6 @@ namespace UnderworldCafe.DataPersistenceSystem
     public class PlayerResourceData
     {
         public int Money;
-
 
         //Default Constructor
         public PlayerResourceData()

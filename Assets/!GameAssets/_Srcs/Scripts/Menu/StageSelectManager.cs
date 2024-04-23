@@ -25,7 +25,7 @@ namespace UnderworldCafe
 
         [SerializeField] TextMeshProUGUI playerMoneyText;
         int playerMoney;
-        PlayerGameResouces playerResource=GameManager.Instance.PlayerGameResouces;
+        PlayerGameResouces playerResource;
 
         public int totalStarsEarned = 0;
 
@@ -33,6 +33,11 @@ namespace UnderworldCafe
         {
             UpdatePlayerMoney();
             UpdateUnlockableStages();
+        }
+
+        private void Start()
+        {
+            playerResource = GameManager.Instance.PlayerGameResouces;
         }
 
         public void GoBack()
