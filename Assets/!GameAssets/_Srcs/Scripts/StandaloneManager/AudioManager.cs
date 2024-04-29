@@ -14,16 +14,17 @@ namespace UnderworldCafe
     /// </summary>
     public class AudioManager : MonoBehaviour
     {
-        [Header("AUDIO SOURCES")]
+        [Header("<size=16><b>============</b></size><color=#FFFFFF>AUDIO SOURCES</color><size=16><b>============</b></size>")]
         [SerializeField] private AudioSource _musicSource;
         [SerializeField] private AudioSource _sfxSource;
 
 
-        [field: Header("Music Clips")]
+        [field: Header("<size=16><b>============</b></size><color=#FFFFFF>MUSIC CLIPS</color><size=16><b>============</b></size>")]
         [field : SerializeField] public AudioClip MainMenuMusic { get; private set; }
+        [field : SerializeField] public AudioClip LevelMusic { get; private set; }
 
         
-        [field: Header("SFX Clips")]
+        [field: Header("<size=16><b>============</b></size><color=#FFFFFF>SFX CLIPS</color><size=16><b>============</b></size>")]
         [field: Header("Player")]
         [field : SerializeField] public AudioClip PlayerWalkSFX { get; private set; }
 

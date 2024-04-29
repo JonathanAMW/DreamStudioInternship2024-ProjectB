@@ -50,15 +50,16 @@ namespace UnderworldCafe.Player
 
         private void Awake()
         {
+            _pathPos = new List<Vector3>();
+            _playerMovementRequestList = new List<PlayerMovementRequest>();
+        }
+
+        private void Start()
+        {
             _audioManagerRef = GameManager.Instance.AudioManager;
             _pathRequestManagerRef = LevelManager.Instance.PathRequestManager;
             _gridManagerRef = LevelManager.Instance.GridManager;
-
-
-            _pathPos = new List<Vector3>();
-            _playerMovementRequestList = new List<PlayerMovementRequest>();
             PlayerInventory = GetComponent<PlayerInventory>();
-
 
             transform.position = _gridManagerRef.GetTileCenterFromObjPosition(_playerWalkableTilemap, transform.position);
         }

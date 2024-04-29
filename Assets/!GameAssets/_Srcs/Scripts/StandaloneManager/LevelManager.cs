@@ -49,6 +49,13 @@ namespace UnderworldCafe
 
         private void Start()
         {
+            StartLevel();
+        }
+
+        private void StartLevel()
+        {
+            GameManager.AudioManager.PlayMusic(GameManager.AudioManager.LevelMusic);
+
             TimeManager.StartTimer(LevelTimeDuration);
 
             WaveManager.StartWaveSequence();
