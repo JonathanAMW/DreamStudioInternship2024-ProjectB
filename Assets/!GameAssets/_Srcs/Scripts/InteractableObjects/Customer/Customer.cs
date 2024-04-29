@@ -22,6 +22,7 @@ namespace UnderworldCafe.CustomerSystem
     {
         #region Dependencies
         private TimeManager _timeManagerRef;
+        private AudioManager _audioManagerRef;
         [SerializeField] private Timer _timerVisualRef;
         #endregion
 
@@ -66,7 +67,7 @@ namespace UnderworldCafe.CustomerSystem
         public string CustomerId => _customerId;
         #endregion
 
-
+        #region MonoBehaviour
         protected override void OnValidate()
         {
             base.OnValidate();
@@ -78,6 +79,12 @@ namespace UnderworldCafe.CustomerSystem
             
             _customerId = GetType().Name.ToUpper() + "_" + _customerName.Replace(" ", "");
         }
+
+        private void Start()
+        {
+            _audioManagerRef = GameManager.Instance.AudioManager;
+        }
+        #endregion
 
         public override void Interact()
         {
@@ -125,6 +132,7 @@ namespace UnderworldCafe.CustomerSystem
             //set order visual
             _orderFoodSpriteRenderer.sprite = OrderedFood.IngredientInformation.IngredientSprite;
             _orderObj.SetActive(true);
+            _audioManagerRef.PlaySFX(_audioManagerRef.CustomerOrderUIPopupSFX);
 
             StartCoroutine("WaitingForFood");
         }
@@ -150,6 +158,8 @@ namespace UnderworldCafe.CustomerSystem
         private void ServedFood(PlayerInventory playerInventory)
         {
             if(playerInventory == null || playerInventory.PlayerInventoryList.Count == 0) return;
+
+            _audioManagerRef.PlaySFX(_audioManagerRef.CustomerServedSFX);
 
             bool IsServedCorrectly = playerInventory.PlayerInventoryList[0].IngredientInformation.Id == OrderedFood.IngredientInformation.Id;
 

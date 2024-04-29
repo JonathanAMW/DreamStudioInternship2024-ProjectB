@@ -3,6 +3,7 @@
 // Created  : "2024/04/03"
 //----------------------------------------------------------------------
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -28,6 +29,8 @@ namespace UnderworldCafe
 
         [field: Header("Customer")]
         [field : SerializeField] public AudioClip CustomerSpawnSFX { get; private set; }
+        [field : SerializeField] public AudioClip CustomerOrderUIPopupSFX { get; private set; }
+        [field : SerializeField] public AudioClip CustomerServedSFX { get; private set; }
 
         [field: Header("Utensil")]
         [field : SerializeField] public AudioClip UtensilProcessingSFX { get; private set; }
@@ -42,7 +45,7 @@ namespace UnderworldCafe
         public void PlaySFX(AudioClip clip)
         {
             if(clip == null) return;
-
+            
             _sfxSource.PlayOneShot(clip);
         }
 
