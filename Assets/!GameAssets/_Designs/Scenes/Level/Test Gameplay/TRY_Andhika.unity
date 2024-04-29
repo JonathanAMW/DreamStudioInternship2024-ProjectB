@@ -4767,6 +4767,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: pref_GeneratorMilk
       objectReference: {fileID: 0}
+    - target: {fileID: 8701639595087524037, guid: 887633879e4f4e842839d8a9b60011be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.266
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701639595087524037, guid: 887633879e4f4e842839d8a9b60011be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4823,6 +4831,14 @@ PrefabInstance:
     - target: {fileID: 5875895396684179666, guid: 776976d0ee79465418213869592bf78f, type: 3}
       propertyPath: m_Name
       value: pref_GeneratorEkspresso
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701639595087524037, guid: 776976d0ee79465418213869592bf78f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.299
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701639595087524037, guid: 776976d0ee79465418213869592bf78f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

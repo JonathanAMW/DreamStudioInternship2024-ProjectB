@@ -276,11 +276,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicSource: {fileID: 2967379850001545683}
   _sfxSource: {fileID: 6766129727437726861}
-  <MainMenuMusic>k__BackingField: {fileID: 0}
-  <PlayerWalkSFX>k__BackingField: {fileID: 0}
-  <CustomerSpawnSFX>k__BackingField: {fileID: 0}
-  <UtensilProcessingSFX>k__BackingField: {fileID: 0}
-  <UtensilGeneratingSFX>k__BackingField: {fileID: 0}
+  <MainMenuMusic>k__BackingField: {fileID: 8300000, guid: 1cdcdc5aad0defd41934032b850faaef, type: 3}
+  <PlayerWalkSFX>k__BackingField: {fileID: 8300000, guid: 73d492623cefcfc48a4792022cd5bf3f, type: 3}
+  <CustomerSpawnSFX>k__BackingField: {fileID: 8300000, guid: 6a7c9d8b2a66e7d419f2a8fe0af440ff, type: 3}
+  <CustomerOrderUIPopupSFX>k__BackingField: {fileID: 8300000, guid: 73d492623cefcfc48a4792022cd5bf3f, type: 3}
+  <CustomerServedSFX>k__BackingField: {fileID: 8300000, guid: 73d492623cefcfc48a4792022cd5bf3f, type: 3}
+  <UtensilProcessingSFX>k__BackingField: {fileID: 8300000, guid: 73d492623cefcfc48a4792022cd5bf3f, type: 3}
+  <UtensilGeneratingSFX>k__BackingField: {fileID: 8300000, guid: 73d492623cefcfc48a4792022cd5bf3f, type: 3}
 --- !u!1 &6977096502724723142
 GameObject:
   m_ObjectHideFlags: 0
