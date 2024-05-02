@@ -4,6 +4,7 @@
 //----------------------------------------------------------------------
 
 using TMPro;
+using UnderworldCafe.DataPersistenceSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -31,15 +32,16 @@ namespace UnderworldCafe
 
         private void Awake()
         {
-            UpdatePlayerMoney();
-            UpdateUnlockableStages();
+            
         }
 
         private void Start()
         {
             playerResource = GameManager.Instance.PlayerGameResouces;
+            UpdatePlayerMoney();
+            UpdateUnlockableStages();
         }
-
+        
         public void GoBack()
         {
             if (isLevelPanelActive) //closes select level panel

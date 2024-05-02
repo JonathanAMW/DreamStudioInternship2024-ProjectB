@@ -97,7 +97,7 @@ namespace UnderworldCafe.DataPersistenceSystem
         //Default Constructor
         public PlayerResourceData()
         {
-            Money = 0;
+            Money = 100;
         }
     }
 }
