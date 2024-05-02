@@ -14,7 +14,7 @@ namespace UnderworldCafe
     /// </summary>
     public class PlayerGameResouces : MonoBehaviour, IDataPersistence
     {
-        private int _money = 100;
+        private int _money;
         public int Money => _money;
 
 
