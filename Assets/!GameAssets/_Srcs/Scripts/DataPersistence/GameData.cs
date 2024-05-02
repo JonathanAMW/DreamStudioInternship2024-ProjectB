@@ -3,7 +3,6 @@
 // Created  : "2024/02/11"
 //----------------------------------------------------------------------
 
-using System.Collections.Generic;
 
 namespace UnderworldCafe.DataPersistenceSystem
 {
@@ -46,6 +45,7 @@ namespace UnderworldCafe.DataPersistenceSystem
     /// <summary>
     /// Class for defining the stage data that will be saved and loaded
     /// </summary>
+    [System.Serializable]
     public class StageData
     {
         public int UnlockedLevels;
@@ -68,6 +68,7 @@ namespace UnderworldCafe.DataPersistenceSystem
     /// <summary>
     /// Class for defining the level data that will be saved and loaded
     /// </summary>
+    [System.Serializable]
     public class LevelData
     {
         public bool IsUnlocked;
@@ -89,7 +90,7 @@ namespace UnderworldCafe.DataPersistenceSystem
         }
     }
 
-
+    [System.Serializable]
     public class PlayerResourceData
     {
         public int Money;
