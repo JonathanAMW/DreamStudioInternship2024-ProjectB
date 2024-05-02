@@ -6807,6 +6807,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2967379850001545683, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967379850001545683, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
+      propertyPath: m_Pitch
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967379850001545683, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
+      propertyPath: Priority
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 2967379850001545683, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088666664186756894, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
+      propertyPath: <PlayerWalkSFX>k__BackingField
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088666664186756894, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
+      propertyPath: <CustomerSpawnSFX>k__BackingField
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088666664186756894, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
+      propertyPath: <CustomerServedSFX>k__BackingField
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088666664186756894, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
+      propertyPath: <UtensilGeneratingSFX>k__BackingField
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088666664186756894, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
+      propertyPath: <UtensilProcessingSFX>k__BackingField
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088666664186756894, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
+      propertyPath: <CustomerOrderUIPopupSFX>k__BackingField
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6205008482803768608, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
       propertyPath: m_Name
       value: GameManager
