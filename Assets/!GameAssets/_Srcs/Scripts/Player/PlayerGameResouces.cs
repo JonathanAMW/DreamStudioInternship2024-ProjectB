@@ -31,12 +31,17 @@ namespace UnderworldCafe
         #region DataPersistence
         public void LoadData(GameData data)
         {
+            Debug.Log("Checking Player Resource Data");
+
             if(data.PlayerResourceDatas == null) return;
+
+            Debug.Log("Loading Player Resource Data");
 
             _money = data.PlayerResourceDatas.Money;
         }
         public void SaveData(GameData data)
         {
+            Debug.Log("Saving Player Resource Data");
             if(data.PlayerResourceDatas == null)
             {
                 data.PlayerResourceDatas = new PlayerResourceData();
