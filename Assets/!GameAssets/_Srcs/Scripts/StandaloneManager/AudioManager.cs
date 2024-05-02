@@ -36,6 +36,7 @@ namespace UnderworldCafe
         [field: Header("Utensil")]
         [field : SerializeField] public AudioClip UtensilProcessingSFX { get; private set; }
         [field : SerializeField] public AudioClip UtensilGeneratingSFX { get; private set; }
+        [field : SerializeField] public AudioClip UtensilFoodReadySFX { get; private set; }
 
 
 

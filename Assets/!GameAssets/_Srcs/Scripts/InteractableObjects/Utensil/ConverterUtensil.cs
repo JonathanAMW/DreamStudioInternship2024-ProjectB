@@ -142,6 +142,7 @@ namespace UnderworldCafe.CookingSystem
             ReadyToTakeFood = createdIngredient;
             _isProcessing = false;
             _isFoodReady = true;
+            _audioManagerRef.PlaySFX(_audioManagerRef.UtensilFoodReadySFX);
         }
 
         private void ReturnNewFood(PlayerInventory playerInventory, Ingredient newFood)
