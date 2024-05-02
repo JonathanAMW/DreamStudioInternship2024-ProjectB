@@ -6813,7 +6813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2967379850001545683, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
       propertyPath: m_Pitch
-      value: 0.16
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 2967379850001545683, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
       propertyPath: Priority
