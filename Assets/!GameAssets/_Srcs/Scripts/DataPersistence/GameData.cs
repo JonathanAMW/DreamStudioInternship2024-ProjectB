@@ -52,6 +52,7 @@ namespace UnderworldCafe.DataPersistenceSystem
         public int StarsEarnedInStage;
         public bool IsUnlockable;
         public bool IsOpened;
+        public SerializableDictionary<string, LevelData> LevelDatas;
 
 
         //Default Constructor
@@ -61,7 +62,16 @@ namespace UnderworldCafe.DataPersistenceSystem
             StarsEarnedInStage = 0;
             IsUnlockable = false;
             IsOpened = false;
+            LevelDatas = new SerializableDictionary<string, LevelData>();
         }
+
+       /* public StageData(int unlockLevels, int starsEarnedinStage, bool isUnlockable, bool isOpened)
+        {
+            UnlockedLevels = unlockLevels;
+            StarsEarnedInStage = starsEarnedinStage;
+            IsUnlockable = isUnlockable;
+            IsOpened = isOpened;
+        }*/
     }
 
 
@@ -71,7 +81,7 @@ namespace UnderworldCafe.DataPersistenceSystem
     [System.Serializable]
     public class LevelData
     {
-        public bool IsUnlocked;
+        public bool IsUnlocked; // passed the level
         public int StarsEarnedInLevel;
 
         /// <summary>

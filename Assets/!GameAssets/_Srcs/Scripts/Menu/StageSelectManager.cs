@@ -14,7 +14,7 @@ namespace UnderworldCafe
     /// <summary>
     /// controls functionalities of stageselect scene
     /// </summary>
-    public class StageSelectManager : MonoBehaviour
+    public class StageSelectManager : MonoBehaviour, IDataPersistence
     {
         public StageObject[] stageObjects; //all stages in game
         public LevelObject[] levelObjects; //all levels in game
@@ -39,9 +39,22 @@ namespace UnderworldCafe
         {
             playerResource = GameManager.Instance.PlayerGameResouces;
             UpdatePlayerMoney();
+
+            
             UpdateUnlockableStages();
+
+            for(int i = 0; i < stageObjects.Length; i++)
+            {
+                UpdateOpenStageSprite(i);
+            }
+            Debug.Log("Total stars: " + totalStarsEarned);
         }
-        
+
+        public void AssignTotalStarsEarned()
+        {
+            totalStarsEarned = FindObjectOfType<LevelSelectPanel>().totalStars;
+        }
+      
         public void GoBack()
         {
             if (isLevelPanelActive) //closes select level panel
@@ -77,26 +90,30 @@ namespace UnderworldCafe
             
         }
 
-        public void UpdateUnlockStage(int stageId)
+        public void UpdateOpenStageSprite(int stageId)
         {
-
+            
                 stageObjects[stageId].StatusImg.GetComponent<Image>().sprite = lockedStageSprite;
-                if (totalStarsEarned >= stageObjects[stageId].starsRequired && playerMoney >= stageObjects[stageId].MoneyRequired)
+                if (stageObjects[stageId].isOpened)
                 {
                     
                     stageObjects[stageId].StatusImg.GetComponent<Image>().sprite = unlockedStageSprite;
-
-                    if (stageObjects[stageId].isUnlockable)
-                    {
-                       
-                        playerResource.ReduceMoney(stageObjects[stageId].MoneyRequired);
-                        UpdatePlayerMoney();
-                        stageObjects[stageId].isOpened = true;
-                    }
-                   
+                Debug.Log("Open stage " + stageId);
                 }
             
             
+        }
+
+        public void OpenStage(int stageId)
+        {
+            
+            if (stageObjects[stageId].isUnlockable && totalStarsEarned >= stageObjects[stageId].starsRequired && playerMoney >= stageObjects[stageId].MoneyRequired)
+            {
+                playerResource.ReduceMoney(stageObjects[stageId].MoneyRequired);
+                UpdatePlayerMoney();
+                stageObjects[stageId].isOpened = true;
+            }
+            UpdateOpenStageSprite(stageId);
         }
 
         public void UpdateUnlockableStages()
@@ -105,7 +122,7 @@ namespace UnderworldCafe
             {
                 stageObjects[i].isUnlockable = false;
                 stageObjects[i].GetComponentInChildren<Button>().interactable = false;
-                if (totalStarsEarned >= stageObjects[i].starsRequired)
+                if (totalStarsEarned >= stageObjects[i].starsRequired || stageObjects[i].isUnlockable)
                 {
                     stageObjects[i].isUnlockable = true;
                     stageObjects[i].GetComponentInChildren<Button>().interactable = true;
@@ -117,5 +134,35 @@ namespace UnderworldCafe
             playerMoney = playerResource.Money;
             playerMoneyText.text = playerMoney.ToString();
         }
+
+        #region DataPersistence
+        public void LoadData(GameData data)
+        {
+            Debug.Log("Checking Stage Data");
+
+            if (data.StageDatas == null) return;
+
+            Debug.Log("Loading Stage Data");
+
+            /*for(int i = 0; i < stageObjects.Length; i++)
+            {
+                stageObjects[i].stageData = data.StageDatas[i.ToString()];
+            }*/
+        }
+        public void SaveData(GameData data)
+        {
+            Debug.Log("Saving Stage Data");
+            if (data.StageDatas == null)
+            {
+                data.StageDatas = new SerializableDictionary<string, StageData>();
+            }
+
+           /* for (int i = 0; i < stageObjects.Length; i++)
+            {
+                data.StageDatas[i.ToString()] = stageObjects[i].stageData;
+            }*/
+
+        }
+        #endregion
     }
 }

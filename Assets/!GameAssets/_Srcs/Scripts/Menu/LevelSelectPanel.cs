@@ -4,6 +4,8 @@
 //----------------------------------------------------------------------
 
 using TMPro;
+using UnderworldCafe.DataPersistenceSystem;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,9 +15,10 @@ namespace UnderworldCafe
     /// <summary>
     /// Controls functionalities of level select panel
     /// </summary>
-    public class LevelSelectPanel : MonoBehaviour
+    public class LevelSelectPanel : MonoBehaviour, IDataPersistence
     {
         int _currentStageId;
+        public int totalStars;//total stars earn in game
         StageLevel[,] stageLevels;
         StageLevel currentStageLevel;
         StageSelectManager _stageSelectManager;
@@ -37,7 +40,20 @@ namespace UnderworldCafe
         void Awake()
         {
             _stageSelectManager = FindAnyObjectByType<StageSelectManager>();
-           
+            int stageLength = _stageSelectManager.stageObjects.Length;
+            int levelLength = _stageSelectManager.levelObjects.Length;
+
+            stageLevels = new StageLevel[stageLength, levelLength];
+            for (int i = 0; i < stageLength; i++)//assign stagelevels
+            {
+                for (int j = 0; j < _stageSelectManager.stageObjects[i].TotalLevels; j++)
+                {
+
+                    stageLevels[i, j] = new StageLevel();
+                    stageLevels[i, j].stageId = _stageSelectManager.stageObjects[i].StageId;
+                    stageLevels[i, j].levelId = _stageSelectManager.levelObjects[j].LevelId;
+                }
+            }
         }
         private void Start()
         {
@@ -46,20 +62,7 @@ namespace UnderworldCafe
                 Debug.Log("Stage select manager null");
             }
 
-            int stageLength = _stageSelectManager.stageObjects.Length;
-            int levelLength = _stageSelectManager.levelObjects.Length;
-
-            stageLevels = new StageLevel[stageLength, levelLength];
-            for (int i = 0; i < stageLength; i++)//assign stagelevels
-            {
-                for(int j = 0; j < _stageSelectManager.stageObjects[i].TotalLevels; j++)
-                {
-
-                    stageLevels[i,j]=new StageLevel();
-                    stageLevels[i, j].stageId = _stageSelectManager.stageObjects[i].StageId;
-                    stageLevels[i, j].levelId = _stageSelectManager.levelObjects[j].LevelId;
-                }
-            }
+          
 
             CalculateTotalStars();
         }
@@ -70,6 +73,7 @@ namespace UnderworldCafe
             
         }
 
+      
         public void UpdateStageSelected(int selectedStageId)
         {
             _currentStageId=selectedStageId;
@@ -80,7 +84,6 @@ namespace UnderworldCafe
                 {
                     _stageSelectManager.levelObjects[i].gameObject.SetActive(true);
                 }
-               
             }
             LevelObject lastLevel = _stageSelectManager.levelObjects[_stageSelectManager.stageObjects[_currentStageId].TotalLevels];
 
@@ -98,8 +101,7 @@ namespace UnderworldCafe
             _stageSelectManager.stageObjects[_currentStageId].unlockedLevels=0;
             for (int j = 0; j < _stageSelectManager.stageObjects[_currentStageId].TotalLevels; j++) //unlocks levels on that stage
             {
-                if (stageLevels[_currentStageId,j].isCompleted && j+1 < _stageSelectManager.stageObjects[_currentStageId].TotalLevels) //unlocks next level if current level is already completed
-                                                                                                                                       //while make sure that the current level is not the last level
+                if (stageLevels[_currentStageId,j].isCompleted && j+1 < _stageSelectManager.stageObjects[_currentStageId].TotalLevels) //unlocks next level if current level is already completed                                                                                                                   //while make sure that the current level is not the last level
                 {
                     _stageSelectManager.stageObjects[_currentStageId].unlockedLevels++;
                 }
@@ -138,7 +140,7 @@ namespace UnderworldCafe
 
         void CalculateTotalStars()
         {
-            int totalStars = 0;
+            totalStars = 0;
             for(int i=0 ; i<_stageSelectManager.stageObjects.Length; i++)
             {
                 totalStars += _stageSelectManager.stageObjects[i].CalculateTotalStarsInStage(stageLevels);
@@ -165,6 +167,55 @@ namespace UnderworldCafe
             }
         }
 
+        #region DataPersistence
+        public void LoadData(GameData data)
+        {
+            for(int i = 0; i< _stageSelectManager.stageObjects.Length; i++)
+            {
+                if (data.StageDatas.ContainsKey(_stageSelectManager.stageObjects[i].StageId.ToString()))
+                {
+                    for (int j = 0; j < _stageSelectManager.stageObjects[i].TotalLevels; j++)
+                    {
+                        if (data.StageDatas[i.ToString()].LevelDatas.ContainsKey(stageLevels[i,j].levelId.ToString()))
+                        {
+                            stageLevels[i, j].starsEarned = data.StageDatas[i.ToString()].LevelDatas[stageLevels[i, j].levelId.ToString()].StarsEarnedInLevel;
+                            //Debug.Log("Load Level " + i + "," + j + " has stars earned: " + data.StageDatas[i.ToString()].LevelDatas[stageLevels[i, j].levelId.ToString()].StarsEarnedInLevel);
+                            stageLevels[i, j].isCompleted = data.StageDatas[i.ToString()].LevelDatas[stageLevels[i, j].levelId.ToString()].IsUnlocked; //completed means passed the level
+                        }    
+                    }
+                        
+                }
+            }
+           
+        }
+
+        public void SaveData(GameData data)
+        {
+            for (int i = 0; i < _stageSelectManager.stageObjects.Length; i++)
+            {
+                if (!data.StageDatas.ContainsKey(_stageSelectManager.stageObjects[i].StageId.ToString()))
+                {
+                    data.StageDatas.Add(_stageSelectManager.stageObjects[i].StageId.ToString(), new StageData());
+                }
+
+                if (data.StageDatas.ContainsKey(_stageSelectManager.stageObjects[i].StageId.ToString()))
+                {
+                    for (int j = 0; j < _stageSelectManager.stageObjects[i].TotalLevels; j++)
+                    {
+                        if (!(data.StageDatas[i.ToString()].LevelDatas.ContainsKey(stageLevels[i, j].levelId.ToString())))
+                        {
+                            //Debug.Log("Creating new level data");
+                            data.StageDatas[i.ToString()].LevelDatas.Add(stageLevels[i, j].levelId.ToString(), new LevelData());
+                        }
+                        data.StageDatas[i.ToString()].LevelDatas[stageLevels[i, j].levelId.ToString()].StarsEarnedInLevel = stageLevels[i, j].starsEarned;
+                        //Debug.Log("Saved Level "+ i + ","+ j + " hsa stars earned: " + data.StageDatas[i.ToString()].LevelDatas[stageLevels[i, j].levelId.ToString()].StarsEarnedInLevel);
+                        data.StageDatas[i.ToString()].LevelDatas[stageLevels[i, j].levelId.ToString()].IsUnlocked = stageLevels[i, j].isCompleted;
+                    }
+                }
+            }
+        }
+
+        #endregion
 
     }
 }
