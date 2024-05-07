@@ -40,6 +40,8 @@ namespace UnderworldCafe
         public bool isUnlockable = false; //enough stars to unlock
         public bool isOpened = false; //unlocked with money
 
+        //public StageData stageData = null;
+
         StageSelectManager _stageSelectManager;
         LevelSelectPanel _levelSelectPanel;
         
@@ -52,7 +54,8 @@ namespace UnderworldCafe
 
         private void Start()
         {
-            _stageSelectManager.UpdateUnlockStage(StageId);
+            //stageData = new StageData(unlockLevels: unlockedLevels, starsEarnedinStage: starsEarnedInStage, isUnlockable: isUnlockable, isOpened: isOpened );
+            _stageSelectManager.UpdateOpenStageSprite(StageId);
         }
 
         // Update is called once per frame
@@ -68,7 +71,7 @@ namespace UnderworldCafe
                 ShowLevelPanel();
                 return;
             }
-            _stageSelectManager.UpdateUnlockStage(stageId);
+            _stageSelectManager.OpenStage(stageId);
         }
 
         void ShowLevelPanel()

@@ -45,11 +45,13 @@ namespace UnderworldCafe.DataPersistenceSystem
         private void OnEnable() 
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.sceneUnloaded += OnSceneUnloaded;
         }
 
         private void OnDisable() 
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
+            SceneManager.sceneUnloaded -= OnSceneUnloaded;
         }
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode mode) 
@@ -67,6 +69,12 @@ namespace UnderworldCafe.DataPersistenceSystem
             {
                 _autoSaveCoroutine = StartCoroutine(AutoSave());
             }
+        }
+
+        private void OnSceneUnloaded(Scene scene)
+        {
+            // Manually save the game just before the scene is unloaded
+           SaveGame();
         }
 
         public void ChangeSelectedProfileId(string newProfileId) 

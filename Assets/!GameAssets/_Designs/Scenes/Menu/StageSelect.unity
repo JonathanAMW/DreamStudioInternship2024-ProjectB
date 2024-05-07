@@ -2183,6 +2183,11 @@ MonoBehaviour:
   starsRequired: 8
   isUnlockable: 0
   isOpened: 0
+  stageData:
+    UnlockedLevels: 0
+    StarsEarnedInStage: 0
+    IsUnlockable: 0
+    IsOpened: 0
 --- !u!1 &284257942
 GameObject:
   m_ObjectHideFlags: 0
@@ -3480,6 +3485,11 @@ MonoBehaviour:
   starsRequired: 1
   isUnlockable: 0
   isOpened: 0
+  stageData:
+    UnlockedLevels: 0
+    StarsEarnedInStage: 0
+    IsUnlockable: 0
+    IsOpened: 0
 --- !u!1 &396325035
 GameObject:
   m_ObjectHideFlags: 0
@@ -7965,6 +7975,11 @@ MonoBehaviour:
   starsRequired: 15
   isUnlockable: 0
   isOpened: 0
+  stageData:
+    UnlockedLevels: 0
+    StarsEarnedInStage: 0
+    IsUnlockable: 0
+    IsOpened: 0
 --- !u!1 &921253416
 GameObject:
   m_ObjectHideFlags: 0
@@ -10042,6 +10057,11 @@ MonoBehaviour:
   starsRequired: 20
   isUnlockable: 0
   isOpened: 0
+  stageData:
+    UnlockedLevels: 0
+    StarsEarnedInStage: 0
+    IsUnlockable: 0
+    IsOpened: 0
 --- !u!1 &1223070828
 GameObject:
   m_ObjectHideFlags: 0
@@ -13132,7 +13152,12 @@ MonoBehaviour:
   starsEarnedInStage: 0
   starsRequired: 0
   isUnlockable: 1
-  isOpened: 0
+  isOpened: 1
+  stageData:
+    UnlockedLevels: 0
+    StarsEarnedInStage: 0
+    IsUnlockable: 0
+    IsOpened: 0
 --- !u!1 &1661265038
 GameObject:
   m_ObjectHideFlags: 0
@@ -15061,6 +15086,11 @@ MonoBehaviour:
   starsRequired: 4
   isUnlockable: 0
   isOpened: 0
+  stageData:
+    UnlockedLevels: 0
+    StarsEarnedInStage: 0
+    IsUnlockable: 0
+    IsOpened: 0
 --- !u!1 &1914326514
 GameObject:
   m_ObjectHideFlags: 0
