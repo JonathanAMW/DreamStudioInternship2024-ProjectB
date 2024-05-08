@@ -5,6 +5,7 @@
 
 using TMPro;
 using UnderworldCafe.DataPersistenceSystem;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -29,6 +30,15 @@ namespace UnderworldCafe
         PlayerGameResouces playerResource;
 
         public int totalStarsEarned = 0;
+
+        [Header("Unlock Stage Confirmation Panel")]
+        public GameObject unlockStageConfirmPanel;
+        public TextMeshProUGUI desc;
+        public TextMeshProUGUI successMessage;
+        public Color32 moneyAmountColor; //yellow
+        public Color32 successMessageColor; //green
+        public Color32 unsuccessfulMessageColor; //red
+
 
         private void Awake()
         {
@@ -104,16 +114,49 @@ namespace UnderworldCafe
             
         }
 
-        public void OpenStage(int stageId)
+        public void OpenStage()
         {
-            
-            if (stageObjects[stageId].isUnlockable && totalStarsEarned >= stageObjects[stageId].starsRequired && playerMoney >= stageObjects[stageId].MoneyRequired)
+            successMessage.gameObject.SetActive(true);
+            if (stageObjects[currentStageId].isUnlockable && totalStarsEarned >= stageObjects[currentStageId].starsRequired && playerMoney >= stageObjects[currentStageId].MoneyRequired && !stageObjects[currentStageId].isOpened)
             {
-                playerResource.ReduceMoney(stageObjects[stageId].MoneyRequired);
+                successMessage.color = successMessageColor;
+                successMessage.text = "Stage Opened";
+
+                playerResource.ReduceMoney(stageObjects[currentStageId].MoneyRequired);
                 UpdatePlayerMoney();
-                stageObjects[stageId].isOpened = true;
+                stageObjects[currentStageId].isOpened = true;
             }
-            UpdateOpenStageSprite(stageId);
+            else if (stageObjects[currentStageId].isUnlockable && totalStarsEarned >= stageObjects[currentStageId].starsRequired && playerMoney < stageObjects[currentStageId].MoneyRequired)//not enough money
+            {
+                successMessage.color = unsuccessfulMessageColor;
+                successMessage.text = "Not enough coins to offer";
+            }
+            else if(stageObjects[currentStageId].isOpened) //already opened
+            {
+                successMessage.color = Color.white;
+                successMessage.text = "Stage has already been unsealed";
+            }
+            UpdateOpenStageSprite(currentStageId);
+        }
+
+        public void ToggleConfirmationPanel(int stageId)
+        {
+            if (unlockStageConfirmPanel.activeSelf)//already opened panel
+            {
+                unlockStageConfirmPanel.SetActive(false);
+                successMessage.gameObject.SetActive(false);
+            }
+            else
+            {
+                string hexMoneyAmountColor = ColorUtility.ToHtmlStringRGB(moneyAmountColor);
+
+                currentStageId = stageId;
+                unlockStageConfirmPanel.SetActive(true);
+                successMessage.gameObject.SetActive(false);
+                string coinsRequired = stageObjects[stageId].MoneyRequired.ToString();
+                desc.text = $"Offer <color=#{hexMoneyAmountColor}><b>{coinsRequired}</b></color> coins to unseal this stage?";
+            }
+
         }
 
         public void UpdateUnlockableStages()
@@ -142,12 +185,7 @@ namespace UnderworldCafe
 
             if (data.StageDatas == null) return;
 
-            Debug.Log("Loading Stage Data");
-
-            /*for(int i = 0; i < stageObjects.Length; i++)
-            {
-                stageObjects[i].stageData = data.StageDatas[i.ToString()];
-            }*/
+            Debug.Log("Loading Stage Data");       
         }
         public void SaveData(GameData data)
         {
@@ -156,12 +194,6 @@ namespace UnderworldCafe
             {
                 data.StageDatas = new SerializableDictionary<string, StageData>();
             }
-
-           /* for (int i = 0; i < stageObjects.Length; i++)
-            {
-                data.StageDatas[i.ToString()] = stageObjects[i].stageData;
-            }*/
-
         }
         #endregion
     }

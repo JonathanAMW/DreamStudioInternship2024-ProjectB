@@ -64,6 +64,7 @@ namespace UnderworldCafe
             
         }
 
+       
         public void ToggleStageButton(int stageId)
         {
             if (isOpened) //already unlocked
@@ -71,7 +72,8 @@ namespace UnderworldCafe
                 ShowLevelPanel();
                 return;
             }
-            _stageSelectManager.OpenStage(stageId);
+            _stageSelectManager.ToggleConfirmationPanel(stageId);
+            //_stageSelectManager.OpenStage(stageId);
         }
 
         void ShowLevelPanel()
