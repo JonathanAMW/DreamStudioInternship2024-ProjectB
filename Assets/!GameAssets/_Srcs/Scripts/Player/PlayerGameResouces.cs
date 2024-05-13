@@ -38,6 +38,7 @@ namespace UnderworldCafe
             Debug.Log("Loading Player Resource Data");
 
             _money = data.PlayerResourceDatas.Money;
+            Debug.Log("Load money: "+ _money);
         }
         public void SaveData(GameData data)
         {
@@ -48,6 +49,7 @@ namespace UnderworldCafe
             }
 
             data.PlayerResourceDatas.Money = _money;
+            Debug.Log("Save money: " + _money);
         }
         #endregion
     }

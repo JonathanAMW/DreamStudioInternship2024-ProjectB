@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnderworldCafe.DataPersistenceSystem;
 
 namespace UnderworldCafe
 {
@@ -23,17 +24,18 @@ namespace UnderworldCafe
         [SerializeField] TextMeshProUGUI playerMoneyText;
         public int PlayerMoney { get; private set; }
 
-        PlayerGameResouces playerResource = GameManager.Instance.PlayerGameResouces;
+        PlayerGameResouces playerResource;
         public PlayerGameResouces PlayerResource { get { return playerResource; } private set { playerResource = value; } }
 
         private void Awake()
         {
             _upgradeManager = FindObjectOfType<UpgradeManager>();
-            
+           
         }
 
         private void Start()
         {
+            
             ActivatePageButtons();
             UpdatePlayerMoney();
         }
@@ -88,8 +90,34 @@ namespace UnderworldCafe
 
         public void UpdatePlayerMoney() //updates player's money UI
         {
+            playerResource = GameManager.Instance.PlayerGameResouces;
             PlayerMoney = playerResource.Money;
             playerMoneyText.text = PlayerMoney.ToString();
         }
+
+        #region DataPersistence
+        public void LoadData(GameData data)
+        {
+            Debug.Log("Checking Player Resource Data");
+
+            if (data.PlayerResourceDatas == null) return;
+
+            Debug.Log("Loading Player Resource Data");
+
+            PlayerMoney = data.PlayerResourceDatas.Money;
+            Debug.Log("Load money: " + PlayerMoney);
+        }
+        public void SaveData(GameData data)
+        {
+            Debug.Log("Saving Player Resource Data");
+            if (data.PlayerResourceDatas == null)
+            {
+                data.PlayerResourceDatas = new PlayerResourceData();
+            }
+
+            data.PlayerResourceDatas.Money = PlayerMoney;
+            Debug.Log("Save money: " + PlayerMoney);
+        }
+        #endregion
     }
 }

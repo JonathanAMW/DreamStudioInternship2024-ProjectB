@@ -15,3 +15,6 @@ MonoBehaviour:
   wareName: Knife
   grade: 0
   wareImage: {fileID: 1553993121, guid: 6a2ea0b0aeb26184ca4ef89425898683, type: 3}
+  grade1Cost: 10
+  grade2Cost: 15
+  grade3Cost: 20

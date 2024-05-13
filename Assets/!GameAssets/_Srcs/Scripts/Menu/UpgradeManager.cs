@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnderworldCafe.DataPersistenceSystem;
 using UnderworldCafe.WaveSystem;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +17,7 @@ namespace UnderworldCafe
     /// <summary>
     /// Upgrade related contents
     /// </summary>
-    public class UpgradeManager : MonoBehaviour
+    public class UpgradeManager : MonoBehaviour, IDataPersistence
     {
         public TextMeshProUGUI wareName1;
         public GameObject[] grades1=new GameObject[3];
@@ -69,7 +70,10 @@ namespace UnderworldCafe
 
             currentIndexNumber = 0;//currentKitchenWares is the first 3 wares
 
+        }
 
+        private void Start()
+        {
             UpdateWareAppearance();
         }
 
@@ -181,10 +185,54 @@ namespace UnderworldCafe
                 {
                     currentKitchenWares[buttonId].grade = 3;
                 }
-                upgradeMenuManager.PlayerResource.ReduceMoney(accountedCost);
+               GameManager.Instance.PlayerGameResouces.ReduceMoney(accountedCost);
             }
             upgradeMenuManager.UpdatePlayerMoney();
             UpdateWareGradeAppearance();
         }
+
+        #region DataPersistence
+        public void LoadData(GameData data)
+        {
+            Debug.Log("Checking Upgrades Data");
+
+            if (data.UtensilUpgradesData == null) return;
+
+            foreach(KitchenWare ware in kitchenWares)
+            {
+                if (data.UtensilUpgradesData.ContainsKey(ware.wareName))
+                {
+                    ware.grade = data.UtensilUpgradesData[ware.wareName];
+                }
+
+            }
+
+            Debug.Log("Loading Upgrades Data");
+        }
+        public void SaveData(GameData data)
+        {
+            Debug.Log("Saving Upgrades Data");
+            if (data.UtensilUpgradesData == null)
+            {
+                data.UtensilUpgradesData = new SerializableDictionary<string, int>();
+            }
+
+            foreach(KitchenWare ware in kitchenWares)
+            {
+                //If Utensil Upgrade Data of this name doesn't exist, create one
+                if (!data.UtensilUpgradesData.ContainsKey(ware.wareName))
+                {
+                    data.UtensilUpgradesData.Add(ware.wareName, new int());
+                    
+                }
+                data.UtensilUpgradesData[ware.wareName] = ware.grade;
+                ware.grade = 0;
+            }
+
+           
+        }
+        #endregion
+
+     
     }
 }

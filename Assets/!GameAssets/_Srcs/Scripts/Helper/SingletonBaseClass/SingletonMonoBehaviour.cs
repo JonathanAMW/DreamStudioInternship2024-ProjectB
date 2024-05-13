@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[DefaultExecutionOrder(-1)]
 public class SingletonMonoBehaviour<T> : MonoBehaviour where T : Component
 {
     // create a private reference to T instance

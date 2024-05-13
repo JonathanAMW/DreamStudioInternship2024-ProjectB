@@ -3,6 +3,8 @@
 // Created  : "2024/02/19"
 //----------------------------------------------------------------------
 
+using UnderworldCafe.DataPersistenceSystem;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 
@@ -24,6 +26,5 @@ namespace UnderworldCafe
         public int Grade2Cost { get { return grade2Cost; } private set { grade2Cost = value; } }
         [SerializeField] int grade3Cost = 20;
         public int Grade3Cost { get { return grade3Cost; } private set { grade3Cost = value; } }
-
     }
 }

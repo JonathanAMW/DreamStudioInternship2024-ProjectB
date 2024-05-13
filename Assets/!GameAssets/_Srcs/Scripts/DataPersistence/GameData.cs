@@ -29,7 +29,13 @@ namespace UnderworldCafe.DataPersistenceSystem
         /// The key is a string for id of the level, while the value is a class representing that level data.
         /// </summary>
         public SerializableDictionary<string, LevelData> LevelDatas;
-        
+
+        /// <summary>
+        /// Dictionary for storing all the Kitchen Wares/Utensil datas. 
+        /// The key is a string for name of the utensil, while the value is a int representing that utensil grade.
+        /// </summary>
+        public SerializableDictionary<string, int> UtensilUpgradesData;
+
 
         //Default Constructor
         // The values defined in this constructor will be the default values the game starts with when there's no data to load
@@ -64,14 +70,6 @@ namespace UnderworldCafe.DataPersistenceSystem
             IsOpened = false;
             LevelDatas = new SerializableDictionary<string, LevelData>();
         }
-
-       /* public StageData(int unlockLevels, int starsEarnedinStage, bool isUnlockable, bool isOpened)
-        {
-            UnlockedLevels = unlockLevels;
-            StarsEarnedInStage = starsEarnedinStage;
-            IsUnlockable = isUnlockable;
-            IsOpened = isOpened;
-        }*/
     }
 
 
@@ -97,6 +95,27 @@ namespace UnderworldCafe.DataPersistenceSystem
             IsUnlocked = false;
             StarsEarnedInLevel = 0;
             LevelUtensilsTier = new SerializableDictionary<string, int>();
+        }
+    }
+
+    /// <summary>
+    /// Class for defining the kitchen ware/utensil data that will be saved and loaded
+    /// </summary>
+    [System.Serializable]
+    public class KitchenWareData
+    {
+        
+        public int utensilGrade;
+
+        /// <summary>
+        /// Dictionary representing the tier of each utensil. 
+        /// The key is a string reference ID, while the value is an integer representing the tier.
+        /// </summary>
+
+        //Default Constructor
+        public KitchenWareData()
+        {
+            utensilGrade = 0;
         }
     }
 

@@ -47,7 +47,7 @@ namespace UnderworldCafe
 
         private void Start()
         {
-            playerResource = GameManager.Instance.PlayerGameResouces;
+           
             UpdatePlayerMoney();
 
             
@@ -174,6 +174,7 @@ namespace UnderworldCafe
         }
         public void UpdatePlayerMoney() //updates player's money UI
         {
+            playerResource = GameManager.Instance.PlayerGameResouces;
             playerMoney = playerResource.Money;
             playerMoneyText.text = playerMoney.ToString();
         }
