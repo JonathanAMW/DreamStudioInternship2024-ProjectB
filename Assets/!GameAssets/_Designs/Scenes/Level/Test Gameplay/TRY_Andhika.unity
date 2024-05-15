@@ -1217,6 +1217,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pref_GeneratorApple
       objectReference: {fileID: 0}
+    - target: {fileID: 5875895396684179666, guid: 526842a26d66efb4080afcf7c511f7ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1308,6 +1312,10 @@ PrefabInstance:
     - target: {fileID: 5875895396684179666, guid: 94f865320b1dba94abbd3367f268fba6, type: 3}
       propertyPath: m_Name
       value: pref_GeneratorFish
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875895396684179666, guid: 94f865320b1dba94abbd3367f268fba6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1461,13 +1469,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: pref_ConverterBlender
       objectReference: {fileID: 0}
-    - target: {fileID: 7014997200208392122, guid: 7a2f3bbf39bb1af49aa1d63d39b487bc, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 5875895396684179666, guid: 7a2f3bbf39bb1af49aa1d63d39b487bc, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7014997200208392122, guid: 7a2f3bbf39bb1af49aa1d63d39b487bc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014997200208392122, guid: 7a2f3bbf39bb1af49aa1d63d39b487bc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1573,6 +1585,10 @@ PrefabInstance:
     - target: {fileID: 5875895396684179666, guid: 0701cb3646ac1154bb18bfe14d7bc383, type: 3}
       propertyPath: m_Name
       value: pref_GeneratorIce
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875895396684179666, guid: 0701cb3646ac1154bb18bfe14d7bc383, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4536,6 +4552,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pref_ConverterKnife
       objectReference: {fileID: 0}
+    - target: {fileID: 5875895396684179666, guid: faada4b8c09e9f7438615ba7f4d355e7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4571,11 +4591,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2088252643072256861, guid: cd64746ad6398cf4d9836030073bfe75, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2088252643072256861, guid: cd64746ad6398cf4d9836030073bfe75, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3930631001790222133, guid: cd64746ad6398cf4d9836030073bfe75, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4620,6 +4640,10 @@ PrefabInstance:
     - target: {fileID: 5875895396684179666, guid: cd64746ad6398cf4d9836030073bfe75, type: 3}
       propertyPath: m_Name
       value: pref_ConverterFrother
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875895396684179666, guid: cd64746ad6398cf4d9836030073bfe75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4850,6 +4874,10 @@ PrefabInstance:
     - target: {fileID: 5875895396684179666, guid: 887633879e4f4e842839d8a9b60011be, type: 3}
       propertyPath: m_Name
       value: pref_GeneratorMilk
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875895396684179666, guid: 887633879e4f4e842839d8a9b60011be, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8701639595087524037, guid: 887633879e4f4e842839d8a9b60011be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6570,6 +6598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pref_GeneratorPlate
       objectReference: {fileID: 0}
+    - target: {fileID: 5875895396684179666, guid: 40e9bac02a26ff2489993730fa4ad47a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6621,8 +6653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waveInformationSOList:
   - {fileID: 11400000, guid: 4f6c0c29669881746989af2b9a69b0eb, type: 2}
-  - {fileID: 11400000, guid: 6f0cae4055a3abd4c8203266a002062a, type: 2}
-  - {fileID: 11400000, guid: 01252d23c4a250b4fa2ec5ef700c3b3c, type: 2}
+  - {fileID: 11400000, guid: befce307e4c46da4baa3529c5a33abb1, type: 2}
   _customerSpawnPointsConfig:
   - pointIndex: 1
     pointTransform: {fileID: 257686808}
@@ -6951,6 +6982,10 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6088666664186756894, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
+      propertyPath: <LevelMusic>k__BackingField
+      value: 
+      objectReference: {fileID: 8300000, guid: ab9aafd4ef2398a4996faccc5a379098, type: 3}
     - target: {fileID: 6088666664186756894, guid: eb99da3cc189f904c8b3491c275a8c49, type: 3}
       propertyPath: <PlayerWalkSFX>k__BackingField
       value: 

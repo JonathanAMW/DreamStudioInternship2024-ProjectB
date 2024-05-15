@@ -18,13 +18,5 @@ MonoBehaviour:
     WaveCustomerInformations:
     - CustomerSpawnPointIndex: 1
       CustomerPrefab: {fileID: 2806508521089751530, guid: 9a50b7b934e3e5d408b8ca5a8726ba82, type: 3}
-      CustomerOrderedFood: {fileID: 11400000, guid: fceb116b89c1bbc4fac3b9b2246576d5, type: 2}
-      CustomerOrderDuration: 60
-    - CustomerSpawnPointIndex: 2
-      CustomerPrefab: {fileID: 2806508521089751530, guid: 9a50b7b934e3e5d408b8ca5a8726ba82, type: 3}
-      CustomerOrderedFood: {fileID: 11400000, guid: fceb116b89c1bbc4fac3b9b2246576d5, type: 2}
-      CustomerOrderDuration: 60
-    - CustomerSpawnPointIndex: 3
-      CustomerPrefab: {fileID: 2806508521089751530, guid: 9a50b7b934e3e5d408b8ca5a8726ba82, type: 3}
-      CustomerOrderedFood: {fileID: 11400000, guid: 5c3d641fb84382544bfa2c274f0f5d57, type: 2}
+      CustomerOrderedFood: {fileID: 11400000, guid: c52c552446079b447a49b0f27b1b0d41, type: 2}
       CustomerOrderDuration: 60
